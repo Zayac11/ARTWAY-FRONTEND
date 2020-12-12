@@ -1,12 +1,14 @@
 import React from 'react';
-import s from './s.module.css'
+import s from './Scanner.module.css'
+// import "html5-qrcode.min.js"
 
-const Test = (props) => {
+const Scanner = (props) => {
+
     return (
-        <div>
-            Test
+        <div className={s.main} id="reader">
+            ss
         </div>
     );
 }
 
-export default Test;
+export default Scanner;

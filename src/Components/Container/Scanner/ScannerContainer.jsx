@@ -1,8 +1,21 @@
 import React from 'react';
 import {connect} from "react-redux";
-import Test from "./Test";
+import Scanner from "./Scanner";
 
-class TestContainer extends React.Component {
+class ScannerContainer extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            link: ""
+        }
+        this.handleChange = this.handleChange.bind(this)
+
+    }
+
+    handleChange() {
+
+    }
 
     componentDidMount() {
 
@@ -10,7 +23,7 @@ class TestContainer extends React.Component {
 
     render() {
         return (
-            <Test />
+            <Scanner handleChange={this.handleChange} />
         );
     }
 
@@ -22,4 +35,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{})(TestContainer);
+export default connect(mapStateToProps,{})(ScannerContainer);
