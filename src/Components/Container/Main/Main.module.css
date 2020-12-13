@@ -95,29 +95,6 @@
     color: #f77838;
     font-weight: bold;
 }
-.button {
-    display: block;
-    padding: 10px 0;
-    width: 100%;
-    border: 2px solid black;
-    border-radius: 25px;
-    margin-bottom: 10px;
-    text-align: center;
-    cursor: pointer;
-}
-.idButton {
-    color: black;
-}
-.idButton:hover {
-
-}
-.scanButton {
-    color: white;
-    background-color: black;
-}
-.scanButton:hover {
-
-}
 @media (max-width: 380px) {
     .name {
         font-size: 14px;

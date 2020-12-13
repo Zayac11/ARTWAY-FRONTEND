@@ -6,6 +6,8 @@ import scan from './../../../assets/images/scan.svg'
 import play from './../../../assets/images/play.svg'
 import Step from "./Step/Step";
 import {NavLink} from "react-router-dom";
+import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
+import BlackButton from "../../../Common/BlackButton/BlackButton";
 
 const Main = (props) => {
     return (
@@ -43,13 +45,8 @@ const Main = (props) => {
                 </div>
             </div>
 
-            <NavLink className={`${s.idButton} ${s.button}`} to={'/enter'}>
-                Ввести ID экспоната вручную
-            </NavLink>
-            <NavLink className={`${s.scanButton} ${s.button}`} to={'/scan'}>
-                Отсканировать qr-код
-            </NavLink>
-
+            <TransparentButton link={'/enter'} text='Ввести ID экспоната вручную' />
+            <BlackButton link={`/scan`} text='Отсканировать qr-код' />
         </div>
     );
 }
