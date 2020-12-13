@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {Route, Switch} from "react-router-dom";
-import ScannerContainer from "./Scanner/ScannerContainer";
 import Main from "./Main/Main";
+import Transition from "./Transition/Transition";
 
 
 class Container extends React.Component {
@@ -15,8 +15,8 @@ class Container extends React.Component {
         return (
             <Switch>
                 <Route exact path='/' render={ () => <Main />} />
-                <Route exact path='/scan' render={ () => <ScannerContainer />} />
-                <Route exact path='/enter' render={ () => <ScannerContainer />} />
+                <Route exact path='/scan' render={ () => <Transition />} />
+                <Route exact path='/enter' render={ () => <Transition />} />
             </Switch>
         );
     }
