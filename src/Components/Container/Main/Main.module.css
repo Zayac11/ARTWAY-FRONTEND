@@ -1,0 +1,120 @@
+@media (max-width: 480px) {
+    /*Пятна*/
+    .blur {
+        position: absolute;
+        z-index: -1;
+        -webkit-filter: blur(50px);
+        filter: blur(50px);
+        opacity: 0.7;
+    }
+    .blueBlur {
+        top: 80px;
+        right: 0;
+        width: 100px;
+        height: 250px;
+        background-color: #38f3f7;
+    }
+    .orangeBlur {
+        left: 0;
+        bottom: 0;
+        width: 100px;
+        height: 120px;
+        background-color: #f77838;
+    }
+
+    /*Последний шаг*/
+    .step {
+        display: flex;
+        align-items: center;
+        margin: 22px 0 40px;
+    }
+    .stepText {
+        padding-left: 10px;
+        margin-left: 15px;
+        line-height: 1.5;
+    }
+    .pointOuter {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 25px;
+        height: 25px;
+        padding: 7px;
+        background-color: rgba(247, 120, 56, 0.3);
+        border-radius: 25px;
+    }
+    .pointInner {
+        width: 11px;
+        height: 11px;
+        background-color: #000000;
+        border-radius: 11px;
+    }
+    .pointOuter:before {
+        content: '';
+        border-left: 1px solid black;
+        height: 23px;
+        position: absolute;
+        left: 12px;
+    }
+    .pointOuter:before {
+        top: -23px;
+    }
+
+    /*Основная часть*/
+    .main {
+        width: 100%;
+        padding: 20px 10px;
+        position: relative;
+        min-height: 100vh;
+    }
+    .logoContainer {
+        margin-bottom: 20px;
+    }
+    .nameContainer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+    .nameContainer img {
+        width: 110px;
+        height: 35px;
+    }
+    .name {
+        font-size: 18px;
+        padding-bottom: 5px;
+        text-align: center;
+    }
+    .principe {
+        margin: 20px 0;
+    }
+    .art {
+        font-weight: bold;
+    }
+    .way {
+        color: #f77838;
+        font-weight: bold;
+    }
+    .button {
+        display: block;
+        padding: 10px 0;
+        width: 100%;
+        border: 2px solid black;
+        border-radius: 15px;
+        margin-bottom: 10px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .idButton {
+        color: black;
+    }
+    .idButton:hover {
+
+    }
+    .scanButton {
+        color: white;
+        background-color: black;
+    }
+    .scanButton:hover {
+
+    }
+}

@@ -1,0 +1,45 @@
+.step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.stepText {
+    padding-left: 10px;
+    margin-left: 15px;
+    line-height: 1.5;
+}
+.pointOuter {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 25px;
+    height: 25px;
+    padding: 7px;
+    background-color: rgba(247, 120, 56, 0.3);
+    border-radius: 25px;
+}
+.pointInner {
+    width: 11px;
+    height: 11px;
+    background-color: #000000;
+    border-radius: 11px;
+}
+.pointOuter:after, .pointOuter:before {
+    content: '';
+    border-left: 1px solid black;
+    height: 23px;
+    position: absolute;
+    left: 12px;
+}
+.pointOuter:before {
+    top: -23px;
+}
+.pointOuter:after {
+    bottom: -23px;
+}
+
+.phoneIcon {
+    padding-left: 3px;
+    margin-bottom: 11px;
+}
+

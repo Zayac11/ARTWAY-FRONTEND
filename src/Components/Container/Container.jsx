@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Route, Switch} from "react-router-dom";
 import ScannerContainer from "./Scanner/ScannerContainer";
+import Main from "./Main/Main";
 
 
 class Container extends React.Component {
@@ -12,9 +13,11 @@ class Container extends React.Component {
 
     render() {
         return (
-            // <Switch>
-                <ScannerContainer />
-            // {/*</Switch>*/}
+            <Switch>
+                <Route exact path='/' render={ () => <Main />} />
+                <Route exact path='/scan' render={ () => <ScannerContainer />} />
+                <Route exact path='/enter' render={ () => <ScannerContainer />} />
+            </Switch>
         );
     }
 
@@ -27,6 +30,3 @@ let mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps,{})(Container);
-
-//{/*<Route exact path='/' render={ () => <MainContainer />} />*/}
-//                 {/*<Route exact path='/' render={ () => <ScannerContainer />} />*/}
