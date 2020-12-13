@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import QrReader from 'react-weblineindia-qrcode-scanner'
 import {Redirect, Route} from "react-router-dom";
 import s from './Scanner.module.css'
+import '../../../../Common/style.css'
+import TransparentButton from "../../../../Common/TransparentButton/TransparentButton";
 
 
 class ScannerContainer extends React.Component {
@@ -13,20 +15,32 @@ class ScannerContainer extends React.Component {
 
     render() {
 
-        // if(this.props.result !== null) {
-        //     return <Redirect path={`${this.props.result}`} />
-        // }
+        const previewStyle = {
+            height: '100%',
+            width: '100%',
+            margin: 'auto',
+        }
+        if(this.props.result !== null) {
+            return <Route path='/' component={() => { window.location = `${this.props.result}`; return null;} }/>
+
+            // return <Redirect path={`${this.props.result}`} />
+        }
 
         return (
-            <div>
+            <div className={s.scannerContainer}>
+
                 <QrReader
                     delay={this.props.delay}
-                    className={s.styles}
-                    // style={previewStyle}
+                    className={s.scanner}
+                    style={previewStyle}
                     onError={this.props.handleError}
                     onScan={this.props.handleScan}
                 />
-                <p>{this.props.result}</p>
+
+                <div className={'links'}>
+                    {/*<p>{this.props.result}</p>*/}
+                    <TransparentButton link={'/'} text='Вернуться назад' />
+                </div>
             </div>
         );
     }

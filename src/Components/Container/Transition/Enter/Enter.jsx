@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Enter.module.css'
+import '../../../../Common/style.css'
 import TransparentButton from "../../../../Common/TransparentButton/TransparentButton";
 import BlackButton from "../../../../Common/BlackButton/BlackButton";
 
@@ -14,7 +15,7 @@ const Enter = (props) => {
                     Введите номер экспоната
                 </div>
             </div>
-            <div className={s.links}>
+            <div className={'links'}>
                 <TransparentButton link={'/'} text='Вернуться назад' />
                 {
                     props.artifactId !== "" && <BlackButton link={`/artifact/${props.artifactId}`} text='Перейти к экспонату' />

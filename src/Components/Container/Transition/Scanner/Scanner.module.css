@@ -1,4 +1,21 @@
-.styles {
-    width: 100vh;
-    height: 100vh;
+.scannerContainer {
+    position: relative;
+    width: 100%;
+    padding: 0 10px;
+    min-height: 70vh;
 }
+
+.scanner {
+    position: absolute;
+    top: -35px;
+    margin: 0 auto;
+    padding: 15px;
+    background-color: white;
+    left: 0;
+    right: 0;
+    width: 90%;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+

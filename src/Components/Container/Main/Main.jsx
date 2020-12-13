@@ -1,19 +1,19 @@
 import React from 'react';
 import s from './Main.module.css'
+import '../../../Common/style.css'
 import mirea from './../../../assets/images/group-10.svg'
 import logo from './../../../assets/images/group-2.svg'
 import scan from './../../../assets/images/scan.svg'
 import play from './../../../assets/images/play.svg'
 import Step from "./Step/Step";
-import {NavLink} from "react-router-dom";
 import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
 import BlackButton from "../../../Common/BlackButton/BlackButton";
 
 const Main = (props) => {
     return (
         <div className={s.main}>
-            <div className={`${s.blueBlur} ${s.blur}`}></div>
-            <div className={`${s.orangeBlur} ${s.blur}`}></div>
+            <div className={`blueBlur blur`}></div>
+            <div className={`orangeBlur blur`}></div>
             <div className={s.logoContainer}>
                 <img src={mirea} alt="MIREA"/>
             </div>

@@ -1,16 +1,43 @@
-.outer {
-    width: 100%;
+.blackTop {
     position: relative;
-    min-height: 100vh;
+    height: 280px;
+    width: 100%;
+    background-color: black;
+    border-bottom-left-radius: 100px 20px;
+    border-bottom-right-radius: 100px 20px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
-.container {
-    max-width: 1440px;
+.blur {
+    position: absolute;
+    z-index: -1;
+    -webkit-filter: blur(50px);
+    filter: blur(50px);
+    opacity: 0.7;
+}
+.blueBlur {
+    top: 80px;
+    right: 0;
+    width: 100px;
+    height: 250px;
+    background-color: #38f3f7;
+}
+.orangeBlur {
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 120px;
+    background-color: #f77838;
+}
+
+.links {
+    position: absolute;
     width: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 15px;
     margin: 0 auto;
-    position: relative;
-    min-height: 75vh;
 }

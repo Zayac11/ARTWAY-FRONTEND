@@ -5,6 +5,7 @@ import ScannerContainer from "./Scanner/ScannerContainer";
 import Top from "./Top/Top";
 import Enter from "./Enter/Enter";
 import s from './Transition.module.css'
+import '../../../Common/style.css'
 
 class Transition extends React.Component {
 
@@ -43,8 +44,8 @@ class Transition extends React.Component {
     render() {
         return (
             <div className={s.container}>
-                <div className={`${s.blueBlur} ${s.blur}`}></div>
-                <div className={`${s.orangeBlur} ${s.blur}`}></div>
+                <div className={`blueBlur blur`}></div>
+                <div className={`orangeBlur blur`}></div>
                 <Top />
 
                 <Route exact path='/scan' render={ () => <ScannerContainer handleScan={this.handleScan}

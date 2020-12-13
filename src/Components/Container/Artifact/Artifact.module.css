@@ -1,0 +1,70 @@
+.artifactContainer {
+}
+
+.top {
+    position: absolute;
+    top: 30px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.backBtn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    display: block;
+}
+.backBtn img {
+    display: block;
+    cursor: pointer;
+}
+
+.name {
+    color: white;
+}
+
+.artifact {
+    position: absolute;
+    top: 100px;
+}
+
+.imgContainer {
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.imgContainer img {
+    width: inherit;
+    min-height: 180px;
+    max-height: 300px;
+    border-radius: 7px;
+}
+
+.info {
+    padding: 0 20px;
+}
+
+.audio {
+
+}
+
+.descriptionContainer {
+    margin-top: 20px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.description {
+    white-space: pre-wrap;
+}

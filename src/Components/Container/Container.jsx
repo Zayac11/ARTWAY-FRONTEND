@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Route, Switch} from "react-router-dom";
 import Main from "./Main/Main";
 import Transition from "./Transition/Transition";
-
+import ArtifactContainer from "./Artifact/ArtifactContainer";
 
 class Container extends React.Component {
 
@@ -17,6 +17,7 @@ class Container extends React.Component {
                 <Route exact path='/' render={ () => <Main />} />
                 <Route exact path='/enter' render={ () => <Transition />} />
                 <Route exact path='/scan' render={ () => <Transition />} />
+                <Route exact path='/artifact/:id' render={ () => <ArtifactContainer />} />
             </Switch>
         );
     }
