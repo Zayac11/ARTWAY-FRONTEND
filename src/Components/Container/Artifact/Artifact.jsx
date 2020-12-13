@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Artifact.module.css'
 import './../../../Common/style.css'
 import prev from './../../../assets/images/next.svg'
+import Audio from "../../../Common/Audio/Audio";
 
 const Artifact = ({artifactData, ...props}) => {
     return (
@@ -23,9 +24,11 @@ const Artifact = ({artifactData, ...props}) => {
                 </div>
 
                 <div className={s.info}>
-                    <div className={s.audio}>
-                        Audio will be here...
-                    </div>
+                    {/*<div className={s.audio}>*/}
+                    {/*    Audio will be here...*/}
+                    {/*</div>*/}
+
+                    <Audio audio={artifactData.audio} />
 
                     <div className={s.descriptionContainer}>
                         <div className={s.title}>

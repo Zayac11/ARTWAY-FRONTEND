@@ -28,11 +28,12 @@
 
 .artifact {
     position: absolute;
+    width: 100%;
     top: 100px;
 }
 
 .imgContainer {
-    width: 100%;
+
     padding: 0 20px;
     display: flex;
     justify-content: center;
@@ -41,7 +42,7 @@
 }
 
 .imgContainer img {
-    width: inherit;
+    max-width: 100%;
     min-height: 180px;
     max-height: 300px;
     border-radius: 7px;
