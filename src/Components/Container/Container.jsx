@@ -15,8 +15,8 @@ class Container extends React.Component {
         return (
             <Switch>
                 <Route exact path='/' render={ () => <Main />} />
-                <Route exact path='/scan' render={ () => <Transition />} />
                 <Route exact path='/enter' render={ () => <Transition />} />
+                <Route exact path='/scan' render={ () => <Transition />} />
             </Switch>
         );
     }

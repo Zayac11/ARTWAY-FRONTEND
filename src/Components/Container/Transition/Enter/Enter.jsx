@@ -8,7 +8,7 @@ const Enter = (props) => {
         <div className={s.enter}>
             <div className={s.inputContainer}>
                 <div className={s.input}>
-                    <input type="number" placeholder={'1'} name={'result'}/>
+                    <input onChange={props.handleChange} type="text" placeholder={'1'} value={props.artifactId} name={'artifactId'}/>
                 </div>
                 <div className={s.text}>
                     Введите номер экспоната
@@ -16,7 +16,9 @@ const Enter = (props) => {
             </div>
             <div className={s.links}>
                 <TransparentButton link={'/'} text='Вернуться назад' />
-                <BlackButton link={`/artifact/${props.id}`} text='Перейти к экспонату' />
+                {
+                    props.artifactId !== "" && <BlackButton link={`/artifact/${props.artifactId}`} text='Перейти к экспонату' />
+                }
             </div>
         </div>
     );
