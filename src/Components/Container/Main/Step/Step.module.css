@@ -1,7 +1,6 @@
 .step {
     display: flex;
     align-items: center;
-    margin-bottom: 15px;
 }
 .stepText {
     padding-left: 10px;
@@ -17,6 +16,7 @@
     padding: 7px;
     background-color: rgba(247, 120, 56, 0.3);
     border-radius: 25px;
+    margin: 26px 0;
 }
 .pointInner {
     width: 11px;
@@ -40,6 +40,19 @@
 
 .phoneIcon {
     padding-left: 3px;
-    margin-bottom: 11px;
+}
+.phoneIcon img{
+    display: block;
 }
 
+@media (max-width: 380px) {
+    .stepText {
+        font-size: 14px;
+    }
+}
+@media (max-width: 302px) {
+
+    .stepText {
+        font-size: 12px;
+    }
+}
