@@ -6,35 +6,15 @@ import Transition from "./Transition/Transition";
 import ArtifactContainer from "./Artifact/ArtifactContainer";
 import Audio from "../../Common/Audio/Audio";
 import PreloaderLogo from "../../Common/PreloaderLogo/PreloaderLogo";
-import s from "../../Common/PreloaderLogo/PreloaderLogo.module.css";
 import mirea from "../../assets/images/MIREA_Gerb_Colour.png";
 
 class Container extends React.Component {
-
-    // constructor(props) {
-    //     super(props);
-    //     this.state={
-    //         hidden: true
-    //     }
-    // }
 
     componentDidMount() {
 
     }
 
-
     render() {
-        // setTimeout(() =>
-        // {
-        //     this.setState({
-        //         hidden: false
-        //     })
-        // }, 1000)
-        //
-        // if(this.state.hidden) {
-        //     return
-        // }
-
         return (
             <>
             <PreloaderLogo />

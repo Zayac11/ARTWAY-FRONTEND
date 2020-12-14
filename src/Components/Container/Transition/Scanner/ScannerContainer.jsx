@@ -34,6 +34,7 @@ class ScannerContainer extends React.Component {
                     <QrReader
                         delay={this.props.delay}
                         className={s.scanner}
+                        facingMode={'rear'}
                         style={previewStyle}
                         onError={this.props.handleError}
                         onScan={this.props.handleScan}
