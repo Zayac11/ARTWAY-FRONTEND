@@ -27,7 +27,7 @@ const Main = (props) => {
                 </div>
             </div>
             <div className={s.name}>
-                экспонатов музев, выставок или экскурсий
+                экспонатов музеев, выставок или экскурсий
             </div>
             <h3 className={s.principe}>
                 Как это работает?
@@ -50,7 +50,7 @@ const Main = (props) => {
             <div className={'links'}>
                 <TransparentButton link={'/enter'} text='Ввести ID экспоната вручную' />
                 <BlackButton link={`/scan`} text='Отсканировать qr-код' />
-                <BlackButton link={`/test`} text='Go to test Component' />
+                {/*<BlackButton link={`/test`} text='Go to test Component' />*/}
             </div>
 
         </div>

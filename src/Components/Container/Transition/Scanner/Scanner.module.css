@@ -2,20 +2,30 @@
     position: relative;
     width: 100%;
     padding: 0 10px;
-    min-height: 60vh;
 }
 
 .scanner {
     position: absolute;
     top: -35px;
-    margin: 0 auto;
+    margin: 0 20px;
     padding: 15px;
     background-color: white;
     left: 0;
     right: 0;
-    width: 90%;
     border-radius: 7px;
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
-
+.refresh {
+    width: 50px;
+    top: 0px;
+    left: 55px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    display: block;
+    position: absolute;
+}
+.refresh img {
+    width: inherit;
+}

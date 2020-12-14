@@ -5,7 +5,6 @@ import Main from "./Main/Main";
 import Transition from "./Transition/Transition";
 import ArtifactContainer from "./Artifact/ArtifactContainer";
 import PreloaderLogo from "../../Common/PreloaderLogo/PreloaderLogo";
-import TestContainer from "../TestContainer";
 
 class Container extends React.Component {
 
@@ -16,7 +15,7 @@ class Container extends React.Component {
     render() {
         return (
             <>
-            {/*<PreloaderLogo />*/}
+            <PreloaderLogo />
                 <Switch>
                     <Route exact path='/' render={ () => <Main />} />
 
@@ -24,7 +23,7 @@ class Container extends React.Component {
                     <Route exact path='/scan' render={ () => <Transition />} />
 
                     <Route exact path='/artifact/:id' render={ () => <ArtifactContainer />} />
-                    <Route exact path='/test' render={ () => <TestContainer />} />
+                    {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}
                 </Switch>
             </>
         );

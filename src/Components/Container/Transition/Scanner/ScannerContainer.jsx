@@ -1,30 +1,31 @@
 import React from 'react';
 import {connect} from "react-redux";
-import QrReader from 'react-weblineindia-qrcode-scanner'
-import {Redirect, Route} from "react-router-dom";
+import QrReader from 'react-qr-reader'
+import {Route} from "react-router-dom";
 import s from './Scanner.module.css'
 import '../../../../Common/style.css'
 import Top from "../Top/Top";
+import refresh from './../../../../assets/images/refresh-256x256.png'
 
 class ScannerContainer extends React.Component {
 
     constructor(props) {
         super(props);
         this.state={
-            facingMode: 'rear',
+            facingMode: 'environment',
         }
         this.changeCamera = this.changeCamera.bind(this)
     }
 
     changeCamera() {
-        if(this.state.facingMode === 'rear') {
+        if(this.state.facingMode === 'environment') {
             this.setState({
-                facingMode: 'front'
+                facingMode: 'user'
             })
         }
-        if(this.state.facingMode === 'front') {
+        if(this.state.facingMode === 'user') {
             this.setState({
-                facingMode: 'rear'
+                facingMode: 'environment'
             })
         }
     }
@@ -36,14 +37,10 @@ class ScannerContainer extends React.Component {
     render() {
 
         const previewStyle = {
-            maxHeight: '40vh',
-            width: '100%',
-            margin: 'auto',
+
         }
         if(this.props.result !== null) {
             return <Route path='/' component={() => { window.location = `${this.props.result}`; return null;} }/>
-
-            // return <Redirect path={`${this.props.result}`} />
         }
 
         return (
@@ -54,12 +51,14 @@ class ScannerContainer extends React.Component {
                     <QrReader
                         facingMode={this.state.facingMode}
                         delay={this.props.delay}
+                        resolution={600}
                         className={s.scanner}
                         style={previewStyle}
+                        showViewFinder={false}
                         onError={this.props.handleError}
                         onScan={this.props.handleScan}
                     />
-                <button className={'links'} onClick={this.changeCamera}>ПОМЕНЯТЬ КАМЕРУ</button>
+                <button className={s.refresh} onClick={this.changeCamera}><img src={refresh} alt="refresh button"/></button>
                 </div>
             </>
         );
