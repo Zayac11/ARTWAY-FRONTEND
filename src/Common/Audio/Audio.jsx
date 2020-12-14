@@ -19,6 +19,7 @@ const Audio = (props) => {
                                RHAP_UI.CURRENT_TIME, RHAP_UI.PROGRESS_BAR, RHAP_UI.DURATION
                            ]}
                            customControlsSection={[]}
+                           preload={"none"}
                            autoPlay={false}
             />
         </>
