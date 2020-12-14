@@ -16,14 +16,14 @@ class TestContainer extends React.Component {
     }
 
     changeCamera() {
-        if(this.state.facingMode === 'rear') {
+        if(this.state.facingMode === 'environment') {
             this.setState({
-                facingMode: 'front'
+                facingMode: 'user'
             })
         }
-        if(this.state.facingMode === 'front') {
+        if(this.state.facingMode === 'user') {
             this.setState({
-                facingMode: 'rear'
+                facingMode: 'environment'
             })
         }
     }
