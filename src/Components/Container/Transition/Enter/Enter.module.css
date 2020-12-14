@@ -28,7 +28,7 @@
     outline: none;
     border: none;
     text-align: center;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
 }
 .input input::placeholder {
     font-size: 18px;

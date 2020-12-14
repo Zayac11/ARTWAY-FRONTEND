@@ -47,7 +47,9 @@ class ScannerContainer extends React.Component {
             <>
                 <Top history={this.props.history} section={'scan'} />
                 <div className={s.scannerContainer}>
-
+                    <div className={s.title}>
+                        Отсканируйте QR код
+                    </div>
                     <QrReader
                         facingMode={this.state.facingMode}
                         delay={this.props.delay}
@@ -58,7 +60,9 @@ class ScannerContainer extends React.Component {
                         onError={this.props.handleError}
                         onScan={this.props.handleScan}
                     />
+
                 <button className={s.refresh} onClick={this.changeCamera}><img src={refresh} alt="refresh button"/></button>
+
                 </div>
             </>
         );
