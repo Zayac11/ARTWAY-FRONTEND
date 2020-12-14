@@ -24,7 +24,7 @@ export const setArtifactData = (artifactData) => ({type: SET_ARTIFACT_DATA, arti
 export const getArtifactData = (artifactId) => { //Получение информации об экспонате по id
     return async (dispatch) => {
         let response = await artifactApi.getArtifactData(artifactId)
-        console.log('artifactData', response.data)
+        // console.log('artifactData', response.data)
         if(response.status === 200) {
             dispatch(setArtifactData(response.data))
         }

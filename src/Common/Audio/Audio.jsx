@@ -2,11 +2,8 @@ import React from 'react';
 import s from './Audio.module.css'
 import H5AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 import 'react-h5-audio-player/lib/styles.css';
-import play from './../../assets/images/play-button-2.svg'
 
 const Audio = (props) => {
-
-
 
     return (
         <>
@@ -19,8 +16,9 @@ const Audio = (props) => {
                                RHAP_UI.CURRENT_TIME, RHAP_UI.PROGRESS_BAR, RHAP_UI.DURATION
                            ]}
                            customControlsSection={[]}
-                           preload={"metadata "}
+                           preload={"metadata"}
                            autoPlay={false}
+                           autoPlayAfterSrcChange={false}
             />
         </>
     );
