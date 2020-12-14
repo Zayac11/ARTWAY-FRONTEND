@@ -4,10 +4,30 @@ import QrReader from 'react-weblineindia-qrcode-scanner'
 import {Redirect, Route} from "react-router-dom";
 import s from './Scanner.module.css'
 import '../../../../Common/style.css'
-import TransparentButton from "../../../../Common/TransparentButton/TransparentButton";
 import Top from "../Top/Top";
 
 class ScannerContainer extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state={
+            facingMode: 'rear',
+        }
+        this.changeCamera = this.changeCamera.bind(this)
+    }
+
+    changeCamera() {
+        if(this.state.facingMode === 'rear') {
+            this.setState({
+                facingMode: 'front'
+            })
+        }
+        if(this.state.facingMode === 'front') {
+            this.setState({
+                facingMode: 'rear'
+            })
+        }
+    }
 
     componentDidMount() {
 
@@ -32,14 +52,14 @@ class ScannerContainer extends React.Component {
                 <div className={s.scannerContainer}>
 
                     <QrReader
-                        facingMode={'rear'}
+                        facingMode={this.state.facingMode}
                         delay={this.props.delay}
                         className={s.scanner}
                         style={previewStyle}
                         onError={this.props.handleError}
                         onScan={this.props.handleScan}
                     />
-
+                <button className={'links'} onClick={this.changeCamera}>ПОМЕНЯТЬ КАМЕРУ</button>
                 </div>
             </>
         );
