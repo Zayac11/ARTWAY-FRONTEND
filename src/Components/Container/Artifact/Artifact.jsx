@@ -24,9 +24,6 @@ const Artifact = ({artifactData, ...props}) => {
                 </div>
 
                 <div className={s.info}>
-                    {/*<div className={s.audio}>*/}
-                    {/*    Audio will be here...*/}
-                    {/*</div>*/}
 
                     <Audio audio={artifactData.audio} />
 

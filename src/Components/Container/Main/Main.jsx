@@ -2,6 +2,8 @@ import React from 'react';
 import s from './Main.module.css'
 import '../../../Common/style.css'
 import mirea from './../../../assets/images/group-10.svg'
+import gerb from './../../../assets/images/MIREA_Gerb_Colour.png'
+import it from './../../../assets/images/logo.png'
 import logo from './../../../assets/images/group-2.svg'
 import scan from './../../../assets/images/scan.svg'
 import play from './../../../assets/images/play.svg'
@@ -15,6 +17,7 @@ const Main = (props) => {
             <div className={`blueBlur blur`}></div>
             <div className={`orangeBlur blur`}></div>
             <div className={s.logoContainer}>
+                <img src={gerb} alt="MIREA"/>
                 <img src={mirea} alt="MIREA"/>
             </div>
             <div className={s.nameContainer}>
@@ -30,7 +33,7 @@ const Main = (props) => {
                 Как это работает?
             </h3>
             <Step img={scan} text='Перейдите к сканированию qr-кода выбранного экспоната или введите его ID' />
-            <Step img={play} text='На странице экспоната Вы можете просмотреть информацию о нём, запустить аудиогид или видео' />
+            <Step img={play} text='На странице экспоната Вы сможете просмотреть информацию о нём и запустить аудиогид' />
 
             <div className={s.step}>
                 <div className={s.pointOuter}>
@@ -44,9 +47,11 @@ const Main = (props) => {
                     <span className={s.way}>way</span>
                 </div>
             </div>
+            <div className={'links'}>
+                <TransparentButton link={'/enter'} text='Ввести ID экспоната вручную' />
+                <BlackButton link={`/scan`} text='Отсканировать qr-код' />
+            </div>
 
-            <TransparentButton link={'/enter'} text='Ввести ID экспоната вручную' />
-            <BlackButton link={`/scan`} text='Отсканировать qr-код' />
         </div>
     );
 }

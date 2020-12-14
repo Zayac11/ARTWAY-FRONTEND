@@ -5,7 +5,7 @@ import {Redirect, Route} from "react-router-dom";
 import s from './Scanner.module.css'
 import '../../../../Common/style.css'
 import TransparentButton from "../../../../Common/TransparentButton/TransparentButton";
-
+import Top from "../Top/Top";
 
 class ScannerContainer extends React.Component {
 
@@ -27,21 +27,20 @@ class ScannerContainer extends React.Component {
         }
 
         return (
-            <div className={s.scannerContainer}>
+            <>
+                <Top history={this.props.history} section={'scan'} />
+                <div className={s.scannerContainer}>
 
-                <QrReader
-                    delay={this.props.delay}
-                    className={s.scanner}
-                    style={previewStyle}
-                    onError={this.props.handleError}
-                    onScan={this.props.handleScan}
-                />
+                    <QrReader
+                        delay={this.props.delay}
+                        className={s.scanner}
+                        style={previewStyle}
+                        onError={this.props.handleError}
+                        onScan={this.props.handleScan}
+                    />
 
-                <div className={'links'}>
-                    {/*<p>{this.props.result}</p>*/}
-                    <TransparentButton link={'/'} text='Вернуться назад' />
                 </div>
-            </div>
+            </>
         );
     }
 

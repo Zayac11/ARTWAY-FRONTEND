@@ -1,0 +1,27 @@
+.display {
+    display: none;
+}
+.trans, .transition {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 1s ease 0s;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.trans {
+    opacity: 0;
+    /*display: none;*/
+}
+
+.img {
+    width: 100px;
+    height: 100px;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, withRouter} from "react-router-dom";
 import ScannerContainer from "./Scanner/ScannerContainer";
 import Top from "./Top/Top";
 import Enter from "./Enter/Enter";
@@ -46,14 +46,15 @@ class Transition extends React.Component {
             <div className={s.container}>
                 <div className={`blueBlur blur`}></div>
                 <div className={`orangeBlur blur`}></div>
-                <Top />
 
                 <Route exact path='/scan' render={ () => <ScannerContainer handleScan={this.handleScan}
                                                                            handleError={this.handleError}
                                                                            delay={this.state.delay}
+                                                                           history={this.props.history}
                                                                            result={this.state.result} />} />
 
                 <Route exact path='/enter' render={ () => <Enter handleChange={this.handleChange}
+                                                                 history={this.props.history}
                                                                  artifactId={this.state.artifactId} />} />
             </div>
         );
@@ -66,4 +67,5 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{})(Transition);
+let WithUrlTransition = withRouter(Transition)
+export default connect(mapStateToProps,{})(WithUrlTransition);
