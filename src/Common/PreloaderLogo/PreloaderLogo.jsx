@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import './PreloaderLogo.css'
 import mirea from './../../assets/images/MIREA_Gerb_Colour.png'
 
-class TestContainer extends React.Component {
+class PreloaderLogo extends React.Component {
 
     constructor(props) {
         super(props);
@@ -52,4 +52,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{})(TestContainer);
+export default connect(mapStateToProps,{})(PreloaderLogo);

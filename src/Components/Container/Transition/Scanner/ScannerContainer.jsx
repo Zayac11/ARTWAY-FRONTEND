@@ -36,7 +36,7 @@ class ScannerContainer extends React.Component {
     render() {
 
         const previewStyle = {
-            height: '100%',
+            maxHeight: '40vh',
             width: '100%',
             margin: 'auto',
         }

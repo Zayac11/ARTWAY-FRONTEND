@@ -4,9 +4,8 @@ import {Route, Switch} from "react-router-dom";
 import Main from "./Main/Main";
 import Transition from "./Transition/Transition";
 import ArtifactContainer from "./Artifact/ArtifactContainer";
-import Audio from "../../Common/Audio/Audio";
 import PreloaderLogo from "../../Common/PreloaderLogo/PreloaderLogo";
-import mirea from "../../assets/images/MIREA_Gerb_Colour.png";
+import TestContainer from "../TestContainer";
 
 class Container extends React.Component {
 
@@ -17,7 +16,7 @@ class Container extends React.Component {
     render() {
         return (
             <>
-            <PreloaderLogo />
+            {/*<PreloaderLogo />*/}
                 <Switch>
                     <Route exact path='/' render={ () => <Main />} />
 
@@ -25,7 +24,7 @@ class Container extends React.Component {
                     <Route exact path='/scan' render={ () => <Transition />} />
 
                     <Route exact path='/artifact/:id' render={ () => <ArtifactContainer />} />
-                    <Route exact path='/test' render={ () => <PreloaderLogo />} />
+                    <Route exact path='/test' render={ () => <TestContainer />} />
                 </Switch>
             </>
         );

@@ -50,6 +50,7 @@ const Main = (props) => {
             <div className={'links'}>
                 <TransparentButton link={'/enter'} text='Ввести ID экспоната вручную' />
                 <BlackButton link={`/scan`} text='Отсканировать qr-код' />
+                <BlackButton link={`/test`} text='Go to test Component' />
             </div>
 
         </div>
