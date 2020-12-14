@@ -10,8 +10,7 @@ const Audio = (props) => {
 
     return (
         <>
-            <H5AudioPlayer autoPlay={false}
-                           className={s.audio}
+            <H5AudioPlayer className={s.audio}
                            volume={0.1}
                            src={props.audio}
                            showJumpControls={false}
@@ -20,6 +19,7 @@ const Audio = (props) => {
                                RHAP_UI.CURRENT_TIME, RHAP_UI.PROGRESS_BAR, RHAP_UI.DURATION
                            ]}
                            customControlsSection={[]}
+                           autoPlay={false}
             />
         </>
     );

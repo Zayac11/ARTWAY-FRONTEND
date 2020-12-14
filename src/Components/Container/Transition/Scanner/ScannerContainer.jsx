@@ -32,9 +32,10 @@ class ScannerContainer extends React.Component {
                 <div className={s.scannerContainer}>
 
                     <QrReader
+                        facingMode={'rear'}
+                        legacyMode={true}
                         delay={this.props.delay}
                         className={s.scanner}
-                        facingMode={'rear'}
                         style={previewStyle}
                         onError={this.props.handleError}
                         onScan={this.props.handleScan}

@@ -27,7 +27,7 @@ const Main = (props) => {
                 </div>
             </div>
             <div className={s.name}>
-                экспонатов музея, выставок или экскурсий
+                экспонатов музев, выставок или экскурсий
             </div>
             <h3 className={s.principe}>
                 Как это работает?
