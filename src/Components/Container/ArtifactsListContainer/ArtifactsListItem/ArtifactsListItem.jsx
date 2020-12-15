@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './ArtifactsListItem.module.css'
 import {NavLink} from "react-router-dom";
+import TransparentButton from "../../../../Common/TransparentButton/TransparentButton";
+import BlackButton from "../../../../Common/BlackButton/BlackButton";
 
 const ArtifactsListItem = ({data, ...props}) => {
     return (
@@ -9,17 +11,13 @@ const ArtifactsListItem = ({data, ...props}) => {
                 {data.name}
             </div>
             <div className={s.imgContainer}>
+                <div className={s.id}>
+                    ID: {data.id}
+                </div>
                 <img src={data.img} alt="artifact"/>
             </div>
-            <div className={s.id}>
-                {data.id}
-            </div>
-            <NavLink to={`/artifacts/${data.id}`}>
-                Перейти к экспонату
-            </NavLink>
-            <NavLink to={`/artifacts/${data.id}/qr-code`}>
-                Открыть qr код
-            </NavLink>
+            <TransparentButton link={`/artifacts/${data.id}`} text={'Перейти к экспонату'} />
+            <BlackButton link={`/artifacts/${data.id}/qr-code`} text={'Открыть qr код'} />
         </div>
     );
 }

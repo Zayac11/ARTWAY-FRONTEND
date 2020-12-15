@@ -15,17 +15,3 @@
     width: max-content;
 }
 
-.backBtn {
-    position: absolute;
-    top: 30px;
-    left: 20px;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    display: block;
-}
-.backBtn img {
-    display: block;
-    cursor: pointer;
-}

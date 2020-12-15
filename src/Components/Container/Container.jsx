@@ -17,7 +17,7 @@ class Container extends React.Component {
     render() {
         return (
             <>
-            <PreloaderLogo />
+                <PreloaderLogo />
                 <Switch>
                     <Route exact path='/' render={ () => <Main />} />
 
@@ -27,7 +27,6 @@ class Container extends React.Component {
                     <Route exact path='/artifacts/:id/Qr-code' render={ () => <QrCodeContainer /> } />
                     <Route exact path='/artifacts/:id' render={ () => <ArtifactContainer />} />
                     <Route exact path='/artifacts' render={ () => <ArtifactsListContainer />} />
-                    />
 
                     {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}
                 </Switch>

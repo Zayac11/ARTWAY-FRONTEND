@@ -1,0 +1,42 @@
+.item {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    border-radius: 7px;
+    padding: 10px;
+    margin-bottom: 15px;
+
+}
+
+.name {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.imgContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    margin-bottom: 15px;
+}
+
+.imgContainer img {
+    display: block;
+    max-width: 100%;
+    max-height: 200px;
+}
+
+.id {
+    right: 0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    top: 10px;
+    padding: 5px 10px;
+    font-size: 10px;
+    background-color: black;
+    color: white;
+    position: absolute;
+}
