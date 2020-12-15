@@ -14,10 +14,10 @@ const ArtifactsListItem = ({data, ...props}) => {
             <div className={s.id}>
                 {data.id}
             </div>
-            <NavLink to={`/artifact/${data.id}`}>
+            <NavLink to={`/artifacts/${data.id}`}>
                 Перейти к экспонату
             </NavLink>
-            <NavLink to={`/artifact/${data.id}/qr-code`}>
+            <NavLink to={`/artifacts/${data.id}/qr-code`}>
                 Открыть qr код
             </NavLink>
         </div>

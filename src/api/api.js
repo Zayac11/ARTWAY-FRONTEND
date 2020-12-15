@@ -19,8 +19,12 @@ export const artifactApi = {
         return axios.get(baseUrl + `api/artifacts/${id}`)
             .then(response => response)
     },
-    getArtifactsList() { //Получение информации об экспонате по id
+    getArtifactsList() { //Получение списка экспонатов
         return axios.get(baseUrl + `api/artifacts`)
+            .then(response => response)
+    },
+    getArtifactsQr(id) { //Получение информации об экспонате по id
+        return axios.get(baseUrl + `api/artifacts/${id}/qr-code`)
             .then(response => response)
     }
 }

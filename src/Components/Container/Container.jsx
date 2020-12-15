@@ -6,6 +6,7 @@ import Transition from "./Transition/Transition";
 import ArtifactContainer from "./Artifact/ArtifactContainer";
 import PreloaderLogo from "../../Common/PreloaderLogo/PreloaderLogo";
 import ArtifactsListContainer from "./ArtifactsListContainer/ArtifactsListContainer";
+import QrCodeContainer from "./QrCode/QrCodeContainer";
 
 class Container extends React.Component {
 
@@ -23,8 +24,10 @@ class Container extends React.Component {
                     <Route exact path='/enter' render={ () => <Transition />} />
                     <Route exact path='/scan' render={ () => <Transition />} />
 
+                    <Route exact path='/artifacts/:id/Qr-code' render={ () => <QrCodeContainer /> } />
+                    <Route exact path='/artifacts/:id' render={ () => <ArtifactContainer />} />
                     <Route exact path='/artifacts' render={ () => <ArtifactsListContainer />} />
-                    <Route path='/artifacts/:id' render={ () => <ArtifactContainer />} />
+                    />
 
                     {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}
                 </Switch>

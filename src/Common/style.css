@@ -45,3 +45,7 @@
 .rhap_controls-section {
     margin: 0;
 }
+
+.rhap_main-controls-button, .rhap_progress-indicator {
+    color: black;
+}

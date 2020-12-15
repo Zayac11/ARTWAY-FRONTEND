@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './QrCode.module.css'
 
-const Test = (props) => {
+const QrCode = (props) => {
     return (
         <div className={s.qrContainer}>
             <button onClick={() => {props.history.goBack()}} className={s.backBtn}>
@@ -10,10 +10,12 @@ const Test = (props) => {
             <div className={s.name}>
                 {props.name} - {props.id}
             </div>
-            <img src={props.qr} alt="qr code"/>
-            <a href="#" download>Скачать qr code</a>
+
+            <img src={props.artifactQr} alt="qr code"/>
+
+            <a download href={props.artifactQr} >Скачать</a>
         </div>
     );
 }
 
-export default Test;
+export default QrCode;
