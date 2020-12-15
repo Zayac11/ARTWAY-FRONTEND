@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Main.module.css'
-import '../../../Common/style.css'
 import mirea from './../../../assets/images/group-10.svg'
 import gerb from './../../../assets/images/MIREA_Gerb_Colour.png'
 import logo from './../../../assets/images/group-2.svg'

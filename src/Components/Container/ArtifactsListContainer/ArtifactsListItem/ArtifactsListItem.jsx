@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './ArtifactsListItem.module.css'
-import {NavLink} from "react-router-dom";
 import TransparentButton from "../../../../Common/TransparentButton/TransparentButton";
 import BlackButton from "../../../../Common/BlackButton/BlackButton";
 

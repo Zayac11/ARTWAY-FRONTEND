@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import QrReader from 'react-qr-reader'
 import {Route} from "react-router-dom";
 import s from './Scanner.module.css'
-import '../../../../Common/style.css'
 import Top from "../Top/Top";
 import refresh from './../../../../assets/images/refresh-256x256.png'
 

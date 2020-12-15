@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Enter.module.css'
-import '../../../../Common/style.css'
 import BlackButton from "../../../../Common/BlackButton/BlackButton";
 import Top from "../Top/Top";
 

@@ -1,3 +1,5 @@
 .audio {
     background-color: #fcceb7;
+    max-width: 650px;
+    margin: 0 auto;
 }

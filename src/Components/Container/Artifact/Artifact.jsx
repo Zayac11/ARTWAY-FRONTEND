@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Artifact.module.css'
-import './../../../Common/style.css'
 import prev from './../../../assets/images/next.svg'
 import Audio from "../../../Common/Audio/Audio";
 

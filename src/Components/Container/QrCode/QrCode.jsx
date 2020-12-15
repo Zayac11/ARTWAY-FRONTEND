@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './QrCode.module.css'
-import '../../../Common/style.css'
 import prev from "../../../assets/images/next.svg";
 
 const QrCode = (props) => {

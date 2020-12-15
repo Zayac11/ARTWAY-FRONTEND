@@ -5,8 +5,9 @@
     font-size: 14px;
     border: 2px solid black;
     border-radius: 25px;
-    margin-bottom: 10px;
     text-align: center;
     cursor: pointer;
     color: black;
+    max-width: 650px;
+    margin: 0 auto 10px;
 }

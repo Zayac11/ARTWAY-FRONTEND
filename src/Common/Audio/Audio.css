@@ -1,0 +1,18 @@
+/*audio component*/
+.rhap_controls-section {
+    margin: 0;
+}
+
+.rhap_main-controls-button {
+    color: black;
+}
+
+.rhap_progress-indicator {
+    background: black;
+}
+.rhap_progress-filled {
+    background-color: black;
+}
+.rhap_progress-bar-show-download {
+    background-color: #868686;
+}

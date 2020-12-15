@@ -3,8 +3,8 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.3);
     border-radius: 7px;
     padding: 10px;
-    margin-bottom: 15px;
-
+    max-width: 650px;
+    margin: 0 auto 15px;
 }
 
 .name {

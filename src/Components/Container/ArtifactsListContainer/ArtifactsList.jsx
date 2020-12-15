@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './ArtifactsList.module.css'
-import './../../../Common/style.css'
 import ArtifactsListItem from "./ArtifactsListItem/ArtifactsListItem";
 import prev from "../../../assets/images/left-chevron.svg";
 

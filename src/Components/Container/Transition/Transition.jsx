@@ -2,10 +2,8 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Route, Switch, withRouter} from "react-router-dom";
 import ScannerContainer from "./Scanner/ScannerContainer";
-import Top from "./Top/Top";
 import Enter from "./Enter/Enter";
 import s from './Transition.module.css'
-import '../../../Common/style.css'
 
 class Transition extends React.Component {
 
