@@ -3,7 +3,6 @@ import s from './Main.module.css'
 import '../../../Common/style.css'
 import mirea from './../../../assets/images/group-10.svg'
 import gerb from './../../../assets/images/MIREA_Gerb_Colour.png'
-import it from './../../../assets/images/logo.png'
 import logo from './../../../assets/images/group-2.svg'
 import scan from './../../../assets/images/scan.svg'
 import play from './../../../assets/images/play.svg'
@@ -50,6 +49,7 @@ const Main = (props) => {
             <div className={'links'}>
                 <TransparentButton link={'/enter'} text='Ввести ID экспоната вручную' />
                 <BlackButton link={`/scan`} text='Отсканировать qr-код' />
+                <BlackButton link={`/artifacts`} text='Просмотреть экспонаты' />
                 {/*<BlackButton link={`/test`} text='Go to test Component' />*/}
             </div>
 

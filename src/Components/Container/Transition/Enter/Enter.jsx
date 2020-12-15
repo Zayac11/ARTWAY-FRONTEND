@@ -18,7 +18,7 @@ const Enter = (props) => {
                     </div>
                 </div>
                 <div className={'links'}>
-                    <BlackButton artifactId={props.artifactId} link={`/artifact/${props.artifactId}`} text='Перейти к экспонату' />
+                    <BlackButton artifactId={props.artifactId} link={`/artifacts/${props.artifactId}`} text='Перейти к экспонату' />
                 </div>
             </div>
         </>

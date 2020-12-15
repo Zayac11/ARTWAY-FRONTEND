@@ -7,21 +7,22 @@ import Container from "./Components/Container/Container";
 
 class App extends React.Component {
 
-
     componentDidMount() {
 
     }
 
     render() {
 
+        // Инициализация(авторизация) на будущее
         // if(!this.props.isInitialized) {
         //     return <Preloader />
         // }
 
         return (
-            // <Switch>
+            <Switch>
+                {/*Route Login or Initializing*/}
                 <Container />
-            // </Switch>
+            </Switch>
         );
     }
 }
