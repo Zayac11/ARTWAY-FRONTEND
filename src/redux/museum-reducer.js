@@ -73,6 +73,17 @@ export const updateLocationData = (id, name, img, description) => { //Обнов
                 }))
     }
 }
+
+export const createLocation = (name, img, description) => { //Удаление локации по id
+    return (dispatch) => {
+        museumApi.createLocation(name, img, description)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('deleteLocation', result)
+                }))
+    }
+}
+
 export const deleteLocation = (id) => { //Удаление локации по id
     return (dispatch) => {
         museumApi.deleteLocation(id)
@@ -88,7 +99,6 @@ export const swapLocations = (swap_type, id) => { //Изменение пози�
         museumApi.swapLocations(swap_type, id)
             .then(response => response.json()
                 .then(result => {
-                    debugger
                     console.log('swapLocations', result)
                     dispatch(setMuseumData(result.museum, result.locations))
                 }))

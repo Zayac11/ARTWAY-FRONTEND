@@ -1,8 +1,7 @@
 import React from 'react';
 import s from './Museum.module.css'
-import Input from "../../../Common/Input/Input";
-import Textarea from "../../../Common/Textarea/Textarea";
 import {NavLink} from "react-router-dom";
+import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
 
 const Museum = (props) => {
     return (
@@ -17,30 +16,23 @@ const Museum = (props) => {
                     </>
                     :
                     <>
-                        <button onClick={props.handleSubmit}>Сохранить</button>
-                        <Input text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleFocus} handleChange={props.handleChange} />
-
-                        <Textarea text={'Описание'} value={props.description} name={'description'} handleFocus={props.handleFocus} handleChange={props.handleChange} />
-
-                        {
-                            props.isEmptyInputs &&
-                            <div className='form__wrong'>
-                                Все поля должны быть заполнены
-                            </div>
-                        }
-
-                        <Input text={'Фотография'} type={'file'} name={'img'} handleFocus={props.handleFocus} handleChange={props.handleChangeFile} />
-                        {
-                            props.isPhotoTypeWrong &&
-                                <div className='form__wrong'>
-                                    Выберите картинку
-                                </div>
-                        }
+                        <ChangeForm handleSubmit={props.handleSubmit}
+                                    handleFindKey={props.handleFindKey}
+                                    handleFocus={props.handleChangeInputs}
+                                    handleChange={props.handleChange}
+                                    isEmptyInputs={props.isEmptyInputs}
+                                    isPhotoTypeWrong={props.isPhotoTypeWrong}
+                                    handleChangeFile={props.handleChangeFile}
+                                    description={props.description}
+                                    name={props.name}
+                        />
                     </>
 
             }
 
-
+            <NavLink to={'/m-admin/create_location'}>
+                Создать локу
+            </NavLink>
             <div className={s.locationContainer}>
                 {
                     props.locations &&

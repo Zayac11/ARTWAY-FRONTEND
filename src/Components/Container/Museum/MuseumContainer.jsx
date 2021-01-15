@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import Museum from "./Museum";
 import {getMuseumData, swapLocations, updateMuseumData} from "../../../redux/museum-reducer";
-import {Redirect} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 
 class MuseumContainer extends React.Component {
@@ -51,21 +51,24 @@ class MuseumContainer extends React.Component {
         }
 
         return (
-            <Museum handleChangeInputs={this.props.handleChangeInputs}
-                    handleSubmit={this.handleSubmit}
-                    swapLocations={this.swapLocations}
-                    toggleIsChanging={this.props.toggleIsChanging}
-                    handleChange={this.props.handleChange}
-                    handleChangeFile={this.props.handleChangeFile}
-                    isPhotoTypeWrong={this.props.isPhotoTypeWrong}
-                    isChanging={this.props.isChanging}
-                    isEmptyInputs={this.props.isEmptyInputs}
-                    name={this.props.name}
-                    description={this.props.description}
-                    img={this.props.img}
-                    main_img={this.props.main_img}
-                    locations={this.props.locations}
-            />
+            <Switch>
+                <Museum handleChangeInputs={this.props.handleChangeInputs}
+                        handleSubmit={this.handleSubmit}
+                        swapLocations={this.swapLocations}
+                        toggleIsChanging={this.props.toggleIsChanging}
+                        handleChange={this.props.handleChange}
+                        handleChangeFile={this.props.handleChangeFile}
+                        isPhotoTypeWrong={this.props.isPhotoTypeWrong}
+                        isChanging={this.props.isChanging}
+                        isEmptyInputs={this.props.isEmptyInputs}
+                        name={this.props.name}
+                        description={this.props.description}
+                        img={this.props.img}
+                        main_img={this.props.main_img}
+                        locations={this.props.locations}
+                />
+            </Switch>
+
         );
     }
 

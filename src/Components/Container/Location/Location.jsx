@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Location.module.css'
-import Input from "../../../Common/Input/Input";
-import Textarea from "../../../Common/Textarea/Textarea";
+
+import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
 
 const Location = (props) => {
     return (
@@ -15,28 +15,16 @@ const Location = (props) => {
                         <div className={s.description}>{props.description}</div>
                     </>
                     :
-                    <>
-                        <button onClick={props.handleSubmit}>Сохранить</button>
-                        <Input text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleFocus} handleChange={props.handleChange} />
-
-                        <Textarea text={'Описание'} value={props.description} name={'description'} handleFocus={props.handleFocus} handleChange={props.handleChange} />
-
-                        {
-                            props.isEmptyInputs &&
-                            <div className='form__wrong'>
-                                Все поля должны быть заполнены
-                            </div>
-                        }
-
-                        <Input text={'Фотография'} type={'file'} name={'img'} handleFocus={props.handleFocus} handleChange={props.handleChangeFile} />
-                        {
-                            props.isPhotoTypeWrong &&
-                            <div className='form__wrong'>
-                                Выберите картинку
-                            </div>
-                        }
-                    </>
-
+                    <ChangeForm handleSubmit={props.handleSubmit}
+                                handleFindKey={props.handleFindKey}
+                                handleFocus={props.handleChangeInputs}
+                                handleChange={props.handleChange}
+                                isEmptyInputs={props.isEmptyInputs}
+                                isPhotoTypeWrong={props.isPhotoTypeWrong}
+                                handleChangeFile={props.handleChangeFile}
+                                description={props.description}
+                                name={props.name}
+                    />
             }
             {
                 props.isChanging &&

@@ -9,6 +9,7 @@ import ArtifactsListContainer from "./ArtifactsListContainer/ArtifactsListContai
 import QrCodeContainer from "./QrCode/QrCodeContainer";
 import MuseumContainer from "./Museum/MuseumContainer";
 import LocationContainer from "./Location/LocationContainer";
+import CreateLocation from "./CreateLocation/CreateLocation";
 
 class Container extends React.Component {
 
@@ -31,6 +32,7 @@ class Container extends React.Component {
                     <Route exact path='/artifacts' render={ () => <ArtifactsListContainer />} />
 
                     <Route exact path='/m-admin' render={ () => <MuseumContainer />} />
+                    <Route exact path='/m-admin/create_location' render={ () => <CreateLocation />} />
                     <Route exact path='/m-admin/:location_id' render={ () => <LocationContainer />} />
 
                     {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}
