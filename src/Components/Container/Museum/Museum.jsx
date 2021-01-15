@@ -9,20 +9,26 @@ const Museum = (props) => {
             {
                 !props.isChanging ?
                     <>
-                        <button onClick={props.toggleIsChanging}>Изменить</button>
+                        <button onClick={() => props.toggleIsChanging(true)}>Изменить</button>
                         <h2 className={s.title}>{props.name}</h2>
                         <img src={props.img} alt="museum"/>
                         <div className={s.description}>{props.description}</div>
                     </>
                     :
                     <>
-                        <button onClick={props.toggleIsChanging}>Сохранить</button>
-                        <Input text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={props.type} name={'name'} handleFocus={props.handleFocus} handleChange={props.handleChange} />
+                        <button onClick={props.handleSubmit}>Сохранить</button>
+                        <Input text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleFocus} handleChange={props.handleChange} />
 
                         <Textarea text={'Описание'} value={props.description} name={'description'} handleFocus={props.handleFocus} handleChange={props.handleChange} />
 
-                        <div>Фотография</div>
-                        <input type="file"/>
+
+                        <Input text={'Фотография'} type={'file'} name={'img'} handleFocus={props.handleFocus} handleChange={props.handleChangeFile} />
+                        {
+                            props.isPhotoTypeWrong &&
+                                <div className='form__wrong'>
+                                    Выберите картинку
+                                </div>
+                        }
                     </>
 
             }
@@ -33,7 +39,7 @@ const Museum = (props) => {
                     props.locations &&
                     props.locations.map(l => {
                         return (
-                            <div className={s.location}>
+                            <div key={l.id} className={s.location}>
                                 <div className={s.locationTitle}>
                                     {l.name}
                                 </div>

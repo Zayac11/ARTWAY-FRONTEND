@@ -22,12 +22,22 @@ const museumReducer = (state = initialState, action) => {
 
 export const setMuseumData = (museumData) => ({type: SET_MUSEUM_DATA, museumData})
 
-export const getMuseumData = () => { //Получение информации об музее по пользователю
+export const getMuseumData = () => { //Получение информации о музее по пользователю
     return (dispatch) => {
         museumApi.getMuseumData()
             .then(response => response.json()
                 .then(result => {
                     console.log('museumData', result)
+                    dispatch(setMuseumData(result))
+            }))
+    }
+}
+export const updateMuseumData = (id, name, img, description) => { //Обновлении информации о музее по пользователю
+    return (dispatch) => {
+        museumApi.updateMuseumData(id, name, img, description)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('updatedMuseumData', result)
                     dispatch(setMuseumData(result))
             }))
     }

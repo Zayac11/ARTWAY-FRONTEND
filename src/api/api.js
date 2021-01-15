@@ -70,6 +70,10 @@ export const museumApi = {
         }
         return fetch(baseUrl + `api/m-admin`, requestOptions)
     },
+    updateMuseumData(museum_id, name, img, description) { //Изменение информации о музее
+        let options = getOptions([{name: 'museum_id', value: museum_id}, {name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'PUT')
+        return fetch(baseUrl + `api/m-admin`, options)
+    },
 
 }
 

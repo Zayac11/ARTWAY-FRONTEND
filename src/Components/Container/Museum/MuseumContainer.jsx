@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Museum from "./Museum";
-import {getMuseumData} from "../../../redux/museum-reducer";
+import {getMuseumData, updateMuseumData} from "../../../redux/museum-reducer";
 import {Redirect} from "react-router-dom";
 
 class MuseumContainer extends React.Component {
@@ -10,10 +10,12 @@ class MuseumContainer extends React.Component {
         super(props);
         this.state = {
             name: "",
+            id: 0,
             description: "",
             img: null,
             isChanging: false, //Меняется ли информация
             isEmptyInputs: false, //Если ли пустые поля
+            isPhotoTypeWrong: false, //Если файл не является картинкой
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -23,9 +25,10 @@ class MuseumContainer extends React.Component {
         this.toggleIsChanging = this.toggleIsChanging.bind(this)
     }
 
-    toggleIsChanging() {
+    toggleIsChanging(isChanging) {
         this.setState({
-            isChanging: !this.state.isChanging,
+            isChanging: isChanging,
+            isPhotoTypeWrong: false,
         })
     }
 
@@ -48,6 +51,17 @@ class MuseumContainer extends React.Component {
     }
 
     handleSubmit() {
+        console.log(/image/.test(this.state.img.type))
+        if(/image/.test(this.state.img.type)) {
+            this.toggleIsChanging(false)
+            this.props.updateMuseumData(this.state.id, this.state.name, this.state.img, this.state.description)
+        }
+        else {
+            this.setState({
+                isPhotoTypeWrong: true
+            })
+        }
+
         //put запрос
     }
 
@@ -63,6 +77,7 @@ class MuseumContainer extends React.Component {
                 name: this.props.museumData.name,
                 description: this.props.museumData.description,
                 img: this.props.museumData.img,
+                id: this.props.museumData.id,
             })
         }
     }
@@ -82,6 +97,7 @@ class MuseumContainer extends React.Component {
                     toggleIsChanging={this.toggleIsChanging}
                     handleChange={this.handleChange}
                     handleChangeFile={this.handleChangeFile}
+                    isPhotoTypeWrong={this.state.isPhotoTypeWrong}
                     isChanging={this.state.isChanging}
                     name={this.state.name}
                     description={this.state.description}
@@ -100,4 +116,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{getMuseumData})(MuseumContainer);
+export default connect(mapStateToProps,{getMuseumData, updateMuseumData})(MuseumContainer);
