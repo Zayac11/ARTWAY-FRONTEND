@@ -7,6 +7,7 @@ import ArtifactContainer from "./Artifact/ArtifactContainer";
 import PreloaderLogo from "../../Common/PreloaderLogo/PreloaderLogo";
 import ArtifactsListContainer from "./ArtifactsListContainer/ArtifactsListContainer";
 import QrCodeContainer from "./QrCode/QrCodeContainer";
+import MuseumContainer from "./Museum/MuseumContainer";
 
 class Container extends React.Component {
 
@@ -27,6 +28,8 @@ class Container extends React.Component {
                     <Route exact path='/artifacts/:id/Qr-code' render={ () => <QrCodeContainer /> } />
                     <Route exact path='/artifacts/:id' render={ () => <ArtifactContainer />} />
                     <Route exact path='/artifacts' render={ () => <ArtifactsListContainer />} />
+
+                    <Route exact path='/m-admin' render={ () => <MuseumContainer />} />
 
                     {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}
                 </Switch>

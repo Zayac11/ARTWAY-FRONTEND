@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 import './Common/style.css'
 import {connect} from "react-redux";
-import {Switch} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Container from "./Components/Container/Container";
+import Login from "./Components/Login/Login";
 
 class App extends React.Component {
 
@@ -21,6 +22,7 @@ class App extends React.Component {
         return (
             <Switch>
                 {/*Route Login or Initializing*/}
+                <Route exact path='/login' render={ () => <Login />} />
                 <Container />
             </Switch>
         );

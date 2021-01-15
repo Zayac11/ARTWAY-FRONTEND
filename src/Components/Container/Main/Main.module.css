@@ -50,7 +50,7 @@
 .logoContainer {
     margin-bottom: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
 }
@@ -58,6 +58,7 @@
     display: block;
     max-height: 50px;
     max-width: inherit;
+    margin: 0 15px;
 }
 
 .nameContainer {
@@ -88,7 +89,7 @@
 @media (max-width: 380px) {
     .name {
         font-size: 14px;
-        padding-bottom: 4px;
+        padding-bottom: 3px;
     }
     .nameContainer img {
         width: 93px;
