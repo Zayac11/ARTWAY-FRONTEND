@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from "react-redux";
-import Museum from "./Museum";
-import {getMuseumData, updateMuseumData} from "../../../redux/museum-reducer";
-import {Redirect} from "react-router-dom";
+import {withRouter} from "react-router-dom";
+import Location from "./Location";
+import {getLocationData, updateLocationData} from "../../../redux/museum-reducer";
 
-class MuseumContainer extends React.Component {
+class LocationContainer extends React.Component {
 
     constructor(props) {
         super(props);
@@ -60,12 +60,12 @@ class MuseumContainer extends React.Component {
             })
         }
         else if(this.state.img.type === '') {
-            this.props.updateMuseumData(this.state.id, this.state.name, this.state.main_img, this.state.description)
             this.toggleIsChanging(false)
+            this.props.updateLocationData(this.props.match.params.location_id, this.state.name, this.state.main_img, this.state.description)
         }
         else if(/image/.test(this.state.img.type)) {
             this.toggleIsChanging(false)
-            this.props.updateMuseumData(this.state.id, this.state.name, this.state.img, this.state.description)
+            this.props.updateLocationData(this.props.match.params.location_id, this.state.name, this.state.img, this.state.description)
         }
         else {
             this.setState({
@@ -81,40 +81,35 @@ class MuseumContainer extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.museumData !== this.props.museumData) {
+        if(prevProps.locationData !== this.props.locationData) {
             this.setState({
-                name: this.props.museumData.name,
-                description: this.props.museumData.description,
-                main_img: this.props.museumData.img,
-                id: this.props.museumData.id,
+                name: this.props.locationData.name,
+                description: this.props.locationData.description,
+                main_img: this.props.locationData.img,
             })
         }
     }
 
     componentDidMount() {
-        this.props.getMuseumData()
+        this.props.getLocationData(this.props.match.params.location_id)
     }
 
     render() {
-        if(!this.props.isLogin) {
-            return <Redirect to={'/'} />
-        }
-
         return (
-            <Museum handleChangeInputs={this.handleChangeInputs}
-                    handleSubmit={this.handleSubmit}
-                    toggleIsChanging={this.toggleIsChanging}
-                    handleChange={this.handleChange}
-                    handleChangeFile={this.handleChangeFile}
-                    isPhotoTypeWrong={this.state.isPhotoTypeWrong}
-                    isChanging={this.state.isChanging}
-                    isEmptyInputs={this.state.isEmptyInputs}
-                    name={this.state.name}
-                    description={this.state.description}
-                    img={this.state.img}
-                    main_img={this.state.main_img}
-                    locations={this.props.museumData.locations}
+            <Location handleChangeInputs={this.handleChangeInputs}
+                      handleSubmit={this.handleSubmit}
+                      toggleIsChanging={this.toggleIsChanging}
+                      handleChange={this.handleChange}
+                      handleChangeFile={this.handleChangeFile}
+                      isPhotoTypeWrong={this.state.isPhotoTypeWrong}
+                      isChanging={this.state.isChanging}
+                      isEmptyInputs={this.state.isEmptyInputs}
+                      name={this.state.name}
+                      description={this.state.description}
+                      img={this.state.img}
+                      main_img={this.state.main_img}
             />
+
         );
     }
 
@@ -122,9 +117,10 @@ class MuseumContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        museumData: state.museum.museumData,
-        isLogin: state.auth.isLogin,
+        locationData: state.museum.locationData,
     }
 }
 
-export default connect(mapStateToProps,{getMuseumData, updateMuseumData})(MuseumContainer);
+let WithUrlLocationContainer = withRouter(LocationContainer)
+
+export default connect(mapStateToProps,{getLocationData, updateLocationData})(WithUrlLocationContainer);

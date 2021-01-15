@@ -74,7 +74,21 @@ export const museumApi = {
         let options = getOptions([{name: 'museum_id', value: museum_id}, {name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'PUT')
         return fetch(baseUrl + `api/m-admin`, options)
     },
-
+    getLocationData(location_id) { //Получение информации о локации по id
+        const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", accessToken);
+        let requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: 'follow',
+        }
+        return fetch(baseUrl + `api/m-admin/${location_id}`, requestOptions)
+    },
+    updateLocationData(location_id, name, img, description) { //Изменение информации о локации по id
+        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'PUT')
+        return fetch(baseUrl + `api/m-admin/${location_id}`, options)
+    },
 }
 
 export const authApi = {

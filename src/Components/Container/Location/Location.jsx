@@ -1,10 +1,9 @@
 import React from 'react';
-import s from './Museum.module.css'
+import s from './Location.module.css'
 import Input from "../../../Common/Input/Input";
 import Textarea from "../../../Common/Textarea/Textarea";
-import {NavLink} from "react-router-dom";
 
-const Museum = (props) => {
+const Location = (props) => {
     return (
         <div className={s.museum}>
             {
@@ -12,7 +11,7 @@ const Museum = (props) => {
                     <>
                         <button onClick={() => props.toggleIsChanging(true)}>Изменить</button>
                         <h2 className={s.title}>{props.name}</h2>
-                        <img src={props.main_img} alt="museum"/>
+                        <img src={props.main_img} alt="location"/>
                         <div className={s.description}>{props.description}</div>
                     </>
                     :
@@ -32,38 +31,15 @@ const Museum = (props) => {
                         <Input text={'Фотография'} type={'file'} name={'img'} handleFocus={props.handleFocus} handleChange={props.handleChangeFile} />
                         {
                             props.isPhotoTypeWrong &&
-                                <div className='form__wrong'>
-                                    Выберите картинку
-                                </div>
+                            <div className='form__wrong'>
+                                Выберите картинку
+                            </div>
                         }
                     </>
 
             }
-
-
-            <div className={s.locationContainer}>
-                {
-                    props.locations &&
-                    props.locations.map(l => {
-                        return (
-                            <div key={l.id} className={s.location}>
-                                <div className={s.locationTitle}>
-                                    {l.name}
-                                </div>
-                                <img src={l.img} alt="location"/>
-                                <div>
-                                    {l.description}
-                                </div>
-                                <NavLink to={`/m-admin/${l.id}`}>Перейти</NavLink>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-
-
         </div>
     );
 }
 
-export default Museum;
+export default Location;

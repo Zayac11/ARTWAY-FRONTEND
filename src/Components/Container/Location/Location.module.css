@@ -1,0 +1,24 @@
+.museum {
+    width: 100%;
+    padding: 20px 10px;
+    position: relative;
+    min-height: 100vh;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+}
+
+.locationContainer {
+    margin-top: 10px;
+}
+
+.location {
+    margin-bottom: 10px;
+}
+
+.description {
+    white-space: pre-wrap;
+}
