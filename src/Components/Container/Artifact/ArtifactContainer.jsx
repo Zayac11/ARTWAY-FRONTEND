@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import Artifact from "./Artifact";
 import {Switch, withRouter} from "react-router-dom";
 import {getArtifactData} from "../../../redux/artifact";
-import Preloader from "../../../Common/Preloader/Preloader";
 
 class ArtifactContainer extends React.Component {
 

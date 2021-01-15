@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Route, Switch, withRouter} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import ScannerContainer from "./Scanner/ScannerContainer";
 import Enter from "./Enter/Enter";
 import s from './Transition.module.css'

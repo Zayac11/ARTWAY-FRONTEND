@@ -1,12 +1,9 @@
-import {artifactApi as museumApi} from "../api/api";
-
+import {museumApi} from "../api/api";
 
 const SET_MUSEUM_DATA = 'SET_MUSEUM_DATA'
-const SET_LOCATIONS_LIST = 'SET_LOCATIONS_LIST'
 
 let initialState = {
-    museumData: {},
-    locationList: [],
+    museumData: {}, //Информация по музею и списки локация
     artifactQr: "",
 }
 
@@ -25,14 +22,14 @@ const museumReducer = (state = initialState, action) => {
 
 export const setMuseumData = (museumData) => ({type: SET_MUSEUM_DATA, museumData})
 
-
-export const getMuseumData = (artifactId) => { //Получение информации об экспонате по id
+export const getMuseumData = () => { //Получение информации об музее по пользователю
     return (dispatch) => {
         museumApi.getMuseumData()
-            .then(response => response.json)
-            .then(result => {
-                console.log('museumData', result)
-            })
+            .then(response => response.json()
+                .then(result => {
+                    console.log('museumData', result)
+                    dispatch(setMuseumData(result))
+            }))
     }
 }
 

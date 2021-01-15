@@ -60,7 +60,15 @@ export const artifactApi = {
 
 export const museumApi = {
     getMuseumData() { //Получение информации об музее по пользователю
-        return axios.get(baseUrl + `api/museum`)
+        const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", accessToken);
+        let requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: 'follow',
+        }
+        return fetch(baseUrl + `api/m-admin`, requestOptions)
     },
 
 }

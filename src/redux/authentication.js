@@ -17,7 +17,9 @@ const IS_FETCH = 'IS_FETCH';
 
 let initialState = {
     userData: {}, //Данные пользователя
-    isLogin: false, //Залогинен ли пользователь
+
+    isLogin: true, //Залогинен ли пользователь
+
     isInitialized: false, //Инициализация приложения
     isFetch: true,
     isLoginWrong: false, //Если ошибка при логине

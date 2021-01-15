@@ -68,7 +68,7 @@ class Login extends React.Component {
         return (
             <>
                 {
-                    this.props.isLogin ? <Redirect to="/profile" />
+                    this.props.isLogin ? <Redirect to="/" />
                     :
                         <div className={'form__outer'}>
                             <div className={'form__inner'}>
