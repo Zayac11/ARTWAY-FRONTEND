@@ -5,6 +5,7 @@ const SET_LOCATION_DATA = 'SET_LOCATION_DATA'
 
 let initialState = {
     museumData: {}, //Информация по музею и списки локация
+    locations: [], //Лист локация музея
     locationData: {}, //Информация по локации
     artifactQr: "",
 }
@@ -14,7 +15,8 @@ const museumReducer = (state = initialState, action) => {
         case SET_MUSEUM_DATA:
             return {
                 ...state,
-                museumData: action.museumData
+                museumData: action.museum,
+                locations: action.locations,
             }
         case SET_LOCATION_DATA:
             return {
@@ -26,7 +28,7 @@ const museumReducer = (state = initialState, action) => {
     }
 }
 
-export const setMuseumData = (museumData) => ({type: SET_MUSEUM_DATA, museumData})
+export const setMuseumData = (museum, locations) => ({type: SET_MUSEUM_DATA, museum, locations})
 export const setLocationData = (locationData) => ({type: SET_LOCATION_DATA, locationData})
 
 export const getMuseumData = () => { //Получение информации о музее по пользователю
@@ -35,7 +37,7 @@ export const getMuseumData = () => { //Получение информации �
             .then(response => response.json()
                 .then(result => {
                     console.log('museumData', result)
-                    dispatch(setMuseumData(result))
+                    dispatch(setMuseumData(result.museum, result.locations))
             }))
     }
 }
@@ -45,7 +47,7 @@ export const updateMuseumData = (id, name, img, description) => { //Обновл
             .then(response => response.json()
                 .then(result => {
                     console.log('updatedMuseumData', result)
-                    dispatch(setMuseumData(result))
+                    dispatch(setMuseumData(result.museum, result.locations))
             }))
     }
 }
