@@ -94,8 +94,9 @@ export const museumApi = {
     },
 
     deleteLocation(location_id) { //Удаление локации по id
-        return axios.delete(baseUrl + `api/m-admin/${location_id}`)
-            .then(response => response)
+        let options = getOptions([], true,  'DELETE')
+        return fetch(baseUrl + `api/m-admin/${location_id}`, options)
+
     },
     swapLocations(swap_type, obj_id) { //Изменение позиций локации
         let options = getOptions([{name: 'swap_type', value: swap_type},{name: 'obj_id', value: obj_id}], true,  'POST')

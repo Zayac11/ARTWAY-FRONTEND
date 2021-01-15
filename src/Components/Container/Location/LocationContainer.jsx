@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import Location from "./Location";
 import {deleteLocation, getLocationData, updateLocationData} from "../../../redux/museum-reducer";
 import {compose} from "redux";
@@ -11,12 +11,19 @@ class LocationContainer extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            isDeleted: false,
+        }
+
         this.handleSubmit = this.handleSubmit.bind(this)
         this.deleteLocation = this.deleteLocation.bind(this)
     }
 
     deleteLocation() {
         this.props.deleteLocation(this.props.match.params.location_id)
+        this.setState({
+            isDeleted: true,
+        })
     }
 
     handleSubmit() {
@@ -36,7 +43,6 @@ class LocationContainer extends React.Component {
         }
     }
 
-
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.locationData !== this.props.locationData) {
             this.props.updateState(this.props.match.params.location_id, this.props.locationData.name, this.props.locationData.description, this.props.locationData.img)
@@ -49,6 +55,9 @@ class LocationContainer extends React.Component {
     }
 
     render() {
+        if(this.state.isDeleted) {
+            return <Redirect to={'/m-admin'} />
+        }
         return (
             <Location handleChangeInputs={this.props.handleChangeInputs}
                       handleSubmit={this.handleSubmit}

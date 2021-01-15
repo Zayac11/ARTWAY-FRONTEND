@@ -74,13 +74,12 @@ export const updateLocationData = (id, name, img, description) => { //Обнов
     }
 }
 export const deleteLocation = (id) => { //Удаление локации по id
-    return async (dispatch) => {
-        let response = await museumApi.deleteLocation(id)
-        debugger
-            // .then(response => response.json()
-            //     .then(result => {
-            //         console.log('deleteLocation', result)
-            //     }))
+    return (dispatch) => {
+        museumApi.deleteLocation(id)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('deleteLocation', result)
+                }))
     }
 }
 
