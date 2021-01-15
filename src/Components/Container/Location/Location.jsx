@@ -38,6 +38,10 @@ const Location = (props) => {
                     </>
 
             }
+            {
+                props.isChanging &&
+                <button onClick={props.deleteLocation}>Удалить локу</button>
+            }
         </div>
     );
 }

@@ -70,10 +70,12 @@ export const museumApi = {
         }
         return fetch(baseUrl + `api/m-admin`, requestOptions)
     },
+
     updateMuseumData(museum_id, name, img, description) { //Изменение информации о музее
         let options = getOptions([{name: 'museum_id', value: museum_id}, {name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'PUT')
         return fetch(baseUrl + `api/m-admin`, options)
     },
+
     getLocationData(location_id) { //Получение информации о локации по id
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
         let myHeaders = new Headers();
@@ -85,9 +87,19 @@ export const museumApi = {
         }
         return fetch(baseUrl + `api/m-admin/${location_id}`, requestOptions)
     },
+
     updateLocationData(location_id, name, img, description) { //Изменение информации о локации по id
         let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'PUT')
         return fetch(baseUrl + `api/m-admin/${location_id}`, options)
+    },
+
+    deleteLocation(location_id) { //Удаление локации по id
+        return axios.delete(baseUrl + `api/m-admin/${location_id}`)
+            .then(response => response)
+    },
+    swapLocations(swap_type, obj_id) { //Изменение позиций локации
+        let options = getOptions([{name: 'swap_type', value: swap_type},{name: 'obj_id', value: obj_id}], true,  'POST')
+        return fetch(baseUrl + `api/swap_locations`, options)
     },
 }
 

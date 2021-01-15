@@ -45,6 +45,7 @@ const Museum = (props) => {
                 {
                     props.locations &&
                     props.locations.map(l => {
+                        let last = props.locations[props.locations.length-1]
                         return (
                             <div key={l.id} className={s.location}>
                                 <div className={s.locationTitle}>
@@ -55,6 +56,15 @@ const Museum = (props) => {
                                     {l.description}
                                 </div>
                                 <NavLink to={`/m-admin/${l.id}`}>Перейти</NavLink>
+                                {
+                                    l.prev !== null &&
+                                    <button onClick={() => props.swapLocations('up', l.id)}>вверх</button>
+                                }
+                                {
+                                    l.id !== last.id &&
+                                    <button onClick={() => props.swapLocations('down', l.id)}>вниз</button>
+                                }
+
                             </div>
                         )
                     })

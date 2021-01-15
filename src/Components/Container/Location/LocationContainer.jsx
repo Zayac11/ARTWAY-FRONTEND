@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import Location from "./Location";
-import {getLocationData, updateLocationData} from "../../../redux/museum-reducer";
+import {deleteLocation, getLocationData, updateLocationData} from "../../../redux/museum-reducer";
 import {compose} from "redux";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 
@@ -12,6 +12,11 @@ class LocationContainer extends React.Component {
         super(props);
 
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.deleteLocation = this.deleteLocation.bind(this)
+    }
+
+    deleteLocation() {
+        this.props.deleteLocation(this.props.match.params.location_id)
     }
 
     handleSubmit() {
@@ -47,6 +52,7 @@ class LocationContainer extends React.Component {
         return (
             <Location handleChangeInputs={this.props.handleChangeInputs}
                       handleSubmit={this.handleSubmit}
+                      deleteLocation={this.deleteLocation}
                       toggleIsChanging={this.props.toggleIsChanging}
                       handleChange={this.props.handleChange}
                       handleChangeFile={this.props.handleChangeFile}
@@ -71,7 +77,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {getLocationData, updateLocationData}),
+    connect(mapStateToProps, {getLocationData, updateLocationData, deleteLocation}),
     withRouter,
     CommonMuseumLogic
 )(LocationContainer)

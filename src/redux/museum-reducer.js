@@ -73,5 +73,27 @@ export const updateLocationData = (id, name, img, description) => { //Обнов
                 }))
     }
 }
+export const deleteLocation = (id) => { //Удаление локации по id
+    return async (dispatch) => {
+        let response = await museumApi.deleteLocation(id)
+        debugger
+            // .then(response => response.json()
+            //     .then(result => {
+            //         console.log('deleteLocation', result)
+            //     }))
+    }
+}
+
+export const swapLocations = (swap_type, id) => { //Изменение позиций локации
+    return (dispatch) => {
+        museumApi.swapLocations(swap_type, id)
+            .then(response => response.json()
+                .then(result => {
+                    debugger
+                    console.log('swapLocations', result)
+                    dispatch(setMuseumData(result.museum, result.locations))
+                }))
+    }
+}
 
 export default museumReducer

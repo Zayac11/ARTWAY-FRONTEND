@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Museum from "./Museum";
-import {getMuseumData, updateMuseumData} from "../../../redux/museum-reducer";
+import {getMuseumData, swapLocations, updateMuseumData} from "../../../redux/museum-reducer";
 import {Redirect} from "react-router-dom";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 
@@ -11,6 +11,7 @@ class MuseumContainer extends React.Component {
         super(props);
 
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.swapLocations = this.swapLocations.bind(this)
     }
 
     handleSubmit() {
@@ -28,6 +29,10 @@ class MuseumContainer extends React.Component {
         else {
             this.props.setValidation('isPhotoTypeWrong', true)
         }
+    }
+
+    swapLocations(swap_type, location_id) {
+        this.props.swapLocations(swap_type, location_id)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -48,6 +53,7 @@ class MuseumContainer extends React.Component {
         return (
             <Museum handleChangeInputs={this.props.handleChangeInputs}
                     handleSubmit={this.handleSubmit}
+                    swapLocations={this.swapLocations}
                     toggleIsChanging={this.props.toggleIsChanging}
                     handleChange={this.props.handleChange}
                     handleChangeFile={this.props.handleChangeFile}
@@ -75,4 +81,4 @@ let mapStateToProps = (state) => {
 
 let CommonMuseumContainer = CommonMuseumLogic(MuseumContainer)
 
-export default connect(mapStateToProps,{getMuseumData, updateMuseumData})(CommonMuseumContainer);
+export default connect(mapStateToProps,{getMuseumData, updateMuseumData, swapLocations})(CommonMuseumContainer);
