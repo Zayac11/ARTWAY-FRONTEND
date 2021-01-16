@@ -2,10 +2,12 @@ import React from 'react';
 import s from './Museum.module.css'
 import {NavLink} from "react-router-dom";
 import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
+import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
 
 const Museum = (props) => {
     return (
         <div className={s.museum}>
+            <h1>Музей</h1>
             {
                 !props.isChanging ?
                     <>
@@ -33,37 +35,19 @@ const Museum = (props) => {
             <NavLink to={'/m-admin/create_location'}>
                 Создать локу
             </NavLink>
-            <div className={s.locationContainer}>
-                {
-                    props.locations &&
-                    props.locations.map(l => {
-                        let last = props.locations[props.locations.length-1]
-                        return (
-                            <div key={l.id} className={s.location}>
-                                <div className={s.locationTitle}>
-                                    {l.name}
-                                </div>
-                                <img src={l.img} alt="location"/>
-                                <div>
-                                    {l.description}
-                                </div>
-                                <NavLink to={`/m-admin/${l.id}`}>Перейти</NavLink>
-                                {
-                                    l.prev !== null &&
-                                    <button onClick={() => props.swapLocations('up', l.id)}>вверх</button>
-                                }
-                                {
-                                    l.id !== last.id &&
-                                    <button onClick={() => props.swapLocations('down', l.id)}>вниз</button>
-                                }
 
-                            </div>
-                        )
-                    })
-                }
-            </div>
-
-
+            {
+                props.locations &&
+                props.locations.map(l => {
+                    let last = props.locations[props.locations.length - 1].id
+                    return (
+                        <div className={s.locationContainer} key={l.id}>
+                            <MuseumItemsList prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} swapLocations={props.swapLocations} />
+                            <NavLink to={`/m-admin/${l.id}`}>Перейти</NavLink>
+                        </div>
+                    )
+                })
+            }
         </div>
     );
 }

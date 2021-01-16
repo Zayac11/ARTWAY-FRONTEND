@@ -3,52 +3,48 @@ import {connect} from "react-redux";
 import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import {createLocation} from "../../../redux/museum-reducer";
-import {Redirect} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
+import {compose} from "redux";
+import {CommonCreateLogic} from "../../../hoc/CommonCreateLogic";
 
 class CreateLocation extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            isCreate: false //Создана ли локация
-        }
-
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.createLocation = this.createLocation.bind(this)
     }
 
     componentDidMount() {
 
     }
 
-    handleSubmit() {
-        if(this.props.description === '' || this.props.name === '') {
-            this.props.setValidation('isEmptyInputs', true)
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.isRight !== this.props.isRight) {
+            this.createLocation()
         }
-        else if(this.props.img.type === '') {
-            this.props.setValidation('isPhotoTypeWrong', true)
-        }
-        else if(/image/.test(this.props.img.type)) {
+    }
+
+    createLocation() {
+        if(/image/.test(this.props.img.type)) {
             this.props.toggleIsChanging(false)
             this.props.createLocation(this.props.name, this.props.img, this.props.description)
-            this.setState({
-                isCreate: true
-            })
+            this.props.changeCreate(true)
         }
         else {
             this.props.setValidation('isPhotoTypeWrong', true)
+            this.props.changeCreate(false)
         }
-
     }
 
     render() {
 
-        if(this.state.isCreate) {
+        if(this.props.isCreate) {
             return <Redirect to={'/m-admin'} />
         }
 
         return (
-            <ChangeForm handleSubmit={this.handleSubmit}
+            <ChangeForm handleSubmit={this.props.handleSubmit}
                         handleFindKey={this.props.handleFindKey}
                         handleFocus={this.props.handleFocus}
                         handleChange={this.props.handleChange}
@@ -71,6 +67,11 @@ let mapStateToProps = (state) => {
     }
 }
 
-let CommonMuseumContainer = CommonMuseumLogic(CreateLocation)
+export default compose(
+    connect(mapStateToProps, {createLocation}),
+    withRouter,
+    CommonMuseumLogic,
+    CommonCreateLogic,
+)(CreateLocation)
 
-export default connect(mapStateToProps,{createLocation})(CommonMuseumContainer);
+//Оборачиваем компонент в компонент с общими полями, а так же в компонент с общей логикой создания

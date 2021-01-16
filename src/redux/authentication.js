@@ -161,7 +161,7 @@ export const login = (username, password) => { //Логин
                         console.log('login', result)
                         localStorage.setItem('accessToken', result.access)
 
-                        dispatch(account()) //Получение данных пользователя после логина
+                        // dispatch(account()) //Получение данных пользователя после логина
 
                         dispatch(setAuth(true)) //Авторизован ли пользователь
                         dispatch(setLoginWrong(false)) //Если до этого вводили неправильные данные

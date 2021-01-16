@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import Museum from "./Museum";
 import {getMuseumData, swapLocations, updateMuseumData} from "../../../redux/museum-reducer";
-import {Redirect, Route, Switch} from "react-router-dom";
+import {Redirect, Switch} from "react-router-dom";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 
 class MuseumContainer extends React.Component {

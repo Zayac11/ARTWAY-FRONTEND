@@ -59,6 +59,7 @@ export const artifactApi = {
 }
 
 export const museumApi = {
+    //Музеё
     getMuseumData() { //Получение информации об музее по пользователю
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
         let myHeaders = new Headers();
@@ -76,6 +77,7 @@ export const museumApi = {
         return fetch(baseUrl + `api/m-admin`, options)
     },
 
+    //Локации
     getLocationData(location_id) { //Получение информации о локации по id
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
         let myHeaders = new Headers();
@@ -107,6 +109,41 @@ export const museumApi = {
         let options = getOptions([{name: 'swap_type', value: swap_type},{name: 'obj_id', value: obj_id}], true,  'POST')
         return fetch(baseUrl + `api/swap_locations`, options)
     },
+
+    //Залы
+    getHallData(location_id, hall_id) { //Получение информации о зале по id зала и его локации
+        const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", accessToken);
+        let requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: 'follow',
+        }
+        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}`, requestOptions)
+    },
+
+    updateHallData(location_id, hall_id, name, img, description) { //Изменение информации о зале по id его локации и зала
+        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'PUT')
+        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}`, options)
+    },
+
+    createHall(location_id, name, img, description) { //Создание зала по id локации
+        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'POST')
+        return fetch(baseUrl + `api/m-admin/${location_id}`, options)
+    },
+
+    deleteHall(location_id, hall_id) { //Удаление зала по id его локации и id зала
+        let options = getOptions([], true,  'DELETE')
+        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}`, options)
+
+    },
+
+    swapHalls(swap_type, obj_id) { //Изменение позиций залов в локации
+        let options = getOptions([{name: 'swap_type', value: swap_type},{name: 'obj_id', value: obj_id}], true,  'POST')
+        return fetch(baseUrl + `api/swap_halls`, options)
+    },
+
 }
 
 export const authApi = {

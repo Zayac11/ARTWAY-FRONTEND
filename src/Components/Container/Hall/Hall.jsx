@@ -1,14 +1,11 @@
 import React from 'react';
-import s from './Location.module.css'
-
+import s from './Hall.module.css'
 import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
-import {NavLink} from "react-router-dom";
-import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
 
-const Location = (props) => {
+const Hall = (props) => {
     return (
         <div className={s.museum}>
-            <h1>Локация</h1>
+            <h1>Зал</h1>
             {
                 !props.isChanging ?
                     <>
@@ -31,29 +28,16 @@ const Location = (props) => {
             }
             {
                 props.isChanging &&
-                <button onClick={props.deleteLocation}>Удалить локу</button>
+                <button onClick={props.deleteHall}>Удалить зал</button>
             }
 
+            {/*<NavLink to={'/m-admin/create_hall'}>*/}
+            {/*    Создать артифакт*/}
+            {/*</NavLink>*/}
 
-            <NavLink to={`/m-admin/${props.location_id}/create_halls`}>
-                Создать зал
-            </NavLink>
-
-
-            {
-                props.halls &&
-                props.halls.map(l => {
-                    let last = props.halls[props.halls.length - 1].id
-                    return (
-                        <div className={s.locationContainer} key={l.id}>
-                            <MuseumItemsList prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} locations={props.halls} swapLocations={props.swapHalls} />
-                            <NavLink to={`/m-admin/${props.location_id}/${l.id}`}>Перейти</NavLink>
-                        </div>
-                    )
-                })
-            }
+            {/*<MuseumItemsList locations={props.halls} swapLocations={props.swapHalls} />*/}
         </div>
     );
 }
 
-export default Location;
+export default Hall;
