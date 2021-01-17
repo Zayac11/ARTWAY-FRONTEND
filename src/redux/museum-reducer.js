@@ -96,6 +96,7 @@ export const createLocation = (name, img, description) => { //Добавлени
             .then(response => response.json()
                 .then(result => {
                     console.log('createLocation', result)
+                    dispatch(setMuseumData(result.museum, result.locations))
                 }))
     }
 }
@@ -106,6 +107,7 @@ export const deleteLocation = (id) => { //Удаление локации по i
             .then(response => response.json()
                 .then(result => {
                     console.log('deleteLocation', result)
+                    dispatch(setMuseumData(result.museum, result.locations))
                 }))
     }
 }
@@ -150,6 +152,7 @@ export const createHall = (id, name, img, description) => { //Добавлени
             .then(response => response.json()
                 .then(result => {
                     console.log('createHall', result)
+                    dispatch(setLocationData(result.location, result.halls))
                 }))
     }
 }
@@ -160,6 +163,7 @@ export const deleteHall = (location_id, hall_id) => { //Удаление зал�
             .then(response => response.json()
                 .then(result => {
                     console.log('deleteHall', result)
+                    dispatch(setLocationData(result.location, result.halls))
                 }))
     }
 }

@@ -23,15 +23,18 @@ export const CommonCreateLogic = (Component) => {
 
         handleSubmit() {
             if(this.props.description === '' || this.props.name === '') {
-                this.props.setValidation('isEmptyInputs', true)
+                this.props.setValidation('isEmptyInputs', true) //Ошибка в пустых полях
             }
             else if(this.props.img.type === '') {
-                this.props.setValidation('isPhotoTypeWrong', true)
+                this.props.setValidation('isPhotoTypeWrong', true) //Ошибка в формате файла
+            }
+            if(/image/.test(this.props.img.type)) { //Если нет ошибки в формате файла
+                this.props.toggleIsChanging(false)
+                this.changeCreate(true)
             }
             else {
-                this.setState({
-                    isRight: true,
-                })
+                this.props.setValidation('isPhotoTypeWrong', true)
+                this.changeCreate(false)
             }
         }
 

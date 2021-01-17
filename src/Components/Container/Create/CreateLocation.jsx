@@ -26,19 +26,10 @@ class CreateLocation extends React.Component {
     }
 
     createLocation() {
-        if(/image/.test(this.props.img.type)) {
-            this.props.toggleIsChanging(false)
-            this.props.createLocation(this.props.name, this.props.img, this.props.description)
-            this.props.changeCreate(true)
-        }
-        else {
-            this.props.setValidation('isPhotoTypeWrong', true)
-            this.props.changeCreate(false)
-        }
+        this.props.createLocation(this.props.name, this.props.img, this.props.description)
     }
 
     render() {
-
         if(this.props.isCreate) {
             return <Redirect to={'/m-admin'} />
         }

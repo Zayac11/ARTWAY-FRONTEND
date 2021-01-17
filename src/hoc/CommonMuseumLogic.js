@@ -60,7 +60,8 @@ export const CommonMuseumLogic = (Component) => {
             let file = e.target.files[0]
 
             this.setState({
-                [name]: file
+                [name]: file,
+                isPhotoTypeWrong: false,
             })
         }
 
