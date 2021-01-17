@@ -29,15 +29,16 @@ class Container extends React.Component {
                     <Route exact path='/enter' render={ () => <Transition />} />
                     <Route exact path='/scan' render={ () => <Transition />} />
 
-                    <Route exact path='/artifacts/:id/Qr-code' render={ () => <QrCodeContainer /> } />
-                    <Route exact path='/artifacts/:id' render={ () => <ArtifactContainer />} />
-                    <Route exact path='/artifacts' render={ () => <ArtifactsListContainer />} />
+                    {/*<Route exact path='/artifacts/:id/Qr-code' render={ () => <QrCodeContainer /> } />*/}
+                    {/*<Route exact path='/artifacts/:id' render={ () => <ArtifactContainer />} />*/}
+                    {/*<Route exact path='/artifacts' render={ () => <ArtifactsListContainer />} />*/}
 
                     <Route exact path='/m-admin' render={ () => <MuseumContainer />} />
                     <Route exact path='/m-admin/create_location' render={ () => <CreateLocation />} />
                     <Route exact path='/m-admin/:location_id' render={ () => <LocationContainer />} />
                     <Route exact path='/m-admin/:location_id/create_halls' render={ () => <CreateHall />} />
                     <Route exact path='/m-admin/:location_id/:hall_id' render={ () => <HallContainer />} />
+                    <Route exact path='/m-admin/:location_id/:hall_id/:artifact_id' render={ () => <ArtifactContainer />} />
 
                     {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}
                 </Switch>

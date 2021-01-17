@@ -5,6 +5,7 @@ import Location from "./Location";
 import {deleteLocation, getLocationData, swapHalls, updateLocationData} from "../../../redux/museum-reducer";
 import {compose} from "redux";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
+import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
 
 class LocationContainer extends React.Component {
 
@@ -13,7 +14,7 @@ class LocationContainer extends React.Component {
         this.state = {
             isDeleted: false,
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.updateLocation = this.updateLocation.bind(this)
         this.deleteLocation = this.deleteLocation.bind(this)
         this.swapHalls = this.swapHalls.bind(this)
     }
@@ -25,21 +26,10 @@ class LocationContainer extends React.Component {
         })
     }
 
-    handleSubmit() {
-        if(this.props.description === '' || this.props.name === '') {
-            this.props.setValidation('isEmptyInputs', true)
-        }
-        else if(this.props.img.type === '') {
-            this.props.toggleIsChanging(false)
-            this.props.updateLocationData(this.props.match.params.location_id, this.props.name, this.props.main_img, this.props.description)
-        }
-        else if(/image/.test(this.props.img.type)) {
-            this.props.toggleIsChanging(false)
-            this.props.updateLocationData(this.props.match.params.location_id, this.props.name, this.props.img, this.props.description)
-        }
-        else {
-            this.props.setValidation('isPhotoTypeWrong', true)
-        }
+    updateLocation() {
+        this.props.updateLocationData(this.props.match.params.location_id, this.props.name, this.props.img, this.props.description)
+        this.props.setImage('')
+        this.props.changeCreate(false)
     }
 
     swapHalls(swap_type, location_id) {
@@ -49,6 +39,10 @@ class LocationContainer extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.locationData !== this.props.locationData) {
             this.props.updateState(this.props.match.params.location_id, this.props.locationData.name, this.props.locationData.description, this.props.locationData.img)
+        }
+        if(prevProps.isRight !== this.props.isRight && !prevProps.isRight){
+            this.updateLocation()
+
         }
     }
 
@@ -62,7 +56,7 @@ class LocationContainer extends React.Component {
         }
         return (
             <Location handleChangeInputs={this.props.handleChangeInputs}
-                      handleSubmit={this.handleSubmit}
+                      handleSubmit={this.props.handleSubmit}
                       deleteLocation={this.deleteLocation}
                       swapHalls={this.swapHalls}
                       toggleIsChanging={this.props.toggleIsChanging}
@@ -93,5 +87,6 @@ let mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps, {getLocationData, updateLocationData, deleteLocation, swapHalls}),
     withRouter,
-    CommonMuseumLogic
+    CommonMuseumLogic,
+    CommonUpdateLogic,
 )(LocationContainer)

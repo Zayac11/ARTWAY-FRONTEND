@@ -7,9 +7,9 @@ let mapStateToPropsForRedirect = (state) => {
     };
 }
 
-export const CommonCreateLogic = (Component) => {
+export const CommonUpdateLogic = (Component) => {
 
-    class CommonCreateLogic extends React.Component {
+    class CommonUpdateLogic extends React.Component {
 
         constructor(props) {
             super(props);
@@ -22,13 +22,15 @@ export const CommonCreateLogic = (Component) => {
         }
 
         handleSubmit() {
-            if(this.props.description === '' || this.props.name === '') {
-                this.props.setValidation('isEmptyInputs', true) //Ошибка в пустых полях
+            if(this.props.description === '' || this.props.name === '') { //Ошибка в пустых полях
+                this.props.setValidation('isEmptyInputs', true)
             }
-            else if(this.props.img.type === '') {
-                this.props.setValidation('isPhotoTypeWrong', true) //Ошибка в формате файла
+            else if(this.props.img === '') { //Если пользователь не хочет обновлять фотографию, то просто берется ссылка на старую
+                this.props.setImage(this.props.main_img) //Обновление фотографии в state
+                this.props.toggleIsChanging(false)
+                this.changeCreate(true)
             }
-            if(/image/.test(this.props.img.type)) { //Если нет ошибки в формате файла
+            else if(/image/.test(this.props.img.type)) {
                 this.props.toggleIsChanging(false)
                 this.changeCreate(true)
             }
@@ -43,6 +45,7 @@ export const CommonCreateLogic = (Component) => {
                 isCreate: isCreate,
                 isRight: isCreate,
             })
+
         }
 
         render() {
@@ -58,7 +61,7 @@ export const CommonCreateLogic = (Component) => {
     }
 
 
-    let ConnectedCommonCreateComponent = connect(mapStateToPropsForRedirect)(CommonCreateLogic);
+    let ConnectedCommonUpdateComponent = connect(mapStateToPropsForRedirect)(CommonUpdateLogic);
 
-    return ConnectedCommonCreateComponent;
+    return ConnectedCommonUpdateComponent;
 }

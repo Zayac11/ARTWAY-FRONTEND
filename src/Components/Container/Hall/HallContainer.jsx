@@ -9,6 +9,7 @@ import {
 import {compose} from "redux";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import Hall from "./Hall";
+import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
 
 class HallContainer extends React.Component {
 
@@ -19,7 +20,7 @@ class HallContainer extends React.Component {
             isDeleted: false,
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.updateHall = this.updateHall.bind(this)
         this.deleteHall = this.deleteHall.bind(this)
         this.swapArtifacts = this.swapArtifacts.bind(this)
     }
@@ -31,21 +32,10 @@ class HallContainer extends React.Component {
         })
     }
 
-    handleSubmit() {
-        if(this.props.description === '' || this.props.name === '') {
-            this.props.setValidation('isEmptyInputs', true)
-        }
-        else if(this.props.img.type === '') {
-            this.props.toggleIsChanging(false)
-            this.props.updateHallData(this.props.match.params.location_id, this.props.match.params.hall_id,this.props.name, this.props.main_img, this.props.description)
-        }
-        else if(/image/.test(this.props.img.type)) {
-            this.props.toggleIsChanging(false)
-            this.props.updateHallData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.name, this.props.img, this.props.description)
-        }
-        else {
-            this.props.setValidation('isPhotoTypeWrong', true)
-        }
+    updateHall() {
+        this.props.updateHallData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.name, this.props.img, this.props.description)
+        this.props.setImage('')
+        this.props.changeCreate(false) //Больше не изменяем
     }
 
     swapArtifacts(swap_type, location_id) {
@@ -55,7 +45,9 @@ class HallContainer extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.hallData !== this.props.hallData) {
             this.props.updateState(this.props.match.params.location_id, this.props.hallData.name, this.props.hallData.description, this.props.hallData.img)
-
+        }
+        if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
+            this.updateHall()
         }
     }
 
@@ -69,7 +61,7 @@ class HallContainer extends React.Component {
         }
         return (
             <Hall handleChangeInputs={this.props.handleChangeInputs}
-                  handleSubmit={this.handleSubmit}
+                  handleSubmit={this.props.handleSubmit}
                   deleteHall={this.deleteHall}
                   swapArtifacts={this.swapArtifacts}
                   toggleIsChanging={this.props.toggleIsChanging}
@@ -101,5 +93,6 @@ let mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps, {getHallData, updateHallData, deleteHall}),
     withRouter,
-    CommonMuseumLogic
+    CommonMuseumLogic,
+    CommonUpdateLogic,
 )(HallContainer)

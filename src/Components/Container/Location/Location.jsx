@@ -34,11 +34,9 @@ const Location = (props) => {
                 <button onClick={props.deleteLocation}>Удалить локу</button>
             }
 
-
             <NavLink to={`/m-admin/${props.location_id}/create_halls`}>
                 Создать зал
             </NavLink>
-
 
             {
                 props.halls &&

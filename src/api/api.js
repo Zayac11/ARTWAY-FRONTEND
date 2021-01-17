@@ -52,14 +52,14 @@ export const artifactApi = {
         return axios.get(baseUrl + `api/artifacts`)
             .then(response => response)
     },
-    getArtifactsQr(id) { //Получение qr экспоната по id
-        return axios.get(baseUrl + `api/artifacts/${id}/qr-code`)
-            .then(response => response)
-    }
+    // getArtifactsQr(id) { //Получение qr экспоната по id
+    //     return axios.get(baseUrl + `api/artifacts/${id}/qr-code`)
+    //         .then(response => response)
+    // }
 }
 
 export const museumApi = {
-    //Музеё
+    //Музей
     getMuseumData() { //Получение информации об музее по пользователю
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
         let myHeaders = new Headers();
@@ -142,6 +142,40 @@ export const museumApi = {
     swapHalls(swap_type, obj_id) { //Изменение позиций залов в локации
         let options = getOptions([{name: 'swap_type', value: swap_type},{name: 'obj_id', value: obj_id}], true,  'POST')
         return fetch(baseUrl + `api/swap_halls`, options)
+    },
+
+    //Артефакты
+    getArtifactData(location_id, hall_id, artifact_id) { //Получение информации об артефакте по id локации, зала и артефакта
+        const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", accessToken);
+        let requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: 'follow',
+        }
+        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}/${artifact_id}`, requestOptions)
+    },
+
+    updateArtifactData(location_id, hall_id, artifact_id, name, img, description) { //Изменение информации об артефакте по id локации, зала и артефакта
+        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'PUT')
+        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}/${artifact_id}`, options)
+    },
+
+    createArtifact(location_id, hall_id, name, img, description) { //Создание артефакта по id локации и зала
+        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'POST')
+        return fetch(baseUrl + `api/m-admin/${location_id}`, options)
+    },
+
+    deleteArtifact(location_id, hall_id, artifact_id) { //Удаление артефакта по id локации, зала и артефакта
+        let options = getOptions([], true,  'DELETE')
+        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}/${artifact_id}`, options)
+
+    },
+
+    swapArtifacts(swap_type, obj_id) { //Изменение позиций артефактов
+        let options = getOptions([{name: 'swap_type', value: swap_type},{name: 'obj_id', value: obj_id}], true,  'POST')
+        return fetch(baseUrl + `api/swap_artifacts`, options)
     },
 
 }

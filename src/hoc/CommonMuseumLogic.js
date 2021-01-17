@@ -17,9 +17,7 @@ export const CommonMuseumLogic = (Component) => {
                 name: "",
                 id: 0,
                 description: "",
-                img: {
-                    type: '',
-                },
+                img: "",
                 main_img: null,
                 isChanging: false, //Меняется ли информация
                 isEmptyInputs: false, //Если ли пустые поля
@@ -32,6 +30,13 @@ export const CommonMuseumLogic = (Component) => {
             this.toggleIsChanging = this.toggleIsChanging.bind(this)
             this.updateState = this.updateState.bind(this)
             this.setValidation = this.setValidation.bind(this)
+            this.setImage = this.setImage.bind(this)
+        }
+
+        setImage(img) { //Обновление фотографии в state
+            this.setState({
+                img: img,
+            })
         }
 
         setValidation(name, bool) {
@@ -86,6 +91,7 @@ export const CommonMuseumLogic = (Component) => {
                            handleChangeInputs={this.handleChangeInputs}
                            toggleIsChanging={this.toggleIsChanging}
                            setValidation={this.setValidation}
+                           setImage={this.setImage}
                            handleChange={this.handleChange}
                            updateState={this.updateState}
                            handleChangeFile={this.handleChangeFile}

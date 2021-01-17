@@ -3,6 +3,7 @@ import {museumApi} from "../api/api";
 const SET_MUSEUM_DATA = 'SET_MUSEUM_DATA'
 const SET_LOCATION_DATA = 'SET_LOCATION_DATA'
 const SET_HALL_DATA = 'SET_HALL_DATA'
+const SET_ARTIFACT_DATA = 'SET_ARTIFACT_DATA'
 
 let initialState = {
     museumData: {}, //Информация по музею
@@ -12,7 +13,9 @@ let initialState = {
     halls: [], //Лист залы локации
 
     hallData: {}, //Информация по залу
-    artifacts: [], //Лист залов локации
+    artifacts: [], //Лист артефактов залов
+
+    artifactData: {}, //Информация по артифакту
 
     artifactQr: "",
 }
@@ -35,7 +38,12 @@ const museumReducer = (state = initialState, action) => {
             return {
                 ...state,
                 hallData: action.hall,
-                // artifacts: action.halls,
+                artifacts: action.artifacts,
+            }
+        case SET_ARTIFACT_DATA:
+            return {
+                ...state,
+                artifactData: action.artifactData,
             }
         default:
             return state;
@@ -44,7 +52,8 @@ const museumReducer = (state = initialState, action) => {
 
 export const setMuseumData = (museum, locations) => ({type: SET_MUSEUM_DATA, museum, locations})
 export const setLocationData = (location, halls) => ({type: SET_LOCATION_DATA, location, halls})
-export const setHallData = (hall) => ({type: SET_HALL_DATA, hall})
+export const setHallData = (hall, artifacts) => ({type: SET_HALL_DATA, hall, artifacts})
+export const setArtifactData = (artifactData) => ({type: SET_HALL_DATA, artifactData})
 
 //Музей
 export const getMuseumData = () => { //Получение информации о музее по пользователю
@@ -130,7 +139,7 @@ export const getHallData = (location_id, hall_id) => { //Получение ин
             .then(response => response.json()
                 .then(result => {
                     console.log('getHallData', result)
-                    dispatch(setHallData(result))
+                    dispatch(setHallData(result.hall, result.artifacts))
                 }))
     }
 }
@@ -141,7 +150,7 @@ export const updateHallData = (location_id, hall_id, name, img, description) => 
             .then(response => response.json()
                 .then(result => {
                     console.log('updateHallData', result)
-                    dispatch(setHallData(result))
+                    dispatch(setHallData(result.hall, result.artifacts))
                 }))
     }
 }
@@ -175,6 +184,63 @@ export const swapHalls = (swap_type, id) => { //Изменение позици�
                 .then(result => {
                     console.log('swapHalls', result)
                     dispatch(setLocationData(result.location, result.halls))
+                }))
+    }
+}
+
+//Артефакт
+
+export const getArtifactData = (location_id, hall_id, artifact_id) => { //Получение информации об артефакте по id локации, зала и артефакта
+    return (dispatch) => {
+        museumApi.getArtifactData(location_id, hall_id, artifact_id)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('getArtifactData', result)
+                    dispatch(setArtifactData(result))
+                }))
+    }
+}
+
+export const updateArtifactData = (location_id, hall_id, artifact_id,name, img, description) => { //Обновлении информации об артефакте по id локации, зала и артефакта
+    return (dispatch) => {
+        museumApi.updateArtifactData(location_id, hall_id, artifact_id,name, img, description)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('updateArtifactData', result)
+                    dispatch(setArtifactData(result))
+                }))
+    }
+}
+
+export const createArtifact = (location_id, hall_id, name, img, description) => { //Добавление артефакта в зал по id локации и зала
+    return (dispatch) => {
+        museumApi.createArtifact(location_id, hall_id, name, img, description)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('createArtifact', result)
+                    dispatch(setHallData(result.hall, result.artifacts))
+                }))
+    }
+}
+
+export const deleteArtifact = (location_id, hall_id, artifact_id) => { //Удаление артефакта по id локации, зала и артефакта
+    return (dispatch) => {
+        museumApi.deleteArtifact(location_id, hall_id, artifact_id)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('deleteArtifact', result)
+                    dispatch(setHallData(result.hall, result.artifacts))
+                }))
+    }
+}
+
+export const swapArtifacts = (swap_type, id) => { //Изменение позиций артефактов в зале
+    return (dispatch) => {
+        museumApi.swapArtifacts(swap_type, id)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('swapArtifacts', result)
+                    dispatch(setHallData(result.hall, result.artifacts))
                 }))
     }
 }

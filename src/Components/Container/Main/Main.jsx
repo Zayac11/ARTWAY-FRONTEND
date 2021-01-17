@@ -48,7 +48,7 @@ const Main = (props) => {
             <div className={'links'}>
                 <TransparentButton link={'/enter'} text='Ввести ID экспоната вручную' />
                 <BlackButton link={`/scan`} text='Отсканировать qr-код' />
-                <BlackButton link={`/artifacts`} text='Просмотреть экспонаты' />
+                {/*<BlackButton link={`/artifacts`} text='Просмотреть экспонаты' />*/}
                 <BlackButton link={`/m-admin`} text='Админ панель' />
                 {/*<BlackButton link={`/test`} text='Go to test Component' />*/}
             </div>
