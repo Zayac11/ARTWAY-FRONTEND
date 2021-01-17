@@ -25,12 +25,12 @@ export const CommonCreateLogic = (Component) => {
             if(this.props.description === '' || this.props.name === '') {
                 this.props.setValidation('isEmptyInputs', true) //Ошибка в пустых полях
             }
-            else if(this.props.img.type === '') {
-                this.props.setValidation('isPhotoTypeWrong', true) //Ошибка в формате файла
-            }
-            if(/image/.test(this.props.img.type)) { //Если нет ошибки в формате файла
-                this.props.toggleIsChanging(false)
+            else if(/image/.test(this.props.img.type)) { //Если нет ошибки в формате файла
                 this.changeCreate(true)
+            }
+            else if(this.props.img === '') {
+                this.props.setValidation('isPhotoTypeWrong', true) //Ошибка в формате файла картинки
+                this.changeCreate(false)
             }
             else {
                 this.props.setValidation('isPhotoTypeWrong', true)

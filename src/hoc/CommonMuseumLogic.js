@@ -18,10 +18,13 @@ export const CommonMuseumLogic = (Component) => {
                 id: 0,
                 description: "",
                 img: "",
+                audio: "",
+                main_audio: null,
                 main_img: null,
                 isChanging: false, //Меняется ли информация
                 isEmptyInputs: false, //Если ли пустые поля
                 isPhotoTypeWrong: false, //Если файл не является картинкой
+                isAudioTypeWrong: false, //Если файл не является аудио
             }
 
             this.handleChange = this.handleChange.bind(this)
@@ -31,11 +34,17 @@ export const CommonMuseumLogic = (Component) => {
             this.updateState = this.updateState.bind(this)
             this.setValidation = this.setValidation.bind(this)
             this.setImage = this.setImage.bind(this)
+            this.setAudio = this.setAudio.bind(this)
         }
 
         setImage(img) { //Обновление фотографии в state
             this.setState({
                 img: img,
+            })
+        }
+        setAudio(audio) { //Обновление аудио в state
+            this.setState({
+                audioToUpdate: audio,
             })
         }
 
@@ -48,6 +57,7 @@ export const CommonMuseumLogic = (Component) => {
             this.setState({
                 isChanging: isChanging,
                 isPhotoTypeWrong: false,
+                isAudioTypeWrong: false,
             })
         }
 
@@ -61,12 +71,14 @@ export const CommonMuseumLogic = (Component) => {
         }
 
         handleChangeFile(e) {
+            debugger
             let name = e.target.name
             let file = e.target.files[0]
 
             this.setState({
                 [name]: file,
                 isPhotoTypeWrong: false,
+                isAudioTypeWrong: false,
             })
         }
 
@@ -76,12 +88,13 @@ export const CommonMuseumLogic = (Component) => {
             })
         }
 
-        updateState(id, name, description, main_img) {
+        updateState(id, name, description, main_img, audio) {
             this.setState({
                 name:name,
                 description: description,
                 id: id,
                 main_img: main_img,
+                main_audio: audio,
             })
         }
 
@@ -92,15 +105,19 @@ export const CommonMuseumLogic = (Component) => {
                            toggleIsChanging={this.toggleIsChanging}
                            setValidation={this.setValidation}
                            setImage={this.setImage}
+                           setAudio={this.setAudio}
                            handleChange={this.handleChange}
                            updateState={this.updateState}
                            handleChangeFile={this.handleChangeFile}
                            isPhotoTypeWrong={this.state.isPhotoTypeWrong}
+                           isAudioTypeWrong={this.state.isAudioTypeWrong}
                            isChanging={this.state.isChanging}
                            isEmptyInputs={this.state.isEmptyInputs}
                            name={this.state.name}
                            description={this.state.description}
                            img={this.state.img}
+                           audio={this.state.audio}
+                           main_audio={this.state.main_audio}
                            main_img={this.state.main_img}
                 />
             )

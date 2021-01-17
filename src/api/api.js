@@ -157,14 +157,14 @@ export const museumApi = {
         return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}/${artifact_id}`, requestOptions)
     },
 
-    updateArtifactData(location_id, hall_id, artifact_id, name, img, description) { //Изменение информации об артефакте по id локации, зала и артефакта
-        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'PUT')
+    updateArtifactData(location_id, hall_id, artifact_id, name, img, description, audio) { //Изменение информации об артефакте по id локации, зала и артефакта
+        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}, {name: 'audio', value: audio}], true,  'PUT')
         return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}/${artifact_id}`, options)
     },
 
-    createArtifact(location_id, hall_id, name, img, description) { //Создание артефакта по id локации и зала
-        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'POST')
-        return fetch(baseUrl + `api/m-admin/${location_id}`, options)
+    createArtifact(location_id, hall_id, name, img, description, audio) { //Создание артефакта по id локации и зала
+        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}, {name: 'audio', value: audio}], true,  'POST')
+        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}`, options)
     },
 
     deleteArtifact(location_id, hall_id, artifact_id) { //Удаление артефакта по id локации, зала и артефакта

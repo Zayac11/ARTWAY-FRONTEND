@@ -12,6 +12,7 @@ import LocationContainer from "./Location/LocationContainer";
 import CreateLocation from "./Create/CreateLocation";
 import HallContainer from "./Hall/HallContainer";
 import CreateHall from "./Create/CreateHall";
+import CreateArtifact from "./Create/CreateArtifact";
 
 class Container extends React.Component {
 
@@ -38,6 +39,7 @@ class Container extends React.Component {
                     <Route exact path='/m-admin/:location_id' render={ () => <LocationContainer />} />
                     <Route exact path='/m-admin/:location_id/create_halls' render={ () => <CreateHall />} />
                     <Route exact path='/m-admin/:location_id/:hall_id' render={ () => <HallContainer />} />
+                    <Route exact path='/m-admin/:location_id/:hall_id/create_artifacts' render={ () => <CreateArtifact />} />
                     <Route exact path='/m-admin/:location_id/:hall_id/:artifact_id' render={ () => <ArtifactContainer />} />
 
                     {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}

@@ -33,9 +33,9 @@ const Hall = (props) => {
                 <button onClick={props.deleteHall}>Удалить зал</button>
             }
 
-            {/*<NavLink to={'/m-admin/create_hall'}>*/}
-            {/*    Создать артефакт*/}
-            {/*</NavLink>*/}
+            <NavLink to={`/m-admin/${props.location_id}/${props.hall_id}/create_artifacts`}>
+                Создать артефактыч
+            </NavLink>
 
             {
                 props.artifacts &&

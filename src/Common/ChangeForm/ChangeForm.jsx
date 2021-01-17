@@ -4,6 +4,7 @@ import Input from "../Input/Input";
 import Textarea from "../Textarea/Textarea";
 
 const ChangeForm = (props) => {
+        debugger
     return (
         <>
             <button onClick={props.handleSubmit}>Сохранить</button>
@@ -20,9 +21,19 @@ const ChangeForm = (props) => {
 
             <Input text={'Фотография'} type={'file'} name={'img'} handleFocus={props.handleChangeInputs} handleChange={props.handleChangeFile} />
             {
+                props.isItemArtifact &&
+                <Input text={'Аудиофайл'} type={'file'} name={'audio'} handleFocus={props.handleChangeInputs} handleChange={props.handleChangeFile} />
+            }
+            {
                 props.isPhotoTypeWrong &&
                 <div className='form__wrong'>
                     Пожалуйста, добавьте картинку
+                </div>
+            }
+            {
+                props.isAudioTypeWrong &&
+                <div className='form__wrong'>
+                    Пожалуйста, добавьте аудио
                 </div>
             }
         </>

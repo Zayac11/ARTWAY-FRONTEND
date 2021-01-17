@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {Redirect, withRouter} from "react-router-dom";
 import {
     deleteHall,
-    getHallData,
+    getHallData, swapArtifacts,
     updateHallData,
 } from "../../../redux/museum-reducer";
 import {compose} from "redux";
@@ -39,12 +39,12 @@ class HallContainer extends React.Component {
     }
 
     swapArtifacts(swap_type, location_id) {
-        // this.props.swapArtifacts(swap_type, location_id)
+        this.props.swapArtifacts(swap_type, location_id)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.hallData !== this.props.hallData) {
-            this.props.updateState(this.props.match.params.location_id, this.props.hallData.name, this.props.hallData.description, this.props.hallData.img)
+            this.props.updateState(this.props.match.params.location_id, this.props.hallData.name, this.props.hallData.description, this.props.hallData.img, '')
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.updateHall()
@@ -91,7 +91,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {getHallData, updateHallData, deleteHall}),
+    connect(mapStateToProps, {getHallData, updateHallData, deleteHall, swapArtifacts}),
     withRouter,
     CommonMuseumLogic,
     CommonUpdateLogic,
