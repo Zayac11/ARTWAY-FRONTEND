@@ -84,6 +84,7 @@ class HallContainer extends React.Component {
                   main_img={this.props.main_img}
                   location_id={this.props.match.params.location_id}
                   hall_id={this.props.match.params.hall_id}
+                  artifacts={this.props.artifacts}
             />
 
         );
@@ -93,7 +94,7 @@ class HallContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         hallData: state.museum.hallData,
-        // artifacts: state.museum.artifacts,
+        artifacts: state.museum.artifacts,
     }
 }
 

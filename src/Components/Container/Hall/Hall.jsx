@@ -1,6 +1,8 @@
 import React from 'react';
 import s from './Hall.module.css'
 import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
+import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
+import {NavLink} from "react-router-dom";
 
 const Hall = (props) => {
     return (
@@ -32,10 +34,21 @@ const Hall = (props) => {
             }
 
             {/*<NavLink to={'/m-admin/create_hall'}>*/}
-            {/*    Создать артифакт*/}
+            {/*    Создать артефакт*/}
             {/*</NavLink>*/}
 
-            {/*<MuseumItemsList locations={props.halls} swapLocations={props.swapHalls} />*/}
+            {
+                props.artifacts &&
+                props.artifacts.map(l => {
+                    let last = props.artifacts[props.artifacts.length - 1].id
+                    return (
+                        <div className={s.locationContainer} key={l.id}>
+                            <MuseumItemsList prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} locations={props.halls} swapLocations={props.swapArtifacts} />
+                            <NavLink to={`/m-admin/${props.location_id}/${props.hall_id}/${l.id}`}>Перейти</NavLink>
+                        </div>
+                    )
+                })
+            }
         </div>
     );
 }
