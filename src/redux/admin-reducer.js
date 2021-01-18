@@ -54,5 +54,15 @@ export const deleteWorker = (worker_id) => { //Удаление сотрудни
                 }))
     }
 }
+export const createWorker = (last_name, first_name, middle_name, email, password, role) => { //Добавление сотрудника
+    return (dispatch) => {
+        adminApi.createWorker(last_name, first_name, middle_name, email, password, role)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('createWorker', result)
+                    dispatch(setAdminData(result.museum_super_admin, result.museum_admins, result.museum_cashiers))
+                }))
+    }
+}
 
 export default adminReducer

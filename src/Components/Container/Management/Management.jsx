@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './Management.module.css'
 import ChangeWorkerContainer from "./ChangeWorker/ChangeWorkerContainer";
+import {NavLink} from "react-router-dom";
 
 const Management = (props) => {
     return (
@@ -14,6 +15,7 @@ const Management = (props) => {
                                        museumAdminId={props.museum_super_admin.id}
                 />
             </div>
+            <NavLink to={'/m-admin/hr-management/create_worker'}>Создать работника</NavLink>
             <div className={s.people}>
                 Админы
                 {

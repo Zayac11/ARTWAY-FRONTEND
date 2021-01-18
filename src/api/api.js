@@ -244,6 +244,11 @@ export const adminApi = {
             {name: 'email', value: email}, {name: 'username', value: email}], true,  'PUT')
         return fetch(baseUrl + `api/m-admin/hr-management/${worker_id}`, options)
     },
+    createWorker(last_name, first_name, middle_name, email, password, role) {
+        let options = getOptions([{name: 'last_name', value: last_name},{name: 'first_name', value: first_name}, {name: 'middle_name', value: middle_name},
+            {name: 'email', value: email}, {name: 'username', value: email}, {name: 'password', value: password}, {name: 'role', value: role}], true,  'POST')
+        return fetch(baseUrl + `api/m-admin/hr-management`, options)
+    },
     deleteWorkerProfile(worker_id) {
         let options = getOptions([], true,  'DELETE')
         return fetch(baseUrl + `api/m-admin/hr-management/${worker_id}`, options)
