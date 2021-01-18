@@ -1,15 +1,11 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {Redirect, withRouter} from "react-router-dom";
-import {
-    deleteHall,
-    getHallData, swapArtifacts,
-    updateHallData,
-} from "../../../redux/museum-reducer";
 import {compose} from "redux";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import Hall from "./Hall";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
+import {deleteHall, getHallData, swapArtifacts, updateHallData} from "../../../redux/hall-reducer";
 
 class HallContainer extends React.Component {
 
@@ -85,8 +81,8 @@ class HallContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        hallData: state.museum.hallData,
-        artifacts: state.museum.artifacts,
+        artifacts: state.hall.artifacts,
+        hallData: state.hall.hallData,
     }
 }
 

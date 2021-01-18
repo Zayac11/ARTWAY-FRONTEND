@@ -2,10 +2,10 @@ import React from 'react';
 import {connect} from "react-redux";
 import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
-import {createHall} from "../../../redux/museum-reducer";
 import {Redirect, withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {CommonCreateLogic} from "../../../hoc/CommonCreateLogic";
+import {createHall} from "../../../redux/hall-reducer";
 
 class CreateLocation extends React.Component {
 

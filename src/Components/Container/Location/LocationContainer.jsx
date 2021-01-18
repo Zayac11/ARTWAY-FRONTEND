@@ -2,10 +2,10 @@ import React from 'react';
 import {connect} from "react-redux";
 import {Redirect, withRouter} from "react-router-dom";
 import Location from "./Location";
-import {deleteLocation, getLocationData, swapHalls, updateLocationData} from "../../../redux/museum-reducer";
 import {compose} from "redux";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
+import {deleteLocation, getLocationData, swapHalls, updateLocationData} from "../../../redux/location-reducer";
 
 class LocationContainer extends React.Component {
 
@@ -79,8 +79,8 @@ class LocationContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        locationData: state.museum.locationData,
-        halls: state.museum.halls,
+        locationData: state.location.locationData,
+        halls: state.location.halls,
     }
 }
 

@@ -226,3 +226,26 @@ export const authApi = {
         return fetch(baseUrl + `auth/users/reset_password_confirm/`, options)
     },
 }
+
+export const adminApi = {
+    getAdminData() {
+        const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", accessToken);
+        let requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: 'follow',
+        }
+        return fetch(baseUrl + `api/m-admin/hr-management`, requestOptions)
+    },
+    updateWorkerProfile(last_name, first_name, middle_name, email, worker_id) {
+        let options = getOptions([{name: 'last_name', value: last_name},{name: 'first_name', value: first_name}, {name: 'middle_name', value: middle_name},
+            {name: 'email', value: email}, {name: 'username', value: email}], true,  'PUT')
+        return fetch(baseUrl + `api/m-admin/hr-management/${worker_id}`, options)
+    },
+    deleteWorkerProfile(worker_id) {
+        let options = getOptions([], true,  'DELETE')
+        return fetch(baseUrl + `api/m-admin/hr-management/${worker_id}`, options)
+    }
+}

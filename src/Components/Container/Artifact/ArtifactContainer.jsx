@@ -3,9 +3,9 @@ import {connect} from "react-redux";
 import Artifact from "./Artifact";
 import {Redirect, withRouter} from "react-router-dom";
 import {compose} from "redux";
-import {deleteArtifact, getArtifactData, updateArtifactData,} from "../../../redux/museum-reducer";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
+import {deleteArtifact, getArtifactData, updateArtifactData} from "../../../redux/artifact-reducer";
 
 class ArtifactContainer extends React.Component {
 
@@ -107,7 +107,7 @@ class ArtifactContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        artifactData: state.museum.artifactData
+        artifactData: state.artifact.artifactData
     }
 }
 
