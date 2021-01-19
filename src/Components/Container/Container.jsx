@@ -15,6 +15,7 @@ import CreateHall from "./Create/CreateHall";
 import CreateArtifact from "./Create/CreateArtifact";
 import ManagementContainer from "./Management/ManagementContainer";
 import CreateWorker from "./CreateWorker/CreateWorker";
+import MuseumsListContainer from "./MuseumsList/MuseumsListContainer";
 
 class Container extends React.Component {
 
@@ -36,6 +37,7 @@ class Container extends React.Component {
                     {/*<Route exact path='/artifacts/:id' render={ () => <ArtifactContainer />} />*/}
                     {/*<Route exact path='/artifacts' render={ () => <ArtifactsListContainer />} />*/}
 
+                    {/*Музей*/}
                     <Route exact path='/m-admin' render={ () => <MuseumContainer />} />
                     <Route exact path='/m-admin/hr-management' render={ () => <ManagementContainer />} />
                     <Route exact path='/m-admin/hr-management/create_worker' render={ () => <CreateWorker />} />
@@ -45,6 +47,9 @@ class Container extends React.Component {
                     <Route exact path='/m-admin/:location_id/:hall_id' render={ () => <HallContainer />} />
                     <Route exact path='/m-admin/:location_id/:hall_id/create_artifacts' render={ () => <CreateArtifact />} />
                     <Route exact path='/m-admin/:location_id/:hall_id/:artifact_id' render={ () => <ArtifactContainer />} />
+
+                    {/*Администратор сервиса*/}
+                    <Route exact path='/s-admin' render={ () => <MuseumsListContainer />} />
 
                     {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}
                 </Switch>

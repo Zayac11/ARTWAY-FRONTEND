@@ -28,7 +28,7 @@ const serviceAdminReducer = (state = initialState, action) => {
 export const setMuseums = (museums) => ({type: SET_MUSEUMS, museums})
 export const setMuseumAdminData = (museumAdminData) => ({type: SET_MUSEUM_ADMIN_DATA, museumAdminData})
 
-export const getServiceAdminData = () => { //Получение списка музеев
+export const getMuseums = () => { //Получение списка музеев
     return (dispatch) => {
         serviceAdminApi.getMuseums()
             .then(response => response.json()

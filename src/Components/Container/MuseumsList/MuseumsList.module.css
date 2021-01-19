@@ -1,0 +1,9 @@
+.container {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.museumItemContainer {
+    padding: 10px;
+    border: 1px solid black;
+}

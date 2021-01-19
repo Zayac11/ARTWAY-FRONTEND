@@ -47,6 +47,7 @@ const Main = (props) => {
             </div>
             <div className={'links'}>
                 <TransparentButton link={'/enter'} text='Ввести ID экспоната вручную' />
+                <TransparentButton link={'/s-admin'} text='Супер админ панель' />
                 <BlackButton link={`/scan`} text='Отсканировать qr-код' />
                 {/*<BlackButton link={`/artifacts`} text='Просмотреть экспонаты' />*/}
                 <BlackButton link={`/m-admin`} text='Админ панель' />
