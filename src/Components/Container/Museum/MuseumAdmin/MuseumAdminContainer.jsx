@@ -2,9 +2,9 @@ import React from 'react';
 import {connect} from "react-redux";
 import MuseumAdmin from "./MuseumAdmin";
 import {compose} from "redux";
-import {withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import {
-    createMuseumSuperAdmin,
+    createMuseumSuperAdmin, deleteMuseum,
     deleteMuseumSuperAdmin,
     getMuseumSuperAdmin
 } from "../../../../redux/serviceAdmin-reducer";
@@ -16,10 +16,18 @@ class MuseumAdminContainer extends React.Component {
         super(props);
 
         this.state = {
-            isChanging: false,
+            isChanging: false, //Идет ли изменение
+            isDeleted: false, //Удален ли музей
         }
-
+        this.deleteMuseum = this.deleteMuseum.bind(this)
         this.toggleIsChanging = this.toggleIsChanging.bind(this)
+    }
+
+    deleteMuseum() {
+        this.props.deleteMuseum(this.props.museum_id)
+        this.setState({
+            isDeleted: true,
+        })
     }
 
     toggleIsChanging() {
@@ -47,9 +55,15 @@ class MuseumAdminContainer extends React.Component {
     }
 
     render() {
+
+        if(this.state.isDeleted) {
+            return <Redirect to={'/s-admin'} />
+        }
+
         return (
             <MuseumAdmin {...this.props} museumAdminData={this.props.museumAdminData}
                          deleteMuseumSuperAdmin={this.props.deleteMuseumSuperAdmin}
+                         deleteMuseum={this.deleteMuseum}
                          museum_id={this.props.museum_id}
                          isChanging={this.state.isChanging}
                          toggleIsChanging={this.toggleIsChanging} />
@@ -65,7 +79,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {getMuseumSuperAdmin, createMuseumSuperAdmin, deleteMuseumSuperAdmin}),
+    connect(mapStateToProps, {getMuseumSuperAdmin, createMuseumSuperAdmin, deleteMuseumSuperAdmin, deleteMuseum}),
     withRouter,
     CommonCreateWorkerLogic,
 )(MuseumAdminContainer)

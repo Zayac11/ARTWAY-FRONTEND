@@ -288,6 +288,10 @@ export const serviceAdminApi = {
         let options = getOptions([], true,  'DELETE')
         return fetch(baseUrl + `api/s-admin/${museum_id}`, options)
     },
+    deleteMuseum(museum_id) { //Удаление админа музея
+        let options = getOptions([{name: 'museum_pk', value: museum_id}], true,  'DELETE')
+        return fetch(baseUrl + `api/s-admin`, options)
+    },
     createMuseumSuperAdmin(last_name, first_name, middle_name, email, password, museum_id) {
         let options = getOptions([{name: 'last_name', value: last_name},{name: 'first_name', value: first_name}, {name: 'middle_name', value: middle_name},
             {name: 'email', value: email}, {name: 'username', value: email}, {name: 'password', value: password}], true,  'POST')

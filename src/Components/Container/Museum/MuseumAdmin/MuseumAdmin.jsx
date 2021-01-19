@@ -37,6 +37,9 @@ const MuseumAdmin = ({museumAdminData, ...props}) => {
                         Создать администратора
                     </button>
             }
+            <button className={s.deleteBtn} onClick={() => props.deleteMuseum(props.museum_id)}>
+                Удалить музей
+            </button>
         </>
 
     );
