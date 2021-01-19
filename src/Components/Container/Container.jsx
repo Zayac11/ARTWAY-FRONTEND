@@ -5,8 +5,6 @@ import Main from "./Main/Main";
 import Transition from "./Transition/Transition";
 import ArtifactContainer from "./Artifact/ArtifactContainer";
 import PreloaderLogo from "../../Common/PreloaderLogo/PreloaderLogo";
-import ArtifactsListContainer from "./ArtifactsListContainer/ArtifactsListContainer";
-import QrCodeContainer from "./QrCode/QrCodeContainer";
 import MuseumContainer from "./Museum/MuseumContainer";
 import LocationContainer from "./Location/LocationContainer";
 import CreateLocation from "./Create/CreateLocation";
@@ -50,6 +48,7 @@ class Container extends React.Component {
 
                     {/*Администратор сервиса*/}
                     <Route exact path='/s-admin' render={ () => <MuseumsListContainer />} />
+                    <Route exact path='/s-admin/:museum_id' render={ () => <MuseumContainer />} />
 
                     {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}
                 </Switch>

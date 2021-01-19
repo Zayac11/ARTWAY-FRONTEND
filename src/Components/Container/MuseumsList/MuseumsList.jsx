@@ -23,7 +23,7 @@ const MuseumsList = (props) => {
                                 <div>
                                     {m.description}
                                 </div>
-                                <NavLink to={`/m-admin/${m.id}`} />
+                                <NavLink to={`/s-admin/${m.id}`}>Перейти</NavLink>
                             </div>
                         )
                     })

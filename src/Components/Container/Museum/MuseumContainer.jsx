@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Museum from "./Museum";
-import {Redirect, Switch, withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import {compose} from "redux";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
 import {getMuseumData, swapLocations, updateMuseumData} from "../../../redux/museum-reducer";
+import MuseumAdminContainer from "./MuseumAdmin/MuseumAdminContainer";
 
 class MuseumContainer extends React.Component {
 
@@ -44,25 +45,28 @@ class MuseumContainer extends React.Component {
             return <Redirect to={'/'} />
         }
 
-        return (
-            <Switch>
-                <Museum handleChangeInputs={this.props.handleChangeInputs}
-                        handleSubmit={this.props.handleSubmit}
-                        swapLocations={this.swapLocations}
-                        toggleIsChanging={this.props.toggleIsChanging}
-                        handleChange={this.props.handleChange}
-                        handleChangeFile={this.props.handleChangeFile}
-                        isPhotoTypeWrong={this.props.isPhotoTypeWrong}
-                        isChanging={this.props.isChanging}
-                        isEmptyInputs={this.props.isEmptyInputs}
-                        name={this.props.name}
-                        description={this.props.description}
-                        img={this.props.img}
-                        main_img={this.props.main_img}
-                        locations={this.props.locations}
-                />
-            </Switch>
+        if(this.props.isUserServiceAdmin) {
+            return (
+                <MuseumAdminContainer museum_id={this.props.match.params.museum_id} />
+            )
+        }
 
+        return (
+            <Museum handleChangeInputs={this.props.handleChangeInputs}
+                    handleSubmit={this.props.handleSubmit}
+                    swapLocations={this.swapLocations}
+                    toggleIsChanging={this.props.toggleIsChanging}
+                    handleChange={this.props.handleChange}
+                    handleChangeFile={this.props.handleChangeFile}
+                    isPhotoTypeWrong={this.props.isPhotoTypeWrong}
+                    isChanging={this.props.isChanging}
+                    isEmptyInputs={this.props.isEmptyInputs}
+                    name={this.props.name}
+                    description={this.props.description}
+                    img={this.props.img}
+                    main_img={this.props.main_img}
+                    locations={this.props.locations}
+            />
         );
     }
 
@@ -73,6 +77,7 @@ let mapStateToProps = (state) => {
         museumData: state.museum.museumData,
         locations: state.museum.locations,
         isLogin: state.auth.isLogin,
+        isUserServiceAdmin: state.auth.isUserServiceAdmin,
     }
 }
 

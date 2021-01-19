@@ -35,16 +35,7 @@ class CreateLocation extends React.Component {
         }
 
         return (
-            <ChangeForm handleSubmit={this.props.handleSubmit}
-                        handleFindKey={this.props.handleFindKey}
-                        handleFocus={this.props.handleFocus}
-                        handleChange={this.props.handleChange}
-                        handleChangeInputs={this.props.handleChangeInputs}
-                        isEmptyInputs={this.props.isEmptyInputs}
-                        isPhotoTypeWrong={this.props.isPhotoTypeWrong}
-                        handleChangeFile={this.props.handleChangeFile}
-                        description={this.props.description}
-                        name={this.props.name}
+            <ChangeForm {...this.props}
             />
 
         );

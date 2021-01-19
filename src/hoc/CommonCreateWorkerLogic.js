@@ -61,7 +61,6 @@ export const CommonCreateWorkerLogic = (Component) => {
         }
 
         handleSubmit() {
-            debugger
             let mail = /^[\w-\d*]+@[\w\d]+(\.\w{2,4})$/
             if (this.state.first_name === '' || this.state.last_name === '' || this.state.email === '' || this.state.password === '') {
                 this.setState({
@@ -111,7 +110,6 @@ export const CommonCreateWorkerLogic = (Component) => {
                            handleChangeInputs={this.handleChangeInputs}
                            handleFindKey={this.handleFindKey}
                            handleChangeRadio={this.handleChangeRadio}
-                           changeCreate={this.changeCreate}
                 />
             );
         }
