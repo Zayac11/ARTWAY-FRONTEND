@@ -39,9 +39,9 @@ export const getMuseums = () => { //Получение списка музеев
     }
 }
 
-export const createMuseum = () => { //Создание музея
+export const createMuseum = (name, img, description) => { //Создание музея
     return (dispatch) => {
-        serviceAdminApi.createMuseum()
+        serviceAdminApi.createMuseum(name, img, description)
             .then(response => response.json()
                 .then(result => {
                     console.log('createMuseum', result)

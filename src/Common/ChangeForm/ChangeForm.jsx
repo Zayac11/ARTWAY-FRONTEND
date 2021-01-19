@@ -4,7 +4,7 @@ import Input from "../Input/Input";
 import Textarea from "../Textarea/Textarea";
 
 const ChangeForm = (props) => {
-        debugger
+
     return (
         <>
             <button onClick={props.handleSubmit}>Сохранить</button>

@@ -71,7 +71,6 @@ export const CommonMuseumLogic = (Component) => {
         }
 
         handleChangeFile(e) {
-            debugger
             let name = e.target.name
             let file = e.target.files[0]
 

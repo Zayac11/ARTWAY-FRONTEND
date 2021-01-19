@@ -14,6 +14,7 @@ import CreateArtifact from "./Create/CreateArtifact";
 import ManagementContainer from "./Management/ManagementContainer";
 import CreateWorker from "./CreateWorker/CreateWorker";
 import MuseumsListContainer from "./MuseumsList/MuseumsListContainer";
+import CreateMuseum from "./Create/CreateMuseum";
 
 class Container extends React.Component {
 
@@ -48,6 +49,7 @@ class Container extends React.Component {
 
                     {/*Администратор сервиса*/}
                     <Route exact path='/s-admin' render={ () => <MuseumsListContainer />} />
+                    <Route exact path='/s-admin/create_museum' render={ () => <CreateMuseum />} />
                     <Route exact path='/s-admin/:museum_id' render={ () => <MuseumContainer />} />
 
                     {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}

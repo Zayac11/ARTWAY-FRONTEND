@@ -5,6 +5,7 @@ import {NavLink} from "react-router-dom";
 const MuseumsList = (props) => {
     return (
         <div className={s.container}>
+            <NavLink to={'/s-admin/create_museum'}>Создать музеич</NavLink>
             {
                 props.museums &&
                     props.museums.length > 0 ?
@@ -32,6 +33,7 @@ const MuseumsList = (props) => {
                         Музеев не найдено
                     </div>
             }
+
         </div>
     );
 }
