@@ -6,6 +6,7 @@ import locationReducer from "./location-reducer";
 import hallReducer from "./hall-reducer";
 import artifactReducer from "./artifact-reducer";
 import adminReducer from "./admin-reducer";
+import serviceAdminReducer from "./serviceAdmin-reducer";
 
 let reducers = combineReducers({
     artifact: artifactReducer,
@@ -14,6 +15,7 @@ let reducers = combineReducers({
     location: locationReducer,
     hall: hallReducer,
     admin: adminReducer,
+    service: serviceAdminReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));

@@ -19,6 +19,7 @@ let initialState = {
     userData: {}, //Данные пользователя
 
     isLogin: true, //Залогинен ли пользователь
+    isUserServiceAdmin: true, //Является ли пользователь админом музея
 
     isInitialized: false, //Инициализация приложения
     isFetch: true,

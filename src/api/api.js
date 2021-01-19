@@ -227,6 +227,7 @@ export const authApi = {
     },
 }
 
+//Администратор музея
 export const adminApi = {
     getAdminData() {
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
@@ -253,4 +254,43 @@ export const adminApi = {
         let options = getOptions([], true,  'DELETE')
         return fetch(baseUrl + `api/m-admin/hr-management/${worker_id}`, options)
     }
+}
+
+//Администратор всего сервиса
+export const serviceAdminApi = {
+    getMuseums() { //Получение списка музеев
+        const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", accessToken);
+        let requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: 'follow',
+        }
+        return fetch(baseUrl + `api/s-admin`, requestOptions)
+    },
+    getMuseumAdminData(museum_id) { //Получение информации об админе конкретного музея
+        const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", accessToken);
+        let requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: 'follow',
+        }
+        return fetch(baseUrl + `api/s-admin/${museum_id}`, requestOptions)
+    },
+    createMuseum(name, img, description) { //Создание музея по супер-пользователю
+        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'POST')
+        return fetch(baseUrl + `api/s-admin`, options)
+    },
+    deleteMuseumSuperAdmin(museum_id) { //Удаление админа музея
+        let options = getOptions([], true,  'DELETE')
+        return fetch(baseUrl + `api/s-admin/${museum_id}`, options)
+    },
+    createMuseumSuperAdmin(last_name, first_name, middle_name, email, password, museum_id) {
+        let options = getOptions([{name: 'last_name', value: last_name},{name: 'first_name', value: first_name}, {name: 'middle_name', value: middle_name},
+            {name: 'email', value: email}, {name: 'username', value: email}, {name: 'password', value: password}], true,  'POST')
+        return fetch(baseUrl + `api/s-admin/${museum_id}`, options)
+    },
 }
