@@ -298,3 +298,23 @@ export const serviceAdminApi = {
         return fetch(baseUrl + `api/s-admin/${museum_id}`, options)
     },
 }
+
+//Кассир
+
+export const cashierApi = {
+    getTickets() { //Получение всех активных билетов
+        const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", accessToken);
+        let requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: 'follow',
+        }
+        return fetch(baseUrl + `api/cashier`, requestOptions)
+    },
+    createTicket() { //Создание билета по кассиру
+        let options = getOptions([], true,  'POST')
+        return fetch(baseUrl + `api/cashier`, options)
+    },
+}

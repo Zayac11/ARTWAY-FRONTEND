@@ -35,6 +35,9 @@ const Museum = (props) => {
             <NavLink to={'/m-admin/create_location'}>
                 Создать локу
             </NavLink>
+            <NavLink to={'/m-admin/hr-management'}>
+                Персонал
+            </NavLink>
 
             {
                 props.locations &&

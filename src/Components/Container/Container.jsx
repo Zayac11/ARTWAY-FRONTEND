@@ -15,6 +15,7 @@ import ManagementContainer from "./Management/ManagementContainer";
 import CreateWorker from "./CreateWorker/CreateWorker";
 import MuseumsListContainer from "./MuseumsList/MuseumsListContainer";
 import CreateMuseum from "./Create/CreateMuseum";
+import TicketsListContainer from "./TicketsList/TicketsListContainer";
 
 class Container extends React.Component {
 
@@ -48,9 +49,13 @@ class Container extends React.Component {
                     <Route exact path='/m-admin/:location_id/:hall_id/:artifact_id' render={ () => <ArtifactContainer />} />
 
                     {/*Администратор сервиса*/}
-                    <Route exact path='/s-admin' render={ () => <MuseumsListContainer />} />
-                    <Route exact path='/s-admin/create_museum' render={ () => <CreateMuseum />} />
-                    <Route exact path='/s-admin/:museum_id' render={ () => <MuseumContainer />} />
+                    <Route exact path='/s-admin' render={ () => <MuseumsListContainer />} /> {/*Лист музеев*/}
+                    <Route exact path='/s-admin/create_museum' render={ () => <CreateMuseum />} /> {/*Создание музея*/}
+                    <Route exact path='/s-admin/:museum_id' render={ () => <MuseumContainer />} /> {/*Отрисовывает главного администратора музея*/}
+
+                    {/*Кассир*/}
+                    <Route exact path='/cashier' render={ () => <TicketsListContainer />} /> {/*Лист билетов*/}
+                    <Route exact path='/cashier/create_ticket' render={ () => <TicketsListContainer />} /> {/*Создание билета*/}
 
                     {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}
                 </Switch>
