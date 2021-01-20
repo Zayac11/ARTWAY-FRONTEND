@@ -6,6 +6,7 @@ import {compose} from "redux";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
 import {deleteArtifact, getArtifactData, updateArtifactData} from "../../../redux/artifact-reducer";
+import {getUserArtifactData} from "../../../redux/user-reducer";
 
 class ArtifactContainer extends React.Component {
 
@@ -70,7 +71,12 @@ class ArtifactContainer extends React.Component {
 
     componentDidMount() {
         //Данные об экспонате
-        this.props.getArtifactData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id)
+        if(this.props.isUserMuseumAdmin) {
+            this.props.getArtifactData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id)
+        }
+        else {
+            this.props.getUserArtifactData(this.props.match.params.artifact_id)
+        }
     }
 
     render() {
@@ -101,7 +107,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {getArtifactData, updateArtifactData, deleteArtifact}),
+    connect(mapStateToProps, {getArtifactData, updateArtifactData, deleteArtifact, getUserArtifactData}),
     withRouter,
     CommonMuseumLogic,
     CommonUpdateLogic,

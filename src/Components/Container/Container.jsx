@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, withRouter} from "react-router-dom";
 import MainContainer from "./Main/MainContainer";
 import Transition from "./Transition/Transition";
 import ArtifactContainer from "./Artifact/ArtifactContainer";
@@ -16,14 +16,35 @@ import CreateWorker from "./CreateWorker/CreateWorker";
 import MuseumsListContainer from "./MuseumsList/MuseumsListContainer";
 import CreateMuseum from "./Create/CreateMuseum";
 import TicketsListContainer from "./TicketsList/TicketsListContainer";
+import {initializingToken, setToken} from "../../redux/user-reducer";
+import {compose} from "redux";
+import Preloader from "../../Common/Preloader/Preloader";
 
 class Container extends React.Component {
 
     componentDidMount() {
+        const url = new URLSearchParams(this.props.location.search)
+        let localToken = localStorage.getItem('token')
+        let token = url.get('token');
+        if(!this.props.isUserMuseumSuperAdmin && !this.props.isUserServiceAdmin && !this.props.isUserCashier && !this.props.isUserMuseumAdmin) {
+            if(token !== null) {
+                localStorage.setItem('token', token)
+                this.props.setToken(token)
+            }
+            else if(localToken !== null) {
+                this.props.setToken(localToken)
+            }
 
+        }
+        this.props.initializingToken() //Отрисовка приложения после установки/неустановки токена из билета
     }
 
     render() {
+
+        if(!this.props.isTokenSet) {
+            return <Preloader />
+        }
+
         return (
             <>
                 <PreloaderLogo />
@@ -33,8 +54,9 @@ class Container extends React.Component {
                     <Route exact path='/enter' render={ () => <Transition />} />
                     <Route exact path='/scan' render={ () => <Transition />} />
 
+                    {/*Покупатель*/}
                     {/*<Route exact path='/artifacts/:id/Qr-code' render={ () => <QrCodeContainer /> } />*/}
-                    {/*<Route exact path='/artifacts/:id' render={ () => <ArtifactContainer />} />*/}
+                    <Route exact path='/artifacts/:artifact_id' render={ () => <ArtifactContainer />} />
                     {/*<Route exact path='/artifacts' render={ () => <ArtifactsListContainer />} />*/}
 
                     {/*Музей*/}
@@ -66,8 +88,15 @@ class Container extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-
+        isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
+        isUserCashier: state.auth.isUserCashier,
+        isUserServiceAdmin: state.auth.isUserServiceAdmin,
+        isUserMuseumSuperAdmin: state.auth.isUserMuseumSuperAdmin,
+        isTokenSet: state.user.isTokenSet,
     }
 }
+export default compose(
+    connect(mapStateToProps, {setToken, initializingToken}),
+    withRouter,
+)(Container)
 
-export default connect(mapStateToProps,{})(Container);

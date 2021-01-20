@@ -333,3 +333,11 @@ export const cashierApi = {
         return fetch(baseUrl + `api/cashier`, options)
     },
 }
+
+//Покупатель
+export const userApi = {
+    getUserArtifactData(token, artifact_id) { //Получение артефакта по id
+        let options = getOptions([{name: 'token', value: token}], false,  'POST')
+        return fetch(baseUrl + `api/artifacts/${artifact_id}`, options)
+    },
+}

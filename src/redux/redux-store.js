@@ -8,6 +8,7 @@ import artifactReducer from "./artifact-reducer";
 import adminReducer from "./admin-reducer";
 import serviceAdminReducer from "./serviceAdmin-reducer";
 import cashierReducer from "./cashier-reducer";
+import userReducer from "./user-reducer";
 
 let reducers = combineReducers({
     artifact: artifactReducer,
@@ -18,6 +19,7 @@ let reducers = combineReducers({
     admin: adminReducer,
     service: serviceAdminReducer,
     cashier: cashierReducer,
+    user: userReducer,
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));
