@@ -38,15 +38,20 @@ class MuseumContainer extends React.Component {
     }
 
     componentDidMount() {
-
         this.props.getMuseumData()
     }
 
     render() {
-        if(!this.props.isLogin) {
+        //Если пользователь перешел по адресу, не являясь администратором музея
+        if((this.props.match.url.includes('/m-admin')) && (!this.props.isUserMuseumAdmin)) {
+            return <Redirect to={'/'} />
+        }
+        //Если пользователь перешел по адресу, не являясь сервисным администратором
+        if((this.props.match.url.includes('/s-admin')) && (!this.props.isUserServiceAdmin)) {
             return <Redirect to={'/'} />
         }
 
+        // Если пользователь сервисный администратор
         // if(this.props.isUserServiceAdmin) {
         //     return (
         //         <MuseumAdminContainer museum_id={this.props.match.params.museum_id} />
@@ -80,6 +85,7 @@ let mapStateToProps = (state) => {
         locations: state.museum.locations,
         isLogin: state.auth.isLogin,
         isUserServiceAdmin: state.auth.isUserServiceAdmin,
+        isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
     }
 }
 

@@ -13,7 +13,6 @@ class ArtifactContainer extends React.Component {
         super(props);
         this.state = {
             isDeleted: false,
-            // isChanged: false, //Поле, нужно для артефактов для дополнительной проверки изменения аудиофайла
         }
         this.updateArtifact = this.updateArtifact.bind(this)
         this.deleteArtifact = this.deleteArtifact.bind(this)
@@ -76,29 +75,14 @@ class ArtifactContainer extends React.Component {
             return <Redirect to={`/m-admin/${this.props.match.params.location_id}/${this.props.match.params.hall_id}`} />
         }
 
+        if((this.props.match.url.includes('/m-admin')) && (!this.props.isUserMuseumAdmin)) {
+            return <Redirect to={'/'} />
+        }
+
         return (
-            <Artifact handleChangeInputs={this.props.handleChangeInputs}
-                      handleSubmit={this.props.handleSubmit}
+            <Artifact {...this.props}
                       deleteArtifact={this.deleteArtifact}
                       swapArtifacts={this.swapArtifacts}
-                      toggleIsChanging={this.props.toggleIsChanging}
-                      handleChange={this.props.handleChange}
-                      handleChangeFile={this.props.handleChangeFile}
-                      isPhotoTypeWrong={this.props.isPhotoTypeWrong}
-                      isAudioTypeWrong={this.props.isAudioTypeWrong}
-                      isChanging={this.props.isChanging}
-                      isChanged={this.state.isChanged}
-                      isEmptyInputs={this.props.isEmptyInputs}
-                      name={this.props.name}
-                      description={this.props.description}
-                      audio={this.props.audio}
-                      main_audio={this.props.main_audio}
-                      img={this.props.img}
-                      main_img={this.props.main_img}
-                      location_id={this.props.match.params.location_id}
-                      hall_id={this.props.match.params.hall_id}
-                      artifactData={this.props.artifactData}
-                      history={this.props.history}
             />
         );
     }
@@ -107,7 +91,8 @@ class ArtifactContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        artifactData: state.artifact.artifactData
+        artifactData: state.artifact.artifactData,
+        isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
     }
 }
 

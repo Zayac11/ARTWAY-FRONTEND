@@ -55,6 +55,11 @@ class HallContainer extends React.Component {
         if(this.state.isDeleted) {
             return <Redirect to={`/m-admin/${this.props.match.params.location_id}`} />
         }
+
+        if((this.props.match.url.includes('/m-admin')) && (!this.props.isUserMuseumAdmin)) {
+            return <Redirect to={'/'} />
+        }
+
         return (
             <Hall handleChangeInputs={this.props.handleChangeInputs}
                   handleSubmit={this.props.handleSubmit}
@@ -83,6 +88,7 @@ let mapStateToProps = (state) => {
     return {
         artifacts: state.hall.artifacts,
         hallData: state.hall.hallData,
+        isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
     }
 }
 

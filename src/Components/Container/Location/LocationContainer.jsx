@@ -55,6 +55,10 @@ class LocationContainer extends React.Component {
         if(this.state.isDeleted) {
             return <Redirect to={'/m-admin'} />
         }
+        if((this.props.match.url.includes('/m-admin')) && (!this.props.isUserMuseumAdmin)) {
+            return <Redirect to={'/'} />
+        }
+
         return (
             <Location handleChangeInputs={this.props.handleChangeInputs}
                       handleSubmit={this.props.handleSubmit}
@@ -81,6 +85,7 @@ class LocationContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         locationData: state.location.locationData,
+        isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
         halls: state.location.halls,
     }
 }
