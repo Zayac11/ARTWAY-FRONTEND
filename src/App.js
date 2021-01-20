@@ -5,19 +5,21 @@ import {connect} from "react-redux";
 import {Route, Switch} from "react-router-dom";
 import Container from "./Components/Container/Container";
 import Login from "./Components/Login/Login";
+import Preloader from "./Common/Preloader/Preloader";
+import {getStatus} from "./redux/authentication";
 
 class App extends React.Component {
 
     componentDidMount() {
-
+        this.props.getStatus()
     }
 
     render() {
 
-        // Инициализация(авторизация) на будущее
-        // if(!this.props.isInitialized) {
-        //     return <Preloader />
-        // }
+        //Инициализация(авторизация) на будущее
+        if(!this.props.isInitialized) {
+            return <Preloader />
+        }
 
         return (
             <Switch>
@@ -31,8 +33,8 @@ class App extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-
+        isInitialized:state.auth.isInitialized
     }
 }
 
-export default connect(mapStateToProps, {})(App);
+export default connect(mapStateToProps, {getStatus})(App);

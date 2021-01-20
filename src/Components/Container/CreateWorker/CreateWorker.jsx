@@ -5,6 +5,7 @@ import {createWorker} from "../../../redux/admin-reducer";
 import {compose} from "redux";
 import {CommonCreateWorkerLogic} from "../../../hoc/CommonCreateWorkerLogic";
 import CreateWorkerInputs from "../../../Common/CreateWorkerInputs/CreateWorkerInputs";
+import {WithSuperAdminRedirect} from "../../../hoc/Redirect/WithSuperAdminRedirect";
 
 class CreateWorker extends React.Component {
 
@@ -47,6 +48,7 @@ let mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps, {createWorker}),
     CommonCreateWorkerLogic,
+    WithSuperAdminRedirect,
 )(CreateWorker)
 
 // export default connect(mapStateToProps,{createWorker})(CreateWorker);

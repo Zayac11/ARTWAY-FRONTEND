@@ -26,7 +26,7 @@ const Artifact = (props) => {
                     />
                     :
                     <>
-                        <button onClick={() => props.toggleIsChanging(true)}>Изменить</button>
+                        <button onClick={() => props.toggleIsChanging(true)}>Изменить или удалить</button>
                     </>
             }
 

@@ -47,6 +47,7 @@ class LocationContainer extends React.Component {
     }
 
     componentDidMount() {
+        // if()
         this.props.getLocationData(this.props.match.params.location_id)
     }
 

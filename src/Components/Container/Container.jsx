@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {Route, Switch} from "react-router-dom";
-import Main from "./Main/Main";
+import MainContainer from "./Main/MainContainer";
 import Transition from "./Transition/Transition";
 import ArtifactContainer from "./Artifact/ArtifactContainer";
 import PreloaderLogo from "../../Common/PreloaderLogo/PreloaderLogo";
@@ -28,7 +28,7 @@ class Container extends React.Component {
             <>
                 <PreloaderLogo />
                 <Switch>
-                    <Route exact path='/' render={ () => <Main />} />
+                    <Route exact path='/' render={ () => <MainContainer />} />
 
                     <Route exact path='/enter' render={ () => <Transition />} />
                     <Route exact path='/scan' render={ () => <Transition />} />
@@ -55,7 +55,6 @@ class Container extends React.Component {
 
                     {/*Кассир*/}
                     <Route exact path='/cashier' render={ () => <TicketsListContainer />} /> {/*Лист билетов*/}
-                    <Route exact path='/cashier/create_ticket' render={ () => <TicketsListContainer />} /> {/*Создание билета*/}
 
                     {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}
                 </Switch>
@@ -70,5 +69,6 @@ let mapStateToProps = (state) => {
 
     }
 }
+
 
 export default connect(mapStateToProps,{})(Container);

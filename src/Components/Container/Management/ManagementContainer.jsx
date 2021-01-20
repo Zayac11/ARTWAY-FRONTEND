@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import Management from "./Management";
 import {Redirect} from "react-router-dom";
 import {getAdminData} from "../../../redux/admin-reducer";
+import {compose} from "redux";
+import {WithSuperAdminRedirect} from "../../../hoc/Redirect/WithSuperAdminRedirect";
 
 class ManagementContainer extends React.Component {
 
@@ -36,4 +38,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{getAdminData})(ManagementContainer);
+export default compose(
+    connect(mapStateToProps, {getAdminData}),
+    WithSuperAdminRedirect,
+)(ManagementContainer)
+

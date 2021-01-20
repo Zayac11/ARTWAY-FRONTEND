@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import TicketsList from "./TicketsList";
 import {Redirect} from "react-router-dom";
 import {createTicket, getTickets} from "../../../redux/cashier-reducer";
+import {compose} from "redux";
+import {WithCashierRedirect} from "../../../hoc/Redirect/WithCashierRedirect";
 
 class TicketsListContainer extends React.Component {
 
@@ -31,4 +33,7 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{getTickets, createTicket})(TicketsListContainer);
+export default compose(
+    connect(mapStateToProps, {getTickets, createTicket}),
+    WithCashierRedirect,
+)(TicketsListContainer)

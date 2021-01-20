@@ -6,6 +6,7 @@ import {Redirect, withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {CommonCreateLogic} from "../../../hoc/CommonCreateLogic";
 import {createLocation} from "../../../redux/location-reducer";
+import {WithAdminRedirect} from "../../../hoc/Redirect/WithAdminRedirect";
 
 class CreateLocation extends React.Component {
 
@@ -54,6 +55,7 @@ export default compose(
     withRouter,
     CommonMuseumLogic,
     CommonCreateLogic,
+    WithAdminRedirect,
 )(CreateLocation)
 
 //Оборачиваем компонент в компонент с общими полями, а так же в компонент с общей логикой создания

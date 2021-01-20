@@ -7,6 +7,7 @@ import {compose} from "redux";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
 import {getMuseumData, swapLocations, updateMuseumData} from "../../../redux/museum-reducer";
 import MuseumAdminContainer from "./MuseumAdmin/MuseumAdminContainer";
+import {WithServiceAdminRedirect} from "../../../hoc/Redirect/WithServiceAdminRedirect";
 
 class MuseumContainer extends React.Component {
 
@@ -37,6 +38,7 @@ class MuseumContainer extends React.Component {
     }
 
     componentDidMount() {
+
         this.props.getMuseumData()
     }
 
@@ -45,11 +47,11 @@ class MuseumContainer extends React.Component {
             return <Redirect to={'/'} />
         }
 
-        if(this.props.isUserServiceAdmin) {
-            return (
-                <MuseumAdminContainer museum_id={this.props.match.params.museum_id} />
-            )
-        }
+        // if(this.props.isUserServiceAdmin) {
+        //     return (
+        //         <MuseumAdminContainer museum_id={this.props.match.params.museum_id} />
+        //     )
+        // }
 
         return (
             <Museum handleChangeInputs={this.props.handleChangeInputs}

@@ -6,6 +6,7 @@ import {Redirect, withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {CommonCreateLogic} from "../../../hoc/CommonCreateLogic";
 import {createMuseum} from "../../../redux/serviceAdmin-reducer";
+import {WithServiceAdminRedirect} from "../../../hoc/Redirect/WithServiceAdminRedirect";
 
 class CreateMuseum extends React.Component {
 
@@ -39,6 +40,7 @@ export default compose(
     withRouter,
     CommonMuseumLogic,
     CommonCreateLogic,
+    WithServiceAdminRedirect,
 )(CreateMuseum)
 
 //Оборачиваем компонент в компонент с общими полями, а так же в компонент с общей логикой создания

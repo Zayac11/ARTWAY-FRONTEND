@@ -192,6 +192,21 @@ export const authApi = {
     //     }
     //     return fetch(baseUrl + `api/account`, requestOptions)
     // },
+
+    getStatus() {//Проверка пользователя
+        const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
+        let myHeaders = new Headers();
+        myHeaders.append("Authorization", accessToken);
+        let requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: 'follow',
+        }
+        return fetch(baseUrl + `api/user_statuses`, requestOptions)
+    },
+
+
+
     accountChange(last_name, first_name, middle_name, phone_number) {//Изменение данных пользователя
         let options = getOptions([{name: 'last_name', value: last_name}, {name: 'first_name', value: first_name}, {name: 'middle_name', value: middle_name}, {name: 'phone_number', value: phone_number}], true,  'PUT')
         return fetch(baseUrl + `api/account`, options)

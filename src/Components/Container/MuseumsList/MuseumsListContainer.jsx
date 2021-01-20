@@ -3,6 +3,8 @@ import {connect} from "react-redux";
 import MuseumsList from "./MuseumsList";
 import {Redirect} from "react-router-dom";
 import {getMuseums} from "../../../redux/serviceAdmin-reducer";
+import {compose} from "redux";
+import {WithServiceAdminRedirect} from "../../../hoc/Redirect/WithServiceAdminRedirect";
 
 class MuseumsListContainer extends React.Component {
 
@@ -31,4 +33,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{getMuseums})(MuseumsListContainer);
+export default compose(
+    connect(mapStateToProps, {getMuseums}),
+    WithServiceAdminRedirect,
+)(MuseumsListContainer)
+

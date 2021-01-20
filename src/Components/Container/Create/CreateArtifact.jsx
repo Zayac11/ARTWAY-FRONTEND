@@ -6,6 +6,7 @@ import {Redirect, withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {CommonCreateLogic} from "../../../hoc/CommonCreateLogic";
 import {createArtifact} from "../../../redux/artifact-reducer";
+import {WithAdminRedirect} from "../../../hoc/Redirect/WithAdminRedirect";
 
 class CreateArtifact extends React.Component {
 
@@ -77,6 +78,7 @@ export default compose(
     withRouter,
     CommonMuseumLogic,
     CommonCreateLogic,
+    WithAdminRedirect,
 )(CreateArtifact)
 
 //Оборачиваем компонент в компонент с общими полями, а так же в компонент с общей логикой создания

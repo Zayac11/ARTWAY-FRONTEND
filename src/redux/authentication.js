@@ -13,14 +13,18 @@ const SET_IS_PASSWORD_SIMPLE = 'SET_IS_PASSWORD_SIMPLE';
 const SET_IS_EMAIL_EXISTS = 'SET_IS_EMAIL_EXISTS';
 const SET_IS_EMAIL_TAKEN = 'SET_IS_EMAIL_TAKEN';
 const IS_FETCH = 'IS_FETCH';
+const SET_USER_STATUS = 'SET_USER_STATUS';
 
 
 let initialState = {
     userData: {}, //Данные пользователя
 
-    isLogin: true, //Залогинен ли пользователь
-    isUserServiceAdmin: true, //Является ли пользователь админом сервиса
-    isUserCashier: true, //Является ли пользователь кассиром
+    isLogin: false, //Залогинен ли пользователь
+
+    isUserServiceAdmin: false, //Является ли пользователь админом сервиса
+    isUserMuseumSuperAdmin: false, //Является ли пользователь главным админом музея
+    isUserMuseumAdmin: false, //Является ли пользователь админом музея
+    isUserCashier: false, //Является ли пользователь кассиром
 
     isInitialized: false, //Инициализация приложения
     isFetch: true,
@@ -75,6 +79,14 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 isFetch: action.isFetch,
             }
+        case SET_USER_STATUS: //Установка статуса пользователя
+            return {
+                ...state,
+                isUserServiceAdmin: action.result.is_service_super_admin,
+                isUserMuseumSuperAdmin: action.result.is_museum_super_admin,
+                isUserMuseumAdmin: action.result.is_museum_admin,
+                isUserCashier: action.result.is_museum_cashier,
+            }
         case SET_IS_CURRENT_PASSWORD_WRONG: //Если ввели неправильный текущий пароль
             return {
                 ...state,
@@ -118,6 +130,7 @@ export const setAuth = (isLogin) => ({type: SET_AUTH, isLogin}) //Авториз
 export const setLoginWrong = (isLoginWrong) => ({type: SET_LOGIN_WRONG, isLoginWrong}) //Ошибка при логине
 export const setInitialized = () => ({type: SET_INITIALIZED})
 export const setFetch = (isFetch) => ({type: IS_FETCH, isFetch})
+export const setUserStatus = (result) => ({type: SET_USER_STATUS, result}) //статусы пользователя
 export const setIsPasswordSimple = (isPasswordSimple) => ({type: SET_IS_PASSWORD_SIMPLE, isPasswordSimple})
 export const setPasswordConditions = () => ({type: SET_PASSWORD_CONDITIONS}) //Обнуление условий смены пароля при закрытии страницы изменения пароля
 export const setIsCurrentPasswordWrong = () => ({type: SET_IS_CURRENT_PASSWORD_WRONG}) //Текущий пароль неправильный
@@ -126,16 +139,19 @@ export const setIsEmailExists = (isEmailExists) => ({type: SET_IS_EMAIL_EXISTS, 
 export const setIsEmailTaken = (isEmailTaken) => ({type: SET_IS_EMAIL_TAKEN, isEmailTaken}) //Email занят или нет
 
 
-export const account = () => { //Проверка пользователя
+export const getStatus = () => { //Проверка пользователя
     return (dispatch) => {
-        authAPI.account()
+        authAPI.getStatus()
             .then(response => response.json()
                 .then(result => {
                     console.log('account', result)
                     dispatch(setInitialized())
-                    if(result.id) {
-                        dispatch(setUserData(result))
+                    dispatch(setUserStatus(result))
+                    if(result.is_service_super_admin || result.is_museum_super_admin || result.is_museum_admin || result.is_museum_cashier) {
                         dispatch(setAuth(true))
+                    }
+                    else {
+                        dispatch(setAuth(false))
                     }
                 }))
     }
@@ -164,8 +180,8 @@ export const login = (username, password) => { //Логин
                         localStorage.setItem('accessToken', result.access)
 
                         // dispatch(account()) //Получение данных пользователя после логина
-
-                        dispatch(setAuth(true)) //Авторизован ли пользователь
+                        dispatch(getStatus())
+                        // dispatch(setAuth(true)) //Авторизован ли пользователь
                         dispatch(setLoginWrong(false)) //Если до этого вводили неправильные данные
                     }
                     else if(result.detail === "No active account found with the given credentials") {

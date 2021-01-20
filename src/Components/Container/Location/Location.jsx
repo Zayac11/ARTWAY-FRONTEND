@@ -12,7 +12,7 @@ const Location = (props) => {
             {
                 !props.isChanging ?
                     <>
-                        <button onClick={() => props.toggleIsChanging(true)}>Изменить</button>
+                        <button onClick={() => props.toggleIsChanging(true)}>Изменить или удалить</button>
                         <h2 className={s.title}>{props.name}</h2>
                         <img src={props.main_img} alt="location"/>
                         <div className={s.description}>{props.description}</div>
