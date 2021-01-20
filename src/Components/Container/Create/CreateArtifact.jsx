@@ -5,8 +5,8 @@ import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import {Redirect, withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {CommonCreateLogic} from "../../../hoc/CommonCreateLogic";
-import {createArtifact} from "../../../redux/artifact-reducer";
 import {WithAdminRedirect} from "../../../hoc/Redirect/WithAdminRedirect";
+import {createArtifact} from "../../../redux/artifact-reducer";
 
 class CreateArtifact extends React.Component {
 
@@ -32,24 +32,31 @@ class CreateArtifact extends React.Component {
     }
 
     checkAudio() {
-        if(/audio/.test(this.props.audio.type)) { //Если нет ошибки в формате файла
+        let vid = /^(ftp|http|https):\/\/[^ "]+$/
+
+        //Если загруженный файл является аудио и видео - ссылка или не заполнено
+        if(/audio/.test(this.props.audio.type) && (vid.test(this.props.video) || this.props.video === '')) {
             this.props.toggleIsChanging(false)
             this.createArtifact()
             this.setState({
                 isCreate: true
             })
         }
-        else if(this.props.audio === '') {
-            this.props.setValidation('isAudioTypeWrong', true) //Ошибка в формате файла аудио
+        else if(this.props.audio === '') { //Если аудио не загрузили
+            this.props.setValidation('isAudioTypeWrong', true)
+            this.props.changeCreate(false)
+        }
+        else if(!vid.test(this.props.video)) { //Если видео не является ссылкой
+            this.props.setValidation('isVideoUrlWrong', true)
             this.props.changeCreate(false)
         }
         else { //Если файл загружен, но он не аудио
-            this.props.setValidation('isAudioTypeWrong', true) //Ошибка в формате файла аудио
+            this.props.setValidation('isAudioTypeWrong', true)
             this.props.changeCreate(false)
         }
     }
     createArtifact() {
-        this.props.createArtifact(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.name, this.props.img, this.props.description, this.props.audio)
+        this.props.createArtifact(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.name, this.props.img, this.props.description, this.props.audio, this.props.video)
     }
 
     render() {

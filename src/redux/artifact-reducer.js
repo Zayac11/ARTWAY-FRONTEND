@@ -23,7 +23,6 @@ const artifactReducer = (state = initialState, action) => {
 export const setArtifactData = (artifactData) => ({type: SET_ARTIFACT_DATA, artifactData})
 
 //Артефакт
-
 export const getArtifactData = (location_id, hall_id, artifact_id) => { //Получение информации об артефакте по id локации, зала и артефакта
     return (dispatch) => {
         museumApi.getArtifactData(location_id, hall_id, artifact_id)
@@ -35,9 +34,9 @@ export const getArtifactData = (location_id, hall_id, artifact_id) => { //Пол
     }
 }
 
-export const updateArtifactData = (location_id, hall_id, artifact_id,name, img, description, audio) => { //Обновлении информации об артефакте по id локации, зала и артефакта
+export const updateArtifactData = (location_id, hall_id, artifact_id,name, img, description, audio, video) => { //Обновлении информации об артефакте по id локации, зала и артефакта
     return (dispatch) => {
-        museumApi.updateArtifactData(location_id, hall_id, artifact_id,name, img, description, audio)
+        museumApi.updateArtifactData(location_id, hall_id, artifact_id,name, img, description, audio, video)
             .then(response => response.json()
                 .then(result => {
                     console.log('updateArtifactData', result)
@@ -46,9 +45,9 @@ export const updateArtifactData = (location_id, hall_id, artifact_id,name, img, 
     }
 }
 
-export const createArtifact = (location_id, hall_id, name, img, description, audio) => { //Добавление артефакта в зал по id локации и зала
+export const createArtifact = (location_id, hall_id, name, img, description, audio, video) => { //Добавление артефакта в зал по id локации и зала
     return (dispatch) => {
-        museumApi.createArtifact(location_id, hall_id, name, img, description, audio)
+        museumApi.createArtifact(location_id, hall_id, name, img, description, audio, video)
             .then(response => response.json()
                 .then(result => {
                     console.log('createArtifact', result)

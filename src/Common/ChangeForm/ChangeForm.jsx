@@ -4,7 +4,6 @@ import Input from "../Input/Input";
 import Textarea from "../Textarea/Textarea";
 
 const ChangeForm = (props) => {
-
     return (
         <>
             <button onClick={props.handleSubmit}>Сохранить</button>
@@ -22,7 +21,10 @@ const ChangeForm = (props) => {
             <Input text={'Фотография'} type={'file'} name={'img'} handleFocus={props.handleChangeInputs} handleChange={props.handleChangeFile} />
             {
                 props.isItemArtifact &&
-                <Input text={'Аудиофайл'} type={'file'} name={'audio'} handleFocus={props.handleChangeInputs} handleChange={props.handleChangeFile} />
+                    <>
+                        <Input text={'Аудиофайл'} type={'file'} name={'audio'} handleFocus={props.handleChangeInputs} handleChange={props.handleChangeFile} />
+                        <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.video} name={'video'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                    </>
             }
             {
                 props.isPhotoTypeWrong &&
@@ -34,6 +36,12 @@ const ChangeForm = (props) => {
                 props.isAudioTypeWrong &&
                 <div className='form__wrong'>
                     Пожалуйста, добавьте аудио
+                </div>
+            }
+            {
+                props.isVideoUrlWrong &&
+                <div className='form__wrong'>
+                    Пожалуйста, добавьте корректную ссылку на видео
                 </div>
             }
         </>

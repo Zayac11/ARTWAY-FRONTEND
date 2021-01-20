@@ -10,18 +10,7 @@ const Artifact = (props) => {
             <h1>Артефакт</h1>
             {
                 (props.isChanging) ?
-                    <ChangeForm handleSubmit={props.handleSubmit}
-                                handleFindKey={props.handleFindKey}
-                                handleFocus={props.handleChangeInputs}
-                                handleChange={props.handleChange}
-                                isEmptyInputs={props.isEmptyInputs}
-                                img={props.img}
-                                audio={props.audio}
-                                isAudioTypeWrong={props.isAudioTypeWrong}
-                                isPhotoTypeWrong={props.isPhotoTypeWrong}
-                                handleChangeFile={props.handleChangeFile}
-                                description={props.description}
-                                name={props.name}
+                    <ChangeForm {...props}
                                 isItemArtifact={true} //Является ли создаваемы объект артефактом
                     />
                     :
@@ -65,12 +54,23 @@ const Artifact = (props) => {
                                 {props.description}
                             </div>
                         </div>
+                        {
+                            props.video !== '' &&
+                                <div>
+                                    <div className={s.title}>
+                                        Видео
+                                    </div>
+                                    <div>
+                                        <a href={props.video} target={'_blank'} rel="noreferrer noopener">Открыть</a>
+                                    </div>
+                                </div>
+                        }
                     </div>
                 </div>
             </div>
         </>
 
-);
+    );
 }
 
 export default Artifact;

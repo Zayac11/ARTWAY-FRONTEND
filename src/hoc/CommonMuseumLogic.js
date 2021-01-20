@@ -19,12 +19,14 @@ export const CommonMuseumLogic = (Component) => {
                 description: "",
                 img: "",
                 audio: "",
+                video: "",
                 main_audio: null,
                 main_img: null,
                 isChanging: false, //Меняется ли информация
                 isEmptyInputs: false, //Если ли пустые поля
                 isPhotoTypeWrong: false, //Если файл не является картинкой
                 isAudioTypeWrong: false, //Если файл не является аудио
+                isVideoUrlWrong: false, //Если видео не является ссылкой
             }
 
             this.handleChange = this.handleChange.bind(this)
@@ -58,6 +60,7 @@ export const CommonMuseumLogic = (Component) => {
                 isChanging: isChanging,
                 isPhotoTypeWrong: false,
                 isAudioTypeWrong: false,
+                isVideoUrlWrong: false,
             })
         }
 
@@ -87,13 +90,14 @@ export const CommonMuseumLogic = (Component) => {
             })
         }
 
-        updateState(id, name, description, main_img, audio) {
+        updateState(id, name, description, main_img, audio, video) {
             this.setState({
                 name:name,
                 description: description,
                 id: id,
                 main_img: main_img,
                 main_audio: audio,
+                video: video,
             })
         }
 
@@ -110,12 +114,14 @@ export const CommonMuseumLogic = (Component) => {
                            handleChangeFile={this.handleChangeFile}
                            isPhotoTypeWrong={this.state.isPhotoTypeWrong}
                            isAudioTypeWrong={this.state.isAudioTypeWrong}
+                           isVideoUrlWrong={this.state.isVideoUrlWrong}
                            isChanging={this.state.isChanging}
                            isEmptyInputs={this.state.isEmptyInputs}
                            name={this.state.name}
                            description={this.state.description}
                            img={this.state.img}
                            audio={this.state.audio}
+                           video={this.state.video}
                            main_audio={this.state.main_audio}
                            main_img={this.state.main_img}
                 />

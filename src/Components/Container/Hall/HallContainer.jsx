@@ -40,7 +40,7 @@ class HallContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.hallData !== this.props.hallData) {
-            this.props.updateState(this.props.match.params.location_id, this.props.hallData.name, this.props.hallData.description, this.props.hallData.img, '')
+            this.props.updateState(this.props.match.params.location_id, this.props.hallData.name, this.props.hallData.description, this.props.hallData.img, '', '')
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.updateHall()

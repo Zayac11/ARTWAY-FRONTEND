@@ -28,15 +28,20 @@ class ArtifactContainer extends React.Component {
     }
 
     checkAudio() {
-        if(/audio/.test(this.props.audio.type)) { //Если нет ошибки в формате файла
+        let vid = /^(ftp|http|https):\/\/[^ "]+$/
+        if(/audio/.test(this.props.audio.type) && (vid.test(this.props.video) || this.props.video === '')) { //Если нет ошибки в формате файла и видео - корректная ссылка или пустая строка
             this.updateArtifact()
         }
         else if(this.props.audio === '') { //Если аудио не заполнено, то присваивается старая ссылка
             this.props.setAudio(this.props.main_audio)
             this.updateArtifact()
         }
+        else if(!vid.test(this.props.video)) { //Если аудио не заполнено, то присваивается старая ссылка
+            this.props.changeCreate(false)
+            this.props.toggleIsChanging(true)
+            this.props.setValidation('isVideoUrlWrong', true)
+        }
         else { //Если файл загружен, но он не аудио
-
             this.props.changeCreate(false)
             this.props.toggleIsChanging(true)
             this.props.setValidation('isAudioTypeWrong', true)
@@ -44,8 +49,7 @@ class ArtifactContainer extends React.Component {
     }
 
     updateArtifact() {
-
-        this.props.updateArtifactData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id,this.props.name, this.props.img, this.props.description, this.props.audio)
+        this.props.updateArtifactData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id,this.props.name, this.props.img, this.props.description, this.props.audio, this.props.video)
         this.props.setImage('') //Зануляем картинку
         this.props.setAudio('') //Зануляем аудиофайл
         this.props.changeCreate(false) //Больше не изменяем
@@ -57,7 +61,7 @@ class ArtifactContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.artifactData !== this.props.artifactData) {
-            this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, this.props.artifactData.img, this.props.artifactData.audio)
+            this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, this.props.artifactData.img, this.props.artifactData.audio, this.props.artifactData.video)
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.checkAudio()
