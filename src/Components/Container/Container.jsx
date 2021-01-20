@@ -70,5 +70,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-
 export default connect(mapStateToProps,{})(Container);

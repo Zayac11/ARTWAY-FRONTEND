@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
 import MuseumsList from "./MuseumsList";
-import {Redirect} from "react-router-dom";
 import {getMuseums} from "../../../redux/serviceAdmin-reducer";
 import {compose} from "redux";
 import {WithServiceAdminRedirect} from "../../../hoc/Redirect/WithServiceAdminRedirect";
@@ -13,10 +12,6 @@ class MuseumsListContainer extends React.Component {
     }
 
     render() {
-
-        if(!this.props.isLogin && !this.props.isUserServiceAdmin) {
-            return <Redirect to={'/'} />
-        }
 
         return (
             <MuseumsList museums={this.props.museums} />

@@ -14,10 +14,6 @@ class ManagementContainer extends React.Component {
 
     render() {
 
-        if(!this.props.is_museum_super_adminTest) {
-            return <Redirect to={'/'} />
-        }
-
         return (
             <Management museum_super_admin={this.props.museum_super_admin}
                         museum_admins={this.props.museum_admins}

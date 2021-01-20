@@ -20,7 +20,6 @@ class App extends React.Component {
         if(!this.props.isInitialized) {
             return <Preloader />
         }
-
         return (
             <Switch>
                 {/*Route Login or Initializing*/}

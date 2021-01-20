@@ -145,7 +145,6 @@ export const getStatus = () => { //Проверка пользователя
             .then(response => response.json()
                 .then(result => {
                     console.log('account', result)
-                    dispatch(setInitialized())
                     dispatch(setUserStatus(result))
                     if(result.is_service_super_admin || result.is_museum_super_admin || result.is_museum_admin || result.is_museum_cashier) {
                         dispatch(setAuth(true))
@@ -153,6 +152,7 @@ export const getStatus = () => { //Проверка пользователя
                     else {
                         dispatch(setAuth(false))
                     }
+                    dispatch(setInitialized())
                 }))
     }
 }
