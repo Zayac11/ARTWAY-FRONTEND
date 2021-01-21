@@ -204,7 +204,11 @@ export const museumApi = {
             redirect: 'follow',
         }
         return fetch(baseUrl + `api/m-admin/print`, requestOptions)
-    }
+    },
+    relocateArtifact(hall_id, artifact_id) {
+        let options = getOptions([{name: 'artifact_pk', value: artifact_id},{name: 'hall_pk', value: hall_id}], true,  'POST')
+        return fetch(baseUrl + `api/relocate_artifact`, options)
+    },
 
 }
 

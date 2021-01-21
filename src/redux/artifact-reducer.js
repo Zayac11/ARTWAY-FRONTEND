@@ -1,5 +1,6 @@
 import {museumApi} from "../api/api";
 import {setHallData} from "./hall-reducer";
+import {setHalls} from "./location-reducer";
 
 const SET_ARTIFACT_DATA = 'SET_ARTIFACT_DATA'
 
@@ -66,6 +67,19 @@ export const deleteArtifact = (location_id, hall_id, artifact_id) => { //Уда�
                 }))
     }
 }
+
+export const relocateArtifact = (hall_id, artifact_id) => { //Перемещение артефакта в другой зал
+    return (dispatch) => {
+        museumApi.relocateArtifact(hall_id, artifact_id)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('relocateArtifact', result)
+                    dispatch(setHallData(result.hall, result.artifacts))
+                }))
+    }
+}
+
+
 
 
 export default artifactReducer

@@ -60,6 +60,11 @@ const Hall = (props) => {
                                     </button>)
                             }
 
+                            {
+                                props.isUserMuseumAdmin &&
+                                    <NavLink to={`/m-admin/relocate/${props.location_id}/${props.hall_id}/${l.id}`}>Переместить артефакт</NavLink>
+                            }
+
                         </div>
                     )
                 })

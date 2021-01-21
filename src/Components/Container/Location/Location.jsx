@@ -50,6 +50,12 @@ const Location = (props) => {
                                     ? <NavLink to={`/m-admin/${props.location_id}/${l.id}`}>Перейти</NavLink>
                                     : <NavLink to={`/halls/${l.id}/artifacts`}>Перейти к карте артефактов</NavLink>
                             }
+                            {
+                                props.isRelocate &&
+                                <div>
+                                    <button onClick={() => props.selectHall(l.id)}>Выбрать зал для перемещения артефакта</button>
+                                </div>
+                            }
                         </div>
                     )
                 })

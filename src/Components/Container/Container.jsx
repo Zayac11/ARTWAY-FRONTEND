@@ -20,6 +20,7 @@ import {initializingToken, setToken} from "../../redux/user-reducer";
 import {compose} from "redux";
 import Preloader from "../../Common/Preloader/Preloader";
 import PrintListContainer from "./PrintList/PrintListContainer";
+import RelocateContainer from "./Relocate/RelocateContainer";
 
 class Container extends React.Component {
 
@@ -74,6 +75,7 @@ class Container extends React.Component {
                     <Route exact path='/m-admin/:location_id/:hall_id' render={ () => <HallContainer />} />
                     <Route exact path='/m-admin/:location_id/:hall_id/create_artifacts' render={ () => <CreateArtifact />} />
                     <Route exact path='/m-admin/:location_id/:hall_id/:artifact_id' render={ () => <ArtifactContainer />} />
+                    <Route exact path='/m-admin/relocate/:location_id/:hall_id/:artifact_id' render={ () => <RelocateContainer />} />
 
                     {/*Администратор сервиса*/}
                     <Route exact path='/s-admin' render={ () => <MuseumsListContainer />} /> {/*Лист музеев*/}

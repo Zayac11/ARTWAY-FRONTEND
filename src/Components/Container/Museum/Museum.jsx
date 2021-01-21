@@ -55,7 +55,12 @@ const Museum = (props) => {
                                 ? <NavLink to={`/m-admin/${l.id}`}>Перейти</NavLink>
                                 : <NavLink to={`/locations/${l.id}/halls`}>Перейти к карте локаций</NavLink>
                             }
-
+                            {
+                                props.isRelocate &&
+                                    <div>
+                                        <button onClick={() => props.selectLocation(l.id)}>Выбрать локацию для перемещения</button>
+                                    </div>
+                            }
 
                         </div>
                     )

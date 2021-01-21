@@ -13,6 +13,7 @@ const Artifact = (props) => {
                 props.isUserMuseumAdmin && <NavLink to={'/m-admin/print'}>Артефакты для печати</NavLink>
             }
             {
+                props.isUserMuseumAdmin &&(
                 (props.isChanging) ?
                     <ChangeForm {...props}
                                 isItemArtifact={true} //Является ли создаваемы объект артефактом
@@ -20,7 +21,7 @@ const Artifact = (props) => {
                     :
                     <>
                         <button onClick={() => props.toggleIsChanging(true)}>Изменить или удалить</button>
-                    </>
+                    </>)
             }
 
             {
