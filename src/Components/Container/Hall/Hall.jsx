@@ -5,6 +5,7 @@ import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
 import {NavLink} from "react-router-dom";
 
 const Hall = (props) => {
+    debugger
     return (
         <div className={s.museum}>
             <h1>Зал</h1>
@@ -45,6 +46,18 @@ const Hall = (props) => {
                         <div className={s.locationContainer} key={l.id}>
                             <MuseumItemsList prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} locations={props.halls} swapLocations={props.swapArtifacts} />
                             <NavLink to={`/m-admin/${props.location_id}/${props.hall_id}/${l.id}`}>Перейти</NavLink>
+                            { //Находится ли данный товар в корзине
+                                props.print.some(item => item.id === l.id) ?
+                                    <button className={s.inCart} onClick={() => props.deleteOneArtifact(l.id)}>
+                                        Удалить из печати
+                                    </button>
+
+                                    :   <button className={s.noCart} onClick={() => props.addArtifactToPrint(l)}
+                                    >
+                                        Добавить к печати
+                                    </button>
+                            }
+                            {/*<button onClick={() => props.addArtifactToPrint(l)}>добавить к печати</button>*/}
                         </div>
                     )
                 })

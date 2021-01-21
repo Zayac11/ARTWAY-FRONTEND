@@ -3,7 +3,7 @@ import s from './MuseumItemsList.module.css'
 
 const MuseumItemsList = (props) => {
     return (
-        <div key={props.id} className={s.location}>
+        <div className={s.location}>
             <div className={s.title}>
                 {props.name}
             </div>

@@ -5,7 +5,7 @@ const debug = true
 //true for localhost
 //false for prod.
 
-let baseUrl = ""
+let baseUrl = process.env.BASE_URL
 
 if (debug) {
     baseUrl = 'http://127.0.0.1:8000/'
@@ -177,6 +177,22 @@ export const museumApi = {
         let options = getOptions([{name: 'swap_type', value: swap_type},{name: 'obj_id', value: obj_id}], true,  'POST')
         return fetch(baseUrl + `api/swap_artifacts`, options)
     },
+
+    printArtifactsCards(artifacts) {
+        const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
+        let myHeaders = new Headers();
+
+        myHeaders.append("Authorization", accessToken);
+        myHeaders.append("Content-Type", "application/json");
+        let raw = JSON.stringify({ "artifacts": artifacts});
+        let requestOptions = {
+            method: "POST",
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow',
+        }
+        return fetch(baseUrl + `api/new_order`, requestOptions)
+    }
 
 }
 

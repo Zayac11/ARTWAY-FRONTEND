@@ -23,6 +23,9 @@ import Preloader from "../../Common/Preloader/Preloader";
 class Container extends React.Component {
 
     componentDidMount() {
+        console.log(process.env.BASE_URL);
+        debugger
+        let baseUrl = process.env.BASE_URL
         const url = new URLSearchParams(this.props.location.search)
         let localToken = localStorage.getItem('token')
         let token = url.get('token');

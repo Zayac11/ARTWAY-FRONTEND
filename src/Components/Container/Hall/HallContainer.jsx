@@ -6,6 +6,7 @@ import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import Hall from "./Hall";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
 import {deleteHall, getHallData, swapArtifacts, updateHallData} from "../../../redux/hall-reducer";
+import {addArtifactToPrint, deleteOneArtifact, removeArtifactsToPrint} from "../../../redux/museum-reducer";
 
 class HallContainer extends React.Component {
 
@@ -61,23 +62,9 @@ class HallContainer extends React.Component {
         }
 
         return (
-            <Hall handleChangeInputs={this.props.handleChangeInputs}
-                  handleSubmit={this.props.handleSubmit}
+            <Hall {...this.props}
                   deleteHall={this.deleteHall}
                   swapArtifacts={this.swapArtifacts}
-                  toggleIsChanging={this.props.toggleIsChanging}
-                  handleChange={this.props.handleChange}
-                  handleChangeFile={this.props.handleChangeFile}
-                  isPhotoTypeWrong={this.props.isPhotoTypeWrong}
-                  isChanging={this.props.isChanging}
-                  isEmptyInputs={this.props.isEmptyInputs}
-                  name={this.props.name}
-                  description={this.props.description}
-                  img={this.props.img}
-                  main_img={this.props.main_img}
-                  location_id={this.props.match.params.location_id}
-                  hall_id={this.props.match.params.hall_id}
-                  artifacts={this.props.artifacts}
             />
 
         );
@@ -89,11 +76,12 @@ let mapStateToProps = (state) => {
         artifacts: state.hall.artifacts,
         hallData: state.hall.hallData,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
+        print: state.museum.print,
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {getHallData, updateHallData, deleteHall, swapArtifacts}),
+    connect(mapStateToProps, {getHallData, updateHallData, deleteHall, swapArtifacts, addArtifactToPrint, deleteOneArtifact}),
     withRouter,
     CommonMuseumLogic,
     CommonUpdateLogic,
