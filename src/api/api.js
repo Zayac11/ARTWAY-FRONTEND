@@ -178,13 +178,13 @@ export const museumApi = {
         return fetch(baseUrl + `api/swap_artifacts`, options)
     },
 
-    printArtifactsCards(artifacts) {
+    printArtifactsCards(artifacts, size) {
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
         let myHeaders = new Headers();
 
         myHeaders.append("Authorization", accessToken);
         myHeaders.append("Content-Type", "application/json");
-        let raw = JSON.stringify({ "artifacts": artifacts});
+        let raw = JSON.stringify({ "artifacts": artifacts, "print_type": size});
         let requestOptions = {
             method: "POST",
             headers: myHeaders,

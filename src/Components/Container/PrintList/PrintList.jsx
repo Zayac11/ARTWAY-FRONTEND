@@ -9,7 +9,9 @@ const PrintList = (props) => {
                 props.print.length > 0
                 &&
                     <>
-                        <button onClick={() => props.printArtifacts(props.print)}>Печать</button>
+                        <button onClick={() => props.printArtifacts(props.print, 'large')}>Печать большой</button>
+                        <button onClick={() => props.printArtifacts(props.print, 'medium')}>Печать средний</button>
+                        <button onClick={() => props.printArtifacts(props.print, 'tiny')}>Печать маленький</button>
                         <button onClick={() => props.removeArtifactsToPrint()}>Удалить всё</button>
                     </>
 

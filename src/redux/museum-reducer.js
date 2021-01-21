@@ -92,12 +92,12 @@ export const swapLocations = (swap_type, id) => { //Изменение пози�
     }
 }
 
-export const printArtifacts = (artifacts) => { //Отправить артефакты на печать
+export const printArtifacts = (artifacts, size) => { //Отправить артефакты на печать
     return (dispatch) => {
         let artifacts_ids = artifacts.map(c => {
             return c.id
         })
-        museumApi.printArtifactsCards(artifacts_ids)
+        museumApi.printArtifactsCards(artifacts_ids, size)
             .then(response => response.json()
                 .then(result => {
                     console.log('printArtifactsCards', result)
