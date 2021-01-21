@@ -63,6 +63,8 @@ class HallContainer extends React.Component {
 
         return (
             <Hall {...this.props}
+                  location_id={this.props.match.params.location_id}
+                  hall_id={this.props.match.params.hall_id}
                   deleteHall={this.deleteHall}
                   swapArtifacts={this.swapArtifacts}
             />

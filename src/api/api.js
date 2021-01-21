@@ -5,7 +5,7 @@ const debug = true
 //true for localhost
 //false for prod.
 
-let baseUrl = process.env.BASE_URL
+let baseUrl = ''
 
 if (debug) {
     baseUrl = 'http://127.0.0.1:8000/'
@@ -191,7 +191,7 @@ export const museumApi = {
             body: raw,
             redirect: 'follow',
         }
-        return fetch(baseUrl + `api/new_order`, requestOptions)
+        return fetch(baseUrl + `api/m-admin/print`, requestOptions)
     }
 
 }

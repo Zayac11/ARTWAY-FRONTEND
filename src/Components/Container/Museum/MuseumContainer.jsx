@@ -59,20 +59,9 @@ class MuseumContainer extends React.Component {
         // }
 
         return (
-            <Museum handleChangeInputs={this.props.handleChangeInputs}
-                    handleSubmit={this.props.handleSubmit}
+            <Museum {...this.props}
                     swapLocations={this.swapLocations}
-                    toggleIsChanging={this.props.toggleIsChanging}
-                    handleChange={this.props.handleChange}
-                    handleChangeFile={this.props.handleChangeFile}
-                    isPhotoTypeWrong={this.props.isPhotoTypeWrong}
-                    isChanging={this.props.isChanging}
-                    isEmptyInputs={this.props.isEmptyInputs}
-                    name={this.props.name}
-                    description={this.props.description}
-                    img={this.props.img}
-                    main_img={this.props.main_img}
-                    locations={this.props.locations}
+
             />
         );
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Audio.module.css'
 import H5AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
-import 'react-h5-audio-player/lib/styles.css';
+import './Audio.css'
 
 const Audio = (props) => {
 

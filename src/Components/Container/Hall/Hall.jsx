@@ -5,10 +5,12 @@ import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
 import {NavLink} from "react-router-dom";
 
 const Hall = (props) => {
-    debugger
     return (
         <div className={s.museum}>
             <h1>Зал</h1>
+            {
+                props.isUserMuseumAdmin && <NavLink to={'/m-admin/print'}>Артефакты для печати</NavLink>
+            }
             {
                 !props.isChanging ?
                     <>
@@ -18,16 +20,7 @@ const Hall = (props) => {
                         <div className={s.description}>{props.description}</div>
                     </>
                     :
-                    <ChangeForm handleSubmit={props.handleSubmit}
-                                handleFindKey={props.handleFindKey}
-                                handleFocus={props.handleChangeInputs}
-                                handleChange={props.handleChange}
-                                isEmptyInputs={props.isEmptyInputs}
-                                isPhotoTypeWrong={props.isPhotoTypeWrong}
-                                handleChangeFile={props.handleChangeFile}
-                                description={props.description}
-                                name={props.name}
-                    />
+                        <ChangeForm {...props} />
             }
             {
                 props.isChanging &&

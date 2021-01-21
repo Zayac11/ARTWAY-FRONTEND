@@ -9,6 +9,10 @@ const Museum = (props) => {
         <div className={s.museum}>
             <h1>Музей</h1>
             {
+                props.isUserMuseumAdmin && <NavLink to={'/m-admin/print'}>Артефакты для печати</NavLink>
+            }
+
+            {
                 !props.isChanging ?
                     <>
                         <button onClick={() => props.toggleIsChanging(true)}>Изменить</button>
@@ -18,16 +22,7 @@ const Museum = (props) => {
                     </>
                     :
                     <>
-                        <ChangeForm handleSubmit={props.handleSubmit}
-                                    handleFindKey={props.handleFindKey}
-                                    handleFocus={props.handleChangeInputs}
-                                    handleChange={props.handleChange}
-                                    isEmptyInputs={props.isEmptyInputs}
-                                    isPhotoTypeWrong={props.isPhotoTypeWrong}
-                                    handleChangeFile={props.handleChangeFile}
-                                    description={props.description}
-                                    name={props.name}
-                        />
+                        <ChangeForm {...props} />
                     </>
 
             }

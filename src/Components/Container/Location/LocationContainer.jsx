@@ -60,21 +60,9 @@ class LocationContainer extends React.Component {
         }
 
         return (
-            <Location handleChangeInputs={this.props.handleChangeInputs}
-                      handleSubmit={this.props.handleSubmit}
+            <Location {...this.props}
                       deleteLocation={this.deleteLocation}
                       swapHalls={this.swapHalls}
-                      toggleIsChanging={this.props.toggleIsChanging}
-                      handleChange={this.props.handleChange}
-                      handleChangeFile={this.props.handleChangeFile}
-                      isPhotoTypeWrong={this.props.isPhotoTypeWrong}
-                      isChanging={this.props.isChanging}
-                      isEmptyInputs={this.props.isEmptyInputs}
-                      name={this.props.name}
-                      description={this.props.description}
-                      img={this.props.img}
-                      main_img={this.props.main_img}
-                      halls={this.props.halls}
                       location_id={this.props.match.params.location_id}
             />
 

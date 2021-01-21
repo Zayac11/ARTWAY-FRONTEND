@@ -3,11 +3,15 @@ import s from './Artifact.module.css'
 import prev from './../../../assets/images/next.svg'
 import Audio from "../../../Common/Audio/Audio";
 import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
+import {NavLink} from "react-router-dom";
 
 const Artifact = (props) => {
     return (
         <>
             <h1>Артефакт</h1>
+            {
+                props.isUserMuseumAdmin && <NavLink to={'/m-admin/print'}>Артефакты для печати</NavLink>
+            }
             {
                 (props.isChanging) ?
                     <ChangeForm {...props}

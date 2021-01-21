@@ -1,10 +1,16 @@
 .container {
+    padding: 20px 0;
     max-width: 650px;
     margin: 0 auto;
+
 }
 
 .printItem {
     margin-top: 20px;
     border: 1px solid black;
     padding: 10px;
+}
+
+.img {
+    max-width: 200px;
 }

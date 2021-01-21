@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from "react-redux";
 import PrintList from "./PrintList";
-import {removeArtifactsToPrint} from "../../../redux/museum-reducer";
+import {deleteOneArtifact, printArtifacts, removeArtifactsToPrint} from "../../../redux/museum-reducer";
+import {compose} from "redux";
+import {WithAdminRedirect} from "../../../hoc/Redirect/WithAdminRedirect";
 
 
 class PrintListContainer extends React.Component {
@@ -20,8 +22,13 @@ class PrintListContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        print: state.museum.print
+        print: state.museum.print,
+        pdf: state.museum.pdf,
     }
 }
 
-export default connect(mapStateToProps,{removeArtifactsToPrint})(PrintListContainer);
+
+export default compose(
+    connect(mapStateToProps, {removeArtifactsToPrint, deleteOneArtifact, printArtifacts}),
+    WithAdminRedirect,
+)(PrintListContainer)

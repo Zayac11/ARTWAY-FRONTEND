@@ -4,11 +4,13 @@ const SET_MUSEUM_DATA = 'SET_MUSEUM_DATA'
 const ADD_ARTIFACT_TO_PRINT = 'ADD_ARTIFACT_TO_PRINT'
 const REMOVE_ALL_ARTIFACTS = 'REMOVE_ALL_ARTIFACTS'
 const DELETE_ARTIFACT = 'DELETE_ARTIFACT'
+const SET_PDF_TO_PRINT = 'SET_PDF_TO_PRINT'
 
 let initialState = {
     museumData: {}, //Информация по музею
     locations: [], //Лист локации музея
     print: [], //Артефакты, которые необходимо распечатать
+    pdf: '', //Сгенерированный pdf файл с qr-кодами артефактов
     is_museum_super_admin: false, //Является ли пользователь супер-админом музея
     is_museum_super_adminTest: true, //Является ли пользователь супер-админом музея
 }
@@ -32,6 +34,11 @@ const museumReducer = (state = initialState, action) => {
                 ...state,
                 print: []
             }
+        case SET_PDF_TO_PRINT:
+            return {
+                ...state,
+                pdf: action.pdf
+            }
         case DELETE_ARTIFACT:
             return {
                 ...state,
@@ -47,9 +54,10 @@ const museumReducer = (state = initialState, action) => {
 }
 
 export const setMuseumData = (museum, locations, is_museum_super_admin) => ({type: SET_MUSEUM_DATA, museum, locations, is_museum_super_admin})
-export const addArtifactToPrint = (artifact) => ({type: ADD_ARTIFACT_TO_PRINT, artifact})
-export const removeArtifactsToPrint = () => ({type: REMOVE_ALL_ARTIFACTS})
-export const deleteOneArtifact = (id) => ({type: DELETE_ARTIFACT, id})
+export const addArtifactToPrint = (artifact) => ({type: ADD_ARTIFACT_TO_PRINT, artifact}) //Добавить артефакт для принта
+export const removeArtifactsToPrint = () => ({type: REMOVE_ALL_ARTIFACTS}) //Удалить все артефакты из принта
+export const deleteOneArtifact = (id) => ({type: DELETE_ARTIFACT, id}) //Удалить только один артефакт
+export const setPdfToPrint = (pdf) => ({type: SET_PDF_TO_PRINT, pdf}) //Установить ссылку на пдф для печати qr-кодов артифактов
 
 //Музей
 export const getMuseumData = () => { //Получение информации о музее по пользователю
@@ -80,6 +88,20 @@ export const swapLocations = (swap_type, id) => { //Изменение пози�
                 .then(result => {
                     console.log('swapLocations', result)
                     dispatch(setMuseumData(result.museum, result.locations, result.is_museum_super_admin))
+                }))
+    }
+}
+
+export const printArtifacts = (artifacts) => { //Отправить артефакты на печать
+    return (dispatch) => {
+        let artifacts_ids = artifacts.map(c => {
+            return c.id
+        })
+        museumApi.printArtifactsCards(artifacts_ids)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('printArtifactsCards', result)
+                    dispatch(setPdfToPrint(result))
                 }))
     }
 }
