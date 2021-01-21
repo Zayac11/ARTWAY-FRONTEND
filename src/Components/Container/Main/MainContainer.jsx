@@ -4,13 +4,29 @@ import Main from "./Main";
 
 class MainContainer extends React.Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isTokenExists: false, //существует ли токен у пользователя
+        }
+    }
+
+
     componentDidMount() {
+        let localToken = localStorage.getItem('token')
+        if(localToken !== null) { //Если у пользователя есть сохраненный токен
+            this.setState({
+                isTokenExists: true
+            })
+        }
     }
 
     render() {
         return (
             <Main isUserServiceAdmin={this.props.isUserServiceAdmin} isUserMuseumSuperAdmin={this.props.isUserMuseumSuperAdmin}
                   isUserMuseumAdmin={this.props.isUserMuseumAdmin} isUserCashier={this.props.isUserCashier}
+                  isTokenExists={this.state.isTokenExists}
 
             />
 

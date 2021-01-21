@@ -65,6 +65,10 @@ const Main = (props) => {
                     <BlackButton link={`/cashier`} text='Кассир' />
                 }
 
+                {
+                    props.isTokenExists &&
+                    <BlackButton link={`/locations`} text='Карта музея' />
+                }
 
                 {/*<BlackButton link={`/artifacts`} text='Просмотреть экспонаты' />*/}
 

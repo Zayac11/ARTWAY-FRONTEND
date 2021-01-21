@@ -5,7 +5,13 @@ import {compose} from "redux";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import Hall from "./Hall";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
-import {deleteHall, getHallData, swapArtifacts, updateHallData} from "../../../redux/hall-reducer";
+import {
+    deleteHall,
+    getHallData,
+    getUserArtifactsList,
+    swapArtifacts,
+    updateHallData
+} from "../../../redux/hall-reducer";
 import {addArtifactToPrint, deleteOneArtifact, removeArtifactsToPrint} from "../../../redux/museum-reducer";
 
 class HallContainer extends React.Component {
@@ -49,7 +55,14 @@ class HallContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getHallData(this.props.match.params.location_id, this.props.match.params.hall_id)
+        if(this.props.isUserMuseumAdmin) { //Если пользватель - администратор
+            this.props.getHallData(this.props.match.params.location_id, this.props.match.params.hall_id)
+        }
+        else {
+            let token = localStorage.getItem('token') //Если у пользователя билет с токеном
+            this.props.getUserArtifactsList(token, this.props.match.params.hall_id)
+        }
+
     }
 
     render() {
@@ -83,7 +96,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {getHallData, updateHallData, deleteHall, swapArtifacts, addArtifactToPrint, deleteOneArtifact}),
+    connect(mapStateToProps, {getHallData, updateHallData, deleteHall, swapArtifacts, addArtifactToPrint, deleteOneArtifact, getUserArtifactsList}),
     withRouter,
     CommonMuseumLogic,
     CommonUpdateLogic,

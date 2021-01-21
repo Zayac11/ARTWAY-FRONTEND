@@ -58,6 +58,9 @@ class Container extends React.Component {
                     {/*Покупатель*/}
                     {/*<Route exact path='/artifacts/:id/Qr-code' render={ () => <QrCodeContainer /> } />*/}
                     <Route exact path='/artifacts/:artifact_id' render={ () => <ArtifactContainer />} />
+                    <Route exact path='/locations/' render={ () => <MuseumContainer />} /> {/*Список локация музея*/}
+                    <Route exact path='/locations/:location_id/halls' render={ () => <LocationContainer />} /> {/*Список залов конкретной локации*/}
+                    <Route exact path='/halls/:hall_id/artifacts' render={ () => <HallContainer/>} /> {/*Список артифактов конкретного зала*/}
                     {/*<Route exact path='/artifacts' render={ () => <ArtifactsListContainer />} />*/}
 
                     {/*Музей*/}

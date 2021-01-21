@@ -5,7 +5,13 @@ import Location from "./Location";
 import {compose} from "redux";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
-import {deleteLocation, getLocationData, swapHalls, updateLocationData} from "../../../redux/location-reducer";
+import {
+    deleteLocation,
+    getLocationData,
+    getUserHallsList,
+    swapHalls,
+    updateLocationData
+} from "../../../redux/location-reducer";
 
 class LocationContainer extends React.Component {
 
@@ -47,8 +53,14 @@ class LocationContainer extends React.Component {
     }
 
     componentDidMount() {
-        // if()
-        this.props.getLocationData(this.props.match.params.location_id)
+        if(this.props.isUserMuseumAdmin) { //Если пользватель - администратор
+            this.props.getLocationData(this.props.match.params.location_id)
+        }
+        else {
+            let token = localStorage.getItem('token') //Если у пользователя билет с токеном
+            this.props.getUserHallsList(token, this.props.match.params.location_id)
+        }
+
     }
 
     render() {
@@ -79,7 +91,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {getLocationData, updateLocationData, deleteLocation, swapHalls}),
+    connect(mapStateToProps, {getLocationData, updateLocationData, deleteLocation, swapHalls, getUserHallsList}),
     withRouter,
     CommonMuseumLogic,
     CommonUpdateLogic,

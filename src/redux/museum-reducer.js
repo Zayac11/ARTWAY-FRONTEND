@@ -5,6 +5,7 @@ const ADD_ARTIFACT_TO_PRINT = 'ADD_ARTIFACT_TO_PRINT'
 const REMOVE_ALL_ARTIFACTS = 'REMOVE_ALL_ARTIFACTS'
 const DELETE_ARTIFACT = 'DELETE_ARTIFACT'
 const SET_PDF_TO_PRINT = 'SET_PDF_TO_PRINT'
+const SET_LOCATIONS_LIST = 'SET_LOCATIONS_LIST'
 
 let initialState = {
     museumData: {}, //Информация по музею
@@ -39,6 +40,11 @@ const museumReducer = (state = initialState, action) => {
                 ...state,
                 pdf: action.pdf
             }
+        case SET_LOCATIONS_LIST:
+            return {
+                ...state,
+                locations: action.locations.locations
+            }
         case DELETE_ARTIFACT:
             return {
                 ...state,
@@ -57,7 +63,8 @@ export const setMuseumData = (museum, locations, is_museum_super_admin) => ({typ
 export const addArtifactToPrint = (artifact) => ({type: ADD_ARTIFACT_TO_PRINT, artifact}) //Добавить артефакт для принта
 export const removeArtifactsToPrint = () => ({type: REMOVE_ALL_ARTIFACTS}) //Удалить все артефакты из принта
 export const deleteOneArtifact = (id) => ({type: DELETE_ARTIFACT, id}) //Удалить только один артефакт
-export const setPdfToPrint = (pdf) => ({type: SET_PDF_TO_PRINT, pdf}) //Установить ссылку на пдф для печати qr-кодов артифактов
+export const setPdfToPrint = (pdf) => ({type: SET_PDF_TO_PRINT, pdf}) //Установить ссылку на пдф для печати qr-кодов артефактов
+export const setLocations = (locations) => ({type: SET_LOCATIONS_LIST, locations}) //Установить список локаций
 
 //Музей
 export const getMuseumData = () => { //Получение информации о музее по пользователю
@@ -102,6 +109,18 @@ export const printArtifacts = (artifacts, size) => { //Отправить арт
                 .then(result => {
                     console.log('printArtifactsCards', result)
                     dispatch(setPdfToPrint(result))
+                }))
+    }
+}
+
+export const getUsersLocationsList = (token) => { //Получения списка локаций музея по токену пользователя
+    return (dispatch) => {
+
+        museumApi.getUserLocationsList(token)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('getUserLocationsList', result)
+                    dispatch(setLocations(result))
                 }))
     }
 }

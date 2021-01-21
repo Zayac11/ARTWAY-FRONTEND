@@ -5,9 +5,7 @@ import {Redirect, withRouter} from "react-router-dom";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import {compose} from "redux";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
-import {getMuseumData, swapLocations, updateMuseumData} from "../../../redux/museum-reducer";
-import MuseumAdminContainer from "./MuseumAdmin/MuseumAdminContainer";
-import {WithServiceAdminRedirect} from "../../../hoc/Redirect/WithServiceAdminRedirect";
+import {getMuseumData, getUsersLocationsList, swapLocations, updateMuseumData} from "../../../redux/museum-reducer";
 
 class MuseumContainer extends React.Component {
 
@@ -38,7 +36,13 @@ class MuseumContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getMuseumData()
+        if(this.props.isUserMuseumAdmin) {
+            this.props.getMuseumData()
+        }
+        else {
+            let token = localStorage.getItem('token')
+            this.props.getUsersLocationsList(token)
+        }
     }
 
     render() {
@@ -52,6 +56,7 @@ class MuseumContainer extends React.Component {
         }
 
         // Если пользователь сервисный администратор
+
         // if(this.props.isUserServiceAdmin) {
         //     return (
         //         <MuseumAdminContainer museum_id={this.props.match.params.museum_id} />
@@ -72,14 +77,13 @@ let mapStateToProps = (state) => {
     return {
         museumData: state.museum.museumData,
         locations: state.museum.locations,
-        isLogin: state.auth.isLogin,
         isUserServiceAdmin: state.auth.isUserServiceAdmin,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {getMuseumData, updateMuseumData, swapLocations}),
+    connect(mapStateToProps, {getMuseumData, updateMuseumData, swapLocations, getUsersLocationsList}),
     withRouter,
     CommonMuseumLogic,
     CommonUpdateLogic,

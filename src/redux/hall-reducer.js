@@ -2,6 +2,7 @@ import {museumApi} from "../api/api";
 import {setLocationData} from "./location-reducer";
 
 const SET_HALL_DATA = 'SET_HALL_DATA'
+const SET_ARTIFACTS = 'SET_ARTIFACTS'
 
 let initialState = {
     hallData: {}, //Информация по залу
@@ -16,12 +17,18 @@ const hallReducer = (state = initialState, action) => {
                 hallData: action.hall,
                 artifacts: action.artifacts,
             }
+        case SET_ARTIFACTS:
+            return {
+                ...state,
+                artifacts: action.artifacts.artifacts,
+            }
         default:
             return state;
     }
 }
 
 export const setHallData = (hall, artifacts) => ({type: SET_HALL_DATA, hall, artifacts})
+export const setArtifacts = (artifacts) => ({type: SET_ARTIFACTS, artifacts})
 
 //Зал
 export const getHallData = (location_id, hall_id) => { //Получение информации о зале по id локации и зала
@@ -75,6 +82,17 @@ export const swapArtifacts = (swap_type, id) => { //Изменение пози�
                 .then(result => {
                     console.log('swapArtifacts', result)
                     dispatch(setHallData(result.hall, result.artifacts))
+                }))
+    }
+}
+
+export const getUserArtifactsList = (token, hall_id) => {
+    return (dispatch) => {
+        museumApi.getUserArtifactsList(token, hall_id)
+            .then(response => response.json()
+                .then(result => {
+                    console.log('getUserArtifactsList', result)
+                    dispatch(setArtifacts(result))
                 }))
     }
 }

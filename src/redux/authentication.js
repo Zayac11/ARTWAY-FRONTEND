@@ -144,7 +144,7 @@ export const getStatus = () => { //Проверка пользователя
         authAPI.getStatus()
             .then(response => response.json()
                 .then(result => {
-                    console.log('account', result)
+                    console.log('getStatus', result)
                     dispatch(setUserStatus(result))
                     if(result.is_service_super_admin || result.is_museum_super_admin || result.is_museum_admin || result.is_museum_cashier) {
                         dispatch(setAuth(true))

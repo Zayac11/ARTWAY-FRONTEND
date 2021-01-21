@@ -13,11 +13,11 @@ const MuseumItemsList = (props) => {
             </div>
 
             {
-                props.prev !== null &&
+                (props.prev !== null && props.isUserMuseumAdmin) &&
                 <button onClick={() => props.swapLocations('up', props.id)}>вверх</button>
             }
             {
-                props.id !== props.last &&
+                (props.id !== props.last && props.isUserMuseumAdmin) &&
                 <button onClick={() => props.swapLocations('down', props.id)}>вниз</button>
             }
         </div>
