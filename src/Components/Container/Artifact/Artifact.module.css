@@ -17,18 +17,6 @@
     width: 100%;
 }
 
-.backBtn {
-    cursor: pointer;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    display: block;
-}
-.backBtn img {
-    display: block;
-    cursor: pointer;
-}
-
 .change {
     outline: none;
     border: none;

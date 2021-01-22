@@ -4,6 +4,7 @@ import Management from "./Management";
 import {getAdminData} from "../../../redux/admin-reducer";
 import {compose} from "redux";
 import {WithSuperAdminRedirect} from "../../../hoc/Redirect/WithSuperAdminRedirect";
+import {withRouter} from "react-router-dom";
 
 class ManagementContainer extends React.Component {
 
@@ -17,6 +18,7 @@ class ManagementContainer extends React.Component {
             <Management museum_super_admin={this.props.museum_super_admin}
                         museum_admins={this.props.museum_admins}
                         museum_cashiers={this.props.museum_cashiers}
+                        history={this.props.history}
             />
         );
     }
@@ -35,6 +37,7 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {getAdminData}),
+    withRouter,
     WithSuperAdminRedirect,
 )(ManagementContainer)
 

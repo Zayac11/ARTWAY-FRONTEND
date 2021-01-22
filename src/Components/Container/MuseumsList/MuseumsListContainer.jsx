@@ -4,6 +4,7 @@ import MuseumsList from "./MuseumsList";
 import {getMuseums} from "../../../redux/serviceAdmin-reducer";
 import {compose} from "redux";
 import {WithServiceAdminRedirect} from "../../../hoc/Redirect/WithServiceAdminRedirect";
+import {withRouter} from "react-router-dom";
 
 class MuseumsListContainer extends React.Component {
 
@@ -14,7 +15,7 @@ class MuseumsListContainer extends React.Component {
     render() {
 
         return (
-            <MuseumsList museums={this.props.museums} />
+            <MuseumsList history={this.props.history} museums={this.props.museums} />
         );
     }
 
@@ -30,6 +31,7 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {getMuseums}),
+    withRouter,
     WithServiceAdminRedirect,
 )(MuseumsListContainer)
 

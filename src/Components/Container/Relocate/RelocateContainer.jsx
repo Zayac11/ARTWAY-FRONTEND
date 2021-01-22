@@ -59,14 +59,14 @@ class RelocateContainer extends React.Component {
     render() {
         if(!this.state.isLocationSelected) {
             return (
-                <Museum locations={this.props.locations} name={this.props.museumData.name}
+                <Museum history={this.props.history} locations={this.props.locations} name={this.props.museumData.name}
                         main_img={this.props.museumData.img} description={this.props.museumData.description}
                         selectLocation={this.selectLocation} isRelocate={true}/>
             );
         }
         else if(!this.state.isHallSelected) {
             return (
-                <Location halls={this.props.halls} name={this.props.locationData.name} main_img={this.props.locationData.img}
+                <Location history={this.props.history} halls={this.props.halls} name={this.props.locationData.name} main_img={this.props.locationData.img}
                           description={this.props.locationData.description} selectHall={this.selectHall} isRelocate={true}/>
             );
         }

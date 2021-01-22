@@ -1,11 +1,15 @@
 import React from 'react';
 import s from './MuseumAdmin.module.css'
 import CreateWorkerInputs from "../../../../Common/CreateWorkerInputs/CreateWorkerInputs";
+import prev from "../../../../assets/images/left-chevron.svg";
 
 const MuseumAdmin = ({museumAdminData, ...props}) => {
     let admin = museumAdminData.museum_super_admin
     return (
         <>
+            <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                <img src={prev} alt="back"/>
+            </button>
             {
                 museumAdminData.status
                     &&

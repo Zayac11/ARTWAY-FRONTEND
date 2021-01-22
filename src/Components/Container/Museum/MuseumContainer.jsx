@@ -37,7 +37,6 @@ class MuseumContainer extends React.Component {
     }
 
     componentDidMount() {
-        debugger
         if(this.props.isUserMuseumAdmin) {
             this.props.getMuseumData()
         }
@@ -59,11 +58,11 @@ class MuseumContainer extends React.Component {
 
         // Если пользователь сервисный администратор
 
-        // if(this.props.isUserServiceAdmin) {
-        //     return (
-        //         <MuseumAdminContainer museum_id={this.props.match.params.museum_id} />
-        //     )
-        // }
+        if(this.props.isUserServiceAdmin) {
+            return (
+                <MuseumAdminContainer museum_id={this.props.match.params.museum_id} />
+            )
+        }
 
         return (
             <Museum {...this.props}
@@ -72,7 +71,6 @@ class MuseumContainer extends React.Component {
             />
         );
     }
-
 }
 
 let mapStateToProps = (state) => {

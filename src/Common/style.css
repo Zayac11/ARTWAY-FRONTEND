@@ -77,3 +77,16 @@
     cursor: pointer;
 }
 
+.backBtn {
+    width: 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    display: block;
+    margin-bottom: 10px;
+}
+.backBtn img {
+    display: block;
+    cursor: pointer;
+}

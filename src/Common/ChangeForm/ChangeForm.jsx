@@ -2,10 +2,14 @@ import React from 'react';
 import s from './ChangeForm.module.css'
 import Input from "../Input/Input";
 import Textarea from "../Textarea/Textarea";
+import prev from "../../assets/images/left-chevron.svg";
 
 const ChangeForm = (props) => {
     return (
         <div className={s.form}>
+            <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                <img src={prev} alt="back"/>
+            </button>
             <h1 className={s.title}>{props.text}</h1>
             <Input text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
 

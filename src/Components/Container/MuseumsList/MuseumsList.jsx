@@ -1,10 +1,14 @@
 import React from 'react';
 import s from './MuseumsList.module.css'
 import {NavLink} from "react-router-dom";
+import prev from "../../../assets/images/left-chevron.svg";
 
 const MuseumsList = (props) => {
     return (
         <div className={s.container}>
+            <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                <img src={prev} alt="back"/>
+            </button>
             <NavLink className={'create'} to={'/s-admin/create_museum'}>Создать музей</NavLink>
             {
                 props.museums &&

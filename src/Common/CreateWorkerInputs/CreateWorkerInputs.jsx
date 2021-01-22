@@ -1,10 +1,14 @@
 import React from 'react';
 import s from './CreateWorkerInputs.module.css'
 import Input from "../Input/Input";
+import prev from "../../assets/images/left-chevron.svg";
 
 const CreateWorkerInputs = (props) => {
     return (
         <div className={s.container}>
+            <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                <img src={prev} alt="back"/>
+            </button>
             <h1 className={s.title}>Создание пользователя музея</h1>
             <Input text={'Фамилия'} type={'text'} name={'last_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.last_name} />
             <Input text={'Имя'} type={'text'} name={'first_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.first_name} />

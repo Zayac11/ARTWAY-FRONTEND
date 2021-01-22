@@ -30,7 +30,7 @@ const Artifact = (props) => {
             <div className={s.artifactContainer}>
                 <div className='blackTop'>
                     <div className={s.top}>
-                        <button onClick={() => props.history.goBack()} className={s.backBtn}>
+                        <button onClick={() => props.history.goBack()} className={'backBtn'}>
                             <img src={prev} alt="back"/>
                         </button>
                         <div className={s.name}>

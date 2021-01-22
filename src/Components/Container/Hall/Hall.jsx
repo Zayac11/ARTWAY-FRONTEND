@@ -4,11 +4,15 @@ import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
 import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
 import {NavLink} from "react-router-dom";
 import MuseumInformation from "../../../Common/MuseumInformation/MuseumInformation";
+import prev from "../../../assets/images/left-chevron.svg";
 
 const Hall = (props) => {
     let artifacts = props.artifacts
     return (
         <div className={s.museum}>
+            <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                <img src={prev} alt="back"/>
+            </button>
             {
                 props.isUserMuseumAdmin && <NavLink className={'create'} to={'/m-admin/print'}>Артефакты для печати</NavLink>
             }
