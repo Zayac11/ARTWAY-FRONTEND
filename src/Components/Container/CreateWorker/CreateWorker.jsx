@@ -30,9 +30,7 @@ class CreateWorker extends React.Component {
             return <Redirect to={'/m-admin/hr-management'} />
         }
         return (
-
             <CreateWorkerInputs {...this.props} />
-
         );
     }
 

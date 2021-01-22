@@ -16,11 +16,11 @@ const CreateWorkerInputs = (props) => {
             {
                 !props.isUserServiceAdmin &&
                     <div>
-                        <div>
+                        <div className={s.role}>
                             Роль работника
                         </div>
-                        <div><input name={'role'} type="radio" checked={props.role === 'museum_admins'} value='museum_admins' onChange={props.handleChangeRadio}/>Администратор музея</div>
-                        <div><input name={'role'} type="radio" checked={props.role === 'museum_cashiers'} value='museum_cashiers' onChange={props.handleChangeRadio}/>Кассир</div>
+                        <div className={s.InputContainer}><input name={'role'} type="radio" checked={props.role === 'museum_admins'} value='museum_admins' onChange={props.handleChangeRadio}/>Администратор музея</div>
+                        <div className={s.InputContainer}><input name={'role'} type="radio" checked={props.role === 'museum_cashiers'} value='museum_cashiers' onChange={props.handleChangeRadio}/>Кассир</div>
                     </div>
             }
 
@@ -42,7 +42,7 @@ const CreateWorkerInputs = (props) => {
                     Пожалуйста, введите корректный email
                 </div>          }
 
-            <button onClick={props.handleSubmit}>Создать</button>
+            <button className={'submit'} onClick={props.handleSubmit}>Создать</button>
 
         </div>
     );

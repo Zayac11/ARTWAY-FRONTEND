@@ -9,19 +9,16 @@ const Museum = (props) => {
     let locations = props.locations
     return (
         <div className={s.museum}>
-            {
+            { props.isUserMuseumAdmin &&(
                 !props.isChanging ?
                     <>
-                        {
-                            props.isUserMuseumAdmin &&
-                            <button className={s.change} onClick={() => props.toggleIsChanging(true)}>Изменить данные музея</button>
-                        }
+                        <button className={s.change} onClick={() => props.toggleIsChanging(true)}>Изменить данные музея</button>
                         <MuseumInformation name={props.name} description={props.description} main_img={props.main_img} />
                     </>
                     :
                     <>
                         <ChangeForm text={'Изменение данных музея'} {...props} />
-                    </>
+                    </>)
             }
 
             <div className={s.createContainer}>

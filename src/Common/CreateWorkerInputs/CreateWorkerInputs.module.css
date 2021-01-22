@@ -1,9 +1,20 @@
 .container {
     max-width: 650px;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 
 .title {
     text-align: center;
     margin: 20px 0;
+}
+
+.InputContainer {
+    width: 320px;
+    margin: 0 auto 10px;
+}
+.role {
+    width: 320px;
+    margin: 40px auto 20px;
+    font-size: 20px;
+    font-weight: 500;
 }

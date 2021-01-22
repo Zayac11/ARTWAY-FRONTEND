@@ -1,6 +1,6 @@
 .container {
     max-width: 650px;
-    margin: 0 auto;
+    margin: 30px auto 0;
 }
 
 .profile {
@@ -8,9 +8,14 @@
 }
 
 .people {
-    border: 1px solid black;
-    padding: 10px;
-    margin-bottom: 20px;
+
+    padding: 10px 0;
+    margin-bottom: 30px;
 }
 
+.title {
+    margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: 500;
+}
 

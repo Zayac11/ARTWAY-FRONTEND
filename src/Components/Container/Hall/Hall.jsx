@@ -13,17 +13,14 @@ const Hall = (props) => {
                 props.isUserMuseumAdmin && <NavLink className={'create'} to={'/m-admin/print'}>Артефакты для печати</NavLink>
             }
             {
+                props.isUserMuseumAdmin &&(
                 !props.isChanging ?
                     <>
-                        {
-                            props.isUserMuseumAdmin &&
-                            <button className={s.change} onClick={() => props.toggleIsChanging(true)}>Изменить или удалить</button>
-                        }
-
+                        <button className={s.change} onClick={() => props.toggleIsChanging(true)}>Изменить или удалить</button>
                         <MuseumInformation name={props.name} description={props.description} main_img={props.main_img} />
                     </>
                     :
-                        <ChangeForm text={'Изменение зала'} {...props} />
+                        <ChangeForm text={'Изменение зала'} {...props} />)
             }
             {
                 props.isChanging &&

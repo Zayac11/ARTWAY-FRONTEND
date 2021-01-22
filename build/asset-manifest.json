@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9c7294e6.chunk.css",
+    "main.js": "/static/js/main.34a8f71a.chunk.js",
+    "main.js.map": "/static/js/main.34a8f71a.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.280f6737.js",
+    "runtime-main.js.map": "/static/js/runtime-main.280f6737.js.map",
+    "static/js/2.5cf6c466.chunk.js": "/static/js/2.5cf6c466.chunk.js",
+    "static/js/2.5cf6c466.chunk.js.map": "/static/js/2.5cf6c466.chunk.js.map",
+    "static/js/3.3790988b.chunk.js": "/static/js/3.3790988b.chunk.js",
+    "static/js/3.3790988b.chunk.js.map": "/static/js/3.3790988b.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.9c7294e6.chunk.css.map": "/static/css/main.9c7294e6.chunk.css.map",
+    "static/js/2.5cf6c466.chunk.js.LICENSE.txt": "/static/js/2.5cf6c466.chunk.js.LICENSE.txt",
+    "static/media/MIREA_Gerb_Colour.976f8ab1.png": "/static/media/MIREA_Gerb_Colour.976f8ab1.png",
+    "static/media/down.f8aacb9b.svg": "/static/media/down.f8aacb9b.svg",
+    "static/media/enterPhone.20954098.svg": "/static/media/enterPhone.20954098.svg",
+    "static/media/group-10.718aee34.svg": "/static/media/group-10.718aee34.svg",
+    "static/media/group-2.8745db2a.svg": "/static/media/group-2.8745db2a.svg",
+    "static/media/loader.b7e7449a.svg": "/static/media/loader.b7e7449a.svg",
+    "static/media/next.4b9331c8.svg": "/static/media/next.4b9331c8.svg",
+    "static/media/play.f831889d.svg": "/static/media/play.f831889d.svg",
+    "static/media/scan.be4f3cee.svg": "/static/media/scan.be4f3cee.svg",
+    "static/media/scanPhone.c02696d5.svg": "/static/media/scanPhone.c02696d5.svg",
+    "static/media/up.bf140a6b.svg": "/static/media/up.bf140a6b.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.280f6737.js",
+    "static/js/2.5cf6c466.chunk.js",
+    "static/css/main.9c7294e6.chunk.css",
+    "static/js/main.34a8f71a.chunk.js"
+  ]
+}

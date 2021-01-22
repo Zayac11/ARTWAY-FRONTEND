@@ -11,7 +11,7 @@
     position: relative;
     min-height: 100vh;
     max-width: 650px;
-    margin: 20px auto 0;
+    margin: 0 auto;
 }
 
 .change {
@@ -34,12 +34,15 @@
     align-items: center;
 
 }
+
 .createContainer a:first-child{
     margin-right: 10px;
 }
+
 .createContainer a{
     transition: all 0.4s ease;
 }
+
 .createContainer a:hover{
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }

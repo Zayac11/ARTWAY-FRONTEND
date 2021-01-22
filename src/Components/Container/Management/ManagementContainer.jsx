@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Management from "./Management";
-import {Redirect} from "react-router-dom";
 import {getAdminData} from "../../../redux/admin-reducer";
 import {compose} from "redux";
 import {WithSuperAdminRedirect} from "../../../hoc/Redirect/WithSuperAdminRedirect";

@@ -37,6 +37,7 @@ class MuseumContainer extends React.Component {
     }
 
     componentDidMount() {
+        debugger
         if(this.props.isUserMuseumAdmin) {
             this.props.getMuseumData()
         }

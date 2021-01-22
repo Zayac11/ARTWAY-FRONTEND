@@ -15,9 +15,11 @@ const Management = (props) => {
                                        museumAdminId={props.museum_super_admin.id}
                 />
             </div>
-            <NavLink to={'/m-admin/hr-management/create_worker'}>Создать работника</NavLink>
+            <NavLink className={'create'} to={'/m-admin/hr-management/create_worker'}>Создать работника</NavLink>
             <div className={s.people}>
-                Админы
+                <div className={s.title}>
+                    Администраторы
+                </div>
                 {
                     props.museum_admins &&
                         props.museum_admins.length > 0
@@ -26,12 +28,14 @@ const Management = (props) => {
                         })
                     :
                         <div>
-                            Нет админычей
+                            Нет администраторов
                         </div>
                 }
             </div>
             <div className={s.people}>
-                Кассиры
+                <div className={s.title}>
+                    Кассиры
+                </div>
                 {
                     props.museum_cashiers &&
                     props.museum_cashiers.length > 0
@@ -40,7 +44,7 @@ const Management = (props) => {
                         })
                         :
                         <div>
-                            Нет кассирочков
+                            Нет кассиров
                         </div>
                 }
             </div>
