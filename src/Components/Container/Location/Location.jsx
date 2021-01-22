@@ -56,7 +56,7 @@ const Location = (props) => {
                             {
                                 props.isRelocate &&
                                 <div>
-                                    <button onClick={() => props.selectHall(l.id)}>Выбрать зал для перемещения артефакта</button>
+                                    <button className={s.relocateBtn} onClick={() => props.selectHall(l.id)}>Выбрать зал для перемещения артефакта</button>
                                 </div>
                             }
                         </div>

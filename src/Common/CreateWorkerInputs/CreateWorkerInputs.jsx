@@ -5,7 +5,7 @@ import Input from "../Input/Input";
 const CreateWorkerInputs = (props) => {
     return (
         <div className={s.container}>
-            <h1>Создание пользователя музея</h1>
+            <h1 className={s.title}>Создание пользователя музея</h1>
             <Input text={'Фамилия'} type={'text'} name={'last_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.last_name} />
             <Input text={'Имя'} type={'text'} name={'first_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.first_name} />
             <Input text={'Отчество'} type={'text'} name={'middle_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.middle_name} />

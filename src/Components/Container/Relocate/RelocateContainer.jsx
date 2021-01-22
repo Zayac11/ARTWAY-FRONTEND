@@ -8,6 +8,7 @@ import Museum from "../Museum/Museum";
 import Location from "../Location/Location";
 import {relocateArtifact} from "../../../redux/artifact-reducer";
 import {getLocationData} from "../../../redux/location-reducer";
+import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 
 class RelocateContainer extends React.Component {
 
@@ -65,7 +66,8 @@ class RelocateContainer extends React.Component {
         }
         else if(!this.state.isHallSelected) {
             return (
-                <Location halls={this.props.halls} selectHall={this.selectHall} isRelocate={true}/>
+                <Location halls={this.props.halls} name={this.props.locationData.name} main_img={this.props.locationData.img}
+                          description={this.props.locationData.description} selectHall={this.selectHall} isRelocate={true}/>
             );
         }
         else if(this.state.isRelocated) {
@@ -79,6 +81,7 @@ let mapStateToProps = (state) => {
     return {
         locations: state.museum.locations,
         museumData: state.museum.museumData,
+        locationData: state.location.locationData,
         halls: state.location.halls,
     }
 }
