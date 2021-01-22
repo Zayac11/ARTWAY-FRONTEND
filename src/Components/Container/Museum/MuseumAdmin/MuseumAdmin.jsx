@@ -10,18 +10,18 @@ const MuseumAdmin = ({museumAdminData, ...props}) => {
                 museumAdminData.status
                     &&
                         <div className={s.container}>
-                            <h2>Главный администратор</h2>
-                            <div>
+                            <h2 className={s.title}>Главный администратор</h2>
+                            <div className={s.name}>
                                 Имя: {admin.last_name}
                             </div>
-                            <div>
+                            <div className={s.name}>
                                 Фамилия: {admin.first_name}
                             </div>
-                            <div>
+                            <div className={s.name}>
                                 Отчество: {admin.middle_name}
                             </div>
-                            <button className={s.deleteBtn} onClick={() => props.deleteMuseumSuperAdmin(props.museum_id)}>
-                                Удалить одмэна
+                            <button className={'submit'} onClick={() => props.deleteMuseumSuperAdmin(props.museum_id)}>
+                                Удалить администратора
                             </button>
                         </div>
             }
@@ -37,7 +37,7 @@ const MuseumAdmin = ({museumAdminData, ...props}) => {
                         Создать администратора
                     </button>
             }
-            <button className={s.deleteBtn} onClick={() => props.deleteMuseum(props.museum_id)}>
+            <button className={'submit'} onClick={() => props.deleteMuseum(props.museum_id)}>
                 Удалить музей
             </button>
         </>

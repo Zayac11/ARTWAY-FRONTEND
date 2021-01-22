@@ -22,7 +22,7 @@ class CreateMuseum extends React.Component {
         }
 
         return (
-            <ChangeForm {...this.props}/>
+            <ChangeForm text={'Создание музея'} {...this.props} />
 
         );
     }

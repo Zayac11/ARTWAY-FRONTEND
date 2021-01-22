@@ -58,7 +58,9 @@ class RelocateContainer extends React.Component {
     render() {
         if(!this.state.isLocationSelected) {
             return (
-                <Museum locations={this.props.locations} selectLocation={this.selectLocation} isRelocate={true}/>
+                <Museum locations={this.props.locations} name={this.props.museumData.name}
+                        main_img={this.props.museumData.img} description={this.props.museumData.description}
+                        selectLocation={this.selectLocation} isRelocate={true}/>
             );
         }
         else if(!this.state.isHallSelected) {
@@ -76,6 +78,7 @@ class RelocateContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         locations: state.museum.locations,
+        museumData: state.museum.museumData,
         halls: state.location.halls,
     }
 }

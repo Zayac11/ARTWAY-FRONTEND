@@ -3,9 +3,10 @@ import {connect} from "react-redux";
 import Museum from "./Museum";
 import {Redirect, withRouter} from "react-router-dom";
 import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
-import {compose} from "redux";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
+import {compose} from "redux";
 import {getMuseumData, getUsersLocationsList, swapLocations, updateMuseumData} from "../../../redux/museum-reducer";
+import MuseumAdminContainer from "./MuseumAdmin/MuseumAdminContainer";
 
 class MuseumContainer extends React.Component {
 
@@ -79,6 +80,7 @@ let mapStateToProps = (state) => {
         locations: state.museum.locations,
         isUserServiceAdmin: state.auth.isUserServiceAdmin,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
+        isUserMuseumSuperAdmin: state.auth.isUserMuseumSuperAdmin,
     }
 }
 

@@ -8,3 +8,29 @@
     border: 1px solid black;
     margin-bottom: 20px;
 }
+
+.description {
+    margin: 20px 0;
+}
+
+.descriptionTitle, .id, .name{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.goInside {
+    color: black;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.img {
+    max-height: 300px;
+    width: 100%;
+}
+
+.img img{
+    max-height: 300px;
+    width: 100%;
+    display: block;
+}

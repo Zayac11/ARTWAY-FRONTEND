@@ -1,5 +1,8 @@
 .locationContainer {
     margin-top: 40px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 .museum {
@@ -8,13 +11,54 @@
     position: relative;
     min-height: 100vh;
     max-width: 650px;
-    margin: 0 auto;
+    margin: 20px auto 0;
 }
 
-.title {
-    text-align: center;
+.change {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 30px;
+    border-radius: 5px;
+    background-color: #868686;
+    color: white;
+    transition: all 0.4s ease;
+    font-size: 18px;
+}
+.change:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-.description {
-    white-space: pre-wrap;
+.createContainer {
+    display: flex;
+    align-items: center;
+
+}
+.createContainer a:first-child{
+    margin-right: 10px;
+}
+.createContainer a{
+    transition: all 0.4s ease;
+}
+.createContainer a:hover{
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.itemsTitle {
+    margin-top: 40px;
+}
+
+.goInside {
+    display: block;
+    margin-top: 10px;
+    color: black;
+    font-size: 18px;
+    text-decoration: underline;
+}
+
+.relocateBtn {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: black;
 }

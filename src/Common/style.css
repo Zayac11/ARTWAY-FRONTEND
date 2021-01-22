@@ -54,3 +54,26 @@
     color: #068318;
     margin-bottom: 10px;
 }
+
+.create {
+    display: block;
+    padding: 10px 30px;
+    border-radius: 5px;
+    background-color: #868686;
+    color: white;
+    width: max-content;
+    margin: 20px 0;
+}
+
+.submit {
+    display: block;
+    outline: none;
+    border:  none;
+    background-color: #ccc;
+    width: max-content;
+    margin: 40px auto 0;
+    padding: 10px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+

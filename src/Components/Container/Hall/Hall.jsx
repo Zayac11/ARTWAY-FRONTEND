@@ -3,38 +3,41 @@ import s from './Hall.module.css'
 import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
 import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
 import {NavLink} from "react-router-dom";
+import MuseumInformation from "../../../Common/MuseumInformation/MuseumInformation";
 
 const Hall = (props) => {
     let artifacts = props.artifacts
     return (
         <div className={s.museum}>
-            <h1>Зал</h1>
             {
-                props.isUserMuseumAdmin && <NavLink to={'/m-admin/print'}>Артефакты для печати</NavLink>
+                props.isUserMuseumAdmin && <NavLink className={'create'} to={'/m-admin/print'}>Артефакты для печати</NavLink>
             }
             {
-                props.isUserMuseumAdmin &&(
                 !props.isChanging ?
                     <>
-                        <button onClick={() => props.toggleIsChanging(true)}>Изменить или удалить</button>
-                        <h2 className={s.title}>{props.name}</h2>
-                        <img src={props.main_img} alt="location"/>
-                        <div className={s.description}>{props.description}</div>
+                        {
+                            props.isUserMuseumAdmin &&
+                            <button className={s.change} onClick={() => props.toggleIsChanging(true)}>Изменить или удалить</button>
+                        }
+
+                        <MuseumInformation name={props.name} description={props.description} main_img={props.main_img} />
                     </>
                     :
-                        <ChangeForm {...props} />)
+                        <ChangeForm text={'Изменение зала'} {...props} />
             }
             {
                 props.isChanging &&
-                <button onClick={props.deleteHall}>Удалить зал</button>
+                <button className={s.deleteBtn} onClick={props.deleteHall}>Удалить зал</button>
             }
             {
                 props.isUserMuseumAdmin &&
-                <NavLink to={`/m-admin/${props.location_id}/${props.hall_id}/create_artifacts`}>
-                Создать артефактыч
+                <NavLink className={'create'} to={`/m-admin/${props.location_id}/${props.hall_id}/create_artifacts`}>
+                    Создать артефакт
                 </NavLink>
             }
-
+            <h3 className={s.itemsTitle}>
+                Список артефактов зала
+            </h3>
             {
                 artifacts &&
                 artifacts.map(l => {
@@ -44,8 +47,8 @@ const Hall = (props) => {
                             <MuseumItemsList isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} locations={props.halls} swapLocations={props.swapArtifacts} />
                             {
                                 props.isUserMuseumAdmin
-                                    ? <NavLink to={`/m-admin/${props.location_id}/${props.hall_id}/${l.id}`}>Перейти</NavLink>
-                                    : <NavLink to={`/artifacts/${l.id}`}>Перейти к артефакту</NavLink>
+                                    ? <NavLink className={s.goInside} to={`/m-admin/${props.location_id}/${props.hall_id}/${l.id}`}>Перейти</NavLink>
+                                    : <NavLink className={s.goInside} to={`/artifacts/${l.id}`}>Перейти к артефакту</NavLink>
                             }
                             { //Находится ли данный товар в корзине
                                 props.isUserMuseumAdmin && (
@@ -54,7 +57,7 @@ const Hall = (props) => {
                                         Удалить из печати
                                     </button>
 
-                                    :   <button className={s.noCart} onClick={() => props.addArtifactToPrint(l)}
+                                    :   <button className={s.inCart} onClick={() => props.addArtifactToPrint(l)}
                                     >
                                         Добавить к печати
                                     </button>)
@@ -62,7 +65,7 @@ const Hall = (props) => {
 
                             {
                                 props.isUserMuseumAdmin &&
-                                    <NavLink to={`/m-admin/relocate/${props.location_id}/${props.hall_id}/${l.id}`}>Переместить артефакт</NavLink>
+                                    <NavLink className={s.goInside} to={`/m-admin/relocate/${props.location_id}/${props.hall_id}/${l.id}`}>Переместить артефакт</NavLink>
                             }
 
                         </div>

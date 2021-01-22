@@ -1,4 +1,18 @@
 .container {
     max-width: 650px;
-    margin: 0 auto;
+    margin: 100px auto 0;
+}
+
+.title {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.name {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.deleteBtn {
+
 }

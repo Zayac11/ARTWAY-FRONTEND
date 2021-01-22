@@ -5,8 +5,8 @@ import Textarea from "../Textarea/Textarea";
 
 const ChangeForm = (props) => {
     return (
-        <>
-            <button onClick={props.handleSubmit}>Сохранить</button>
+        <div className={s.form}>
+            <h1 className={s.title}>{props.text}</h1>
             <Input text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
 
             <Textarea text={'Описание'} value={props.description} name={'description'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
@@ -44,7 +44,8 @@ const ChangeForm = (props) => {
                     Пожалуйста, добавьте корректную ссылку на видео
                 </div>
             }
-        </>
+            <button className={'submit'} onClick={props.handleSubmit}>Сохранить</button>
+        </div>
     );
 }
 

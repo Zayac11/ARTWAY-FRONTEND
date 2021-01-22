@@ -1,11 +1,58 @@
 .location {
-    border: 1px solid black;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .title {
-
+    font-size: 20px;
+    margin-bottom: 20px;
 }
 
 .img {
     max-width: 200px;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.descriptionContainer {
+
+}
+.descriptionTitle {
+    margin: 20px 0 10px;
+    font-size: 20px;
+}
+
+.description {
+    white-space: pre-wrap;
+}
+
+.moveBtn {
+    display: block;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    position: relative;
+    top: 0;
+    background-color: transparent;
+    transition: all 0.4s ease;
+}
+
+.moveBtn img {
+    display: block;
+    width: 40px;
+}
+.moveBtn img:last-child {
+    margin-left: 10px;
+}
+
+.up:hover {
+    top: -5px;
+}
+
+.down:hover {
+    top: 5px;
 }

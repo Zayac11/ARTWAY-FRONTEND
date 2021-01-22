@@ -61,10 +61,8 @@ class MuseumAdminContainer extends React.Component {
         }
 
         return (
-            <MuseumAdmin {...this.props} museumAdminData={this.props.museumAdminData}
-                         deleteMuseumSuperAdmin={this.props.deleteMuseumSuperAdmin}
+            <MuseumAdmin {...this.props}
                          deleteMuseum={this.deleteMuseum}
-                         museum_id={this.props.museum_id}
                          isChanging={this.state.isChanging}
                          toggleIsChanging={this.toggleIsChanging} />
         );

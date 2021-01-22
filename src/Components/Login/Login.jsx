@@ -70,30 +70,30 @@ class Login extends React.Component {
                 {
                     this.props.isLogin ? <Redirect to="/" />
                     :
-                        <div className={'form__outer'}>
-                            <div className={'form__inner'}>
-                                <h3 className={'form__title'}>Вход в личный кабинет</h3>
+                        <div className={s.login}>
 
-                                <Input text={'Email'} type={'email'} name={'email'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.email} />
-                                <Input text={'Пароль'} type={'password'} name={'password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.password} />
+                            <h3 className={s.title}>Вход в личный кабинет</h3>
 
-                                {
-                                    this.state.isEmptyInputs &&
+                            <Input text={'Email'} type={'email'} name={'email'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.email} />
+                            <Input text={'Пароль'} type={'password'} name={'password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.password} />
+
+                            {
+                                this.state.isEmptyInputs &&
+                                <div className={'form__wrong'}>
+                                    Все поля обязательны для заполнения
+                                </div>
+                            }
+
+                            {
+                                this.state.isLoginWrong &&
                                     <div className={'form__wrong'}>
-                                        Все поля обязательны для заполнения
+                                        Неправильный логин или пароль
                                     </div>
-                                }
+                            }
 
-                                {
-                                    this.state.isLoginWrong &&
-                                        <div className={'form__wrong'}>
-                                            Неправильный логин или пароль
-                                        </div>
-                                }
+                            <NavLink className={s.forgot} to={'/reset_password'}>Забыли пароль?</NavLink>
+                            <button className={'submit'} onClick={this.handleSubmit}>Войти</button>
 
-                                <NavLink className={s.forgot} to={'/reset_password'}>Забыли пароль?</NavLink>
-                                <button onClick={this.handleSubmit}>login</button>
-                            </div>
                         </div>
                 }
 

@@ -7,10 +7,9 @@ import {NavLink} from "react-router-dom";
 
 const Artifact = (props) => {
     return (
-        <>
-            <h1>Артефакт</h1>
+        <div className={s.museum}>
             {
-                props.isUserMuseumAdmin && <NavLink to={'/m-admin/print'}>Артефакты для печати</NavLink>
+                props.isUserMuseumAdmin && <NavLink className={'create'} to={'/m-admin/print'}>Артефакты для печати</NavLink>
             }
             {
                 props.isUserMuseumAdmin &&(
@@ -20,13 +19,13 @@ const Artifact = (props) => {
                     />
                     :
                     <>
-                        <button onClick={() => props.toggleIsChanging(true)}>Изменить или удалить</button>
+                        <button className={s.change} onClick={() => props.toggleIsChanging(true)}>Изменить или удалить</button>
                     </>)
             }
 
             {
                 props.isChanging &&
-                <button onClick={props.deleteArtifact}>Удалить артефакт</button>
+                <button className={s.deleteBtn} onClick={props.deleteArtifact}>Удалить артефакт</button>
             }
             <div className={s.artifactContainer}>
                 <div className='blackTop'>
@@ -66,14 +65,14 @@ const Artifact = (props) => {
                                         Видео
                                     </div>
                                     <div>
-                                        <a href={props.video} target={'_blank'} rel="noreferrer noopener">Открыть</a>
+                                        <a href={props.video} className={s.videoBtn} target={'_blank'} rel="noreferrer noopener">Открыть</a>
                                     </div>
                                 </div>
                         }
                     </div>
                 </div>
             </div>
-        </>
+        </div>
 
     );
 }

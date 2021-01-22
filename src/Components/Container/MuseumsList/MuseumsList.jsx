@@ -5,26 +5,31 @@ import {NavLink} from "react-router-dom";
 const MuseumsList = (props) => {
     return (
         <div className={s.container}>
-            <NavLink to={'/s-admin/create_museum'}>Создать музеич</NavLink>
+            <NavLink className={'create'} to={'/s-admin/create_museum'}>Создать музей</NavLink>
             {
                 props.museums &&
                     props.museums.length > 0 ?
                     props.museums.map(m => {
                         return(
                             <div key={m.id} className={s.museumItemContainer}>
-                                <div>
-                                    {m.id}
+                                <div className={s.id}>
+                                    Id: {m.id}
                                 </div>
-                                <div>
+                                <div className={s.name}>
                                     {m.name}
                                 </div>
-                                <div>
+                                <div className={s.img}>
                                     <img src={m.img} alt="museum"/>
                                 </div>
-                                <div>
-                                    {m.description}
+                                <div className={s.description}>
+                                    <div className={s.descriptionTitle}>
+                                        Описание:
+                                    </div>
+                                    <div>
+                                        {m.description}
+                                    </div>
                                 </div>
-                                <NavLink to={`/s-admin/${m.id}`}>Перейти</NavLink>
+                                <NavLink className={s.goInside} to={`/s-admin/${m.id}`}>Перейти</NavLink>
                             </div>
                         )
                     })

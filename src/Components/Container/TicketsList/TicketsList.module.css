@@ -1,12 +1,33 @@
 .container {
     max-width: 650px;
-    margin: 0 auto;
+    margin: 20px auto 0;
 }
 
 .ticketItem {
+    position: relative;
     display: block;
     color: black;
     padding: 10px;
     border: 1px solid black;
     margin-top: 20px;
+    top: 0;
+    transition: all 0.4s ease;
+}
+
+.id {
+    font-size: 18px;
+}
+
+.title {
+    text-align: center;
+}
+
+.time {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.ticketItem:hover {
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    top: 5px;
 }

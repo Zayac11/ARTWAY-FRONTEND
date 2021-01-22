@@ -36,7 +36,7 @@ class CreateLocation extends React.Component {
         }
 
         return (
-            <ChangeForm {...this.props}
+            <ChangeForm text={'Создание локации'} {...this.props}
             />
 
         );
