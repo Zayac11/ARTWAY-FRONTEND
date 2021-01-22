@@ -1,6 +1,6 @@
 import * as axios from "axios";
 
-const debug = true
+const debug = false
 //backend
 //true for localhost
 //false for prod.
@@ -11,7 +11,7 @@ if (debug) {
     baseUrl = 'http://127.0.0.1:8000/'
 }
 else {
-    baseUrl = 'https://devgang.ru/'
+    baseUrl = 'https://devgang.online/'
 }
 
 const getOptions = (mass, auth, method) => { //Если нужен Bearer token, то auth = true
