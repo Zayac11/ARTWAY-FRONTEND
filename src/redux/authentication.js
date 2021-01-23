@@ -194,7 +194,13 @@ export const logout = () => { //Выход
     return (dispatch) => {
         localStorage.removeItem('accessToken');
         dispatch(setAuth(false))
-        dispatch(deleteUserData()) //Удаление данных пользователя при выходе
+        dispatch(setUserStatus({
+            isUserServiceAdmin: false,
+            isUserMuseumSuperAdmin: false,
+            isUserMuseumAdmin: false,
+            isUserCashier: false,
+        }))
+        // dispatch(deleteUserData()) //Удаление данных пользователя при выходе
     }
 }
 

@@ -73,6 +73,11 @@ const Main = (props) => {
                 {/*<BlackButton link={`/artifacts`} text='Просмотреть экспонаты' />*/}
 
                 {/*<BlackButton link={`/test`} text='Go to test Component' />*/}
+
+                <div onClick={() => props.logout()}>
+                    Выйти
+                </div>
+
             </div>
 
         </div>

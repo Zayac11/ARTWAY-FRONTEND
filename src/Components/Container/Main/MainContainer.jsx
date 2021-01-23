@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Main from "./Main";
+import {logout} from "../../../redux/authentication";
 
 class MainContainer extends React.Component {
 
@@ -44,4 +45,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{})(MainContainer);
+export default connect(mapStateToProps,{logout})(MainContainer);
