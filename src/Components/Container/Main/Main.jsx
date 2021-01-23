@@ -8,6 +8,7 @@ import play from './../../../assets/images/play.svg'
 import Step from "./Step/Step";
 import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
 import BlackButton from "../../../Common/BlackButton/BlackButton";
+import {NavLink} from "react-router-dom";
 
 const Main = (props) => {
     return (
@@ -74,6 +75,9 @@ const Main = (props) => {
 
                 {/*<BlackButton link={`/test`} text='Go to test Component' />*/}
 
+                <NavLink to={'/login'} className={'create'} onClick={props.logout}>
+                    Войти
+                </NavLink>
                 <button onClick={props.logout}>
                     Выйти
                 </button>
