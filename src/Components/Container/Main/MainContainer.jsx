@@ -26,7 +26,7 @@ class MainContainer extends React.Component {
     render() {
         return (
             <Main isUserServiceAdmin={this.props.isUserServiceAdmin} isUserMuseumSuperAdmin={this.props.isUserMuseumSuperAdmin}
-                  isUserMuseumAdmin={this.props.isUserMuseumAdmin} isUserCashier={this.props.isUserCashier}
+                  isUserMuseumAdmin={this.props.isUserMuseumAdmin} isUserCashier={this.props.isUserCashier} logout={this.props.logout}
                   isTokenExists={this.state.isTokenExists}
 
             />
