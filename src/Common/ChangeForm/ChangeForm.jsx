@@ -7,9 +7,14 @@ import prev from "../../assets/images/left-chevron.svg";
 const ChangeForm = (props) => {
     return (
         <div className={s.form}>
-            <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                <img src={prev} alt="back"/>
-            </button>
+
+            {
+                !props.isChanging &&
+                <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                    <img src={prev} alt="back"/>
+                </button>
+            }
+
             <h1 className={s.title}>{props.text}</h1>
             <Input text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
 
@@ -49,6 +54,12 @@ const ChangeForm = (props) => {
                 </div>
             }
             <button className={'submit'} onClick={props.handleSubmit}>Сохранить</button>
+            {
+                props.isChanging &&
+                    <button className={'submit'} onClick={() => props.toggleIsChanging(false)}>
+                        Закрыть
+                    </button>
+            }
         </div>
     );
 }

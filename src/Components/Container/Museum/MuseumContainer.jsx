@@ -40,7 +40,7 @@ class MuseumContainer extends React.Component {
         if(this.props.isUserMuseumAdmin) {
             this.props.getMuseumData()
         }
-        else {
+        else if(!this.props.isUserServiceAdmin) {
             let token = localStorage.getItem('token')
             this.props.getUsersLocationsList(token)
         }

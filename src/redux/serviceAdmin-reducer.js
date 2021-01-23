@@ -52,6 +52,7 @@ export const createMuseum = (name, img, description) => { //Создание м�
 
 export const deleteMuseum = (museum_id) => { //Удаление музея
     return (dispatch) => {
+        debugger
         serviceAdminApi.deleteMuseum(museum_id)
             .then(response => response.json()
                 .then(result => {

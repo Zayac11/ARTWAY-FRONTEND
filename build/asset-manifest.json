@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.fc4da723.chunk.css",
-    "main.js": "/static/js/main.dac8a58b.chunk.js",
-    "main.js.map": "/static/js/main.dac8a58b.chunk.js.map",
+    "main.css": "/static/css/main.609e649d.chunk.css",
+    "main.js": "/static/js/main.9f06fd85.chunk.js",
+    "main.js.map": "/static/js/main.9f06fd85.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.280f6737.js",
     "runtime-main.js.map": "/static/js/runtime-main.280f6737.js.map",
     "static/js/2.d4d07912.chunk.js": "/static/js/2.d4d07912.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.3790988b.chunk.js": "/static/js/3.3790988b.chunk.js",
     "static/js/3.3790988b.chunk.js.map": "/static/js/3.3790988b.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.fc4da723.chunk.css.map": "/static/css/main.fc4da723.chunk.css.map",
+    "static/css/main.609e649d.chunk.css.map": "/static/css/main.609e649d.chunk.css.map",
     "static/js/2.d4d07912.chunk.js.LICENSE.txt": "/static/js/2.d4d07912.chunk.js.LICENSE.txt",
     "static/media/MIREA_Gerb_Colour.976f8ab1.png": "/static/media/MIREA_Gerb_Colour.976f8ab1.png",
     "static/media/down.f8aacb9b.svg": "/static/media/down.f8aacb9b.svg",
@@ -28,7 +28,7 @@
   "entrypoints": [
     "static/js/runtime-main.280f6737.js",
     "static/js/2.d4d07912.chunk.js",
-    "static/css/main.fc4da723.chunk.css",
-    "static/js/main.dac8a58b.chunk.js"
+    "static/css/main.609e649d.chunk.css",
+    "static/js/main.9f06fd85.chunk.js"
   ]
 }

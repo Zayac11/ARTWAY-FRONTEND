@@ -1,5 +1,6 @@
 .imgContainer {
     width: 100%;
+    max-width: 650px;
     max-height: 400px;
 }
 
@@ -13,6 +14,7 @@
     display: block;
     margin: 0 auto 20px;
     max-height: 400px;
+    max-width: 650px;
 }
 
 .descriptionTitle {
