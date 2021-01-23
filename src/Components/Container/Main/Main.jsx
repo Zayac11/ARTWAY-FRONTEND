@@ -74,9 +74,9 @@ const Main = (props) => {
 
                 {/*<BlackButton link={`/test`} text='Go to test Component' />*/}
 
-                <div onClick={() => props.logout()}>
+                <button onClick={() => props.logout()}>
                     Выйти
-                </div>
+                </button>
 
             </div>
 
