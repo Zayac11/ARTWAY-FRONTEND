@@ -1,6 +1,6 @@
 import * as axios from "axios";
 
-const debug = true
+const debug = false
 //backend
 //true for localhost
 //false for prod.
