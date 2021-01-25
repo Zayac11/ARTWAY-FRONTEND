@@ -18,15 +18,23 @@ class MuseumAdminContainer extends React.Component {
         this.state = {
             isChanging: false, //Идет ли изменение
             isDeleted: false, //Удален ли музей
+            isModalOpen: false //Модальное окно для подтверждения удаления
         }
         this.deleteMuseum = this.deleteMuseum.bind(this)
         this.toggleIsChanging = this.toggleIsChanging.bind(this)
+        this.toggleOpenModal = this.toggleOpenModal.bind(this)
     }
 
     deleteMuseum() {
         this.props.deleteMuseum(this.props.museum_id)
         this.setState({
             isDeleted: true,
+        })
+    }
+
+    toggleOpenModal(isOpen) {
+        this.setState({
+            isModalOpen:isOpen
         })
     }
 
@@ -62,8 +70,10 @@ class MuseumAdminContainer extends React.Component {
 
         return (
             <MuseumAdmin {...this.props}
+                         toggleOpenModal={this.toggleOpenModal}
                          deleteMuseum={this.deleteMuseum}
                          isChanging={this.state.isChanging}
+                         isModalOpen={this.state.isModalOpen}
                          toggleIsChanging={this.toggleIsChanging} />
         );
     }

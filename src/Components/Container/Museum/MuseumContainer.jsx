@@ -17,6 +17,7 @@ class MuseumContainer extends React.Component {
         this.updateMuseum = this.updateMuseum.bind(this)
     }
 
+
     updateMuseum() {
         this.props.updateMuseumData(this.props.id, this.props.name, this.props.img, this.props.description)
         this.props.setImage('')
@@ -57,17 +58,15 @@ class MuseumContainer extends React.Component {
         }
 
         // Если пользователь сервисный администратор
-
         if(this.props.isUserServiceAdmin) {
             return (
-                <MuseumAdminContainer museum_id={this.props.match.params.museum_id} />
+                <MuseumAdminContainer museum_id={this.props.match.params.museum_id}/>
             )
         }
 
         return (
             <Museum {...this.props}
                     swapLocations={this.swapLocations}
-
             />
         );
     }

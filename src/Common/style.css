@@ -90,3 +90,15 @@
     display: block;
     cursor: pointer;
 }
+
+.CustomModal {
+    background-color: #fff;
+    color: #000;
+    position: relative;
+    max-width: 850px;
+    min-width: 320px;
+    width: auto;
+    height: 100%;
+    padding: 18px;
+    border-radius: 5px;
+}

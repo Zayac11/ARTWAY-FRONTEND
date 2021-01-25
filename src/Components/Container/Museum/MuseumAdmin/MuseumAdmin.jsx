@@ -2,6 +2,7 @@ import React from 'react';
 import s from './MuseumAdmin.module.css'
 import CreateWorkerInputs from "../../../../Common/CreateWorkerInputs/CreateWorkerInputs";
 import prev from "../../../../assets/images/left-chevron.svg";
+import Modal from "react-png-modal";
 
 const MuseumAdmin = ({museumAdminData, ...props}) => {
     let admin = museumAdminData.museum_super_admin
@@ -41,9 +42,26 @@ const MuseumAdmin = ({museumAdminData, ...props}) => {
                         Создать администратора
                     </button>
             }
-            <button className={'submit'} onClick={() => props.deleteMuseum(props.museum_id)}>
+            <button className={'submit'} onClick={() => props.toggleOpenModal(true)}>
                 Удалить музей
             </button>
+
+            <Modal
+                center
+                className={'CustomModal'}
+                closeModal={() => props.toggleOpenModal(false)}
+                open={props.isModalOpen}>
+                {
+                    <>
+                        <div>
+                            Пожалуйста, подтвердите удаление
+                        </div>
+                        <button onClick={() => props.deleteMuseum()} className={'submit'}>
+                            Удалить
+                        </button>
+                    </>
+                }
+            </Modal>
         </>
 
     );

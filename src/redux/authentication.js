@@ -21,7 +21,7 @@ let initialState = {
 
     isLogin: false, //Залогинен ли пользователь
 
-    isUserServiceAdmin: false, //Является ли пользователь админом сервиса
+    isUserServiceAdmin: true, //Является ли пользователь админом сервиса
     isUserMuseumSuperAdmin: false, //Является ли пользователь главным админом музея
     isUserMuseumAdmin: false, //Является ли пользователь админом музея
     isUserCashier: false, //Является ли пользователь кассиром
@@ -179,7 +179,6 @@ export const login = (username, password) => { //Логин
                         console.log('login', result)
                         localStorage.setItem('accessToken', result.access)
 
-                        // dispatch(account()) //Получение данных пользователя после логина
                         dispatch(getStatus())
                         // dispatch(setAuth(true)) //Авторизован ли пользователь
                         dispatch(setLoginWrong(false)) //Если до этого вводили неправильные данные
