@@ -7,6 +7,7 @@ import Container from "./Components/Container/Container";
 import Login from "./Components/Login/Login";
 import Preloader from "./Common/Preloader/Preloader";
 import {getStatus} from "./redux/authentication";
+import ResetPassword from "./Components/Container/ResetPassword/ResetPassword";
 
 class App extends React.Component {
 
@@ -24,6 +25,7 @@ class App extends React.Component {
             <Switch>
                 {/*Route Login or Initializing*/}
                 <Route exact path='/login' render={ () => <Login />} />
+                <Route exact path='/reset_password' render={ () => <ResetPassword />} />
                 <Container />
             </Switch>
         );
