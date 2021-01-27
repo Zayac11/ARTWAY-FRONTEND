@@ -10,6 +10,31 @@
     align-items: center;
 }
 
+.outer {
+    background-color: #f0f8ff;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 650px;
+    margin: 0 auto;
+    min-height: 100vh;
+}
+
+.artImg {
+    margin: 0 8px;
+}
+
+.artSquare {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.way {
+    color: #0e4dae;
+}
+
 .blur {
     position: absolute;
     z-index: -1;

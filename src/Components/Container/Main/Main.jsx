@@ -71,9 +71,9 @@ const Main = (props) => {
                     <BlackButton link={`/locations`} text='Карта музея' />
                 }
 
-                {/*<BlackButton link={`/artifacts`} text='Просмотреть экспонаты' />*/}
+                {/*<BlueButton link={`/artifacts`} text='Просмотреть экспонаты' />*/}
 
-                {/*<BlackButton link={`/test`} text='Go to test Component' />*/}
+                {/*<BlueButton link={`/test`} text='Go to test Component' />*/}
 
                 <NavLink to={'/login'} className={'create'} onClick={props.logout}>
                     Войти

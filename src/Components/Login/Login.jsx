@@ -2,9 +2,12 @@ import React from 'react';
 import {connect} from "react-redux";
 import {NavLink, Redirect} from "react-router-dom";
 import s from "./Login.module.css";
-import Input from "../../Common/Input/Input";
 import {login} from "../../redux/authentication";
-
+import artSquare from './../../assets/images/artsquare.svg'
+import AuthInput from "../../Common/AuthInput/AuthInput";
+import email from './../../assets/images/email-2.svg'
+import padlock from './../../assets/images/padlock-2.svg'
+import BlueButton from "../../Common/BlueButton/BlueButton";
 
 class Login extends React.Component {
 
@@ -66,38 +69,48 @@ class Login extends React.Component {
 
     render() {
         return (
-            <>
-                {
-                    this.props.isLogin ? <Redirect to="/" />
-                    :
-                        <div className={s.login}>
+            <div className={'outer'}>
+                <div className={'container'}>
+                    <div className={'artSquare'}>
+                        <img className={'artImg'} src={artSquare} alt="artSquare"/>
+                        <span>art</span>
+                        <span className={'way'}>way</span>
+                    </div>
+                    {
+                        this.props.isLogin ? <Redirect to="/" />
+                            :
 
-                            <h3 className={s.title}>Вход в личный кабинет</h3>
+                            <div className={s.login}>
 
-                            <Input text={'Email'} type={'email'} name={'email'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.email} />
-                            <Input text={'Пароль'} type={'password'} name={'password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.password} />
+                                <div className={s.title}>Вход в личный кабинет</div>
+                                <div className={s.subtitle}>Введите Email и пароль</div>
 
-                            {
-                                this.state.isEmptyInputs &&
-                                <div className={'form__wrong'}>
-                                    Все поля обязательны для заполнения
-                                </div>
-                            }
+                                <AuthInput img={email} placeholder={'Email'} type={'email'} name={'email'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.email} />
+                                <AuthInput img={padlock} placeholder={'Пароль'} type={'password'} name={'password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.password} />
 
-                            {
-                                this.state.isLoginWrong &&
+                                {
+                                    this.state.isEmptyInputs &&
+                                    <div className={'form__wrong'}>
+                                        Все поля обязательны для заполнения
+                                    </div>
+                                }
+
+                                {
+                                    this.state.isLoginWrong &&
                                     <div className={'form__wrong'}>
                                         Неправильный логин или пароль
                                     </div>
-                            }
+                                }
 
-                            <NavLink className={s.forgot} to={'/reset_password'}>Забыли пароль?</NavLink>
-                            <button className={'submit'} onClick={this.handleSubmit}>Войти</button>
+                                <NavLink className={s.forgot} to={'/reset_password'}>Забыли пароль?</NavLink>
+                                <div className={s.buttonContainer}>
+                                    <BlueButton className={'submit'} text={'Войти'} onClick={this.handleSubmit}>Войти</BlueButton>
+                                </div>
 
-                        </div>
-                }
-
-            </>
+                            </div>
+                    }
+                </div>
+            </div>
         );
     }
 

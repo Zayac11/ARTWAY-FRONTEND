@@ -1,18 +1,46 @@
 .forgot {
     display: block;
     color: #005BD1;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
     width: max-content;
-    margin: 0 auto;
+    margin: 0 auto 70px;
 }
 
 .login {
-    margin: 100px auto;
     max-width: 650px;
+    margin: 0 auto;
+    min-height: 75vh;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    box-shadow: 0 -10px 16px 0 rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    padding: 30px 0;
 }
 
 .title {
-    text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    padding: 0 30px;
+}
+
+.subtitle {
+    margin-bottom: 70px;
+    padding: 0 30px;
+    color: #888;
+    font-size: 12px;
+}
+
+.buttonContainer {
+    position: absolute;
+    width: 100%;
+    bottom: 20px;
+    padding: 0 8px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 }

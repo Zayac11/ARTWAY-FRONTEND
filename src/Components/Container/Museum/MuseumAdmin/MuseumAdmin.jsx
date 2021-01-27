@@ -57,7 +57,7 @@ const MuseumAdmin = ({museumAdminData, ...props}) => {
                             Пожалуйста, подтвердите удаление
                         </div>
                         <button onClick={() => props.deleteMuseum()} className={'submit'}>
-                            Удалить
+                            Подтвердить
                         </button>
                     </>
                 }
