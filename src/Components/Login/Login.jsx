@@ -71,10 +71,12 @@ class Login extends React.Component {
         return (
             <div className={'outer'}>
                 <div className={'container'}>
-                    <div className={'artSquare'}>
-                        <img className={'artImg'} src={artSquare} alt="artSquare"/>
-                        <span>art</span>
-                        <span className={'way'}>way</span>
+                    <div className={'artContainer'}>
+                        <div className={'artSquare'}>
+                            <img className={'artImg'} src={artSquare} alt="artSquare"/>
+                            <span>art</span>
+                            <span className={'way'}>way</span>
+                        </div>
                     </div>
                     {
                         this.props.isLogin ? <Redirect to="/" />

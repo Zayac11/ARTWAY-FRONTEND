@@ -1,37 +1,32 @@
 .scannerContainer {
     position: relative;
     width: 100%;
-    padding: 0 10px;
     max-width: 650px;
     margin: 0 auto;
 }
 
 .scanner {
-    position: absolute;
-    top: -35px;
-    margin: 0 20px;
-    padding: 35px 15px 15px;
+    margin: 0 25px;
+    border-radius: 20px;
     background-color: white;
-    left: 0;
-    right: 0;
-    border-radius: 7px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 .title {
-    position: absolute;
-    z-index: 1;
-    top: -25px;
-    left: 0;
-    right: 0;
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
+    margin: 25px 0 50px;
+    font-weight: 500;
+}
+
+.qrContainer {
+    position: relative;
+    width: 100%;
 }
 
 .refresh {
     width: 25px;
     top: 15px;
-    left: 55px;
+    left: 40px;
     border: none;
     outline: none;
     background-color: transparent;

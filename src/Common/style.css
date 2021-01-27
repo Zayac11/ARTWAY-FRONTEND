@@ -21,40 +21,34 @@
     min-height: 100vh;
 }
 
+.artContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8px 0;
+}
+
 .artImg {
-    margin: 0 8px;
+    margin: 0 8px 0 0;
 }
 
 .artSquare {
     display: flex;
     align-items: center;
-    padding-top: 20px;
 }
 
 .way {
     color: #0e4dae;
 }
 
-.blur {
-    position: absolute;
-    z-index: -1;
-    -webkit-filter: blur(50px);
-    filter: blur(50px);
-    opacity: 0.7;
+.scanner {
+    margin: 0 25px;
+    border-radius: 20px;
+    background-color: white;
 }
-.blueBlur {
-    top: 80px;
-    right: 0;
-    width: 100px;
-    height: 250px;
-    background-color: #38f3f7;
-}
-.orangeBlur {
-    left: 0;
-    bottom: 0;
-    width: 100px;
-    height: 120px;
-    background-color: #f77838;
+
+.scanner section {
+    border-radius: 8px;
 }
 
 .links {

@@ -13,8 +13,6 @@ import {NavLink} from "react-router-dom";
 const Main = (props) => {
     return (
         <div className={s.main}>
-            <div className={`blueBlur blur`}></div>
-            <div className={`orangeBlur blur`}></div>
             <div className={s.logoContainer}>
                 <img src={gerb} alt="MIREA"/>
                 <img src={mirea} alt="MIREA"/>

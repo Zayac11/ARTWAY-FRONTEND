@@ -1,12 +1,10 @@
 import React from 'react';
 import s from './Enter.module.css'
 import BlackButton from "../../../../Common/BlackButton/BlackButton";
-import Top from "../Top/Top";
 
 const Enter = (props) => {
     return (
         <>
-            <Top history={props.history} section={'enter'} />
             <div className={s.enter}>
                 <div className={s.inputContainer}>
                     <div className={s.input}>

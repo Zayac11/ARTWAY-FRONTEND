@@ -42,8 +42,6 @@ class Transition extends React.Component {
     render() {
         return (
             <div className={s.container}>
-                <div className={`blueBlur blur`}></div>
-                <div className={`orangeBlur blur`}></div>
 
                 <Route exact path='/scan' render={ () => <ScannerContainer handleScan={this.handleScan}
                                                                            handleError={this.handleError}
