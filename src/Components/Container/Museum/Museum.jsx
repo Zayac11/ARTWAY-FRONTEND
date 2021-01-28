@@ -52,7 +52,7 @@ const Museum = (props) => {
                     </div>
 
                     <div className={'titleContainer'}>
-                        <h2 className={s.itemsTitle}>
+                        <h2 className={'itemsTitle'}>
                             Список локаций
                         </h2>
                         <button onClick={() => props.history.goBack()} className={'backBtn'}>

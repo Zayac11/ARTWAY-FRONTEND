@@ -1,18 +1,5 @@
-.museum {
-    width: 100%;
-    padding: 0 8px;
-    position: relative;
-}
-
 .title {
     text-align: center;
-}
-
-.locationContainer {
-    margin-top: 40px;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
 }
 
 .location {
@@ -49,10 +36,6 @@
     position: relative;
     text-align: center;
     margin-top: 25px;
-}
-
-.itemsTitle {
-    margin-top: 40px;
 }
 
 .goInside {

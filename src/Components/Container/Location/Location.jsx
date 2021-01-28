@@ -51,7 +51,7 @@ const Location = (props) => {
                         </NavLink>
                     }
                     <div className={'titleContainer'}>
-                        <h2 className={s.itemsTitle}>
+                        <h2 className={'itemsTitle'}>
                             Список залов
                         </h2>
                         <button onClick={() => props.history.goBack()} className={'backBtn'}>
@@ -73,7 +73,8 @@ const Location = (props) => {
                                             :
                                             <>
                                                 <MuseumItemsList isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} swapLocations={props.swapLocations} />
-                                                <NavLink className={s.goInside} to={`/m-admin/${props.location_id}/${l.id}`}>Перейти к залу</NavLink>
+                                                <NavLink className={s.goInside} to={`/halls/${l.id}/artifacts`}>Перейти к залу</NavLink>
+
                                             </>
 
                                     }

@@ -5,16 +5,25 @@ import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
 import {NavLink} from "react-router-dom";
 import MuseumInformation from "../../../Common/MuseumInformation/MuseumInformation";
 import prev from "../../../assets/images/left-chevron.svg";
+import artSquare from "../../../assets/images/artsquare.svg";
+import information from "../../../assets/images/information-2-copy.svg";
 
 const Hall = (props) => {
     let artifacts = props.artifacts
     return (
         <div className={'outer'}>
             <div className={'container'}>
-                <div className={s.museum}>
-                    <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                        <img src={prev} alt="back"/>
-                    </button>
+                <div className={'museum'}>
+                    <div className={'artContainer'}>
+                        <div className={'artSquare'}>
+                            <img className={'artImg'} src={artSquare} alt="artSquare"/>
+                            <span>art</span>
+                            <span className={'way'}>way</span>
+                        </div>
+                        <NavLink to={'/'} className={'information'}>
+                            <img src={information} alt="information"/>
+                        </NavLink>
+                    </div>
                     {
                         props.isUserMuseumAdmin && <NavLink className={'create'} to={'/m-admin/print'}>Артефакты для печати</NavLink>
                     }
@@ -35,12 +44,12 @@ const Hall = (props) => {
                     {
                         props.isUserMuseumAdmin &&
                         <NavLink className={'create'} to={`/m-admin/${props.location_id}/${props.hall_id}/create_artifacts`}>
-                            Создать артефакт
+                            Создать экспонат
                         </NavLink>
                     }
-                    <div className={s.titleContainer}>
-                        <h2 className={s.itemsTitle}>
-                            Список артефактов
+                    <div className={'titleContainer'}>
+                        <h2 className={'itemsTitle'}>
+                            Список экспонатов
                         </h2>
                         <button onClick={() => props.history.goBack()} className={'backBtn'}>
                             <img src={prev} alt="back"/>
@@ -52,13 +61,21 @@ const Hall = (props) => {
                         artifacts.map(l => {
                             let last = artifacts[artifacts.length - 1].id
                             return (
-                                <div className={s.locationContainer} key={l.id}>
-                                    <MuseumItemsList isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} locations={props.halls} swapLocations={props.swapArtifacts} />
+                                <div className={'locationContainer'} key={l.id}>
                                     {
-                                        props.isUserMuseumAdmin
-                                            ? <NavLink className={s.goInside} to={`/m-admin/${props.location_id}/${props.hall_id}/${l.id}`}>Перейти</NavLink>
-                                            : <NavLink className={s.goInside} to={`/artifacts/${l.id}`}>Перейти к артефакту</NavLink>
+                                        !props.isUserMuseumAdmin
+                                            ?
+                                            <NavLink to={`/artifacts/${l.id}`}>
+                                                <MuseumItemsList isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} locations={props.halls} swapLocations={props.swapArtifacts} />
+                                            </NavLink>
+                                            :
+                                            <>
+                                                <MuseumItemsList isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} swapLocations={props.swapLocations} />
+                                                <NavLink className={s.goInside} to={`/m-admin/${props.location_id}/${props.hall_id}/${l.id}`}>Перейти к артефакту</NavLink>
+                                            </>
+
                                     }
+
                                     { //Находится ли данный товар в корзине
                                         props.isUserMuseumAdmin && (
                                             props.print.some(item => item.id === l.id) ?
@@ -74,7 +91,7 @@ const Hall = (props) => {
 
                                     {
                                         props.isUserMuseumAdmin &&
-                                        <NavLink className={s.goInside} to={`/m-admin/relocate/${props.location_id}/${props.hall_id}/${l.id}`}>Переместить артефакт</NavLink>
+                                        <NavLink className={s.goInside} to={`/m-admin/relocate/${props.location_id}/${props.hall_id}/${l.id}`}>Переместить экспонат</NavLink>
                                     }
 
                                 </div>
