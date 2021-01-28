@@ -1,20 +1,10 @@
-.museum {
-    width: 100%;
-    padding: 20px 10px;
-    position: relative;
-    min-height: 100vh;
-    max-width: 650px;
-    margin: 0 auto;
-}
-
 .title {
     text-align: center;
 }
 
 .locationContainer {
-    margin-top: 40px;
+    margin-top: 25px;
     padding: 10px;
-    border: 1px solid black;
     border-radius: 5px;
 }
 
@@ -47,8 +37,10 @@
     display: block;
     margin: 0 auto 50px;
 }
+
 .itemsTitle {
-    margin-top: 40px;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .goInside {

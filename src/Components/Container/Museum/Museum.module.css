@@ -3,11 +3,6 @@
     border-radius: 5px;
 }
 
-.museum {
-    padding: 0 8px;
-    position: relative;
-}
-
 .change {
     outline: none;
     border: none;
@@ -26,7 +21,6 @@
 .createContainer {
     display: flex;
     align-items: center;
-
 }
 
 .createContainer a:first-child{
@@ -39,12 +33,6 @@
 
 .createContainer a:hover{
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-.titleContainer {
-    position: relative;
-    text-align: center;
-    margin-top: 25px;
 }
 
 .itemsTitle {

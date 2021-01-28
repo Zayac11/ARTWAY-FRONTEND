@@ -94,7 +94,6 @@
     outline: none;
     background-color: transparent;
     display: block;
-    margin-bottom: 10px;
 }
 .backBtn img {
     display: block;
@@ -111,4 +110,21 @@
     height: 100%;
     padding: 18px;
     border-radius: 5px;
+}
+
+.museum {
+    width: 100%;
+    padding: 8px;
+    position: relative;
+}
+
+.locationContainer {
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.titleContainer {
+    position: relative;
+    text-align: center;
+    margin: 25px 0;
 }

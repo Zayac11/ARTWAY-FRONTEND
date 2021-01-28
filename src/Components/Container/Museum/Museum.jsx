@@ -13,7 +13,7 @@ const Museum = (props) => {
     return (
         <div className={'outer'}>
             <div className={'container'}>
-                <div className={s.museum}>
+                <div className={'museum'}>
                     <div className={'artContainer'}>
                         <div className={'artSquare'}>
                             <img className={'artImg'} src={artSquare} alt="artSquare"/>
@@ -51,16 +51,13 @@ const Museum = (props) => {
                         }
                     </div>
 
-                    <div className={s.titleContainer}>
+                    <div className={'titleContainer'}>
                         <h2 className={s.itemsTitle}>
                             Список локаций
                         </h2>
-                        <h3 className={s.title}>
-                            {props.name}
-                            <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                                <img src={prev} alt="back"/>
-                            </button>
-                        </h3>
+                        <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                            <img src={prev} alt="back"/>
+                        </button>
                     </div>
 
 
@@ -68,14 +65,14 @@ const Museum = (props) => {
                     {
                         locations &&
                         locations.map(l => {
-                            let last =locations[locations.length - 1].id
+                            let last = locations[locations.length - 1].id
                             return (
-                                <div className={s.locationContainer} key={l.id}>
+                                <div className={'locationContainer'} key={l.id}>
                                     {
                                         !props.isUserMuseumAdmin
                                             ?
                                             <NavLink to={`/locations/${l.id}/halls`}>
-                                                <MuseumItemsList history={props.his} isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} swapLocations={props.swapLocations} />
+                                                <MuseumItemsList isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} swapLocations={props.swapLocations} />
                                             </NavLink>
                                             :
                                             <>
