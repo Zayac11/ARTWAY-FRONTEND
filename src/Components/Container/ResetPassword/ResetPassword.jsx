@@ -111,7 +111,7 @@ class ResetPassword extends React.Component {
                                             </div>
                                         }
                                         <div className={s.buttonContainer}>
-                                            <BlueButton className={'submit'} text={'Войти'}
+                                            <BlueButton type={'btn'} text={'Войти'}
                                                         handleSubmit={this.handleSubmit}>Войти</BlueButton>
                                         </div>
                                     </>

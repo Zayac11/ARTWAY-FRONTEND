@@ -106,7 +106,7 @@ class Login extends React.Component {
 
                                 <NavLink className={s.forgot} to={'/reset_password'}>Забыли пароль?</NavLink>
                                 <div className={s.buttonContainer}>
-                                    <BlueButton className={'submit'} text={'Войти'} handleSubmit={this.handleSubmit}>Войти</BlueButton>
+                                    <BlueButton type={'btn'} className={'submit'} text={'Войти'} handleSubmit={this.handleSubmit}>Войти</BlueButton>
                                 </div>
 
                             </div>

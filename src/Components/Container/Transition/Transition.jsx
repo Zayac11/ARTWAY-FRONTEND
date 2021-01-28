@@ -1,9 +1,11 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Route, withRouter} from "react-router-dom";
+import {NavLink, Route, withRouter} from "react-router-dom";
 import ScannerContainer from "./Scanner/ScannerContainer";
 import Enter from "./Enter/Enter";
 import s from './Transition.module.css'
+import artSquare from "../../../assets/images/artsquare.svg";
+import information from "../../../assets/images/information-2-copy.svg";
 
 class Transition extends React.Component {
 
@@ -41,8 +43,19 @@ class Transition extends React.Component {
 
     render() {
         return (
-            <div className={s.container}>
 
+        <div className={'outer'}>
+            <div className={'container'}>
+                <div className={'artContainer'}>
+                    <div className={'artSquare'}>
+                        <img className={'artImg'} src={artSquare} alt="artSquare"/>
+                        <span>art</span>
+                        <span className={'way'}>way</span>
+                    </div>
+                    <NavLink to={'/'} className={'information'}>
+                        <img src={information} alt="information"/>
+                    </NavLink>
+                </div>
                 <Route exact path='/scan' render={ () => <ScannerContainer handleScan={this.handleScan}
                                                                            handleError={this.handleError}
                                                                            delay={this.state.delay}
@@ -50,9 +63,10 @@ class Transition extends React.Component {
                                                                            result={this.state.result} />} />
 
                 <Route exact path='/enter' render={ () => <Enter handleChange={this.handleChange}
-                                                                 history={this.props.history}
-                                                                 artifactId={this.state.artifactId} />} />
+                                                         history={this.props.history}
+                                                         artifactId={this.state.artifactId} />} />
             </div>
+        </div>
         );
     }
 }

@@ -1,15 +1,3 @@
-.blackTop {
-    position: relative;
-    height: 250px;
-    width: 100%;
-    background-color: black;
-    border-bottom-left-radius: 100px 20px;
-    border-bottom-right-radius: 100px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .outer {
     background-color: #f0f8ff;
     min-height: 100vh;

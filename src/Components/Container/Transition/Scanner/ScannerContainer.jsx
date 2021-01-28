@@ -41,40 +41,29 @@ class ScannerContainer extends React.Component {
         }
 
         return (
-            <div className={'outer'}>
-                <div className={'container'}>
-                    <div className={'artContainer'}>
-                        <div className={'artSquare'}>
-                            <img className={'artImg'} src={artSquare} alt="artSquare"/>
-                            <span>art</span>
-                            <span className={'way'}>way</span>
-                        </div>
-                            <NavLink to={'/'} className={'information'}>
-                                <img src={information} alt="information"/>
-                            </NavLink>
+            <>
+
+
+                <div className={s.scannerContainer}>
+                    <div className={s.title}>
+                        Отсканируйте QR код
+                    </div>
+                    <div className={s.qrContainer}>
+                        <QrReader
+                            facingMode={this.state.facingMode}
+                            delay={this.props.delay}
+                            resolution={600}
+                            className={'scanner'}
+                            showViewFinder={false}
+                            onError={this.props.handleError}
+                            onScan={this.props.handleScan}
+                        />
+                        <button className={s.refresh} onClick={this.changeCamera}><img src={refresh} alt="refresh button"/></button>
                     </div>
 
-                    <div className={s.scannerContainer}>
-                        <div className={s.title}>
-                            Отсканируйте QR код
-                        </div>
-                        <div className={s.qrContainer}>
-                            <QrReader
-                                facingMode={this.state.facingMode}
-                                delay={this.props.delay}
-                                resolution={600}
-                                className={'scanner'}
-                                showViewFinder={false}
-                                onError={this.props.handleError}
-                                onScan={this.props.handleScan}
-                            />
-                            <button className={s.refresh} onClick={this.changeCamera}><img src={refresh} alt="refresh button"/></button>
-                        </div>
 
-
-                    </div>
                 </div>
-            </div>
+            </>
         );
     }
 
