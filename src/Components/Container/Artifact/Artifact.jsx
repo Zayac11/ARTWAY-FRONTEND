@@ -6,9 +6,10 @@ import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
 import {NavLink} from "react-router-dom";
 import artSquare from "../../../assets/images/artsquare.svg";
 import information from "../../../assets/images/information-2-copy.svg";
-import play from "../../../assets/images/play.svg";
+import foreign from "../../../assets/images/foreign.svg";
 
 const Artifact = (props) => {
+
     return (
         <div className={'outer'}>
             <div className={'container'}>
@@ -74,14 +75,17 @@ const Artifact = (props) => {
                             {
                                 props.video !== '' &&
                                 <div>
-                                    <a href={props.video} target={'_blank'} rel={"noreferrer noopener"} className={s.button}>
+                                    <a href={props.video} target={'_blank'} rel={"noreferrer noopener"} className={`${s.transparentButton} ${s.button}`}>
                                         <div>
                                             Смотреть видео
                                         </div>
-                                        <img src={play} alt="link"/>
+                                        <img src={foreign} alt="link"/>
                                     </a>
                                 </div>
                             }
+                            <NavLink to={'/'} className={`${s.blueButton} ${s.button}`}>
+                                Перейти в карту зала
+                            </NavLink>
                         </div>
                     </div>
                 </div>

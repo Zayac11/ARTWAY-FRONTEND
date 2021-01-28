@@ -96,19 +96,30 @@
 }
 
 .button {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    outline: none;
-    border: none;
-    background-color: #196bb1;
-    color: white;
-    text-align: center;
     font-weight: 500;
-    padding: 15px 0;
     border-radius: 4px;
     font-size: 14px;
+    padding: 15px 0;
+    outline: none;
+}
+
+.transparentButton {
+    color: #196bb1;
+    border: 1px solid #196bb1;
+    background-color: transparent;
+    margin-bottom: 10px;
+}
+
+.blueButton {
+    display: block;
+    text-align: center;
+    color: white;
+    border: none;
+    background-color: #196bb1;
 }
 
 .button img{

@@ -6,18 +6,18 @@ import down from './../../assets/images/down.svg'
 const MuseumItemsList = (props) => {
     return (
         <div className={s.location}>
-            <div>
-                <div className={s.title}>
-                    {props.name}
-                </div>
+            <h3 className={s.title}>
+                {props.name}
+            </h3>
+            <div className={s.imgContainer}>
                 <img className={s.img} src={props.img} alt="location"/>
-                <div className={s.descriptionContainer}>
-                    <div className={s.descriptionTitle}>
-                        Описание:
-                    </div>
-                    <div className={s.description}>
-                        {props.description}
-                    </div>
+            </div>
+            <div className={s.descriptionContainer}>
+                <h4 className={s.descriptionTitle}>
+                    Описание
+                </h4>
+                <div className={s.description}>
+                    {props.description}
                 </div>
             </div>
 
