@@ -5,6 +5,7 @@
 
 .text {
     margin-bottom: 10px;
+    font-size: 14px;
 }
 
 .input {
@@ -16,6 +17,7 @@
     font-size: 14px;
     white-space: pre-wrap;
     padding: 10px 15px;
+    font-weight: 400;
     outline: none;
     border: 1px solid #ccc;
     border-radius: 4px;

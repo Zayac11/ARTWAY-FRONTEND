@@ -3,6 +3,7 @@ import s from './ChangeForm.module.css'
 import Input from "../Input/Input";
 import Textarea from "../Textarea/Textarea";
 import prev from "../../assets/images/left-chevron.svg";
+import BlueButton from "../BlueButton/BlueButton";
 
 const ChangeForm = (props) => {
     return (
@@ -27,11 +28,31 @@ const ChangeForm = (props) => {
                 </div>
             }
 
-            <Input text={'Фотография'} type={'file'} name={'img'} handleFocus={props.handleChangeInputs} handleChange={props.handleChangeFile} />
+            <div className={s.fileInputContainer}>
+                <input type="file" name={'img'} id={'fileImg'} onChange={props.handleChangeFile} onFocus={props.handleFocus} className={s.fileInput}/>
+                <label htmlFor="fileImg">
+                    <span>Загрузить фото</span>
+                </label>
+                {
+                    props.img !== '' &&
+                    <span className={s.fileName}>{props.img.name}</span>
+                }
+            </div>
+
+            {/*<Input text={'Фотография'} type={'file'} name={'img'} handleFocus={props.handleChangeInputs} handleChange={props.handleChangeFile} />*/}
             {
                 props.isItemArtifact &&
                     <>
-                        <Input text={'Аудиофайл'} type={'file'} name={'audio'} handleFocus={props.handleChangeInputs} handleChange={props.handleChangeFile} />
+                        <div className={s.fileInputContainer}>
+                            <input type="file" name={'audio'} id={'fileAudio'} onChange={props.handleChangeFile} onFocus={props.handleFocus} className={s.fileInput}/>
+                            <label htmlFor="fileAudio">
+                                <span>Загрузить аудио</span>
+                            </label>
+                            {
+                                props.img !== '' &&
+                                <span className={s.fileName}>{props.img.name}</span>
+                            }
+                        </div>
                         <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.video} name={'video'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
                     </>
             }
@@ -53,13 +74,15 @@ const ChangeForm = (props) => {
                     Пожалуйста, добавьте корректную ссылку на видео
                 </div>
             }
-            <button className={'submit'} onClick={props.handleSubmit}>Сохранить</button>
-            {
-                props.isChanging &&
-                    <button className={'submit'} onClick={() => props.toggleIsChanging(false)}>
-                        Закрыть
-                    </button>
-            }
+            <div className={s.saveContainer}>
+                <BlueButton type={'btn'} handleSubmit={props.handleSubmit} text={'Сохранить и выйти'} />
+            </div>
+            {/*{*/}
+            {/*    props.isChanging &&*/}
+            {/*        <button className={'submit'} onClick={() => props.toggleIsChanging(false)}>*/}
+            {/*            Закрыть*/}
+            {/*        </button>*/}
+            {/*}*/}
         </div>
     );
 }

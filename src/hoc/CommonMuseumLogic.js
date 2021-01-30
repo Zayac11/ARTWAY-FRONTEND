@@ -84,6 +84,10 @@ export const CommonMuseumLogic = (Component) => {
             let name = e.target.name
             let file = e.target.files[0]
 
+            if (file === undefined) {
+                file = ""
+            }
+
             this.setState({
                 [name]: file,
                 isPhotoTypeWrong: false,

@@ -5,6 +5,7 @@ import MuseumInformation from "../../../Common/MuseumInformation/MuseumInformati
 import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
 import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
 import TopContainer from "../../../Common/Top/TopContainer";
+import SuperAdminSlick from "../../../Common/SuperAdminSlick/SuperAdminSlick";
 
 const Museum = (props) => {
     let locations = props.locations
@@ -14,6 +15,12 @@ const Museum = (props) => {
                 <div className={'museum'}>
 
                     <TopContainer isUserMuseumAdmin={props.isUserMuseumAdmin} />
+
+                    {
+                        props.isUserMuseumSuperAdmin &&
+                            <SuperAdminSlick />
+                    }
+
                     {
                         props.isChanging
                         ?

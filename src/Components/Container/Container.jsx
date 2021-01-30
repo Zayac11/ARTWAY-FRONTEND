@@ -8,7 +8,6 @@ import PreloaderLogo from "../../Common/PreloaderLogo/PreloaderLogo";
 import MuseumContainer from "./Museum/MuseumContainer";
 import LocationContainer from "./Location/LocationContainer";
 import HallContainer from "./Hall/HallContainer";
-import CreateHall from "./Create/CreateHall";
 import CreateArtifact from "./Create/CreateArtifact";
 import ManagementContainer from "./Management/ManagementContainer";
 import CreateWorker from "./CreateWorker/CreateWorker";
@@ -20,6 +19,7 @@ import {compose} from "redux";
 import Preloader from "../../Common/Preloader/Preloader";
 import PrintListContainer from "./PrintList/PrintListContainer";
 import RelocateContainer from "./Relocate/RelocateContainer";
+import TopContainer from "../../Common/Top/TopContainer";
 
 class Container extends React.Component {
 
@@ -69,7 +69,6 @@ class Container extends React.Component {
                     <Route exact path='/m-admin/hr-management' render={ () => <ManagementContainer />} />
                     <Route exact path='/m-admin/hr-management/create_worker' render={ () => <CreateWorker />} />
                     <Route exact path='/m-admin/:location_id' render={ () => <LocationContainer />} />
-                    <Route exact path='/m-admin/:location_id/create_halls' render={ () => <CreateHall />} />
                     <Route exact path='/m-admin/:location_id/:hall_id' render={ () => <HallContainer />} />
                     <Route exact path='/m-admin/:location_id/:hall_id/create_artifacts' render={ () => <CreateArtifact />} />
                     <Route exact path='/m-admin/:location_id/:hall_id/:artifact_id' render={ () => <ArtifactContainer />} />

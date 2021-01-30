@@ -3,9 +3,10 @@ import s from './Hall.module.css'
 import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
 import {NavLink} from "react-router-dom";
 import prev from "../../../assets/images/left-chevron.svg";
-import artSquare from "../../../assets/images/artsquare.svg";
-import information from "../../../assets/images/information-2-copy.svg";
 import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
+import TopContainer from "../../../Common/Top/TopContainer";
+import edit from "../../../assets/images/edit.svg";
+import BlueButton from "../../../Common/BlueButton/BlueButton";
 
 const Hall = (props) => {
     let artifacts = props.artifacts
@@ -13,19 +14,11 @@ const Hall = (props) => {
         <div className={'outer'}>
             <div className={'container'}>
                 <div className={'museum'}>
-                    <div className={'artContainer'}>
-                        <div className={'artSquare'}>
-                            <img className={'artImg'} src={artSquare} alt="artSquare"/>
-                            <span>art</span>
-                            <span className={'way'}>way</span>
-                        </div>
-                        <NavLink to={'/'} className={'information'}>
-                            <img src={information} alt="information"/>
-                        </NavLink>
-                    </div>
-                    {
-                        props.isUserMuseumAdmin && <NavLink className={'create'} to={'/m-admin/print'}>Артефакты для печати</NavLink>
-                    }
+                    <TopContainer isUserMuseumAdmin={props.isUserMuseumAdmin} />
+
+                    {/*{*/}
+                    {/*    props.isUserMuseumAdmin && <NavLink className={'create'} to={'/m-admin/print'}>Артефакты для печати</NavLink>*/}
+                    {/*}*/}
                     {/*{*/}
                     {/*    props.isUserMuseumAdmin &&(*/}
                     {/*        !props.isChanging ?*/}
@@ -36,20 +29,32 @@ const Hall = (props) => {
                     {/*            :*/}
                     {/*            <ChangeForm text={'Изменение зала'} {...props} />)*/}
                     {/*}*/}
-                    {
-                        props.isChanging &&
-                        <button className={s.deleteBtn} onClick={props.deleteHall}>Удалить зал</button>
-                    }
-                    {
-                        props.isUserMuseumAdmin &&
-                        <NavLink className={'create'} to={`/m-admin/${props.location_id}/${props.hall_id}/create_artifacts`}>
-                            Создать экспонат
-                        </NavLink>
-                    }
+                    {/*{*/}
+                    {/*    props.isChanging &&*/}
+                    {/*    <button className={s.deleteBtn} onClick={props.deleteHall}>Удалить зал</button>*/}
+                    {/*}*/}
+
                     {
                         props.isUserMuseumAdmin
                             ?
                             <>
+                                <div className={s.topContainer}>
+                                <button onClick={() => props.history.goBack()} className={'adminBackBtn'}>
+                                    <img src={prev} alt="back"/>
+                                </button>
+                                {
+                                    props.isChanging
+                                        ?
+                                        <input type="text" value={props.name} onKeyUp={props.handleFindKey} name={'name'} onFocus={props.handleFocus} onChange={props.handleChange}/>
+                                        :
+                                        <div className={s.name}>
+                                            {props.name}
+                                        </div>
+                                }
+                                <div onClick={() => props.toggleIsChanging(!props.isChanging)} >
+                                    <img src={edit} alt="edit"/>
+                                </div>
+                            </div>
                                 <div className={'titleContainer'}>
                                     <h2 className={'itemsTitle'}>
                                         Список экспонатов
@@ -118,6 +123,13 @@ const Hall = (props) => {
                                 </div>
                             )
                         })
+                    }
+                    {
+                        props.isUserMuseumAdmin &&
+                            <div className={s.buttonContainer}>
+                                <BlueButton text={'Создать экспонат'} type={'link'} link={`/m-admin/${props.location_id}/${props.hall_id}/create_artifacts`} />
+                            </div>
+
                     }
                 </div>
             </div>

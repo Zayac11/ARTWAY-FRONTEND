@@ -3,13 +3,21 @@ import s from './Management.module.css'
 import ChangeWorkerContainer from "./ChangeWorker/ChangeWorkerContainer";
 import {NavLink} from "react-router-dom";
 import prev from "../../../assets/images/left-chevron.svg";
+import SuperAdminSlick from "../../../Common/SuperAdminSlick/SuperAdminSlick";
+import TopContainer from "../../../Common/Top/TopContainer";
 
 const Management = (props) => {
     return (
         <div className={s.container}>
-            <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                <img src={prev} alt="back"/>
-            </button>
+            {/*<button onClick={() => props.history.goBack()} className={'backBtn'}>*/}
+            {/*    <img src={prev} alt="back"/>*/}
+            {/*</button>*/}
+
+            <TopContainer isUserMuseumAdmin={true} />
+
+            <SuperAdminSlick />
+
+
             <div className={s.profile}>
                 <ChangeWorkerContainer id={props.museum_super_admin.id}
                                        first_name={props.museum_super_admin.first_name}
