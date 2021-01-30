@@ -52,9 +52,9 @@ export const updateLocationData = (id, name, img, description) => { //Обнов
     }
 }
 
-export const createLocation = (name, img, description) => { //Добавление локации в музей по пользователю
+export const createLocation = (name) => { //Добавление локации в музей по пользователю
     return (dispatch) => {
-        museumApi.createLocation(name, img, description)
+        museumApi.createLocation(name)
             .then(response => response.json()
                 .then(result => {
                     console.log('createLocation', result)

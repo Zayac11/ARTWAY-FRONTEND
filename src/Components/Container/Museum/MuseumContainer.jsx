@@ -6,6 +6,7 @@ import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
 import {compose} from "redux";
 import {getMuseumData, getUsersLocationsList, swapLocations, updateMuseumData} from "../../../redux/museum-reducer";
+import {createLocation} from "../../../redux/location-reducer";
 import MuseumAdminContainer from "./MuseumAdmin/MuseumAdminContainer";
 
 class MuseumContainer extends React.Component {
@@ -15,9 +16,11 @@ class MuseumContainer extends React.Component {
 
         this.swapLocations = this.swapLocations.bind(this)
         this.updateMuseum = this.updateMuseum.bind(this)
+        this.createLocation = this.createLocation.bind(this)
     }
-
-
+    createLocation() {
+        this.props.createLocation('Локация')
+    }
     updateMuseum() {
         this.props.updateMuseumData(this.props.id, this.props.name, this.props.img, this.props.description)
         this.props.setImage('')
@@ -67,6 +70,7 @@ class MuseumContainer extends React.Component {
         return (
             <Museum {...this.props}
                     swapLocations={this.swapLocations}
+                    createLocation={this.createLocation}
             />
         );
     }
@@ -83,7 +87,7 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, {getMuseumData, updateMuseumData, swapLocations, getUsersLocationsList}),
+    connect(mapStateToProps, {getMuseumData, updateMuseumData, swapLocations, getUsersLocationsList, createLocation}),
     withRouter,
     CommonMuseumLogic,
     CommonUpdateLogic,

@@ -23,6 +23,7 @@ export const CommonMuseumLogic = (Component) => {
                 main_audio: null,
                 main_img: null,
                 isChanging: false, //Меняется ли информация
+                isCardsChanging: false, //Меняются ли местами карточки локаций/залов/артефактов
                 isEmptyInputs: false, //Если ли пустые поля
                 isPhotoTypeWrong: false, //Если файл не является картинкой
                 isAudioTypeWrong: false, //Если файл не является аудио
@@ -33,6 +34,7 @@ export const CommonMuseumLogic = (Component) => {
             this.handleChangeInputs = this.handleChangeInputs.bind(this)
             this.handleChangeFile = this.handleChangeFile.bind(this)
             this.toggleIsChanging = this.toggleIsChanging.bind(this)
+            this.toggleIsCardsChanging = this.toggleIsCardsChanging.bind(this)
             this.updateState = this.updateState.bind(this)
             this.setValidation = this.setValidation.bind(this)
             this.setImage = this.setImage.bind(this)
@@ -61,6 +63,11 @@ export const CommonMuseumLogic = (Component) => {
                 isPhotoTypeWrong: false,
                 isAudioTypeWrong: false,
                 isVideoUrlWrong: false,
+            })
+        }
+        toggleIsCardsChanging(isCardsChanging) {
+            this.setState({
+                isCardsChanging: isCardsChanging,
             })
         }
 
@@ -104,26 +111,16 @@ export const CommonMuseumLogic = (Component) => {
         render() {
             return (
                 <Component {...this.props}
+                           {...this.state}
                            handleChangeInputs={this.handleChangeInputs}
                            toggleIsChanging={this.toggleIsChanging}
+                           toggleIsCardsChanging={this.toggleIsCardsChanging}
                            setValidation={this.setValidation}
                            setImage={this.setImage}
                            setAudio={this.setAudio}
                            handleChange={this.handleChange}
                            updateState={this.updateState}
                            handleChangeFile={this.handleChangeFile}
-                           isPhotoTypeWrong={this.state.isPhotoTypeWrong}
-                           isAudioTypeWrong={this.state.isAudioTypeWrong}
-                           isVideoUrlWrong={this.state.isVideoUrlWrong}
-                           isChanging={this.state.isChanging}
-                           isEmptyInputs={this.state.isEmptyInputs}
-                           name={this.state.name}
-                           description={this.state.description}
-                           img={this.state.img}
-                           audio={this.state.audio}
-                           video={this.state.video}
-                           main_audio={this.state.main_audio}
-                           main_img={this.state.main_img}
                 />
             )
         }

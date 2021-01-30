@@ -7,7 +7,6 @@ import ArtifactContainer from "./Artifact/ArtifactContainer";
 import PreloaderLogo from "../../Common/PreloaderLogo/PreloaderLogo";
 import MuseumContainer from "./Museum/MuseumContainer";
 import LocationContainer from "./Location/LocationContainer";
-import CreateLocation from "./Create/CreateLocation";
 import HallContainer from "./Hall/HallContainer";
 import CreateHall from "./Create/CreateHall";
 import CreateArtifact from "./Create/CreateArtifact";
@@ -69,7 +68,6 @@ class Container extends React.Component {
                     <Route exact path='/m-admin/print' render={ () => <PrintListContainer />} />
                     <Route exact path='/m-admin/hr-management' render={ () => <ManagementContainer />} />
                     <Route exact path='/m-admin/hr-management/create_worker' render={ () => <CreateWorker />} />
-                    <Route exact path='/m-admin/create_location' render={ () => <CreateLocation />} />
                     <Route exact path='/m-admin/:location_id' render={ () => <LocationContainer />} />
                     <Route exact path='/m-admin/:location_id/create_halls' render={ () => <CreateHall />} />
                     <Route exact path='/m-admin/:location_id/:hall_id' render={ () => <HallContainer />} />

@@ -1,0 +1,45 @@
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 25px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px 0 #ebf3fa;
+}
+
+.buttons {
+    display: flex;
+}
+
+.name {
+    color: black;
+    font-size: 14px;
+}
+
+.moveBtn {
+    display: block;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    position: relative;
+    top: 0;
+    background-color: transparent;
+    transition: all 0.4s ease;
+}
+
+.moveBtn img {
+    display: block;
+    width: 20px;
+}
+.moveBtn img:last-child {
+    margin-left: 10px;
+}
+
+.up:hover {
+    top: -5px;
+}
+
+.down:hover {
+    top: 5px;
+}

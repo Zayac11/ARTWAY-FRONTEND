@@ -23,7 +23,7 @@ class CreateWorker extends React.Component {
 
     render() {
 
-        if(!this.props.is_museum_super_adminTest) {
+        if(!this.props.isUserMuseumSuperAdmin) {
             return <Redirect to={'/'} />
         }
         if(this.props.isCreate) {
@@ -38,8 +38,7 @@ class CreateWorker extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        is_museum_super_admin: state.museum.is_museum_super_admin,
-        is_museum_super_adminTest: state.museum.is_museum_super_adminTest,
+        isUserMuseumSuperAdmin: state.auth.isUserMuseumSuperAdmin
     }
 }
 

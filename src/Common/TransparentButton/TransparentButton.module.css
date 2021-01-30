@@ -3,11 +3,13 @@
     padding: 10px 0;
     width: 100%;
     font-size: 14px;
-    border: 2px solid black;
-    border-radius: 25px;
+    border: 1px solid #196bb1;
+    border-radius: 4px;
     text-align: center;
     cursor: pointer;
-    color: black;
+    color: #196bb1;
     max-width: 650px;
     margin: 0 auto 10px;
+    outline: none;
+    background-color: transparent;
 }

@@ -100,8 +100,8 @@ export const museumApi = {
         return fetch(baseUrl + `api/m-admin/${location_id}`, options)
     },
 
-    createLocation(name, img, description) { //Создание локации по музею пользователя
-        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'POST')
+    createLocation(name) { //Создание локации по музею пользователя
+        let options = getOptions([{name: 'name', value: name}], true,  'POST')
         return fetch(baseUrl + `api/m-admin`, options)
     },
 

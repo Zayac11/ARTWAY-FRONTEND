@@ -13,8 +13,9 @@ let initialState = {
     locations: [], //Лист локации музея
     print: [], //Артефакты, которые необходимо распечатать
     pdf: '', //Сгенерированный pdf файл с qr-кодами артефактов
+
+    //Надо убрать
     is_museum_super_admin: false, //Является ли пользователь супер-админом музея
-    is_museum_super_adminTest: true, //Является ли пользователь супер-админом музея
 }
 
 const museumReducer = (state = initialState, action) => {
@@ -127,7 +128,7 @@ export const getUsersLocationsList = (token) => { //Получения спис�
             .then(response => response.json()
                 .then(result => {
                     console.log('getUserLocationsList', result)
-                    dispatch(setLocations(result))
+                    dispatch(setMuseumData(result.museum, result.locations, false))
                 }))
     }
 }

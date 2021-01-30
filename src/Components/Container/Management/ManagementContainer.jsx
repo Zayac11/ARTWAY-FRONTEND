@@ -27,8 +27,7 @@ class ManagementContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        is_museum_super_admin: state.museum.is_museum_super_admin,
-        is_museum_super_adminTest: state.museum.is_museum_super_adminTest,
+        isUserMuseumSuperAdmin: state.auth.isUserMuseumSuperAdmin,
         museum_super_admin: state.admin.museum_super_admin,
         museum_admins: state.admin.museum_admins,
         museum_cashiers: state.admin.museum_cashiers,

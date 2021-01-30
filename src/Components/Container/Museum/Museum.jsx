@@ -2,11 +2,11 @@ import React from 'react';
 import s from './Museum.module.css'
 import {NavLink} from "react-router-dom";
 import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
-import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
 import MuseumInformation from "../../../Common/MuseumInformation/MuseumInformation";
-import prev from "../../../assets/images/left-chevron.svg";
 import artSquare from "../../../assets/images/artsquare.svg";
 import information from "../../../assets/images/information-2-copy.svg";
+import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
+import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
 
 const Museum = (props) => {
     let locations = props.locations
@@ -14,6 +14,7 @@ const Museum = (props) => {
         <div className={'outer'}>
             <div className={'container'}>
                 <div className={'museum'}>
+
                     <div className={'artContainer'}>
                         <div className={'artSquare'}>
                             <img className={'artImg'} src={artSquare} alt="artSquare"/>
@@ -24,75 +25,85 @@ const Museum = (props) => {
                             <img src={information} alt="information"/>
                         </NavLink>
                     </div>
-                    { props.isUserMuseumAdmin &&(
-                        !props.isChanging ?
-                            <>
-                                <button className={s.change} onClick={() => props.toggleIsChanging(true)}>Изменить данные музея</button>
-                                <MuseumInformation name={props.name} description={props.description} main_img={props.main_img} />
-                            </>
-                            :
-                            <>
-                                <ChangeForm text={'Изменение данных музея'} {...props} />
-                            </>)
-                    }
-
-                    <div className={s.createContainer}>
-                        {
-                            props.isUserMuseumAdmin &&
-                            <NavLink className={'create'} to={'/m-admin/create_location'}>
-                                Создать локацию
-                            </NavLink>
-                        }
-                        {
-                            props.isUserMuseumSuperAdmin &&
-                            <NavLink className={'create'} to={'/m-admin/hr-management'}>
-                                Персонал
-                            </NavLink>
-                        }
-                    </div>
-
-                    <div className={'titleContainer'}>
-                        <h2 className={'itemsTitle'}>
-                            Список локаций
-                        </h2>
-                        <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                            <img src={prev} alt="back"/>
-                        </button>
-                    </div>
-
-
-
                     {
-                        locations &&
-                        locations.map(l => {
-                            let last = locations[locations.length - 1].id
-                            return (
-                                <div className={'locationContainer'} key={l.id}>
+                        props.isChanging
+                        ?
+                            <ChangeForm text={'Изменение данных музея'} {...props} />
+                        :
+                            <>
+                                {/*Пользователь должен видеть информацию о музее*/}
+                                <MuseumInformation toggleIsChanging={props.toggleIsChanging}
+                                                   name={props.name} isUserMuseumAdmin={props.isUserMuseumAdmin}
+                                                   description={props.description} main_img={props.main_img}
+
+                                />
+                                {
+                                    props.isUserMuseumAdmin && <TransparentButton handleSubmit={props.createLocation} text={'Создать локацию'} />
+                                }
+
+                                <div className={'titleContainer'}>
+                                    <h2 className={'itemsTitle'}>
+                                        Список локаций
+                                    </h2>
                                     {
-                                        !props.isUserMuseumAdmin
-                                            ?
-                                            <NavLink to={`/locations/${l.id}/halls`}>
-                                                <MuseumItemsList isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} swapLocations={props.swapLocations} />
-                                            </NavLink>
-                                            :
-                                            <>
-                                                <MuseumItemsList isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} swapLocations={props.swapLocations} />
-                                                <NavLink className={s.goInside} to={`/m-admin/${l.id}`}>Перейти к локации</NavLink>
-                                            </>
-
+                                        props.isUserMuseumAdmin &&(
+                                            props.isCardsChanging
+                                                ?
+                                                <button onClick={() => {props.toggleIsCardsChanging(false)}} className={'cards_changing_button'}>
+                                                    Сохранить
+                                                </button>
+                                                :
+                                                <button onClick={() => props.toggleIsCardsChanging(true)} className={'cards_changing_button'}>
+                                                    Изменить порядок
+                                                </button>)
                                     }
-
-                                    {
-                                        props.isRelocate &&
-                                        <div>
-                                            <button className={s.relocateBtn} onClick={() => props.selectLocation(l.id)}>Выбрать локацию для перемещения</button>
-                                        </div>
-                                    }
-
                                 </div>
-                            )
-                        })
+                                {
+                                    locations &&
+                                    locations.map(l => {
+                                        let last = locations[locations.length - 1].id
+
+                                        return (
+                                            <div className={'locationContainer'} key={l.id}>
+                                                {
+                                                    !props.isUserMuseumAdmin
+                                                        ?
+                                                        <MuseumCard isCardsChanging={props.isCardsChanging} link={`/locations/${l.id}/halls`} isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} name={l.name} swapLocations={props.swapLocations} />
+                                                        :
+                                                        <MuseumCard isCardsChanging={props.isCardsChanging} link={`/m-admin/${l.id}`} isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} name={l.name} swapLocations={props.swapLocations} />
+                                                }
+
+                                                {
+                                                    props.isRelocate &&
+                                                    <div>
+                                                        <button className={s.relocateBtn} onClick={() => props.selectLocation(l.id)}>Выбрать локацию для перемещения</button>
+                                                    </div>
+                                                }
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </>
                     }
+
+
+
+
+                    {/*<div className={s.createContainer}>*/}
+                    {/*    {*/}
+                    {/*        props.isUserMuseumAdmin &&*/}
+                    {/*        <NavLink className={'create'} to={'/m-admin/create_location'}>*/}
+                    {/*            Создать локацию*/}
+                    {/*        </NavLink>*/}
+                    {/*    }*/}
+                    {/*    {*/}
+                    {/*        props.isUserMuseumSuperAdmin &&*/}
+                    {/*        <NavLink className={'create'} to={'/m-admin/hr-management'}>*/}
+                    {/*            Персонал*/}
+                    {/*        </NavLink>*/}
+                    {/*    }*/}
+                    {/*</div>*/}
+
                 </div>
             </div>
         </div>

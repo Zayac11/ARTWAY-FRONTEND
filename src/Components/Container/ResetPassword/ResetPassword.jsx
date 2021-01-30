@@ -8,7 +8,9 @@ import AuthInput from "../../../Common/AuthInput/AuthInput";
 import email from './../../../assets/images/email-2.svg'
 import send from './../../../assets/images/send.svg'
 import artSquare from "../../../assets/images/artsquare.svg";
+import resetPic from "../../../assets/images/resetPic.svg";
 import BlueButton from "../../../Common/BlueButton/BlueButton";
+
 
 class ResetPassword extends React.Component {
 
@@ -75,6 +77,9 @@ class ResetPassword extends React.Component {
                             <span>art</span>
                             <span className={'way'}>way</span>
                         </div>
+                    </div>
+                    <div className={s.picture}>
+                        <img src={resetPic} alt="reset password"/>
                     </div>
                     {
                         this.props.isLogin ? <Redirect to="/catalog"/>

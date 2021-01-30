@@ -1,28 +1,61 @@
 .imgContainer {
     width: 100%;
-    max-width: 650px;
+    max-width: max-content;
     max-height: 400px;
+}
+
+.adminTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 0 10px;
+
+}
+
+.change {
+    cursor: pointer;
+}
+
+.userTop {
+    text-align: center;
+    height: 20px;
+    position: relative;
+    margin: 20px 0 15px;
+}
+
+.userTop button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    width: 20px;
+    left: 0;
 }
 
 .name {
     text-align: center;
-    margin: 30px 0 10px;
-    font-size: 22px;
+    font-size: 16px;
+    font-weight: 500;
+
 }
 
 .img {
     display: block;
     margin: 0 auto 20px;
     max-height: 400px;
-    max-width: 650px;
+    width: 100%;
 }
 
 .descriptionTitle {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-weight: 500;
 }
 
 .description {
     white-space: pre-wrap;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    color: #888;
 }

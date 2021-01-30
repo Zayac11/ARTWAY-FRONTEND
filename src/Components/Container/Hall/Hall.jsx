@@ -1,12 +1,11 @@
 import React from 'react';
 import s from './Hall.module.css'
-import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
 import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
 import {NavLink} from "react-router-dom";
-import MuseumInformation from "../../../Common/MuseumInformation/MuseumInformation";
 import prev from "../../../assets/images/left-chevron.svg";
 import artSquare from "../../../assets/images/artsquare.svg";
 import information from "../../../assets/images/information-2-copy.svg";
+import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
 
 const Hall = (props) => {
     let artifacts = props.artifacts
@@ -27,16 +26,16 @@ const Hall = (props) => {
                     {
                         props.isUserMuseumAdmin && <NavLink className={'create'} to={'/m-admin/print'}>Артефакты для печати</NavLink>
                     }
-                    {
-                        props.isUserMuseumAdmin &&(
-                            !props.isChanging ?
-                                <>
-                                    <button className={s.change} onClick={() => props.toggleIsChanging(true)}>Изменить или удалить</button>
-                                    <MuseumInformation name={props.name} description={props.description} main_img={props.main_img} />
-                                </>
-                                :
-                                <ChangeForm text={'Изменение зала'} {...props} />)
-                    }
+                    {/*{*/}
+                    {/*    props.isUserMuseumAdmin &&(*/}
+                    {/*        !props.isChanging ?*/}
+                    {/*            <>*/}
+                    {/*                <button className={s.change} onClick={() => props.toggleIsChanging(true)}>Изменить или удалить</button>*/}
+                    {/*                <MuseumInformation name={props.name} description={props.description} main_img={props.main_img} />*/}
+                    {/*            </>*/}
+                    {/*            :*/}
+                    {/*            <ChangeForm text={'Изменение зала'} {...props} />)*/}
+                    {/*}*/}
                     {
                         props.isChanging &&
                         <button className={s.deleteBtn} onClick={props.deleteHall}>Удалить зал</button>
@@ -47,14 +46,40 @@ const Hall = (props) => {
                             Создать экспонат
                         </NavLink>
                     }
-                    <div className={'titleContainer'}>
-                        <h2 className={'itemsTitle'}>
-                            Список экспонатов
-                        </h2>
-                        <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                            <img src={prev} alt="back"/>
-                        </button>
-                    </div>
+                    {
+                        props.isUserMuseumAdmin
+                            ?
+                            <>
+                                <div className={'titleContainer'}>
+                                    <h2 className={'itemsTitle'}>
+                                        Список экспонатов
+                                    </h2>
+                                    {
+                                        props.isUserMuseumAdmin &&(
+                                            props.isCardsChanging
+                                                ?
+                                                <button onClick={() => {props.toggleIsCardsChanging(false)}} className={'cards_changing_button'}>
+                                                    Сохранить
+                                                </button>
+                                                :
+                                                <button onClick={() => props.toggleIsCardsChanging(true)} className={'cards_changing_button'}>
+                                                    Изменить порядок
+                                                </button>)
+                                    }
+                                </div>
+                            </>
+                            :
+                            <>
+                                <div className={'userTitleContainer'}>
+                                    <h2 className={'itemsTitle'}>
+                                        Список экспонатов
+                                    </h2>
+                                    <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                                        <img src={prev} alt="back"/>
+                                    </button>
+                                </div>
+                            </>
+                    }
 
                     {
                         artifacts &&
@@ -69,11 +94,7 @@ const Hall = (props) => {
                                                 <MuseumItemsList isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} locations={props.halls} swapLocations={props.swapArtifacts} />
                                             </NavLink>
                                             :
-                                            <>
-                                                <MuseumItemsList isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} swapLocations={props.swapLocations} />
-                                                <NavLink className={s.goInside} to={`/m-admin/${props.location_id}/${props.hall_id}/${l.id}`}>Перейти к артефакту</NavLink>
-                                            </>
-
+                                            <MuseumCard isCardsChanging={props.isCardsChanging} link={`/m-admin/${props.location_id}/${props.hall_id}/${l.id}`} isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} name={l.name} swapLocations={props.swapArtifacts} />
                                     }
 
                                     { //Находится ли данный товар в корзине
