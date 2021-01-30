@@ -9,26 +9,6 @@
     min-height: 100vh;
 }
 
-.artContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 8px 0;
-}
-
-.artImg {
-    margin: 0 8px 0 0;
-}
-
-.artSquare {
-    display: flex;
-    align-items: center;
-}
-
-.way {
-    color: #0e4dae;
-}
-
 .scanner {
     margin: 0 25px;
     border-radius: 20px;
@@ -55,6 +35,7 @@
     color: #e31b1b;
     margin-bottom: 50px;
 }
+
 .form__right {
     text-align: center;
     font-size: 12px;
@@ -82,6 +63,15 @@
     padding: 10px 30px;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.adminBackBtn {
+    width: 20px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    display: block;
 }
 
 .backBtn {
@@ -143,5 +133,10 @@
 }
 
 .cards_changing_button {
-
+    display: block;
+    outline: none;
+    border: none;
+    font-size: 14px;
+    background-color: transparent;
+    color: #196bb1;
 }

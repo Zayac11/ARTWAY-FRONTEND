@@ -7,6 +7,7 @@ const SET_HALLS = 'SET_HALLS'
 let initialState = {
     locationData: {}, //Информация по локации
     halls: [], //Лист залы локации
+    locationName: '', //Название локации, которое отображается покупателю
 }
 
 const locationReducer = (state = initialState, action) => {
@@ -20,7 +21,8 @@ const locationReducer = (state = initialState, action) => {
         case SET_HALLS:
             return {
                 ...state,
-                halls: action.halls.halls,
+                halls: action.halls,
+                locationName: action.locationName,
             }
         default:
             return state;
@@ -28,7 +30,7 @@ const locationReducer = (state = initialState, action) => {
 }
 
 export const setLocationData = (location, halls) => ({type: SET_LOCATION_DATA, location, halls})
-export const setHalls = (halls) => ({type: SET_HALLS, halls})
+export const setHalls = (halls, locationName) => ({type: SET_HALLS, halls, locationName})
 
 //Локация
 export const getLocationData = (location_id) => { //Получение информации о локации
@@ -91,7 +93,7 @@ export const getUserHallsList = (token, location_id) => {
             .then(response => response.json()
                 .then(result => {
                     console.log('getUserHallsList', result)
-                    dispatch(setHalls(result))
+                    dispatch(setHalls(result.halls, result.location))
                 }))
     }
 }

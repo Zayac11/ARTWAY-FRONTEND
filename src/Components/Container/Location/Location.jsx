@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './Location.module.css'
-import {NavLink} from "react-router-dom";
 import prev from "../../../assets/images/left-chevron.svg";
-import artSquare from "../../../assets/images/artsquare.svg";
-import information from "../../../assets/images/information-2-copy.svg";
 import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
+import TopContainer from "../../../Common/Top/TopContainer";
+import BlueButton from "../../../Common/BlueButton/BlueButton";
+import edit from '../../../assets/images/edit.svg'
 
 const Location = (props) => {
     let halls = props.halls
@@ -12,19 +12,11 @@ const Location = (props) => {
         <div className={'outer'}>
             <div className={'container'}>
                 <div className={'museum'}>
-                    <div className={'artContainer'}>
-                        <div className={'artSquare'}>
-                            <img className={'artImg'} src={artSquare} alt="artSquare"/>
-                            <span>art</span>
-                            <span className={'way'}>way</span>
-                        </div>
-                        <NavLink to={'/'} className={'information'}>
-                            <img src={information} alt="information"/>
-                        </NavLink>
-                    </div>
-                    {
-                        props.isUserMuseumAdmin && <NavLink className={'create'} to={'/m-admin/print'}>Артефакты для печати</NavLink>
-                    }
+                    <TopContainer isUserMuseumAdmin={props.isUserMuseumAdmin} />
+
+                    {/*{*/}
+                    {/*    props.isUserMuseumAdmin && <NavLink className={'create'} to={'/m-admin/print'}>Артефакты для печати</NavLink>*/}
+                    {/*}*/}
 
                     {/*{*/}
                     {/*    props.isUserMuseumAdmin &&(*/}
@@ -37,21 +29,32 @@ const Location = (props) => {
                     {/*            />)*/}
                     {/*}*/}
 
-                    {
-                        props.isChanging &&
-                        <button className={s.deleteBtn} onClick={props.deleteLocation}>Удалить локацию</button>
-                    }
+                    {/*{*/}
+                    {/*    props.isChanging &&*/}
+                    {/*    <button className={s.deleteBtn} onClick={props.deleteLocation}>Удалить локацию</button>*/}
+                    {/*}*/}
 
-                    {
-                        props.isUserMuseumAdmin &&
-                        <NavLink className={'create'} to={`/m-admin/${props.location_id}/create_halls`}>
-                            Создать зал
-                        </NavLink>
-                    }
                     {
                         props.isUserMuseumAdmin
                         ?
                             <>
+                                <div className={s.topContainer}>
+                                    <button onClick={() => props.history.goBack()} className={'adminBackBtn'}>
+                                        <img src={prev} alt="back"/>
+                                    </button>
+                                    {
+                                        props.isChanging
+                                        ?
+                                            <input type="text" value={props.name} onKeyUp={props.handleFindKey} name={'name'} onFocus={props.handleFocus} onChange={props.handleChange}/>
+                                        :
+                                            <div className={s.name}>
+                                                {props.name}
+                                            </div>
+                                    }
+                                    <div onClick={() => props.toggleIsChanging(!props.isChanging)} >
+                                        <img src={edit} alt="edit"/>
+                                    </div>
+                                </div>
                                 <div className={'titleContainer'}>
                                     <h2 className={'itemsTitle'}>
                                         Список залов
@@ -74,7 +77,7 @@ const Location = (props) => {
                             <>
                                 <div className={'userTitleContainer'}>
                                     <h2 className={'itemsTitle'}>
-                                        Список залов
+                                        {props.locationName}
                                     </h2>
                                     <button onClick={() => props.history.goBack()} className={'backBtn'}>
                                         <img src={prev} alt="back"/>
@@ -82,7 +85,6 @@ const Location = (props) => {
                                 </div>
                             </>
                     }
-
 
                     {
                         halls &&
@@ -108,6 +110,14 @@ const Location = (props) => {
                             )
                         })
                     }
+
+                    {
+                        props.isUserMuseumAdmin &&
+                        <div className={s.buttonContainer}>
+                            <BlueButton type={'btn'} handleSubmit={props.createLocation} text={'Создать зал'} />
+                        </div>
+                    }
+
                 </div>
             </div>
         </div>

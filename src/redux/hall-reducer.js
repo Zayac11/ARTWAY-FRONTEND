@@ -53,9 +53,9 @@ export const updateHallData = (location_id, hall_id, name, img, description) => 
     }
 }
 
-export const createHall = (id, name, img, description) => { //Добавление зала в локацию по id локации
+export const createHall = (id, name) => { //Добавление зала в локацию по id локации
     return (dispatch) => {
-        museumApi.createHall(id, name, img, description)
+        museumApi.createHall(id, name)
             .then(response => response.json()
                 .then(result => {
                     console.log('createHall', result)

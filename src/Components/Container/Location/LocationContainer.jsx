@@ -12,6 +12,7 @@ import {
     swapHalls,
     updateLocationData
 } from "../../../redux/location-reducer";
+import {createHall} from "../../../redux/hall-reducer";
 
 class LocationContainer extends React.Component {
 
@@ -23,6 +24,11 @@ class LocationContainer extends React.Component {
         this.updateLocation = this.updateLocation.bind(this)
         this.deleteLocation = this.deleteLocation.bind(this)
         this.swapHalls = this.swapHalls.bind(this)
+        this.createLocation = this.createLocation.bind(this)
+    }
+
+    createLocation() {
+        this.props.createHall(this.props.match.params.location_id, "Зал")
     }
 
     deleteLocation() {
@@ -75,6 +81,7 @@ class LocationContainer extends React.Component {
             <Location {...this.props}
                       deleteLocation={this.deleteLocation}
                       swapHalls={this.swapHalls}
+                      createLocation={this.createLocation}
                       location_id={this.props.match.params.location_id}
             />
 
@@ -87,11 +94,12 @@ let mapStateToProps = (state) => {
         locationData: state.location.locationData,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
         halls: state.location.halls,
+        locationName: state.location.locationName,
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {getLocationData, updateLocationData, deleteLocation, swapHalls, getUserHallsList}),
+    connect(mapStateToProps, {getLocationData, updateLocationData, deleteLocation, swapHalls, getUserHallsList, createHall}),
     withRouter,
     CommonMuseumLogic,
     CommonUpdateLogic,

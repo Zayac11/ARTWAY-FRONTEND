@@ -137,8 +137,8 @@ export const museumApi = {
         return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}`, options)
     },
 
-    createHall(location_id, name, img, description) { //Создание зала по id локации
-        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'POST')
+    createHall(location_id, name) { //Создание зала по id локации
+        let options = getOptions([{name: 'name', value: name}], true,  'POST')
         return fetch(baseUrl + `api/m-admin/${location_id}`, options)
     },
 

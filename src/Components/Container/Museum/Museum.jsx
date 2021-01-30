@@ -1,12 +1,10 @@
 import React from 'react';
 import s from './Museum.module.css'
-import {NavLink} from "react-router-dom";
 import ChangeForm from "../../../Common/ChangeForm/ChangeForm";
 import MuseumInformation from "../../../Common/MuseumInformation/MuseumInformation";
-import artSquare from "../../../assets/images/artsquare.svg";
-import information from "../../../assets/images/information-2-copy.svg";
 import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
 import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
+import TopContainer from "../../../Common/Top/TopContainer";
 
 const Museum = (props) => {
     let locations = props.locations
@@ -15,16 +13,7 @@ const Museum = (props) => {
             <div className={'container'}>
                 <div className={'museum'}>
 
-                    <div className={'artContainer'}>
-                        <div className={'artSquare'}>
-                            <img className={'artImg'} src={artSquare} alt="artSquare"/>
-                            <span>art</span>
-                            <span className={'way'}>way</span>
-                        </div>
-                        <NavLink to={'/'} className={'information'}>
-                            <img src={information} alt="information"/>
-                        </NavLink>
-                    </div>
+                    <TopContainer isUserMuseumAdmin={props.isUserMuseumAdmin} />
                     {
                         props.isChanging
                         ?

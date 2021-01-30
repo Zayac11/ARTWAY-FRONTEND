@@ -1,0 +1,33 @@
+.logoutBtn {
+    outline: none;
+    border: none;
+    background-color: #de3d58;
+    padding: 7px 15px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+.artContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8px 0;
+}
+.artContainer a img{
+   display: block;
+}
+
+.artImg {
+    margin: 0 8px 0 0;
+}
+
+.artSquare {
+    display: flex;
+    align-items: center;
+}
+
+.way {
+    color: #0e4dae;
+}
