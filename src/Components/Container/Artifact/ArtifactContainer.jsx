@@ -7,24 +7,32 @@ import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
 import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
 import {deleteArtifact, getArtifactData, updateArtifactData} from "../../../redux/artifact-reducer";
 import {getUserArtifactData} from "../../../redux/user-reducer";
+import {addArtifactToPrint, deleteOneArtifact} from "../../../redux/museum-reducer";
 
 class ArtifactContainer extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            isDeleted: false,
+            isDeleted: false, //Удалился ли экспонат
+            isRelocate: false, //Происходит ли перемещение экспоната
         }
         this.updateArtifact = this.updateArtifact.bind(this)
         this.deleteArtifact = this.deleteArtifact.bind(this)
         this.swapArtifacts = this.swapArtifacts.bind(this)
         this.checkAudio = this.checkAudio.bind(this)
+        this.toggleRelocate = this.toggleRelocate.bind(this)
     }
 
     deleteArtifact() {
         this.props.deleteArtifact(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id)
         this.setState({
             isDeleted: true,
+        })
+    }
+    toggleRelocate() {
+        this.setState({
+            isRelocate: !this.state.isRelocate,
         })
     }
 
@@ -93,6 +101,10 @@ class ArtifactContainer extends React.Component {
             <Artifact {...this.props}
                       deleteArtifact={this.deleteArtifact}
                       swapArtifacts={this.swapArtifacts}
+                      toggleRelocate={this.toggleRelocate}
+                      isRelocate={this.state.isRelocate}
+                      location_id={this.props.match.params.location_id}
+                      hall_id={this.props.match.params.hall_id}
             />
         );
     }
@@ -103,11 +115,12 @@ let mapStateToProps = (state) => {
     return {
         artifactData: state.artifact.artifactData,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
+        print: state.museum.print,
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {getArtifactData, updateArtifactData, deleteArtifact, getUserArtifactData}),
+    connect(mapStateToProps, {getArtifactData, updateArtifactData, addArtifactToPrint, deleteOneArtifact, deleteArtifact, getUserArtifactData}),
     withRouter,
     CommonMuseumLogic,
     CommonUpdateLogic,

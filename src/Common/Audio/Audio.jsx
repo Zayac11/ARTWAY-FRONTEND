@@ -1,15 +1,15 @@
 import React from 'react';
 import s from './Audio.module.css'
-import H5AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
+import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
 import './Audio.css'
 
 const Audio = (props) => {
-
     return (
         <>
-            <H5AudioPlayer className={s.audio}
+            <AudioPlayer   className={s.audio}
                            volume={0.1}
                            src={props.audio}
+                           // src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
                            showJumpControls={false}
                            customProgressBarSection={[
                                RHAP_UI.MAIN_CONTROLS,

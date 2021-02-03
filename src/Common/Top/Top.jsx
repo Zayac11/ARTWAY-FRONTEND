@@ -17,7 +17,8 @@ const Top = (props) => {
                 props.isUserMuseumAdmin
                 ?
                     <div className={s.admin}>
-                        <img className={s.print} src={print} alt="print"/>
+                        <NavLink to={'/m-admin/print'}><img className={s.print} src={print} alt="print"/></NavLink>
+
                         <button className={s.logoutBtn} onClick={props.logout}>Выйти</button>
                     </div>
                 :

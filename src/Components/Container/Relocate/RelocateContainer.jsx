@@ -4,11 +4,11 @@ import {compose} from "redux";
 import {WithAdminRedirect} from "../../../hoc/Redirect/WithAdminRedirect";
 import {getMuseumData} from "../../../redux/museum-reducer";
 import {Redirect, withRouter} from "react-router-dom";
-import Museum from "../Museum/Museum";
-import Location from "../Location/Location";
 import {relocateArtifact} from "../../../redux/artifact-reducer";
 import {getLocationData} from "../../../redux/location-reducer";
-import {CommonMuseumLogic} from "../../../hoc/CommonMuseumLogic";
+import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
+import s from './Relocate.module.css'
+import prev from "../../../assets/images/left-chevron.svg";
 
 class RelocateContainer extends React.Component {
 
@@ -17,11 +17,9 @@ class RelocateContainer extends React.Component {
 
         this.state = {
 
-            location_id: '',
-            hall_id: '',
             artifact_id: '',
+            isRelocated: false,
 
-            isRelocated: false, //Если перемещение прошло успешно
             isLocationSelected: false, //Если выбор локации произошел
             isHallSelected: false, //Если выбор зала произошел
         }
@@ -43,6 +41,8 @@ class RelocateContainer extends React.Component {
             isHallSelected: true,
             isRelocated: true,
         })
+        this.props.toggleRelocate()
+
     }
 
     componentDidMount() {
@@ -57,24 +57,73 @@ class RelocateContainer extends React.Component {
     }
 
     render() {
-        if(!this.state.isLocationSelected) {
-            return (
-                <Museum history={this.props.history} locations={this.props.locations} name={this.props.museumData.name}
-                        main_img={this.props.museumData.img} description={this.props.museumData.description}
-                        selectLocation={this.selectLocation} isRelocate={true}/>
-            );
-        }
-        else if(!this.state.isHallSelected) {
-            return (
-                <Location history={this.props.history} halls={this.props.halls} name={this.props.locationData.name} main_img={this.props.locationData.img}
-                          description={this.props.locationData.description} selectHall={this.selectHall} isRelocate={true}/>
-            );
-        }
-        else if(this.state.isRelocated) {
-            return <Redirect to={`/m-admin/${this.state.location_id}/${this.state.hall_id}`} />
-        }
-    }
+        // if(this.state.isRelocated) {
+        //     return <Redirect to={`/m-admin/${this.props.match.params.location_id}/${this.props.match.params.hall_id}`} />
+        // }
+        return (
+            <>
+                <div className={s.relocateContainer}>
+                    <div className={s.top}>
+                        <button onClick={() => this.props.toggleRelocate()} className={'backBtn'}>
+                            <img src={prev} alt="back"/>
+                        </button>
+                        <h2 className={s.title}>
+                            Перемещение экспоната
+                        </h2>
+                    </div>
 
+                    {
+                        (!this.state.isLocationSelected && !this.state.isHallSelected) &&
+                            <>
+                                <div className={'titleContainer'}>
+                                    <h2 className={'itemsTitle'}>
+                                        Список локаций
+                                    </h2>
+                                </div>
+                                {
+                                    this.props.locations &&
+                                    this.props.locations.map(l => {
+
+                                        return (
+                                            <div className={'locationContainer'} key={l.id}>
+                                                <div onClick={() => this.selectLocation(l.id)}>
+                                                    <div className={s.cover}></div>
+                                                    <MuseumCard link={'#'} isUserMuseumAdmin={false} id={l.id} name={l.name} />
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </>
+                    }
+                    {
+                        (!this.state.isHallSelected && this.state.isLocationSelected) &&
+                        <>
+                            <div className={'titleContainer'}>
+                                <h2 className={'itemsTitle'}>
+                                    Список залов
+                                </h2>
+                            </div>
+                            {
+                                this.props.halls &&
+                                this.props.halls.map(l => {
+
+                                    return (
+                                        <div className={'locationContainer'} key={l.id}>
+                                            <div onClick={() => this.selectHall(l.id)}>
+                                                <div className={s.cover}></div>
+                                                <MuseumCard link={'#'} isUserMuseumAdmin={false} id={l.id} name={l.name} />
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+                        </>
+                    }
+                </div>
+            </>
+        )
+    }
 }
 
 let mapStateToProps = (state) => {

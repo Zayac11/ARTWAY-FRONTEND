@@ -34,7 +34,7 @@ const Museum = (props) => {
 
                                 />
                                 {
-                                    props.isUserMuseumAdmin && <TransparentButton handleSubmit={props.createLocation} text={'Создать новую локацию'} />
+                                    props.isUserMuseumAdmin && <TransparentButton type={'btn'} handleSubmit={props.createLocation} text={'Создать новую локацию'} />
                                 }
 
                                 <div className={'titleContainer'}>

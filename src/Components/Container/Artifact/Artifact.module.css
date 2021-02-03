@@ -1,52 +1,20 @@
-.artifactContainer {
-    position: relative;
-    padding: 0 8px;
-}
-
-.top {
-    position: absolute;
-    top: 30px;
-    padding: 0 20px;
+.topContainer {
     display: flex;
-
     justify-content: space-between;
-    width: 100%;
-}
-
-.change {
-    outline: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px 30px;
-    border-radius: 5px;
-    background-color: #868686;
-    color: white;
-    transition: all 0.4s ease;
-    font-size: 18px;
-    margin-bottom: 15px;
-}
-
-.deleteBtn {
-    outline: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px 30px;
-    border-radius: 5px;
-    background-color: #cccccc;
-    display: block;
-    margin: 0 auto 50px;
+    align-items: center;
+    margin: 20px 0;
 }
 
 .name {
     color: black;
     font-weight: 500;
     text-align: center;
-    margin: 25px 0;
+    font-size: 14px;
 }
 
-.artifact {
+.artifactContainer {
     width: 100%;
-
+    padding: 0 8px;
 }
 
 .imgContainer {
@@ -78,7 +46,7 @@
 
 .title {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 15px;
 }
 
@@ -86,6 +54,7 @@
     white-space: pre-wrap;
     line-height: 1.5;
     color: #525252;
+    font-size: 16px;
 }
 
 .videoBtn {

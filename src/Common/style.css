@@ -110,6 +110,7 @@
 
 .locationContainer {
     margin-top: 20px;
+    position: relative;
     border-radius: 5px;
 }
 

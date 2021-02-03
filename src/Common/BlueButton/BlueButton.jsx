@@ -17,6 +17,12 @@ const BlueButton = (props) => {
                     {props.text}
                 </button>
             }
+            {
+                props.type === 'withProps' &&
+                <button onClick={() => props.handleSubmit(props.data)} className={s.button}>
+                    {props.text}
+                </button>
+            }
 
         </>
 

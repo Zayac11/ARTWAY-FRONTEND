@@ -79,12 +79,7 @@ const ChangeForm = (props) => {
             <div className={s.saveContainer}>
                 <BlueButton type={'btn'} handleSubmit={props.handleSubmit} text={'Сохранить и выйти'} />
             </div>
-            {/*{*/}
-            {/*    props.isChanging &&*/}
-            {/*        <button className={'submit'} onClick={() => props.toggleIsChanging(false)}>*/}
-            {/*            Закрыть*/}
-            {/*        </button>*/}
-            {/*}*/}
+
         </div>
     );
 }

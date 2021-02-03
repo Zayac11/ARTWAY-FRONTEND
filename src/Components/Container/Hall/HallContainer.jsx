@@ -12,7 +12,6 @@ import {
     swapArtifacts,
     updateHallData
 } from "../../../redux/hall-reducer";
-import {addArtifactToPrint, deleteOneArtifact} from "../../../redux/museum-reducer";
 
 class HallContainer extends React.Component {
 
@@ -91,12 +90,11 @@ let mapStateToProps = (state) => {
         artifacts: state.hall.artifacts,
         hallData: state.hall.hallData,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
-        print: state.museum.print,
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {getHallData, updateHallData, deleteHall, swapArtifacts, addArtifactToPrint, deleteOneArtifact, getUserArtifactsList}),
+    connect(mapStateToProps, {getHallData, updateHallData, deleteHall, swapArtifacts, getUserArtifactsList}),
     withRouter,
     CommonMuseumLogic,
     CommonUpdateLogic,

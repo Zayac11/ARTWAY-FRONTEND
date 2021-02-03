@@ -72,7 +72,6 @@ class Container extends React.Component {
                     <Route exact path='/m-admin/:location_id/:hall_id' render={ () => <HallContainer />} />
                     <Route exact path='/m-admin/:location_id/:hall_id/create_artifacts' render={ () => <CreateArtifact />} />
                     <Route exact path='/m-admin/:location_id/:hall_id/:artifact_id' render={ () => <ArtifactContainer />} />
-                    <Route exact path='/m-admin/relocate/:location_id/:hall_id/:artifact_id' render={ () => <RelocateContainer />} />
 
                     {/*Администратор сервиса*/}
                     <Route exact path='/s-admin' render={ () => <MuseumsListContainer />} /> {/*Лист музеев*/}

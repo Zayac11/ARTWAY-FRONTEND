@@ -45,7 +45,7 @@ const Main = (props) => {
                 </div>
             </div>
             <div className={'links'}>
-                <TransparentButton link={'/enter'} text='Ввести ID экспоната вручную' />
+                <TransparentButton type={'link'} link={'/enter'} text='Ввести ID экспоната вручную' />
                 <BlackButton link={`/scan`} text='Отсканировать qr-код' />
                 {
                     props.isUserServiceAdmin &&
