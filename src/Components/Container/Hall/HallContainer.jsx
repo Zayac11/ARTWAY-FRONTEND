@@ -12,7 +12,7 @@ import {
     swapArtifacts,
     updateHallData
 } from "../../../redux/hall-reducer";
-import {addArtifactToPrint, deleteOneArtifact, removeArtifactsToPrint} from "../../../redux/museum-reducer";
+import {addArtifactToPrint, deleteOneArtifact} from "../../../redux/museum-reducer";
 
 class HallContainer extends React.Component {
 
@@ -36,7 +36,7 @@ class HallContainer extends React.Component {
     }
 
     updateHall() {
-        this.props.updateHallData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.name, this.props.img, this.props.description)
+        this.props.updateHallData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.name)
         this.props.setImage('')
         this.props.changeCreate(false) //Больше не изменяем
     }
@@ -47,7 +47,7 @@ class HallContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.hallData !== this.props.hallData) {
-            this.props.updateState(this.props.match.params.location_id, this.props.hallData.name, this.props.hallData.description, this.props.hallData.img, '', '')
+            this.props.updateState(this.props.match.params.location_id, this.props.hallData.name, 'Описание', 'Картинка', '', '')
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.updateHall()

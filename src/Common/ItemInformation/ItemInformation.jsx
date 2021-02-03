@@ -28,10 +28,7 @@ const ItemInformation = (props) => {
                            {
                                props.isChanging
                                    ?
-                                   <div onClick={() => {
-                                       props.toggleIsChanging(!props.isChanging)
-                                       props.handleSubmit()
-                                   }}>
+                                   <div onClick={() => props.handleSubmit()}>
                                        <img width={20} height={20} src={checked} alt="edit"/>
                                    </div>
                                    :

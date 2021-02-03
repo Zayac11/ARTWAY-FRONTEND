@@ -55,7 +55,7 @@ const Location = (props) => {
 
                         {
                             props.isUserMuseumAdmin &&
-                            <div className={s.buttonContainer}>
+                            <div className={'buttonContainer'}>
                                 <BlueButton type={'btn'} handleSubmit={props.createLocation} text={'Создать новый зал'} />
                                 {
                                     props.isChanging && <RedTransparentBtn type={'btn'} handleSubmit={props.deleteLocation} text={'Удалить зал'} />

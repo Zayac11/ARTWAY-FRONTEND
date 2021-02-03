@@ -50,7 +50,7 @@ class LocationContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.locationData !== this.props.locationData) {
-            this.props.updateState(this.props.match.params.location_id, this.props.locationData.name, this.props.locationData.description, this.props.locationData.img, '', '')
+            this.props.updateState(this.props.match.params.location_id, this.props.locationData.name, 'Описание', 'Картинка', '', '')
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight){
             this.updateLocation()

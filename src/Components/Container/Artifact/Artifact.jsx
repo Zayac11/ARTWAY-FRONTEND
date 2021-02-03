@@ -100,3 +100,21 @@ export default Artifact;
 {/*<button onClick={() => props.history.goBack()} className={'backBtn'}>*/}
 {/*    <img src={prev} alt="back"/>*/}
 {/*</button>*/}
+
+// { //Находится ли данный товар в корзине
+//     props.isUserMuseumAdmin && (
+//         props.print.some(item => item.id === l.id) ?
+//             <button className={s.inCart} onClick={() => props.deleteOneArtifact(l.id)}>
+//                 Удалить из печати
+//             </button>
+//
+//             :   <button className={s.inCart} onClick={() => props.addArtifactToPrint(l)}
+//             >
+//                 Добавить к печати
+//             </button>)
+// }
+//
+// {
+//     props.isUserMuseumAdmin &&
+//     <NavLink className={s.goInside} to={`/m-admin/relocate/${props.location_id}/${props.hall_id}/${l.id}`}>Переместить экспонат</NavLink>
+// }

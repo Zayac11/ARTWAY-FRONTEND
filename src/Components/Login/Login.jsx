@@ -8,6 +8,7 @@ import AuthInput from "../../Common/AuthInput/AuthInput";
 import email from './../../assets/images/email-2.svg'
 import padlock from './../../assets/images/padlock-2.svg'
 import BlueButton from "../../Common/BlueButton/BlueButton";
+import TopContainer from "../../Common/Top/TopContainer";
 
 class Login extends React.Component {
 
@@ -71,13 +72,7 @@ class Login extends React.Component {
         return (
             <div className={'outer'}>
                 <div className={'container'}>
-                    <div className={'artContainer'}>
-                        <div className={'artSquare'}>
-                            <img className={'artImg'} src={artSquare} alt="artSquare"/>
-                            <span>art</span>
-                            <span className={'way'}>way</span>
-                        </div>
-                    </div>
+                    <TopContainer />
                     {
                         this.props.isLogin ? <Redirect to="/" />
                             :

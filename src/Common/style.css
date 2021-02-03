@@ -145,3 +145,13 @@
 .itemsBottom {
     margin-bottom: 100px;
 }
+
+.buttonContainer {
+    background-color: #f0f8ff;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 100px 8px 0;
+}
