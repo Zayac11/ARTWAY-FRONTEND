@@ -43,9 +43,9 @@ export const getLocationData = (location_id) => { //Получение инфо�
                 }))
     }
 }
-export const updateLocationData = (id, name, img, description) => { //Обновлении информации о локации по id
+export const updateLocationData = (id, name) => { //Обновлении информации о локации по id
     return (dispatch) => {
-        museumApi.updateLocationData(id, name, img, description)
+        museumApi.updateLocationData(id, name)
             .then(response => response.json()
                 .then(result => {
                     console.log('updatedLocationData', result)

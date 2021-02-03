@@ -42,9 +42,9 @@ export const getHallData = (location_id, hall_id) => { //Получение ин
     }
 }
 
-export const updateHallData = (location_id, hall_id, name, img, description) => { //Обновлении информации о зале по id локации и зала
+export const updateHallData = (location_id, hall_id, name) => { //Обновлении информации о зале по id локации и зала
     return (dispatch) => {
-        museumApi.updateHallData(location_id, hall_id, name, img, description)
+        museumApi.updateHallData(location_id, hall_id, name)
             .then(response => response.json()
                 .then(result => {
                     console.log('updateHallData', result)

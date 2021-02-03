@@ -1,0 +1,26 @@
+.nameInput {
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    border-bottom: 1px solid black;
+    background-color: #f0f8ff;
+}
+
+.topContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.topContainer div img {
+    cursor: pointer;
+}
+
+.name {
+    font-size: 14px;
+    font-weight: 500;
+}

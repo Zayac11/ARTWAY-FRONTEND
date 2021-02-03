@@ -38,7 +38,8 @@ const MuseumCard = (props) => {
                         {props.name}
                     </div>
                     {
-                        props.isUserMuseumAdmin ?
+                        props.isUserMuseumAdmin
+                        ?
                         <div className={s.buttons}>
                             {
                                 (props.prev !== null) &&
@@ -51,6 +52,12 @@ const MuseumCard = (props) => {
                                 <button className={`${s.moveBtn} ${s.down}`} onClick={() => props.swapLocations('down', props.id)}>
                                     <img src={disableDown} alt="down"/>
                                 </button>
+                            }
+                            {
+                                (props.prev === null && props.id === props.last) &&
+                                <div className={s.inCard}>
+                                    <img src={inCard} alt="inCard"/>
+                                </div>
                             }
                         </div>
                         :

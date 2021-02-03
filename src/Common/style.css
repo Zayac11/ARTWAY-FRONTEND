@@ -138,5 +138,10 @@
     border: none;
     font-size: 14px;
     background-color: transparent;
+    cursor: pointer;
     color: #196bb1;
+}
+
+.itemsBottom {
+    margin-bottom: 100px;
 }

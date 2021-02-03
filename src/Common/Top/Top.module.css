@@ -31,3 +31,13 @@
 .way {
     color: #0e4dae;
 }
+
+.admin {
+    display: flex;
+    align-items: center;
+}
+
+.print {
+    display: block;
+    margin-right: 30px;
+}

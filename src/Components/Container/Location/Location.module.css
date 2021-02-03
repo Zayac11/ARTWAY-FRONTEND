@@ -12,42 +12,6 @@
     margin-bottom: 10px;
 }
 
-.topContainer {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-}
-
-.topContainer div img {
-    cursor: pointer;
-}
-
-.name {
-    font-size: 14px;
-    font-weight: 500;
-}
-
-.deleteBtn {
-    outline: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px 30px;
-    border-radius: 5px;
-    background-color: #cccccc;
-    display: block;
-    margin: 0 auto 50px;
-}
-
-.goInside {
-    display: block;
-    margin-top: 10px;
-    color: black;
-    font-size: 18px;
-    text-decoration: underline;
-}
-
 .relocateBtn {
     outline: none;
     border: none;
@@ -64,5 +28,13 @@
 }
 
 .buttonContainer {
-    margin: 30px 0;
+    background-color: #f0f8ff;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 100px 8px 0;
+    /*margin-top: 100px;*/
 }
+

@@ -95,8 +95,8 @@ export const museumApi = {
         return fetch(baseUrl + `api/m-admin/${location_id}`, requestOptions)
     },
 
-    updateLocationData(location_id, name, img, description) { //Изменение информации о локации по id
-        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'PUT')
+    updateLocationData(location_id, name) { //Изменение информации о локации по id
+        let options = getOptions([{name: 'name', value: name}], true,  'PUT')
         return fetch(baseUrl + `api/m-admin/${location_id}`, options)
     },
 
@@ -132,8 +132,8 @@ export const museumApi = {
         return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}`, requestOptions)
     },
 
-    updateHallData(location_id, hall_id, name, img, description) { //Изменение информации о зале по id его локации и зала
-        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'PUT')
+    updateHallData(location_id, hall_id, name) { //Изменение информации о зале по id его локации и зала
+        let options = getOptions([{name: 'name', value: name}], true,  'PUT')
         return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}`, options)
     },
 

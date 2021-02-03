@@ -19,7 +19,7 @@ class MuseumContainer extends React.Component {
         this.createLocation = this.createLocation.bind(this)
     }
     createLocation() {
-        this.props.createLocation('Локация')
+        this.props.createLocation('Новая локация')
     }
     updateMuseum() {
         this.props.updateMuseumData(this.props.id, this.props.name, this.props.img, this.props.description)

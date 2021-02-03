@@ -28,7 +28,7 @@ class LocationContainer extends React.Component {
     }
 
     createLocation() {
-        this.props.createHall(this.props.match.params.location_id, "Зал")
+        this.props.createHall(this.props.match.params.location_id, "Новый зал")
     }
 
     deleteLocation() {
@@ -39,7 +39,7 @@ class LocationContainer extends React.Component {
     }
 
     updateLocation() {
-        this.props.updateLocationData(this.props.match.params.location_id, this.props.name, this.props.img, this.props.description)
+        this.props.updateLocationData(this.props.match.params.location_id, this.props.name)
         this.props.setImage('')
         this.props.changeCreate(false)
     }

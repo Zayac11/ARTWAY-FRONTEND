@@ -3,6 +3,7 @@ import s from './Top.module.css'
 import artSquare from "../../assets/images/artsquare.svg";
 import {NavLink} from "react-router-dom";
 import information from "../../assets/images/information-2-copy.svg";
+import print from "../../assets/images/printing.svg";
 
 const Top = (props) => {
     return (
@@ -15,7 +16,10 @@ const Top = (props) => {
             {
                 props.isUserMuseumAdmin
                 ?
-                    <button className={s.logoutBtn} onClick={props.logout}>Выйти</button>
+                    <div className={s.admin}>
+                        <img className={s.print} src={print} alt="print"/>
+                        <button className={s.logoutBtn} onClick={props.logout}>Выйти</button>
+                    </div>
                 :
                     <NavLink to={'/'} className={'information'}>
                         <img src={information} alt="information"/>
