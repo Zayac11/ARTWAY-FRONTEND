@@ -1,16 +1,25 @@
 .form {
-    margin: 33px auto 50px;
+    padding: 20px 8px 50px;
+    margin: 0 auto;
+    background: #f0f8ff;
+    position: relative;
+}
+
+.titleContainer {
+    position: relative;
+    text-align: center;
 }
 
 .title {
     margin-bottom: 30px;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
 }
 
 .fileInputContainer {
     display: flex;
     align-items: center;
+    margin-top: 15px;
 }
 
 .fileInput {
@@ -29,8 +38,10 @@
     cursor: pointer;
     display: block;
     overflow: hidden;
-    padding: 13px 35px;
+    padding: 13px 0;
     border-radius: 8px;
+    text-align: center;
+    width: 150px;
 }
 
 .fileName {
@@ -39,5 +50,5 @@
 }
 
 .saveContainer {
-    margin: 30px 0 20px;
+    margin: 15px 0 20px;
 }

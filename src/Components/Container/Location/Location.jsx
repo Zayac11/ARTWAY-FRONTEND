@@ -23,9 +23,10 @@ const Location = (props) => {
                                      toggleIsChanging={props.toggleIsChanging}
                                      history={props.history}
                                      handleFindKey={props.handleFindKey}
-                                     handleFocus={props.handleFocus}
+                                     handleFocus={props.handleChangeInputs}
                                      handleChange={props.handleChange}
                                      handleSubmit={props.handleSubmit}
+                                     isEmptyInputs={props.isEmptyInputs}
                     />
 
                         {
@@ -52,7 +53,13 @@ const Location = (props) => {
                                 )
                             })
                         }
-
+                    {
+                        (halls &&
+                            halls.length === 0) &&
+                        <div className={'emptyLocations'}>
+                            Залы не найдены
+                        </div>
+                    }
                         {
                             props.isUserMuseumAdmin &&
                             <div className={'buttonContainer'}>

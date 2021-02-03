@@ -98,6 +98,7 @@ export const CommonMuseumLogic = (Component) => {
         handleChangeInputs() {
             this.setState({
                 isEmptyInputs: false,
+                isVideoUrlWrong: false,
             })
         }
 

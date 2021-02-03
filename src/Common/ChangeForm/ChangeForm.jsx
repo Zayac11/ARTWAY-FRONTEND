@@ -8,15 +8,16 @@ import BlueButton from "../BlueButton/BlueButton";
 const ChangeForm = (props) => {
     return (
         <div className={s.form}>
+            <div className={s.titleContainer}>
+                <h1 className={s.title}>{props.text}</h1>
+                {
+                    !props.isChanging &&
+                    <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                        <img src={prev} alt="back"/>
+                    </button>
+                }
+            </div>
 
-            {
-                !props.isChanging &&
-                <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                    <img src={prev} alt="back"/>
-                </button>
-            }
-
-            <h1 className={s.title}>{props.text}</h1>
             <Input text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
 
             <Textarea text={'Описание'} value={props.description} name={'description'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
@@ -28,6 +29,15 @@ const ChangeForm = (props) => {
                 </div>
             }
 
+            {
+                props.isItemArtifact && <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.video} name={'video'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+            }
+            {
+                props.isVideoUrlWrong &&
+                <div className='form__wrong'>
+                    Пожалуйста, добавьте корректную ссылку на видео
+                </div>
+            }
             <div className={s.fileInputContainer}>
                 <input type="file" name={'img'} id={'fileImg'} onChange={props.handleChangeFile} onFocus={props.handleFocus} className={s.fileInput}/>
                 <label htmlFor="fileImg">
@@ -38,8 +48,6 @@ const ChangeForm = (props) => {
                     <span className={s.fileName}>{props.img.name}</span>
                 }
             </div>
-
-            {/*<Input text={'Фотография'} type={'file'} name={'img'} handleFocus={props.handleChangeInputs} handleChange={props.handleChangeFile} />*/}
             {
                 props.isItemArtifact &&
                     <>
@@ -50,10 +58,9 @@ const ChangeForm = (props) => {
                             </label>
                             {
                                 props.img !== '' &&
-                                <span className={s.fileName}>{props.img.name}</span>
+                                <span className={s.fileName}>{props.audio.name}</span>
                             }
                         </div>
-                        <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.video} name={'video'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
                     </>
             }
             {
@@ -68,12 +75,7 @@ const ChangeForm = (props) => {
                     Пожалуйста, добавьте аудио
                 </div>
             }
-            {
-                props.isVideoUrlWrong &&
-                <div className='form__wrong'>
-                    Пожалуйста, добавьте корректную ссылку на видео
-                </div>
-            }
+
             <div className={s.saveContainer}>
                 <BlueButton type={'btn'} handleSubmit={props.handleSubmit} text={'Сохранить и выйти'} />
             </div>

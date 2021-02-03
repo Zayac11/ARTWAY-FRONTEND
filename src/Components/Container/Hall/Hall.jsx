@@ -25,9 +25,10 @@ const Hall = (props) => {
                                      toggleIsChanging={props.toggleIsChanging}
                                      history={props.history}
                                      handleFindKey={props.handleFindKey}
-                                     handleFocus={props.handleFocus}
+                                     handleFocus={props.handleChangeInputs}
                                      handleChange={props.handleChange}
                                      handleSubmit={props.handleSubmit}
+                                     isEmptyInputs={props.isEmptyInputs}
                     />
 
                     {
@@ -50,6 +51,13 @@ const Hall = (props) => {
                                 </div>
                             )
                         })
+                    }
+                    {
+                        (artifacts &&
+                            artifacts.length === 0) &&
+                            <div className={'emptyLocations'}>
+                                Экспонаты не найдены
+                            </div>
                     }
                     {
                         props.isUserMuseumAdmin &&
