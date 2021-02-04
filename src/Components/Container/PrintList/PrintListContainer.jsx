@@ -4,10 +4,32 @@ import PrintList from "./PrintList";
 import {clearPdf, deleteOneArtifact, printArtifacts, removeArtifactsToPrint} from "../../../redux/museum-reducer";
 import {compose} from "redux";
 import {WithAdminRedirect} from "../../../hoc/Redirect/WithAdminRedirect";
-import {Route} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 
 
 class PrintListContainer extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            name: "large",
+        }
+        this.handleSubmit = this.handleSubmit.bind(this)
+        this.printArtifacts = this.printArtifacts.bind(this)
+    }
+
+    printArtifacts() {
+        this.props.printArtifacts(this.props.print, this.state.name)
+    }
+
+    handleSubmit(e) {
+        let name = e.target.name
+
+        this.setState({
+            name: name
+        })
+    }
 
     componentDidMount() {
 
@@ -24,7 +46,7 @@ class PrintListContainer extends React.Component {
             return <Route path={'/'} component={() => { window.open(this.props.pdf); return <PrintList {...this.props} />} }/>
         }
         return (
-            <PrintList {...this.props} />
+            <PrintList {...this.props} name={this.state.name} handleSubmit={this.handleSubmit} printArtifacts={this.printArtifacts} />
         );
     }
 
@@ -40,5 +62,6 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {removeArtifactsToPrint, deleteOneArtifact, printArtifacts, clearPdf}),
+    withRouter,
     WithAdminRedirect,
 )(PrintListContainer)

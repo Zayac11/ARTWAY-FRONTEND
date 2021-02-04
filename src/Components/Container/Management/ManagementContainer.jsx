@@ -9,7 +9,7 @@ import {withRouter} from "react-router-dom";
 class ManagementContainer extends React.Component {
 
     componentDidMount() {
-    this.props.getAdminData()
+        this.props.getAdminData()
     }
 
     render() {
@@ -27,10 +27,10 @@ class ManagementContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        isUserMuseumSuperAdmin: state.auth.isUserMuseumSuperAdmin,
-        museum_super_admin: state.admin.museum_super_admin,
-        museum_admins: state.admin.museum_admins,
-        museum_cashiers: state.admin.museum_cashiers,
+        // isUserMuseumSuperAdmin: state.auth.isUserMuseumSuperAdmin,
+        museum_super_admin: state.admin.museum_super_admin, //профиль супер-админа
+        museum_admins: state.admin.museum_admins, //админы музея
+        museum_cashiers: state.admin.museum_cashiers, //кассиры музея
     }
 }
 

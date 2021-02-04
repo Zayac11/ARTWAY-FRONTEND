@@ -1,52 +1,68 @@
 import React from 'react';
 import s from './PrintList.module.css'
+import TopContainer from "../../../Common/Top/TopContainer";
+import BlueButton from "../../../Common/BlueButton/BlueButton";
+import prev from "../../../assets/images/left-chevron.svg";
+import RedTransparentBtn from "../../../Common/RedTransparentBtn/RedTransparentBtn";
+import PrintItem from "./PrintItem/PrintItem";
 
 const PrintList = (props) => {
     return (
-        <div className={s.container}>
-            {
-                props.print &&
-                props.print.length > 0
-                &&
-                    <>
-                        <button onClick={() => props.printArtifacts(props.print, 'large')}>Печать большой</button>
-                        <button onClick={() => props.printArtifacts(props.print, 'medium')}>Печать средний</button>
-                        <button onClick={() => props.printArtifacts(props.print, 'tiny')}>Печать маленький</button>
-                        <button onClick={() => props.removeArtifactsToPrint()}>Удалить всё</button>
-                    </>
+        <div className={'outer'}>
+            <div className={'container'}>
+                <div className={s.print}>
+                    <TopContainer isUserMuseumAdmin={props.isUserMuseumAdmin} />
 
-            }
-
-            {
-                props.pdf !== '' &&
-                    <div>
-                        <a target={'_blank'} rel={'noreferrer noopener'} href={props.pdf}>Открыть pdf файл с qr-кодами артефактов</a>
+                    <div className={s.topContainer}>
+                        <h2 className={'itemsTitle'}>
+                            Экспонаты для печати
+                        </h2>
+                        <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                            <img src={prev} alt="back"/>
+                        </button>
                     </div>
-            }
 
-            {
-                props.print &&
-                (props.print.length > 0) ?
-                        props.print.map(p => {
-                            return (
-                                <div className={s.printItem} key={p.id}>
-                                    <div className={s.title}>
-                                       Название: {p.name}
-                                    </div>
-                                    <div className={s.title}>
-                                       id: {p.id}
-                                    </div>
-                                    <img className={s.img} src={p.img} alt="location"/>
-                                    <button onClick={() => props.deleteOneArtifact(p.id)}>Удалить из печати</button>
+                    {
+                        props.print &&
+                        <div className={s.buttons}>
+                            {/*onClick={() => props.printArtifacts(props.print, 'large')}*/}
+                            <button onClick={props.handleSubmit} className={props.name === 'large' ? `${s.active}` : `${s.button}`} name={'large'}>Большой</button>
+                            <button onClick={props.handleSubmit} className={props.name === 'medium' ? `${s.active}` : `${s.button}`} name={'medium'}>Средний</button>
+                            <button onClick={props.handleSubmit} className={props.name === 'tiny' ? `${s.active}` : `${s.button}`} name={'tiny'}>Маленький</button>
+                            {/*<button onClick={() => props.removeArtifactsToPrint()}>Удалить всё</button>*/}
+                            {/*Кнопка удалить всё будет внизу*/}
+                        </div>
+
+                    }
+
+                    {
+                        // props.pdf !== '' &&
+                        //     <div>
+                        //         <a target={'_blank'} rel={'noreferrer noopener'} href={props.pdf}>Открыть pdf файл с qr-кодами артефактов</a>
+                        //     </div>
+                    }
+                    <div className={s.itemsContainer}>
+                        {
+                            props.print &&
+                            (props.print.length > 0) ?
+                                props.print.map(p => {
+                                    return (
+                                        <PrintItem key={p.id} {...p} deleteOneArtifact={props.deleteOneArtifact} />
+                                    )
+                                })
+                                :
+                                <div className={'emptyLocations'}>
+                                    Добавьте экспонаты для печати
                                 </div>
-                            )
-                        })
-                    :
-                    <div>
-                        Нет артефактов для печати
+                        }
                     </div>
-            }
 
+                    <div className={s.buttonsContainer}>
+                        <BlueButton type={'btn'} handleSubmit={props.printArtifacts} text={'Распечатать экспонаты'} />
+                        <RedTransparentBtn type={'btn'} handleSubmit={props.removeArtifactsToPrint} text={'Удалить всё'} />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
