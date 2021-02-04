@@ -1,20 +1,26 @@
-.container {
-    max-width: 650px;
-    margin: 50px auto;
+.top {
+    position: relative;
+}
+
+.create {
+    padding: 10px 8px;
 }
 
 .title {
     text-align: center;
     margin: 20px 0;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .InputContainer {
-    width: 320px;
     margin: 0 auto 10px;
+    font-size: 12px;
+}
+.InputContainer input{
+    margin-right: 10px;
 }
 .role {
-    width: 320px;
-    margin: 40px auto 20px;
-    font-size: 20px;
-    font-weight: 500;
+    margin: 20px auto 10px;
+    font-size: 14px;
 }

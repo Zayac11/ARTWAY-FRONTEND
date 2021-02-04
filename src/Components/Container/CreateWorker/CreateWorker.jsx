@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Redirect} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import {createWorker} from "../../../redux/admin-reducer";
 import {compose} from "redux";
 import {CommonCreateWorkerLogic} from "../../../hoc/CommonCreateWorkerLogic";
@@ -44,6 +44,7 @@ let mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {createWorker}),
+    withRouter,
     CommonCreateWorkerLogic,
     WithSuperAdminRedirect,
 )(CreateWorker)

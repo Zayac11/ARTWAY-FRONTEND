@@ -94,9 +94,12 @@ class ChangeWorkerContainer extends React.Component {
                     this.state.isChanging
                         ? <ChangeWorkerProfile last_name={this.state.last_name} first_name={this.state.first_name} middle_name={this.state.middle_name}
                                                handleChange={this.handleChange} updateWorker={this.updateWorker} museumAdminId={this.props.museumAdminId}
-                                               handleFindKey={this.handleFindKey} handleChangeInputs={this.handleChangeInputs} id={this.props.id} deleteWorker={this.props.deleteWorker}
+                                               handleFindKey={this.handleFindKey} handleChangeInputs={this.handleChangeInputs} id={this.props.id}
+                                               deleteWorker={this.props.deleteWorker}
                         />
-                        : <WorkerProfile toggleIsChanging={this.toggleIsChanging} last_name={this.state.last_name} first_name={this.state.first_name} middle_name={this.state.middle_name} id={this.props.id}/>
+                        : <WorkerProfile toggleIsChanging={this.toggleIsChanging} text={this.props.text}
+                                         last_name={this.state.last_name} first_name={this.state.first_name}
+                                         middle_name={this.state.middle_name} id={this.props.id}/>
                 }
             </>
         );

@@ -7,7 +7,7 @@ import Container from "./Components/Container/Container";
 import Login from "./Components/Login/Login";
 import Preloader from "./Common/Preloader/Preloader";
 import {getStatus} from "./redux/authentication";
-import ResetPassword from "./Components/Container/ResetPassword/ResetPassword";
+import ResetPassword from "./Components/ResetPassword/ResetPassword";
 
 class App extends React.Component {
 

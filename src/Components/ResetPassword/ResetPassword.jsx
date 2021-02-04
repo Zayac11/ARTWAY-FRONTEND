@@ -1,15 +1,15 @@
 import React from 'react';
 import {connect} from "react-redux";
-import './../../../Common/style.css'
-import {resetPassword} from "../../../redux/authentication";
+import '../../Common/style.css'
+import {resetPassword} from "../../redux/authentication";
 import {Redirect} from "react-router-dom";
 import s from './ResetPassword.module.css'
-import AuthInput from "../../../Common/AuthInput/AuthInput";
-import email from './../../../assets/images/email-2.svg'
-import send from './../../../assets/images/send.svg'
-import artSquare from "../../../assets/images/artsquare.svg";
-import resetPic from "../../../assets/images/resetPic.svg";
-import BlueButton from "../../../Common/BlueButton/BlueButton";
+import AuthInput from "../../Common/AuthInput/AuthInput";
+import email from '../../assets/images/email-2.svg'
+import send from '../../assets/images/send.svg'
+import resetPic from "../../assets/images/resetPic.svg";
+import BlueButton from "../../Common/BlueButton/BlueButton";
+import TopContainer from "../../Common/Top/TopContainer";
 
 
 class ResetPassword extends React.Component {
@@ -71,18 +71,12 @@ class ResetPassword extends React.Component {
         return (
             <div className={'outer'}>
                 <div className={'container'}>
-                    <div className={'artContainer'}>
-                        <div className={'artSquare'}>
-                            <img className={'artImg'} src={artSquare} alt="artSquare"/>
-                            <span>art</span>
-                            <span className={'way'}>way</span>
-                        </div>
-                    </div>
+                    <TopContainer isUserMuseumAdmin={true} />
                     <div className={s.picture}>
                         <img src={resetPic} alt="reset password"/>
                     </div>
                     {
-                        this.props.isLogin ? <Redirect to="/catalog"/>
+                        this.props.isLogin ? <Redirect to="/"/>
                             :
                             <div className={s.reset}>{
                                 this.state.isConfirm && this.state.isEmailExists

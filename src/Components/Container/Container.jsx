@@ -20,6 +20,7 @@ import Preloader from "../../Common/Preloader/Preloader";
 import PrintListContainer from "./PrintList/PrintListContainer";
 import RelocateContainer from "./Relocate/RelocateContainer";
 import TopContainer from "../../Common/Top/TopContainer";
+import ChangePassword from "./ChangePassword/ChangePassword";
 
 class Container extends React.Component {
 
@@ -65,6 +66,7 @@ class Container extends React.Component {
 
                     {/*Музей*/}
                     <Route exact path='/m-admin' render={ () => <MuseumContainer />} />
+                    <Route exact path='/m-admin/change_password' render={ () => <ChangePassword />} />
                     <Route exact path='/m-admin/print' render={ () => <PrintListContainer />} />
                     <Route exact path='/m-admin/hr-management' render={ () => <ManagementContainer />} />
                     <Route exact path='/m-admin/hr-management/create_worker' render={ () => <CreateWorker />} />

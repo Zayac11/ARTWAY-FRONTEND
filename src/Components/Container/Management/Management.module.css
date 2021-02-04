@@ -1,19 +1,22 @@
-.container {
+.management {
+    padding: 0 8px;
+    position: relative;
 }
 
 .profile {
-
+    margin-top: 20px;
 }
 
 .people {
-
     padding: 10px 0;
-    margin-bottom: 30px;
 }
 
 .title {
-    margin-bottom: 10px;
-    font-size: 22px;
+    margin-bottom: 16px;
+    font-size: 20px;
     font-weight: 500;
 }
 
+.workers {
+    padding-bottom: 70px;
+}
