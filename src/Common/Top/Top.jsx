@@ -15,17 +15,29 @@ const Top = (props) => {
             </div>
             {
                 props.isUserMuseumAdmin
-                ?
-                    <div className={s.admin}>
-                        <NavLink to={'/m-admin/print'}><img className={s.print} src={print} alt="print"/></NavLink>
+                &&
+                <div className={s.admin}>
+                    <NavLink to={'/m-admin/print'}><img className={s.print} src={print} alt="print"/></NavLink>
 
-                        <button className={s.logoutBtn} onClick={props.logout}>Выйти</button>
-                    </div>
-                :
+                    <button className={s.logoutBtn} onClick={props.logout}>Выйти</button>
+                </div>
+            }
+
+            {
+                props.isUserCashier
+                &&
+                <div className={s.admin}>
+                    <button className={s.logoutBtn} onClick={props.logout}>Выйти</button>
+                </div>
+            }
+
+            {
+                (!props.isUserMuseumAdmin && !props.isUserCashier) &&
                     <NavLink to={'/'} className={'information'}>
                         <img src={information} alt="information"/>
                     </NavLink>
             }
+
 
         </div>
     );

@@ -16,7 +16,6 @@ class TicketsListContainer extends React.Component {
 
         return (
             <TicketsList history={this.props.history} tickets={this.props.tickets} createTicket={this.props.createTicket} />
-
         );
     }
 

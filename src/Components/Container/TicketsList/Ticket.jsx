@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './TicketsList.module.css'
+import next from "../../../assets/images/inCard.svg";
 
 const Ticket = (props) => {
     return (
@@ -8,8 +9,9 @@ const Ticket = (props) => {
                 Билет №: {props.id}
             </div>
             <div className={s.time}>
-                Был создан: {props.created_at}
+                Дата создания: {props.created_at}
             </div>
+            <img src={next} alt="go inside" className={s.btn}/>
         </a>
     );
 }
