@@ -24,7 +24,6 @@ class MuseumsListContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         isLogin: state.auth.isLogin,
-        isUserServiceAdmin: state.auth.isUserServiceAdmin,
         museums: state.service.museums,
     }
 }

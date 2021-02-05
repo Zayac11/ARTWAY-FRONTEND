@@ -72,12 +72,32 @@
     background-color: #fff;
     color: #000;
     position: relative;
-    max-width: 850px;
-    min-width: 320px;
+    max-width: 500px;
+    margin: 0 40px !important;
     width: auto;
     height: 100%;
     padding: 18px;
     border-radius: 5px;
+}
+
+.titleModal {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.submitModal {
+    color: white;
+    padding: 12px 0;
+    width: 80%;
+    display: block;
+    margin: 0 auto;
+    max-width: 400px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    background-color: #de3d58;
 }
 
 .museum {
@@ -140,4 +160,10 @@
     font-size: 14px;
     text-align: center;
     color: #888;
+}
+
+.topContainer {
+    margin: 20px 0;
+    text-align: center;
+    position: relative;
 }

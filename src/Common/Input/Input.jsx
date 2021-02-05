@@ -6,7 +6,15 @@ const Input = (props) => {
         <div className={s.container}>
             <div className={s.text}>
                 {props.text}
+                {
+                    props.required &&
+                    <div className={s.required}>
+                        *
+                    </div>
+                }
+
             </div>
+
             <input className={s.input} onKeyUp={props.handleFindKey} value={props.value} type={props.type} name={props.name} onFocus={props.handleFocus} onChange={props.handleChange}/>
         </div>
     );

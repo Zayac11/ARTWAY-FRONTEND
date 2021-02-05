@@ -1,18 +1,87 @@
-.container {
-    max-width: 650px;
-    margin: 100px auto 0;
+/*Container*/
+.admin {
+    padding: 0 8px 10px;
+    min-height: 100vh;
+    position: relative;
 }
 
-.title {
-    margin-bottom: 40px;
+.slick {
+    border-radius: 8px;
+    box-shadow: 2px 2px 12px 0 rgba(0, 52, 98, 0.04), -2px -2px 12px 0 rgba(33, 87, 134, 0.05);
+    background-color: #ffffff;
+    padding: 3px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.button {
+    width: 50%;
+    display: block;
     text-align: center;
+    color: black;
+    padding: 10px;
+    outline: none;
+    border: none;
+    background-color: transparent;
 }
 
-.name {
-    margin-bottom: 10px;
-    font-size: 18px;
+.mainBtn {
+    border-radius: 8px;
+    color: white;
+    background-color: #196bb1;
+    animation-duration: .3s;
+    position: relative;
+    animation-name: navleft, nav;
 }
 
-.deleteBtn {
+.adminBtn {
+    border-radius: 8px;
+    color: white;
+    background-color: #196bb1;
+    animation-duration: .3s;
+    position: relative;
+    animation-name: navright, nav;
+}
 
+@keyframes navright {
+    0% {
+        right: 100px;
+    }
+    100% {
+        right: 0;
+    }
+}
+@keyframes nav {
+    0% {
+        background-color: #fff;
+        color: transparent;
+    }
+    75% {
+        color: transparent;
+    }
+    100% {
+        background-color: #196bb1;
+        color: white;
+    }
+}
+@keyframes navleft {
+    0% {
+        left: 100px;
+    }
+    100% {
+        left: 0;
+    }
+}
+
+/*Museum Admin*/
+.person {
+
+}
+.title {
+    margin: 20px 0;
+
+    font-size: 20px;
+    font-weight: 500;
 }

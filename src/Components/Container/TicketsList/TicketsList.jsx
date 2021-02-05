@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './TicketsList.module.css'
 import Ticket from "./Ticket";
-import prev from "../../../assets/images/left-chevron.svg";
 import BlueButton from "../../../Common/BlueButton/BlueButton";
 import TopContainer from "../../../Common/Top/TopContainer";
 
@@ -11,13 +10,10 @@ const TicketsList = (props) => {
             <div className={'container'}>
                 <div className={s.tickets}>
                     <TopContainer isUserCashier={true} />
-                    <div className={s.topContainer}>
-                        <h2 className={'itemsTitle'}>
+                    <div className={'topContainer'}>
+                        <h2 className={s.title}>
                             Список билетов
                         </h2>
-                        <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                            <img src={prev} alt="back"/>
-                        </button>
                     </div>
 
                     <div className={s.ticketsContainer}>

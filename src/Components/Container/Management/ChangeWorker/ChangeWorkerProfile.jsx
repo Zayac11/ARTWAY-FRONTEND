@@ -18,7 +18,7 @@ const ChangeWorkerProfile = (props) => {
                 <RedTransparentBtn type={'link'} link={'/m-admin/change_password'} text={'Изменить пароль'} />
             }
             {
-                props.museumAdminId !== props.id &&
+                (props.museumAdminId !== props.id && !props.isUserServiceAdmin) &&
                 <RedTransparentBtn type={'withProps'} data={props.id} handleSubmit={props.deleteWorker} text={'Удалить'} />
             }
 

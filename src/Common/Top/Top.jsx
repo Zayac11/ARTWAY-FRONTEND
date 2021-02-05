@@ -24,7 +24,7 @@ const Top = (props) => {
             }
 
             {
-                props.isUserCashier
+                (props.isUserCashier || props.isUserServiceAdmin)
                 &&
                 <div className={s.admin}>
                     <button className={s.logoutBtn} onClick={props.logout}>Выйти</button>
@@ -32,7 +32,7 @@ const Top = (props) => {
             }
 
             {
-                (!props.isUserMuseumAdmin && !props.isUserCashier) &&
+                (!props.isUserMuseumAdmin && !props.isUserCashier && !props.isUserServiceAdmin) &&
                     <NavLink to={'/'} className={'information'}>
                         <img src={information} alt="information"/>
                     </NavLink>

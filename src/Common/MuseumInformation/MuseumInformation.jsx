@@ -18,7 +18,7 @@ const MuseumInformation = (props) => {
                 :
                     <div className={s.userTop}>
                         <h2 className={s.name}>{props.name}</h2>
-                        <button><img src={lefArrow} alt="lefArrow"/></button>
+                        <button onClick={() => props.history.goBack()}><img src={lefArrow} alt="lefArrow"/></button>
                     </div>
             }
 

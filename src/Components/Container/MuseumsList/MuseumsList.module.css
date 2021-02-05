@@ -1,36 +1,16 @@
-.container {
-    max-width: 650px;
-    margin: 20px auto;
+.list {
+    padding: 0 8px;
 }
 
-.museumItemContainer {
-    padding: 10px;
-    border: 1px solid black;
-    margin-bottom: 20px;
-}
-
-.description {
-    margin: 20px 0;
-}
-
-.descriptionTitle, .id, .name{
+.title {
     font-size: 20px;
+    font-weight: 500;
+}
+
+.museums {
+    padding-bottom: 100px;
+}
+
+.item {
     margin-bottom: 10px;
-}
-
-.goInside {
-    color: black;
-    font-size: 18px;
-    text-decoration: underline;
-}
-
-.img {
-    max-height: 300px;
-    width: 100%;
-}
-
-.img img{
-    max-height: 300px;
-    width: 100%;
-    display: block;
 }

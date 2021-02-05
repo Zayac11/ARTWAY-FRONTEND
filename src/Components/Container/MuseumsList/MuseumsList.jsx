@@ -1,48 +1,51 @@
 import React from 'react';
 import s from './MuseumsList.module.css'
-import {NavLink} from "react-router-dom";
-import prev from "../../../assets/images/left-chevron.svg";
+import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
+import TopContainer from "../../../Common/Top/TopContainer";
+import BlueButton from "../../../Common/BlueButton/BlueButton";
 
 const MuseumsList = (props) => {
-    return (
-        <div className={s.container}>
-            <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                <img src={prev} alt="back"/>
-            </button>
-            <NavLink className={'create'} to={'/s-admin/create_museum'}>Создать музей</NavLink>
-            {
-                props.museums &&
-                    props.museums.length > 0 ?
-                    props.museums.map(m => {
-                        return(
-                            <div key={m.id} className={s.museumItemContainer}>
-                                <div className={s.id}>
-                                    Id: {m.id}
-                                </div>
-                                <div className={s.name}>
-                                    {m.name}
-                                </div>
-                                <div className={s.img}>
-                                    <img src={m.img} alt="museum"/>
-                                </div>
-                                <div className={s.description}>
-                                    <div className={s.descriptionTitle}>
-                                        Описание:
-                                    </div>
-                                    <div>
-                                        {m.description}
-                                    </div>
-                                </div>
-                                <NavLink className={s.goInside} to={`/s-admin/${m.id}`}>Перейти</NavLink>
-                            </div>
-                        )
-                    })
-                    :
-                    <div>
-                        Музеев не найдено
-                    </div>
-            }
 
+    return (
+        <div className={'outer'}>
+            <div className={'container'}>
+                <div className={s.list}>
+
+                    <TopContainer isUserServiceAdmin={true} />
+
+                    <div className={'topContainer'}>
+                        <h2 className={s.title}>
+                            Список музеев
+                        </h2>
+                    </div>
+                    <div className={s.museums}>
+                        {
+                            props.museums &&
+                            props.museums.length > 0 ?
+
+                                props.museums.map(m => {
+                                    return(
+                                        <div className={s.item}>
+                                            <MuseumCard link={`/s-admin/${m.id}`} key={m.id} name={m.name} />
+                                        </div>
+
+
+                                    )
+                                })
+                                :
+                                <div className={'emptyLocations'}>
+                                    Музеев не найдено
+                                </div>
+                        }
+                    </div>
+
+
+                    <div className={'buttonContainer'}>
+                        <BlueButton type={'link'} link={'/s-admin/create_museum'} text={'Создать музей'} />
+                    </div>
+
+                </div>
+            </div>
         </div>
     );
 }

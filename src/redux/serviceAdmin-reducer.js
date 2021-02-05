@@ -6,6 +6,8 @@ const SET_MUSEUM_ADMIN_DATA = 'SET_MUSEUM_ADMIN_DATA'
 let initialState = {
     museums: [], //Все музеи
     museumAdminData: {}, //Информация об супер-администраторе музея
+    currentMuseumData: {}, //Информация об конкретном музее
+    status: {}, //Есть ли админ у музея
 }
 
 const serviceAdminReducer = (state = initialState, action) => {
@@ -18,7 +20,9 @@ const serviceAdminReducer = (state = initialState, action) => {
         case SET_MUSEUM_ADMIN_DATA:
             return {
                 ...state,
-                museumAdminData: action.museumAdminData
+                museumAdminData: action.museumAdminData,
+                currentMuseumData: action.currentMuseumData,
+                status: action.status,
             }
         default:
             return state;
@@ -26,7 +30,7 @@ const serviceAdminReducer = (state = initialState, action) => {
 }
 
 export const setMuseums = (museums) => ({type: SET_MUSEUMS, museums})
-export const setMuseumAdminData = (museumAdminData) => ({type: SET_MUSEUM_ADMIN_DATA, museumAdminData})
+export const setMuseumAdminData = (museumAdminData, currentMuseumData, status) => ({type: SET_MUSEUM_ADMIN_DATA, museumAdminData, currentMuseumData,status})
 
 export const getMuseums = () => { //Получение списка музеев
     return (dispatch) => {
@@ -61,13 +65,13 @@ export const deleteMuseum = (museum_id) => { //Удаление музея
     }
 }
 
-export const getMuseumSuperAdmin = (museum_id) => { //Получение супер-админа музея по id музея
+export const getMuseumSuperAdmin = (museum_id) => { //Получение супер-админа музея и информацию о музее по id музея
     return (dispatch) => {
         serviceAdminApi.getMuseumAdminData(museum_id)
             .then(response => response.json()
                 .then(result => {
                     console.log('getMuseumAdminData', result)
-                    dispatch(setMuseumAdminData(result))
+                    dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
                 }))
     }
 }
@@ -78,7 +82,7 @@ export const deleteMuseumSuperAdmin = (museum_id) => { //Удаление суп
             .then(response => response.json()
                 .then(result => {
                     console.log('deleteMuseumSuperAdmin', result)
-                    dispatch(setMuseumAdminData(result))
+                    dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
                 }))
     }
 }
@@ -89,7 +93,7 @@ export const createMuseumSuperAdmin = (last_name, first_name, middle_name, email
             .then(response => response.json()
                 .then(result => {
                     console.log('createMuseumSuperAdmin', result)
-                    dispatch(setMuseumAdminData(result))
+                    dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
                 }))
     }
 }

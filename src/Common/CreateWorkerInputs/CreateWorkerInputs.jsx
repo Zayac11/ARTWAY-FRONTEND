@@ -10,17 +10,24 @@ const CreateWorkerInputs = (props) => {
             <div className={'container'}>
                 <div className={s.create}>
                     <div className={s.top}>
-                        <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                            <img src={prev} alt="back"/>
-                        </button>
-                        <h2 className={s.title}>Создание пользователя музея</h2>
+                        {
+                            !props.isUserServiceAdmin ?
+                                <>
+                                    <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                                        <img src={prev} alt="back"/>
+                                    </button>
+                                    <h2 className={s.title}>Создание пользователя музея</h2>
+                                </>
+                            : <h2 className={s.title}>Создание главного администратора</h2>
+                        }
+
                     </div>
-                    <Input text={'Фамилия'} type={'text'} name={'last_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.last_name} />
-                    <Input text={'Имя'} type={'text'} name={'first_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.first_name} />
+                    <Input required={true} text={'Фамилия'} type={'text'} name={'last_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.last_name} />
+                    <Input required={true} text={'Имя'} type={'text'} name={'first_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.first_name} />
                     <Input text={'Отчество'} type={'text'} name={'middle_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.middle_name} />
-                    <Input text={'Email'} type={'text'} name={'email'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.email} />
-                    <Input text={'Пароль'} type={'password'} name={'password'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.password} />
-                    <Input text={'Повторите пароль'} type={'password'} name={'confirm_password'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.confirm_password} />
+                    <Input required={true} text={'Email'} type={'text'} name={'email'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.email} />
+                    <Input required={true} text={'Пароль'} type={'password'} name={'password'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.password} />
+                    <Input required={true} text={'Повторите пароль'} type={'password'} name={'confirm_password'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.confirm_password} />
 
                     {
                         !props.isUserServiceAdmin &&
@@ -36,7 +43,7 @@ const CreateWorkerInputs = (props) => {
                     {
                         props.isEmptyInputs &&
                         <div className={'form__wrong'}>
-                            Заполните все поля, кроме отчества
+                            Заполните все поля
                         </div>
                     }
                     {
@@ -51,7 +58,7 @@ const CreateWorkerInputs = (props) => {
                             Пожалуйста, введите корректный email
                         </div>          }
 
-                    <BlueButton className={'submit'} onClick={props.handleSubmit}>Создать</BlueButton>
+                    <BlueButton type={'btn'} text={'Создать'} handleSubmit={props.handleSubmit} />
 
                 </div>
             </div>

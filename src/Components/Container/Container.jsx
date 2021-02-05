@@ -51,34 +51,31 @@ class Container extends React.Component {
             <>
                 <PreloaderLogo />
                 <Switch>
-                    <Route exact path='/' render={ () => <MainContainer />} />
-
-                    <Route exact path='/enter' render={ () => <Transition />} />
-                    <Route exact path='/scan' render={ () => <Transition />} />
 
                     {/*Покупатель*/}
-                    {/*<Route exact path='/artifacts/:id/Qr-code' render={ () => <QrCodeContainer /> } />*/}
+                    <Route exact path='/' render={ () => <MainContainer />} /> {/*Главная стр пользователя*/}
+                    <Route exact path='/enter' render={ () => <Transition />} /> {/*Ввод руками id*/}
+                    <Route exact path='/scan' render={ () => <Transition />} /> {/*Скан qr кода*/}
                     <Route exact path='/locations/' render={ () => <MuseumContainer />} /> {/*Список локация музея*/}
                     <Route exact path='/locations/:location_id/halls' render={ () => <LocationContainer />} /> {/*Список залов конкретной локации*/}
                     <Route exact path='/halls/:hall_id/artifacts' render={ () => <HallContainer/>} /> {/*Список артифактов конкретного зала*/}
-                    <Route exact path='/artifacts/:artifact_id' render={ () => <ArtifactContainer />} />
-                    {/*<Route exact path='/artifacts' render={ () => <ArtifactsListContainer />} />*/}
+                    <Route exact path='/artifacts/:artifact_id' render={ () => <ArtifactContainer />} /> {/*Экспонат*/}
 
                     {/*Музей*/}
-                    <Route exact path='/m-admin' render={ () => <MuseumContainer />} />
-                    <Route exact path='/m-admin/change_password' render={ () => <ChangePassword />} />
-                    <Route exact path='/m-admin/print' render={ () => <PrintListContainer />} />
-                    <Route exact path='/m-admin/hr-management' render={ () => <ManagementContainer />} />
-                    <Route exact path='/m-admin/hr-management/create_worker' render={ () => <CreateWorker />} />
-                    <Route exact path='/m-admin/:location_id' render={ () => <LocationContainer />} />
-                    <Route exact path='/m-admin/:location_id/:hall_id' render={ () => <HallContainer />} />
-                    <Route exact path='/m-admin/:location_id/:hall_id/create_artifacts' render={ () => <CreateArtifact />} />
-                    <Route exact path='/m-admin/:location_id/:hall_id/:artifact_id' render={ () => <ArtifactContainer />} />
+                    <Route exact path='/m-admin' render={ () => <MuseumContainer />} /> {/*Музей*/}
+                    <Route exact path='/m-admin/change_password' render={ () => <ChangePassword />} /> {/*Смена пароля главного админа*/}
+                    <Route exact path='/m-admin/print' render={ () => <PrintListContainer />} /> {/*Экспонаты для печати*/}
+                    <Route exact path='/m-admin/hr-management' render={ () => <ManagementContainer />} /> {/*Персонал музея*/}
+                    <Route exact path='/m-admin/hr-management/create_worker' render={ () => <CreateWorker />} /> {/*Создание работника*/}
+                    <Route exact path='/m-admin/:location_id' render={ () => <LocationContainer />} /> {/*Локация*/}
+                    <Route exact path='/m-admin/:location_id/:hall_id' render={ () => <HallContainer />} /> {/*Зал*/}
+                    <Route exact path='/m-admin/:location_id/:hall_id/create_artifacts' render={ () => <CreateArtifact />} /> {/*Создание экспоната*/}
+                    <Route exact path='/m-admin/:location_id/:hall_id/:artifact_id' render={ () => <ArtifactContainer />} /> {/*Экспонат*/}
 
                     {/*Администратор сервиса*/}
                     <Route exact path='/s-admin' render={ () => <MuseumsListContainer />} /> {/*Лист музеев*/}
                     <Route exact path='/s-admin/create_museum' render={ () => <CreateMuseum />} /> {/*Создание музея*/}
-                    <Route exact path='/s-admin/:museum_id' render={ () => <MuseumContainer />} /> {/*Отрисовывает главного администратора музея*/}
+                    <Route exact path='/s-admin/:museum_id' render={ () => <MuseumContainer />} /> {/*Отрисовывает информацию по музею*/}
 
                     {/*Кассир*/}
                     <Route exact path='/cashier' render={ () => <TicketsListContainer />} /> {/*Лист билетов*/}
