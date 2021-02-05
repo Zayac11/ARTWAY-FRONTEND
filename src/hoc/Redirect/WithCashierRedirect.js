@@ -13,7 +13,7 @@ export const WithCashierRedirect = (Component) => {
     class WithCashierRedirect extends React.Component {
 
         render() {
-            if (!this.props.isUserCashier) return <Redirect to='/' />
+            if (!this.props.isUserCashier) return <Redirect to='/login' />
             return (
                 <Component {...this.props}
 

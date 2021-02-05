@@ -3,7 +3,7 @@
 }
 
 .create {
-    padding: 10px 8px;
+    padding: 0 8px;
 }
 
 .title {
@@ -14,6 +14,8 @@
 }
 
 .InputContainer {
+    display: flex;
+    align-items: flex-start;
     margin: 0 auto 10px;
     font-size: 12px;
 }

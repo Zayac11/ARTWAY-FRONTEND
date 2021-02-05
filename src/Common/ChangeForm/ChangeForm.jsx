@@ -4,6 +4,7 @@ import Input from "../Input/Input";
 import Textarea from "../Textarea/Textarea";
 import prev from "../../assets/images/left-chevron.svg";
 import BlueButton from "../BlueButton/BlueButton";
+import RedTransparentBtn from "../RedTransparentBtn/RedTransparentBtn";
 
 const ChangeForm = (props) => {
     return (
@@ -20,12 +21,12 @@ const ChangeForm = (props) => {
 
             <Input required={true} text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
 
-            <Textarea text={'Описание'} value={props.description} name={'description'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+            <Textarea required={true} text={'Описание'} value={props.description} name={'description'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
 
             {
                 props.isEmptyInputs &&
                 <div className='form__wrong'>
-                    Все поля должны быть заполнены
+                    Пожалуйста, заполните важные поля
                 </div>
             }
 
@@ -79,6 +80,12 @@ const ChangeForm = (props) => {
             <div className={s.saveContainer}>
                 <BlueButton type={'btn'} handleSubmit={props.handleSubmit} text={'Сохранить и выйти'} />
             </div>
+            {
+                (props.isUserMuseumAdmin && props.isChangingArtifact) &&
+                <RedTransparentBtn type={'withProps'} text={'Удалить экспонат'} handleSubmit={props.deleteArtifact}
+                                   data={{location_id: props.location_id, hall_id: props.hall_id, artifact_id: props.artifactData.id} }
+                />
+            }
 
         </div>
     );

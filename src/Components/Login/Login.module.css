@@ -7,6 +7,10 @@
     margin: 0 auto 70px;
 }
 
+.loginContainer {
+    padding: 0 8px;
+}
+
 .login {
     max-width: 650px;
     margin: 0 auto;

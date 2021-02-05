@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {withRouter} from "react-router-dom";
 import {WithSuperAdminRedirect} from "../../../hoc/Redirect/WithSuperAdminRedirect";
-import {setPassword, setPasswordConditions} from "../../../redux/authentication";
+import {setIsPasswordRight, setPassword, setPasswordConditions} from "../../../redux/authentication";
 import s from './ChangePassword.module.css'
 import TopContainer from "../../../Common/Top/TopContainer";
 import prev from './../../../assets/images/left-chevron.svg'
@@ -21,15 +21,16 @@ class ChangePassword extends React.Component {
             re_new_password: "",
 
             //Валидация
-            isSetPasswordRight: false, //Если успешно сменил пароль
+            isEmptyInputs: false, //Пустые поля
             isCurrentPasswordWrong: false, //Если текущий пароль неправильный
             isPasswordsMatch: true, //Если пароли совпадают
+            isPasswordShort: false, //Если пароль короче 8 символов
             isPasswordSimple: false, //Если пароль распространен
         }
 
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
-        this.handleChangePasswordsMatch = this.handleChangePasswordsMatch.bind(this)
+        this.handleChangeInputs = this.handleChangeInputs.bind(this)
     }
 
     handleChange(e) {
@@ -41,8 +42,28 @@ class ChangePassword extends React.Component {
         })
     }
 
+    handleChangeInputs() {
+        this.setState({
+            isEmptyInputs: false,
+            isPasswordsMatch: true,
+            isPasswordSimple: false,
+            isCurrentPasswordWrong: false,
+            isPasswordShort: false,
+        })
+    }
+
     handleSubmit() {
-        if(this.state.new_password === this.state.re_new_password) {
+        if(this.state.new_password === '' || this.state.re_new_password === '' || this.state.current_password === '') {
+            this.setState({
+                isEmptyInputs: true
+            })
+        }
+        else if(this.state.new_password.length < 8) {
+            this.setState({
+                isPasswordShort: true
+            })
+        }
+        else if(this.state.new_password === this.state.re_new_password) {
             this.props.setPassword(this.state.current_password, this.state.new_password, this.state.re_new_password)
         }
         else {
@@ -52,14 +73,8 @@ class ChangePassword extends React.Component {
         }
     }
 
-    handleChangePasswordsMatch() {
-        this.setState({
-            isPasswordsMatch: true,
-            isCurrentPasswordWrong: false,
-        })
-    }
-
     componentDidUpdate(prevProps, prevState, snapshot) {
+
         if(prevProps.isSetPasswordRight !== this.props.isSetPasswordRight) {
             this.setState({
                 isSetPasswordRight: this.props.isSetPasswordRight
@@ -102,9 +117,9 @@ class ChangePassword extends React.Component {
                             </button>
                         </div>
 
-                        <Input text={'Старый пароль'} type={'password'} name={'current_password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.current_password} />
-                        <Input text={'Новый пароль'} type={'password'} name={'new_password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.new_password} />
-                        <Input text={'Повторите пароль'} type={'password'} name={'re_new_password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.re_new_password} />
+                        <Input required={true} text={'Старый пароль'} type={'password'} name={'current_password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.current_password} />
+                        <Input required={true} text={'Новый пароль'} type={'password'} name={'new_password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.new_password} />
+                        <Input required={true} text={'Повторите пароль'} type={'password'} name={'re_new_password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.re_new_password} />
 
                         {
                             !this.state.isPasswordsMatch &&
@@ -112,6 +127,7 @@ class ChangePassword extends React.Component {
                                 Пароли не совпадают
                             </div>
                         }
+
                         {
                             this.state.isCurrentPasswordWrong &&
                             <div className={'form__wrong'}>
@@ -120,16 +136,16 @@ class ChangePassword extends React.Component {
                         }
 
                         {
-                            this.state.isSetPasswordRight &&
-                            <div className={'form__right'}>
-                                Пароль успешно изменен
+                            this.state.isPasswordSimple &&
+                            <div className={'form__wrong'}>
+                                Пароль слишком распространен
                             </div>
                         }
 
                         {
-                            this.state.isPasswordSimple &&
+                            this.state.isPasswordShort &&
                             <div className={'form__wrong'}>
-                                Пароль слишком распространен
+                                Пароль должен содержать минимум 8 символов
                             </div>
                         }
 
@@ -147,13 +163,15 @@ class ChangePassword extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-
+        isSetPasswordRight: state.auth.isSetPasswordRight,
+        isCurrentPasswordWrong: state.auth.isCurrentPasswordWrong,
+        isPasswordSimple: state.auth.isPasswordSimple,
     }
 }
 
 
 export default compose(
-    connect(mapStateToProps, {setPassword, setPasswordConditions}),
+    connect(mapStateToProps, {setPassword, setPasswordConditions, setIsPasswordRight}),
     withRouter,
     WithSuperAdminRedirect,
 )(ChangePassword)

@@ -72,40 +72,48 @@ class Login extends React.Component {
         return (
             <div className={'outer'}>
                 <div className={'container'}>
-                    <TopContainer />
-                    {
-                        this.props.isLogin ? <Redirect to="/" />
-                            :
+                    <div className={s.loginContainer}>
+                        <TopContainer />
+                        {
+                            this.props.isLogin ? <Redirect to="/" />
+                                :
+                                <div className={s.login}>
 
-                            <div className={s.login}>
+                                    <div className={s.title}>Вход в личный кабинет</div>
+                                    <div className={s.subtitle}>Введите Email и пароль</div>
 
-                                <div className={s.title}>Вход в личный кабинет</div>
-                                <div className={s.subtitle}>Введите Email и пароль</div>
+                                    <AuthInput img={email} placeholder={'Email'} type={'email'} name={'email'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.email} />
+                                    <AuthInput img={padlock} placeholder={'Пароль'} type={'password'} name={'password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.password} />
 
-                                <AuthInput img={email} placeholder={'Email'} type={'email'} name={'email'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.email} />
-                                <AuthInput img={padlock} placeholder={'Пароль'} type={'password'} name={'password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.password} />
+                                    {
+                                        this.state.isEmptyInputs &&
+                                        <div className={'form__wrong'}>
+                                            Все поля обязательны для заполнения
+                                        </div>
+                                    }
 
-                                {
-                                    this.state.isEmptyInputs &&
-                                    <div className={'form__wrong'}>
-                                        Все поля обязательны для заполнения
+                                    {
+                                        this.state.isLoginWrong &&
+                                        <div className={'form__wrong'}>
+                                            Неправильный логин или пароль
+                                        </div>
+                                    }
+
+                                    {
+                                        this.props.isSetPasswordRight &&
+                                        <div className={'form__right'}>
+                                            Пароль успешно изменен
+                                        </div>
+                                    }
+
+                                    <NavLink className={s.forgot} to={'/reset_password'}>Забыли пароль?</NavLink>
+                                    <div className={s.buttonContainer}>
+                                        <BlueButton type={'btn'} className={'submit'} text={'Войти'} handleSubmit={this.handleSubmit}>Войти</BlueButton>
                                     </div>
-                                }
 
-                                {
-                                    this.state.isLoginWrong &&
-                                    <div className={'form__wrong'}>
-                                        Неправильный логин или пароль
-                                    </div>
-                                }
-
-                                <NavLink className={s.forgot} to={'/reset_password'}>Забыли пароль?</NavLink>
-                                <div className={s.buttonContainer}>
-                                    <BlueButton type={'btn'} className={'submit'} text={'Войти'} handleSubmit={this.handleSubmit}>Войти</BlueButton>
                                 </div>
-
-                            </div>
-                    }
+                        }
+                    </div>
                 </div>
             </div>
         );
@@ -117,6 +125,7 @@ let mapStateToProps = (state) => {
     return {
         isLogin: state.auth.isLogin,
         isLoginWrong: state.auth.isLoginWrong,
+        isSetPasswordRight: state.auth.isSetPasswordRight,
     }
 }
 

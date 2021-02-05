@@ -12,6 +12,7 @@ import RedTransparentBtn from "../../../Common/RedTransparentBtn/RedTransparentB
 import RelocateContainer from "../Relocate/RelocateContainer";
 
 const Artifact = (props) => {
+
     return (
         <div className={'outer'}>
             <div className={'container'}>
@@ -25,8 +26,11 @@ const Artifact = (props) => {
                                 {
                                     props.isChanging
                                         ?
-                                        <ChangeForm {...props} text={'Изменение экспоната'} isItemArtifact={true} //Является ли создаваемы объект артефактом
-                                        />
+                                        <>
+                                            <ChangeForm isChangingArtifact={true} {...props} text={'Изменение экспоната'} isItemArtifact={true} //Является ли создаваемы объект артефактом
+                                            />
+
+                                        </>
                                         :
                                         <>
                                             <div className={s.topContainer}>

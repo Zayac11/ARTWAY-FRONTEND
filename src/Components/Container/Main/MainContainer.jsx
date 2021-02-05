@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import Main from "./Main";
 import {logout} from "../../../redux/authentication";
+import {Redirect} from "react-router-dom";
 
 class MainContainer extends React.Component {
 
@@ -24,6 +25,17 @@ class MainContainer extends React.Component {
     }
 
     render() {
+
+        // if(this.props.isUserCashier) {
+        //     return <Redirect to={'/cashier'} />
+        // }
+        // if(this.props.isUserMuseumAdmin) {
+        //     return <Redirect to={'/m-admin'} />
+        // }
+        // if(this.props.isUserServiceAdmin) {
+        //     return <Redirect to={'/s-admin'} />
+        // }
+
         return (
             <Main isUserServiceAdmin={this.props.isUserServiceAdmin} isUserMuseumSuperAdmin={this.props.isUserMuseumSuperAdmin}
                   isUserMuseumAdmin={this.props.isUserMuseumAdmin} isUserCashier={this.props.isUserCashier} logout={this.props.logout}

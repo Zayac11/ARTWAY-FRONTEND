@@ -3,12 +3,14 @@ import s from './CreateWorkerInputs.module.css'
 import Input from "../Input/Input";
 import prev from "../../assets/images/left-chevron.svg";
 import BlueButton from "../BlueButton/BlueButton";
+import TopContainer from "../Top/TopContainer";
 
 const CreateWorkerInputs = (props) => {
     return (
         <div className={'outer'}>
             <div className={'container'}>
                 <div className={s.create}>
+                    <TopContainer isUserMuseumAdmin={true} />
                     <div className={s.top}>
                         {
                             !props.isUserServiceAdmin ?
@@ -20,8 +22,8 @@ const CreateWorkerInputs = (props) => {
                                 </>
                             : <h2 className={s.title}>Создание главного администратора</h2>
                         }
-
                     </div>
+
                     <Input required={true} text={'Фамилия'} type={'text'} name={'last_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.last_name} />
                     <Input required={true} text={'Имя'} type={'text'} name={'first_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.first_name} />
                     <Input text={'Отчество'} type={'text'} name={'middle_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.middle_name} />
@@ -43,7 +45,7 @@ const CreateWorkerInputs = (props) => {
                     {
                         props.isEmptyInputs &&
                         <div className={'form__wrong'}>
-                            Заполните все поля
+                            Пожалуйста, заполните важные поля
                         </div>
                     }
                     {
@@ -56,7 +58,8 @@ const CreateWorkerInputs = (props) => {
                         props.isEmailWrong &&
                         <div className={'form__wrong'}>
                             Пожалуйста, введите корректный email
-                        </div>          }
+                        </div>
+                    }
 
                     <BlueButton type={'btn'} text={'Создать'} handleSubmit={props.handleSubmit} />
 

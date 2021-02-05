@@ -6,6 +6,15 @@
 .text {
     margin-bottom: 10px;
     font-size: 14px;
+    position: relative;
+    width: max-content;
+}
+
+.required {
+    color: red;
+    position: absolute;
+    top: 0;
+    right: -8px;
 }
 
 .input {

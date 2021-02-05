@@ -38,7 +38,7 @@ class ChangeWorkerContainer extends React.Component {
     }
 
     updateWorker() {
-        if(this.state.email === "" || this.state.password === "") {
+        if(this.state.first_name === "" || this.state.last_name === "") {
             this.setState({
                 isEmptyInputs: true //Поля пустые
             })
@@ -92,7 +92,8 @@ class ChangeWorkerContainer extends React.Component {
             <>
                 {
                     this.state.isChanging
-                        ? <ChangeWorkerProfile last_name={this.state.last_name} first_name={this.state.first_name} middle_name={this.state.middle_name}
+                        ? <ChangeWorkerProfile last_name={this.state.last_name} first_name={this.state.first_name} isEmptyInputs={this.state.isEmptyInputs}
+                                               middle_name={this.state.middle_name}
                                                handleChange={this.handleChange} updateWorker={this.updateWorker} museumAdminId={this.props.museumAdminId}
                                                handleFindKey={this.handleFindKey} handleChangeInputs={this.handleChangeInputs} id={this.props.id}
                                                deleteWorker={this.props.deleteWorker} isUserServiceAdmin={this.props.isUserServiceAdmin}

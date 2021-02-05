@@ -6,6 +6,12 @@ const Textarea = (props) => {
         <div className={s.container}>
             <div className={s.text}>
                 {props.text}
+                {
+                    props.required &&
+                    <div className={s.required}>
+                        *
+                    </div>
+                }
             </div>
             <textarea className={s.input} onKeyUp={props.handleFindKey} value={props.value} name={props.name} onFocus={props.handleFocus} onChange={props.handleChange}/>
         </div>

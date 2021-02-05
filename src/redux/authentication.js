@@ -12,7 +12,6 @@ const SET_IS_PASSWORD_RIGHT = 'SET_IS_PASSWORD_RIGHT';
 const SET_IS_PASSWORD_SIMPLE = 'SET_IS_PASSWORD_SIMPLE';
 const SET_IS_EMAIL_EXISTS = 'SET_IS_EMAIL_EXISTS';
 const SET_IS_EMAIL_TAKEN = 'SET_IS_EMAIL_TAKEN';
-const IS_FETCH = 'IS_FETCH';
 const SET_USER_STATUS = 'SET_USER_STATUS';
 
 
@@ -27,7 +26,6 @@ let initialState = {
     isUserCashier: false, //Является ли пользователь кассиром
 
     isInitialized: false, //Инициализация приложения
-    isFetch: true,
     isLoginWrong: false, //Если ошибка при логине
     isSetPasswordRight: false, //Если успешно сменил пароль
     isCurrentPasswordWrong: false, //Если текущий пароль неправильный
@@ -74,11 +72,6 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 isInitialized: true,
             }
-        case IS_FETCH: //Загрузка
-            return {
-                ...state,
-                isFetch: action.isFetch,
-            }
         case SET_USER_STATUS: //Установка статуса пользователя
             return {
                 ...state,
@@ -93,9 +86,10 @@ const authReducer = (state = initialState, action) => {
                 isCurrentPasswordWrong: true,
             }
         case SET_IS_PASSWORD_RIGHT: //Если пароль сменен успешно
+
             return {
                 ...state,
-                isSetPasswordRight: true,
+                isSetPasswordRight: action.isPasswordRight,
             }
         case SET_IS_PASSWORD_SIMPLE: //Простой ли пароль
             return {
@@ -115,7 +109,6 @@ const authReducer = (state = initialState, action) => {
         case SET_PASSWORD_CONDITIONS: //Обнуление условий смены пароля при закрытии страницы изменения пароля
             return {
                 ...state,
-                isSetPasswordRight: false,
                 isCurrentPasswordWrong: false,
             }
         default:
@@ -123,18 +116,14 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setUserData = (userData) => ({type: SET_USER_DATA, userData}) //Данные пользователя
-export const updateUserData = (last_name, first_name, middle_name, phone_number) => ({type: UPDATE_USER_DATA, last_name, first_name, middle_name, phone_number}) //Обновление данные пользователя
-export const deleteUserData = () => ({type: DELETE_USER_DATA}) //Удаление данных пользователя
 export const setAuth = (isLogin) => ({type: SET_AUTH, isLogin}) //Авторизован ли пользователь
 export const setLoginWrong = (isLoginWrong) => ({type: SET_LOGIN_WRONG, isLoginWrong}) //Ошибка при логине
 export const setInitialized = () => ({type: SET_INITIALIZED})
-export const setFetch = (isFetch) => ({type: IS_FETCH, isFetch})
 export const setUserStatus = (result) => ({type: SET_USER_STATUS, result}) //статусы пользователя
 export const setIsPasswordSimple = (isPasswordSimple) => ({type: SET_IS_PASSWORD_SIMPLE, isPasswordSimple})
 export const setPasswordConditions = () => ({type: SET_PASSWORD_CONDITIONS}) //Обнуление условий смены пароля при закрытии страницы изменения пароля
 export const setIsCurrentPasswordWrong = () => ({type: SET_IS_CURRENT_PASSWORD_WRONG}) //Текущий пароль неправильный
-export const setIsPasswordRight = () => ({type: SET_IS_PASSWORD_RIGHT}) //Пароль сменен успешно
+export const setIsPasswordRight = (isPasswordRight) => ({type: SET_IS_PASSWORD_RIGHT, isPasswordRight}) //Пароль сменен успешно
 export const setIsEmailExists = (isEmailExists) => ({type: SET_IS_EMAIL_EXISTS, isEmailExists}) //Email существует или нет
 export const setIsEmailTaken = (isEmailTaken) => ({type: SET_IS_EMAIL_TAKEN, isEmailTaken}) //Email занят или нет
 
@@ -157,34 +146,22 @@ export const getStatus = () => { //Проверка пользователя
     }
 }
 
-export const accountChange = (last_name, first_name, middle_name, phone_number) => { //Изменение данных пользователя
-    return (dispatch) => {
-        authAPI.accountChange(last_name, first_name, middle_name, phone_number)
-            .then(response => response.json()
-                .then(result => {
-                    console.log('account Change', result)
-                    if(result) {
-                        dispatch(updateUserData(last_name, first_name, middle_name, phone_number))
-                    }
-                }))
-    }
-}
-
 export const login = (username, password) => { //Логин
     return (dispatch) => {
         authAPI.login(username, password)
             .then(response => response.json()
                 .then(result => {
+
                     if(result.detail !== "No active account found with the given credentials") {
                         console.log('login', result)
                         localStorage.setItem('accessToken', result.access)
-
+                        dispatch(setIsPasswordRight(false))
                         dispatch(getStatus())
-                        // dispatch(setAuth(true)) //Авторизован ли пользователь
                         dispatch(setLoginWrong(false)) //Если до этого вводили неправильные данные
                     }
                     else if(result.detail === "No active account found with the given credentials") {
-                        dispatch(setLoginWrong(true)) //Если ввели неправильные данные или аккаунт не активный
+                        dispatch(setLoginWrong(true)) //Если ввели неправильные данные
+                        dispatch(setIsPasswordRight(false))
                     }
                 }))
     }
@@ -203,59 +180,27 @@ export const logout = () => { //Выход
     }
 }
 
-export const registration = (username, password, email, last_name, first_name, middle_name, phone_number) => { //Регистрация
-    return (dispatch) => {
-        dispatch(setFetch(true))
-        authAPI.register(username, password, email, last_name, first_name, middle_name, phone_number)
-            .then(response => response.json()
-                .then(result => {
-                    console.log('register', result)
-                    if (result.id) {
-                        dispatch(setIsEmailTaken(false))
-                        dispatch(setIsPasswordSimple(false))
-                    }
-                    else if(result.username) {
-                        dispatch(setIsEmailTaken(true))
-                        dispatch(setIsPasswordSimple(false))
-                    }
-                    else if(result.password) {
-                        dispatch(setIsPasswordSimple(true))
-                        dispatch(setIsEmailTaken(false))
-                    }
-
-                }))
-    }
-}
-export const activation = (uid, token) => { //Активация аккаунта
-    return (dispatch) => {
-        authAPI.activation(uid, token)
-            .then(response => response.text()
-                .then(result => {
-                    console.log('activation', result)
-                    dispatch(setFetch(false))
-                }))
-    }
-}
-
 export const setPassword = (current_password, new_password, re_new_password) => { //Смена пароля
     return (dispatch) => {
         authAPI.setPassword(current_password, new_password, re_new_password)
             .then(response => response.text()
                 .then(result => {
+
                     console.log('set_password', result)
                     if(result === '{"new_password":["Введённый пароль слишком широко распространён."]}') {
                         dispatch(setIsPasswordSimple(true))
                     }
-                    else if(result === '{"current_password":["Invalid password."]}') { //Пароль неверный
+                    else if(result === '{"current_password":["Неправильный пароль."]}') { //Пароль неверный
                         dispatch(setIsCurrentPasswordWrong())
                         dispatch(setIsPasswordSimple(false))
                     }
-                    else {
-                        dispatch(setIsPasswordRight())
+                    else if (result === ''){
+                        dispatch(setIsPasswordRight(true))
                         dispatch(setIsPasswordSimple(false))
                         dispatch(logout())
                     }
                 }))
+
     }
 }
 
@@ -295,12 +240,6 @@ export const resetPasswordConfirm = (uid, token, new_password, re_new_password) 
                         dispatch(logout())
                     }
                 }))
-    }
-}
-
-export const initialized = () => {
-    return async (dispatch) => {
-
     }
 }
 

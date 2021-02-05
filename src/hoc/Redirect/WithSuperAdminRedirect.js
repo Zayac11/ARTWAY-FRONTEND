@@ -13,7 +13,7 @@ export const WithSuperAdminRedirect = (Component) => {
     class WithSuperAdminRedirect extends React.Component {
 
         render() {
-            if (!this.props.isUserMuseumSuperAdmin) return <Redirect to='/' />
+            if (!this.props.isUserMuseumSuperAdmin) return <Redirect to='/login' />
             return (
                 <Component {...this.props}
 

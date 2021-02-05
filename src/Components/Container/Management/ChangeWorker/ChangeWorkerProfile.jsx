@@ -7,9 +7,16 @@ import TransparentButton from "../../../../Common/TransparentButton/TransparentB
 const ChangeWorkerProfile = (props) => {
     return (
         <div className={s.changeContainer}>
-            <Input text={'Фамилия'} type={'text'} name={'last_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.last_name} />
-            <Input text={'Имя'} type={'text'} name={'first_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.first_name} />
+            <Input required={true} text={'Фамилия'} type={'text'} name={'last_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.last_name} />
+            <Input required={true} text={'Имя'} type={'text'} name={'first_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.first_name} />
             <Input text={'Отчество'} type={'text'} name={'middle_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.middle_name} />
+
+            {
+                props.isEmptyInputs &&
+                <div className={'form__wrong'}>
+                    Пожалуйста, заполните важные поля
+                </div>
+            }
 
             <TransparentButton type={'btn'} handleSubmit={props.updateWorker} text={'Сохранить'} />
 
