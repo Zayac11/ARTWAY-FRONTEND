@@ -7,6 +7,7 @@ import TopContainer from "../Top/TopContainer";
 import TransparentButton from "../TransparentButton/TransparentButton";
 
 const CreateWorkerInputs = (props) => {
+
     return (
         <div className={'outer'}>
             <div className={'container'}>

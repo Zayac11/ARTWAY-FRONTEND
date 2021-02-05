@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import s from './MuseumAdmin.module.css'
 import MuseumAdmin from "./MuseumAdmin";
 import {compose} from "redux";
-import {Redirect, withRouter} from "react-router-dom";
+import {Redirect, Route, withRouter} from "react-router-dom";
 import {
     createMuseumSuperAdmin, deleteMuseum,
     deleteMuseumSuperAdmin,
@@ -87,6 +87,10 @@ class MuseumAdminContainer extends React.Component {
 
         if(this.state.isDeleted) {
             return <Redirect to={'/s-admin'} />
+        }
+        if(this.props.isCreate) {
+            window.location.reload()
+            // return <Redirect to={`/s-admin/${this.props.museum_id}`} />
         }
 
         return (
