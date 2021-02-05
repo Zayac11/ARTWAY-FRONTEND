@@ -14,12 +14,25 @@ class ChangeWorkerContainer extends React.Component {
             middle_name: "",
             isEmptyInputs: false, //Все ли поля пустые
             isChanging: false, //Идет ли изменение профиля
+            isModalOpen: false, //Открыто ли модальное окно
         }
         this.handleFindKey = this.handleFindKey.bind(this)
         this.handleChangeInputs = this.handleChangeInputs.bind(this)
         this.updateWorker = this.updateWorker.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.deleteWorker = this.deleteWorker.bind(this)
         this.toggleIsChanging = this.toggleIsChanging.bind(this)
+        this.toggleOpenModal = this.toggleOpenModal.bind(this)
+    }
+
+    toggleOpenModal(isOpen) {
+        this.setState({
+            isModalOpen:isOpen
+        })
+    }
+
+    deleteWorker() {
+        this.props.deleteWorker(this.props.id)
     }
 
     toggleIsChanging() {
@@ -93,10 +106,10 @@ class ChangeWorkerContainer extends React.Component {
                 {
                     this.state.isChanging
                         ? <ChangeWorkerProfile last_name={this.state.last_name} first_name={this.state.first_name} isEmptyInputs={this.state.isEmptyInputs}
-                                               middle_name={this.state.middle_name}
+                                               middle_name={this.state.middle_name} isModalOpen={this.state.isModalOpen} toggleOpenModal={this.toggleOpenModal}
                                                handleChange={this.handleChange} updateWorker={this.updateWorker} museumAdminId={this.props.museumAdminId}
                                                handleFindKey={this.handleFindKey} handleChangeInputs={this.handleChangeInputs} id={this.props.id}
-                                               deleteWorker={this.props.deleteWorker} isUserServiceAdmin={this.props.isUserServiceAdmin}
+                                               deleteWorker={this.deleteWorker} isUserServiceAdmin={this.props.isUserServiceAdmin}
                         />
                         : <WorkerProfile toggleIsChanging={this.toggleIsChanging} text={this.props.text}
                                          last_name={this.state.last_name} first_name={this.state.first_name}

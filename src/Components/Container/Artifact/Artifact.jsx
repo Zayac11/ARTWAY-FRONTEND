@@ -10,6 +10,7 @@ import BlueButton from "../../../Common/BlueButton/BlueButton";
 import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
 import RedTransparentBtn from "../../../Common/RedTransparentBtn/RedTransparentBtn";
 import RelocateContainer from "../Relocate/RelocateContainer";
+import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
 
 const Artifact = (props) => {
 
@@ -103,6 +104,7 @@ const Artifact = (props) => {
                                 }
                             </>
                     }
+                    <DeleteModal isModalOpen={props.isModalOpen} toggleOpenModal={props.toggleOpenModal} deleteMuseum={props.deleteArtifact} />
                 </div>
             </div>
         </div>

@@ -25,9 +25,11 @@ export const CommonMuseumLogic = (Component) => {
                 isChanging: false, //Меняется ли информация
                 isCardsChanging: false, //Меняются ли местами карточки локаций/залов/артефактов
                 isEmptyInputs: false, //Если ли пустые поля
+                isModalOpen: false, //Открыто ли модальное окно
                 isPhotoTypeWrong: false, //Если файл не является картинкой
                 isAudioTypeWrong: false, //Если файл не является аудио
                 isVideoUrlWrong: false, //Если видео не является ссылкой
+
             }
 
             this.handleChange = this.handleChange.bind(this)
@@ -39,6 +41,7 @@ export const CommonMuseumLogic = (Component) => {
             this.setValidation = this.setValidation.bind(this)
             this.setImage = this.setImage.bind(this)
             this.setAudio = this.setAudio.bind(this)
+            this.toggleOpenModal = this.toggleOpenModal.bind(this)
         }
 
         setImage(img) { //Обновление фотографии в state
@@ -57,6 +60,13 @@ export const CommonMuseumLogic = (Component) => {
                 [name]: bool,
             })
         }
+
+        toggleOpenModal(isOpen) {
+            this.setState({
+                isModalOpen:isOpen
+            })
+        }
+
         toggleIsChanging(isChanging) {
             this.setState({
                 isChanging: isChanging,
@@ -126,6 +136,7 @@ export const CommonMuseumLogic = (Component) => {
                            handleChange={this.handleChange}
                            updateState={this.updateState}
                            handleChangeFile={this.handleChangeFile}
+                           toggleOpenModal={this.toggleOpenModal}
                 />
             )
         }

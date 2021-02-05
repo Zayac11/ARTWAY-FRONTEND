@@ -5,6 +5,7 @@ import TopContainer from "../../../Common/Top/TopContainer";
 import BlueButton from "../../../Common/BlueButton/BlueButton";
 import RedTransparentBtn from "../../../Common/RedTransparentBtn/RedTransparentBtn";
 import ItemInformation from "../../../Common/ItemInformation/ItemInformation";
+import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
 
 const Location = (props) => {
     let halls = props.halls
@@ -65,7 +66,7 @@ const Location = (props) => {
                             <div className={'buttonContainer'}>
                                 <BlueButton type={'btn'} handleSubmit={props.createLocation} text={'Создать новый зал'} />
                                 {
-                                    props.isChanging && <RedTransparentBtn type={'btn'} handleSubmit={props.deleteLocation} text={'Удалить зал'} />
+                                    props.isChanging && <RedTransparentBtn type={'withProps'} data={true} handleSubmit={props.toggleOpenModal} text={'Удалить локацию'} />
                                 }
 
                             </div>
@@ -76,7 +77,7 @@ const Location = (props) => {
                         <div className={'itemsBottom'}></div>
                     }
 
-
+                    <DeleteModal isModalOpen={props.isModalOpen} toggleOpenModal={props.toggleOpenModal} deleteMuseum={props.deleteLocation} />
 
                 </div>
             </div>

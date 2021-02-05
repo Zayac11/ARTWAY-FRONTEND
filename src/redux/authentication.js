@@ -206,23 +206,27 @@ export const setPassword = (current_password, new_password, re_new_password) => 
 
 export const resetPassword = (email) => { //Ввод почты для смены пароля и отправка письма
     return (dispatch) => {
-        authAPI.accountRecovery(email) //Проверка почты
-            .then(response => response.json()
+        // authAPI.accountRecovery(email) //Проверка почты
+        //     .then(response => response.json()
+        //         .then(result => {
+        //             console.log('email_recovery')
+        //             if(result) {
+        //                 dispatch(setIsEmailExists(true))
+        //                 authAPI.resetPassword(email) //Отправка письма на почту
+        //                     .then(response => response.text()
+        //                         .then(result => {
+        //                             console.log('reset_password', result)
+        //                         }))
+        //             }
+        //             else {
+        //                 dispatch(setIsEmailExists(false))
+        //             }
+        //         }))
+        authAPI.resetPassword(email) //Отправка письма на почту
+            .then(response => response.text()
                 .then(result => {
-                    console.log('email_recovery')
-                    if(result) {
-                        dispatch(setIsEmailExists(true))
-                        authAPI.resetPassword(email) //Отправка письма на почту
-                            .then(response => response.text()
-                                .then(result => {
-                                    console.log('reset_password', result)
-                                }))
-                    }
-                    else {
-                        dispatch(setIsEmailExists(false))
-                    }
+                    console.log('reset_password', result)
                 }))
-
     }
 }
 

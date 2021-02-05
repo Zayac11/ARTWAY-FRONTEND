@@ -4,13 +4,18 @@ import CreateWorkerInputs from "../../../../Common/CreateWorkerInputs/CreateWork
 import ChangeWorkerContainer from "../../Management/ChangeWorker/ChangeWorkerContainer";
 import RedTransparentBtn from "../../../../Common/RedTransparentBtn/RedTransparentBtn";
 import BlueButton from "../../../../Common/BlueButton/BlueButton";
+import DeleteModal from "../../../../Common/DeleteModal/DeleteModal";
 
 const MuseumAdmin = ({museumAdminData, ...props}) => {
     return (
         <>
-            <div className={s.title}>
-                Персонал музея
-            </div>
+            {
+                !props.isChanging &&
+                <div className={s.title}>
+                    Персонал музея
+                </div>
+            }
+
             <div className={s.person}>
                 {
                     !props.isChanging &&
@@ -35,7 +40,7 @@ const MuseumAdmin = ({museumAdminData, ...props}) => {
             }
             <div className={'buttonContainer'}>
                 { props.status &&
-                    <RedTransparentBtn type={'withProps'} handleSubmit={props.deleteMuseumSuperAdmin} data={props.museum_id} text={'Удалить администратора'} />
+                    <RedTransparentBtn type={'withProps'} handleSubmit={props.toggleOpenModal} data={true} text={'Удалить администратора'} />
                 }
                 {
                     (!props.status && !props.isChanging)
@@ -44,6 +49,7 @@ const MuseumAdmin = ({museumAdminData, ...props}) => {
                 }
             </div>
 
+            <DeleteModal isModalOpen={props.isModalOpen} toggleOpenModal={props.toggleOpenModal} deleteMuseum={props.deleteMuseumSuperAdmin} />
         </>
 
     );

@@ -3,6 +3,7 @@ import s from './ChangeWorkerProfile.module.css'
 import Input from "../../../../Common/Input/Input";
 import RedTransparentBtn from "../../../../Common/RedTransparentBtn/RedTransparentBtn";
 import TransparentButton from "../../../../Common/TransparentButton/TransparentButton";
+import DeleteModal from "../../../../Common/DeleteModal/DeleteModal";
 
 const ChangeWorkerProfile = (props) => {
     return (
@@ -26,8 +27,10 @@ const ChangeWorkerProfile = (props) => {
             }
             {
                 (props.museumAdminId !== props.id && !props.isUserServiceAdmin) &&
-                <RedTransparentBtn type={'withProps'} data={props.id} handleSubmit={props.deleteWorker} text={'Удалить'} />
+                <RedTransparentBtn type={'withProps'} data={true} handleSubmit={props.toggleOpenModal} text={'Удалить'} />
             }
+
+            <DeleteModal isModalOpen={props.isModalOpen} toggleOpenModal={props.toggleOpenModal} deleteMuseum={props.deleteWorker} />
 
         </div>
     );

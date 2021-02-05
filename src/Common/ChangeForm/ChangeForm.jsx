@@ -82,9 +82,7 @@ const ChangeForm = (props) => {
             </div>
             {
                 (props.isUserMuseumAdmin && props.isChangingArtifact) &&
-                <RedTransparentBtn type={'withProps'} text={'Удалить экспонат'} handleSubmit={props.deleteArtifact}
-                                   data={{location_id: props.location_id, hall_id: props.hall_id, artifact_id: props.artifactData.id} }
-                />
+                <RedTransparentBtn type={'withProps'} data={true} text={'Удалить экспонат'} handleSubmit={props.toggleOpenModal} />
             }
 
         </div>

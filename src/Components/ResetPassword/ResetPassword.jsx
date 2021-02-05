@@ -71,52 +71,55 @@ class ResetPassword extends React.Component {
         return (
             <div className={'outer'}>
                 <div className={'container'}>
-                    <TopContainer isUserMuseumAdmin={true} />
-                    <div className={s.picture}>
-                        <img src={resetPic} alt="reset password"/>
+                    <div className={s.resetContainer}>
+
+                        <TopContainer />
+                        <div className={s.picture}>
+                            <img src={resetPic} alt="reset password"/>
+                        </div>
+                        {
+                            this.props.isLogin ? <Redirect to="/"/>
+                                :
+                                <div className={s.reset}>{
+                                    this.state.isConfirm && this.state.isEmailExists
+                                        ?
+                                        <div className={s.confirm}>
+                                            <img className={s.sendImg} src={send} alt="mail send"/>
+                                            <div className={s.send}>
+                                                Вам выслано письмо на почту
+                                            </div>
+                                        </div>
+                                        :
+                                        <>
+                                            <div className={s.title}>Восстановление пароля</div>
+                                            <div className={s.subtitle}>Введите Email и мы вышлем письмо на почту</div>
+
+                                            <AuthInput img={email} placeholder={'Email'} type={'email'} name={'email'}
+                                                       handleChange={this.handleChange}
+                                                       value={this.state.email} handleFocus={this.handleChangeInputs}
+                                                       required={true}/>
+
+                                            {
+                                                this.state.isEmptyInputs &&
+                                                <div className={'form__wrong'}>
+                                                    Пожалуйста, заполните поле
+                                                </div>
+                                            }
+                                            {
+                                                !this.state.isEmailExists &&
+                                                <div className={'form__wrong'}>
+                                                    Пользователь с таким адресом не существует
+                                                </div>
+                                            }
+                                            <div className={s.buttonContainer}>
+                                                <BlueButton type={'btn'} text={'Войти'}
+                                                            handleSubmit={this.handleSubmit}>Войти</BlueButton>
+                                            </div>
+                                        </>
+                                }
+                                </div>
+                        }
                     </div>
-                    {
-                        this.props.isLogin ? <Redirect to="/"/>
-                            :
-                            <div className={s.reset}>{
-                                this.state.isConfirm && this.state.isEmailExists
-                                    ?
-                                    <div className={s.confirm}>
-                                        <img className={s.sendImg} src={send} alt="mail send"/>
-                                        <div className={s.send}>
-                                            Вам выслано письмо на почту
-                                        </div>
-                                    </div>
-                                    :
-                                    <>
-                                        <div className={s.title}>Восстановление пароля</div>
-                                        <div className={s.subtitle}>Введите Email и мы вышлем письмо на почту</div>
-
-                                        <AuthInput img={email} placeholder={'Email'} type={'email'} name={'email'}
-                                                   handleChange={this.handleChange}
-                                                   value={this.state.email} handleFocus={this.handleChangeInputs}
-                                                   required={true}/>
-
-                                        {
-                                            this.state.isEmptyInputs &&
-                                            <div className={'form__wrong'}>
-                                                Пожалуйста, заполните поле
-                                            </div>
-                                        }
-                                        {
-                                            !this.state.isEmailExists &&
-                                            <div className={'form__wrong'}>
-                                                Пользователь с таким адресом не существует
-                                            </div>
-                                        }
-                                        <div className={s.buttonContainer}>
-                                            <BlueButton type={'btn'} text={'Войти'}
-                                                        handleSubmit={this.handleSubmit}>Войти</BlueButton>
-                                        </div>
-                                    </>
-                            }
-                            </div>
-                    }
                 </div>
             </div>
         );

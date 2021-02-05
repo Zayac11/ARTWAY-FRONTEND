@@ -13,7 +13,7 @@ import {CommonCreateWorkerLogic} from "../../../../hoc/CommonCreateWorkerLogic";
 import MuseumInformation from "../../../../Common/MuseumInformation/MuseumInformation";
 import TopContainer from "../../../../Common/Top/TopContainer";
 import RedTransparentBtn from "../../../../Common/RedTransparentBtn/RedTransparentBtn";
-import Modal from "react-png-modal";
+import DeleteModal from "../../../../Common/DeleteModal/DeleteModal";
 
 class MuseumAdminContainer extends React.Component {
 
@@ -30,12 +30,19 @@ class MuseumAdminContainer extends React.Component {
         this.handleChangeButton = this.handleChangeButton.bind(this)
         this.toggleIsChanging = this.toggleIsChanging.bind(this)
         this.toggleOpenModal = this.toggleOpenModal.bind(this)
+        this.deleteMuseumSuperAdmin = this.deleteMuseumSuperAdmin.bind(this)
     }
 
     deleteMuseum() {
         this.props.deleteMuseum(this.props.museum_id)
         this.setState({
             isDeleted: true,
+        })
+    }
+    deleteMuseumSuperAdmin() {
+        this.props.deleteMuseumSuperAdmin(this.props.museum_id)
+        this.setState({
+            isModalOpen: false
         })
     }
 
@@ -104,22 +111,8 @@ class MuseumAdminContainer extends React.Component {
                                                    history={this.props.history}
                                 />
                                 <RedTransparentBtn type={'withProps'} data={true} handleSubmit={this.toggleOpenModal} text={'Удалить музей'} />
-                                <Modal
-                                    center
-                                    className={'CustomModal'}
-                                    closeModal={() => this.toggleOpenModal(false)}
-                                    open={this.state.isModalOpen}>
-                                    {
-                                        <>
-                                            <div className={'titleModal'}>
-                                                Подтвердить удаление
-                                            </div>
-                                            <button onClick={() => this.deleteMuseum()} className={'submitModal'}>
-                                                Подтвердить
-                                            </button>
-                                        </>
-                                    }
-                                </Modal>
+
+                                <DeleteModal isModalOpen={this.state.isModalOpen} toggleOpenModal={this.toggleOpenModal} deleteMuseum={this.deleteMuseum} />
                             </>
                         }
                         {
@@ -127,6 +120,7 @@ class MuseumAdminContainer extends React.Component {
                             <>
                                 <MuseumAdmin {...this.props}
                                              toggleOpenModal={this.toggleOpenModal}
+                                             deleteMuseumSuperAdmin={this.deleteMuseumSuperAdmin}
                                              deleteMuseum={this.deleteMuseum}
                                              isChanging={this.state.isChanging}
                                              isModalOpen={this.state.isModalOpen}

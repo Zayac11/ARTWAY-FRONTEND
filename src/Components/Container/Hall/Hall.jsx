@@ -7,6 +7,7 @@ import TopContainer from "../../../Common/Top/TopContainer";
 import BlueButton from "../../../Common/BlueButton/BlueButton";
 import RedTransparentBtn from "../../../Common/RedTransparentBtn/RedTransparentBtn";
 import ItemInformation from "../../../Common/ItemInformation/ItemInformation";
+import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
 
 const Hall = (props) => {
     let artifacts = props.artifacts
@@ -64,7 +65,7 @@ const Hall = (props) => {
                         <div className={'buttonContainer'}>
                             <BlueButton text={'Создать экспонат'} type={'link'} link={`/m-admin/${props.location_id}/${props.hall_id}/create_artifacts`} />
                             {
-                                props.isChanging && <RedTransparentBtn type={'btn'} handleSubmit={props.deleteHall} text={'Удалить зал'} />
+                                props.isChanging && <RedTransparentBtn type={'withProps'} data={true} handleSubmit={props.toggleOpenModal} text={'Удалить зал'} />
                             }
                         </div>
                     }
@@ -73,6 +74,7 @@ const Hall = (props) => {
                         &&
                         <div className={'itemsBottom'}></div>
                     }
+                    <DeleteModal isModalOpen={props.isModalOpen} toggleOpenModal={props.toggleOpenModal} deleteMuseum={props.deleteHall} />
                 </div>
             </div>
         </div>

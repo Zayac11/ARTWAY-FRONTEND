@@ -4,24 +4,35 @@ import Input from "../Input/Input";
 import prev from "../../assets/images/left-chevron.svg";
 import BlueButton from "../BlueButton/BlueButton";
 import TopContainer from "../Top/TopContainer";
+import TransparentButton from "../TransparentButton/TransparentButton";
 
 const CreateWorkerInputs = (props) => {
     return (
         <div className={'outer'}>
             <div className={'container'}>
                 <div className={s.create}>
-                    <TopContainer isUserMuseumAdmin={true} />
-                    <div className={s.top}>
-                        {
-                            !props.isUserServiceAdmin ?
-                                <>
-                                    <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                                        <img src={prev} alt="back"/>
-                                    </button>
+                    {
+                        !props.isUserServiceAdmin
+                            ?
+                            <>
+                                <TopContainer isUserMuseumAdmin={true} />
+                                <button onClick={() => props.history.goBack()} className={'backBtn'}>
+                                    <img src={prev} alt="back"/>
+                                </button>
+                                <div className={s.top}>
                                     <h2 className={s.title}>Создание пользователя музея</h2>
-                                </>
-                            : <h2 className={s.title}>Создание главного администратора</h2>
-                        }
+                                </div>
+                            </>
+                            :
+                            <>
+                                <div className={s.top}>
+                                    <h2 className={s.title}>Создание главного администратора</h2>
+                                </div>
+                            </>
+                    }
+
+                    <div className={s.top}>
+
                     </div>
 
                     <Input required={true} text={'Фамилия'} type={'text'} name={'last_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.last_name} />
@@ -62,6 +73,10 @@ const CreateWorkerInputs = (props) => {
                     }
 
                     <BlueButton type={'btn'} text={'Создать'} handleSubmit={props.handleSubmit} />
+                    {
+                        props.isUserServiceAdmin &&
+                            <TransparentButton type={'btn'} handleSubmit={props.toggleIsChanging} text={'Закрыть'} />
+                    }
 
                 </div>
             </div>
