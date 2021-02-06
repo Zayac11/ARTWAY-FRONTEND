@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './CreateWorkerInputs.module.css'
 import Input from "../Input/Input";
-import prev from "../../assets/images/left-chevron.svg";
 import BlueButton from "../BlueButton/BlueButton";
 import TopContainer from "../Top/TopContainer";
 import TransparentButton from "../TransparentButton/TransparentButton";

@@ -8,8 +8,10 @@ class MainContainer extends React.Component {
 
     componentDidMount() {
         //Запрос на проверку токена, чтобы редиректнуть с main page в случае чего
-        let token = localStorage.getItem('token')
-        this.props.getUsersLocationsList(token)
+        if(!this.props.isLogin) {
+            let token = localStorage.getItem('token')
+            this.props.getUsersLocationsList(token)
+        }
     }
 
     render() {
@@ -33,7 +35,10 @@ class MainContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-
+        isUserCashier: state.auth.isUserCashier,
+        isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
+        isUserServiceAdmin: state.auth.isUserServiceAdmin,
+        isLogin: state.auth.isLogin,
     }
 }
 

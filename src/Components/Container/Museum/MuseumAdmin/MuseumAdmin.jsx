@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './MuseumAdmin.module.css'
-import CreateWorkerInputs from "../../../../Common/CreateWorkerInputs/CreateWorkerInputs";
 import ChangeWorkerContainer from "../../Management/ChangeWorker/ChangeWorkerContainer";
 import RedTransparentBtn from "../../../../Common/RedTransparentBtn/RedTransparentBtn";
 import BlueButton from "../../../../Common/BlueButton/BlueButton";
 import DeleteModal from "../../../../Common/DeleteModal/DeleteModal";
+import WorkerProfile from "../../Management/WorkerProfile/WorkerProfile";
 
 const MuseumAdmin = ({museumAdminData, ...props}) => {
     return (
@@ -21,10 +21,13 @@ const MuseumAdmin = ({museumAdminData, ...props}) => {
                     !props.isChanging &&
                     (props.status
                     ?
-                    <ChangeWorkerContainer id={museumAdminData.id} username={museumAdminData.username}
-                                           text={'Главный администратор'} isUserServiceAdmin={true}
-                                           first_name={museumAdminData.first_name} last_name={museumAdminData.last_name} middle_name={museumAdminData.middle_name}
-                    />
+                        <div className={s.worker}>
+                            <div className={s.cover}> </div>
+                            <WorkerProfile text={'Главный администратор'}
+                                           first_name={museumAdminData.first_name} isUserServiceAdmin={true}
+                                           last_name={museumAdminData.last_name} middle_name={museumAdminData.middle_name}
+                            />
+                        </div>
                     :
                     <div className={'emptyLocations'}>
                         Гланый администратор отсутствует
@@ -33,11 +36,6 @@ const MuseumAdmin = ({museumAdminData, ...props}) => {
                 }
             </div>
 
-            {
-                (!props.status && props.isChanging)
-                    &&
-                        <CreateWorkerInputs {...props} isUserServiceAdmin={true} />
-            }
             <div className={'buttonContainer'}>
                 { props.status &&
                     <RedTransparentBtn type={'withProps'} handleSubmit={props.toggleOpenModal} data={true} text={'Удалить администратора'} />

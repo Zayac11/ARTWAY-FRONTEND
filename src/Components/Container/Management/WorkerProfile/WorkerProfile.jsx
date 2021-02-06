@@ -11,7 +11,11 @@ const WorkerProfile = (props) => {
             <div className={s.name}>
                 {props.last_name} {props.first_name} {props.middle_name}
             </div>
-            <img src={next} alt="go inside" className={s.btn}/>
+            {
+                !props.isUserServiceAdmin &&
+                <img src={next} alt="go inside" className={s.btn}/>
+            }
+
         </button>
     );
 }

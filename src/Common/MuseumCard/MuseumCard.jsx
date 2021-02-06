@@ -36,20 +36,9 @@ const MuseumCard = (props) => {
                         {props.name}
                     </div>
                     {
-                        props.isUserMuseumAdmin
-                        ?
-                        <div className={s.buttons}>
-                            {
-                                (props.prev === null && props.id === props.last) &&
-                                <div className={s.inCard}>
-                                    <img src={inCard} alt="inCard"/>
-                                </div>
-                            }
+                        <div className={s.inCard}>
+                            <img src={inCard} alt="inCard"/>
                         </div>
-                        :
-                            <div className={s.inCard}>
-                                <img src={inCard} alt="inCard"/>
-                            </div>
                     }
                 </NavLink>
         }

@@ -12,6 +12,7 @@ class TicketCanceledContainer extends React.Component {
     }
 
     render() {
+
         if(this.props.isFetch) {
             return <Preloader />
         }
