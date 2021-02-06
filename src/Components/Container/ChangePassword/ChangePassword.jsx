@@ -113,7 +113,7 @@ class ChangePassword extends React.Component {
                             <h2 className={'itemsTitle'}>
                                 Смена пароля
                             </h2>
-                            <BackBtn history={props.history} />
+                            <BackBtn history={this.props.history} />
 
                         </div>
 
@@ -168,7 +168,6 @@ let mapStateToProps = (state) => {
         isPasswordSimple: state.auth.isPasswordSimple,
     }
 }
-
 
 export default compose(
     connect(mapStateToProps, {setPassword, setPasswordConditions, setIsPasswordRight}),

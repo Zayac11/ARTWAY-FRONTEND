@@ -25,7 +25,6 @@ class MainContainer extends React.Component {
     }
 
     render() {
-
         if(this.props.isUserCashier) {
             return <Redirect to={'/cashier'} />
         }

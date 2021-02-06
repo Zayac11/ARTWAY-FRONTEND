@@ -45,7 +45,6 @@ class Container extends React.Component {
         if(!this.props.isTokenSet) {
             return <Preloader />
         }
-
         //Если у пользователя нет токена и он не залогинен
         let localToken = localStorage.getItem('token')
         if(localToken === null && !this.props.isLogin) {
