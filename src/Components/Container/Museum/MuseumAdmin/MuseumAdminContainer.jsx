@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import s from './MuseumAdmin.module.css'
 import MuseumAdmin from "./MuseumAdmin";
 import {compose} from "redux";
-import {Redirect, Route, withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import {
     createMuseumSuperAdmin, deleteMuseum,
     deleteMuseumSuperAdmin,

@@ -9,6 +9,7 @@ import TopContainer from "../../../Common/Top/TopContainer";
 import prev from './../../../assets/images/left-chevron.svg'
 import Input from "../../../Common/Input/Input";
 import BlueButton from "../../../Common/BlueButton/BlueButton";
+import BackBtn from "../../../Common/BackBtn/BackBtn";
 
 class ChangePassword extends React.Component {
 
@@ -112,9 +113,8 @@ class ChangePassword extends React.Component {
                             <h2 className={'itemsTitle'}>
                                 Смена пароля
                             </h2>
-                            <button onClick={() => this.props.history.goBack()} className={'backBtn'}>
-                                <img src={prev} alt="back"/>
-                            </button>
+                            <BackBtn history={props.history} />
+
                         </div>
 
                         <Input required={true} text={'Старый пароль'} type={'password'} name={'current_password'} handleFocus={this.handleChangeInputs} handleFindKey={this.handleFindKey} handleChange={this.handleChange} value={this.state.current_password} />

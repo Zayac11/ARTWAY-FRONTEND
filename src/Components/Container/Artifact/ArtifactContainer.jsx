@@ -69,15 +69,6 @@ class ArtifactContainer extends React.Component {
         this.props.swapArtifacts(swap_type, location_id)
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.artifactData !== this.props.artifactData) {
-            this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, this.props.artifactData.img, this.props.artifactData.audio, this.props.artifactData.video)
-        }
-        if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
-            this.checkAudio()
-        }
-    }
-
     componentDidMount() {
         //Данные об экспонате
         if(this.props.isUserMuseumAdmin) {
@@ -88,11 +79,26 @@ class ArtifactContainer extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+
+        if(prevProps.artifactData !== this.props.artifactData) {
+            this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, this.props.artifactData.img, this.props.artifactData.audio, this.props.artifactData.video)
+        }
+        if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
+            this.checkAudio()
+        }
+
+    }
+
     render() {
+        if(this.props.isArtifactError) {
+            return <Redirect to={'/enter'} />
+        }
 
         if(!this.props.artifactData.hall) {
             return  <Preloader />
         }
+
 
         if(this.state.isDeleted) {
             return <Redirect to={`/m-admin/${this.props.match.params.location_id}/${this.props.match.params.hall_id}`} />
@@ -119,6 +125,7 @@ class ArtifactContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         artifactData: state.artifact.artifactData,
+        isArtifactError: state.user.isArtifactError,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
         print: state.museum.print,
     }

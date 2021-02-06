@@ -3,6 +3,7 @@ import s from './ItemInformation.module.css'
 import prev from "../../assets/images/left-chevron.svg";
 import checked from "../../assets/images/checked.svg";
 import edit from "../../assets/images/edit.svg";
+import BackBtn from "../BackBtn/BackBtn";
 
 const ItemInformation = (props) => {
     return (
@@ -70,9 +71,7 @@ const ItemInformation = (props) => {
                            <h2 className={'itemsTitle'}>
                                {props.locationName}
                            </h2>
-                           <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                               <img src={prev} alt="back"/>
-                           </button>
+                           <BackBtn history={props.history} />
                        </div>
                    </>
            }

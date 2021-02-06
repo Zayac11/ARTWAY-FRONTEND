@@ -3,12 +3,13 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {WithAdminRedirect} from "../../../hoc/Redirect/WithAdminRedirect";
 import {getMuseumData} from "../../../redux/museum-reducer";
-import {Redirect, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {relocateArtifact} from "../../../redux/artifact-reducer";
 import {getLocationData} from "../../../redux/location-reducer";
 import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
 import s from './Relocate.module.css'
 import prev from "../../../assets/images/left-chevron.svg";
+import BackBtn from "../../../Common/BackBtn/BackBtn";
 
 class RelocateContainer extends React.Component {
 
@@ -64,9 +65,8 @@ class RelocateContainer extends React.Component {
             <>
                 <div className={s.relocateContainer}>
                     <div className={s.top}>
-                        <button onClick={() => this.props.toggleRelocate()} className={'backBtn'}>
-                            <img src={prev} alt="back"/>
-                        </button>
+                        <BackBtn history={this.props.history} />
+
                         <h2 className={s.title}>
                             Перемещение экспоната
                         </h2>

@@ -1,5 +1,4 @@
 import React from 'react';
-import s from './Hall.module.css'
 import MuseumItemsList from "../../../Common/MuseumItemsList/MuseumItemsList";
 import {NavLink} from "react-router-dom";
 import MuseumCard from "../../../Common/MuseumCard/MuseumCard";

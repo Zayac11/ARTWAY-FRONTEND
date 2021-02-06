@@ -15,9 +15,16 @@ const Enter = (props) => {
                 </div>
                 <div className={s.inputContainer}>
                     <div className={s.input}>
-                        <input onChange={props.handleChange} type="text" placeholder={'1'} value={props.artifactId} name={'artifactId'}/>
+                        <input onChange={props.handleChange} onFocus={props.handleFocus} type="text" placeholder={'1'} value={props.artifactId} name={'artifactId'}/>
                     </div>
                 </div>
+
+                {
+                    props.isArtifactError &&
+                        <div className={'form__wrong'}>
+                            Экспонат не найден
+                        </div>
+                }
 
             </div>
             <div className={s.buttonContainer}>

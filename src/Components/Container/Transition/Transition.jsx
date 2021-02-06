@@ -1,12 +1,11 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {NavLink, Route, withRouter} from "react-router-dom";
+import {Route, withRouter} from "react-router-dom";
 import ScannerContainer from "./Scanner/ScannerContainer";
 import Enter from "./Enter/Enter";
 import s from './Transition.module.css'
-import artSquare from "../../../assets/images/artsquare.svg";
-import information from "../../../assets/images/information-2-copy.svg";
 import TopContainer from "../../../Common/Top/TopContainer";
+import {setArtifactError} from "../../../redux/user-reducer";
 
 class Transition extends React.Component {
 
@@ -20,6 +19,7 @@ class Transition extends React.Component {
         this.handleScan = this.handleScan.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleError = this.handleError.bind(this)
+        this.handleFocus = this.handleFocus.bind(this)
     }
 
     handleScan(data){
@@ -27,12 +27,18 @@ class Transition extends React.Component {
             result: data,
         })
     }
+
+    handleFocus(){
+        this.props.setArtifactError(false)
+    }
+
     handleChange(e){
         let name = e.target.name
         let value = e.target.value
         this.setState({
             [name]: value,
         })
+
     }
     handleError(err){
         console.error(err)
@@ -58,6 +64,8 @@ class Transition extends React.Component {
 
                     <Route exact path='/enter' render={ () => <Enter handleChange={this.handleChange}
                                                                      history={this.props.history}
+                                                                     handleFocus={this.handleFocus}
+                                                                     isArtifactError={this.props.isArtifactError}
                                                                      artifactId={this.state.artifactId} />} />
                 </div>
             </div>
@@ -68,9 +76,9 @@ class Transition extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-
+        isArtifactError: state.user.isArtifactError,
     }
 }
 
 let WithUrlTransition = withRouter(Transition)
-export default connect(mapStateToProps,{})(WithUrlTransition);
+export default connect(mapStateToProps,{setArtifactError})(WithUrlTransition);

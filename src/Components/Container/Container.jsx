@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {initializingToken, setToken} from "../../redux/user-reducer";
+import {compose} from "redux";
 import MainContainer from "./Main/MainContainer";
 import Transition from "./Transition/Transition";
 import ArtifactContainer from "./Artifact/ArtifactContainer";
@@ -14,13 +16,10 @@ import CreateWorker from "./CreateWorker/CreateWorker";
 import MuseumsListContainer from "./MuseumsList/MuseumsListContainer";
 import CreateMuseum from "./Create/CreateMuseum";
 import TicketsListContainer from "./TicketsList/TicketsListContainer";
-import {initializingToken, setToken} from "../../redux/user-reducer";
-import {compose} from "redux";
-import Preloader from "../../Common/Preloader/Preloader";
 import PrintListContainer from "./PrintList/PrintListContainer";
 import ChangePassword from "./ChangePassword/ChangePassword";
 import InformationContainer from "./Information/InformationContainer";
-import TicketCanceledContainer from "../TicketCanceled/TicketCanceledContainer";
+import Preloader from "../../Common/Preloader/Preloader";
 
 class Container extends React.Component {
 
@@ -47,11 +46,11 @@ class Container extends React.Component {
             return <Preloader />
         }
 
+        //Если у пользователя нет токена и он не залогинен
         let localToken = localStorage.getItem('token')
-        if(localToken === null) { //Если у пользователя есть сохраненный токен
+        if(localToken === null && !this.props.isLogin) {
             return <Redirect to={'/canceled'} />
         }
-
         return (
             <>
                 <PreloaderLogo />
@@ -99,6 +98,7 @@ let mapStateToProps = (state) => {
         isUserCashier: state.auth.isUserCashier,
         isUserServiceAdmin: state.auth.isUserServiceAdmin,
         isUserMuseumSuperAdmin: state.auth.isUserMuseumSuperAdmin,
+        isLogin: state.auth.isLogin,
         isTokenSet: state.user.isTokenSet,
     }
 }

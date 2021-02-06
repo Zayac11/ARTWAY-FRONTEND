@@ -62,7 +62,7 @@ export const CommonCreateWorkerLogic = (Component) => {
 
         handleSubmit() {
 
-            let mail = /^[\w\.\d*]+@[\w\d]+(\.\w{2,4})$/
+            let mail = /^[\w.\d*]+@[\w\d]+(\.\w{2,4})$/
             if (this.state.first_name === '' || this.state.last_name === '' || this.state.email === '' || this.state.password === '') {
                 this.setState({
                     isEmptyInputs: true

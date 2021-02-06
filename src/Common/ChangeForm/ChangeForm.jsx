@@ -2,9 +2,9 @@ import React from 'react';
 import s from './ChangeForm.module.css'
 import Input from "../Input/Input";
 import Textarea from "../Textarea/Textarea";
-import prev from "../../assets/images/left-chevron.svg";
 import BlueButton from "../BlueButton/BlueButton";
 import RedTransparentBtn from "../RedTransparentBtn/RedTransparentBtn";
+import BackBtn from "../BackBtn/BackBtn";
 
 const ChangeForm = (props) => {
     return (
@@ -13,9 +13,7 @@ const ChangeForm = (props) => {
                 <h1 className={s.title}>{props.text}</h1>
                 {
                     !props.isChanging &&
-                    <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                        <img src={prev} alt="back"/>
-                    </button>
+                        <BackBtn history={props.history} />
                 }
             </div>
 

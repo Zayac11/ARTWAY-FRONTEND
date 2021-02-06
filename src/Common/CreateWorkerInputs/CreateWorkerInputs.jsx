@@ -5,6 +5,7 @@ import prev from "../../assets/images/left-chevron.svg";
 import BlueButton from "../BlueButton/BlueButton";
 import TopContainer from "../Top/TopContainer";
 import TransparentButton from "../TransparentButton/TransparentButton";
+import BackBtn from "../BackBtn/BackBtn";
 
 const CreateWorkerInputs = (props) => {
 
@@ -17,9 +18,8 @@ const CreateWorkerInputs = (props) => {
                             ?
                             <>
                                 <TopContainer isUserMuseumAdmin={true} />
-                                <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                                    <img src={prev} alt="back"/>
-                                </button>
+                                <BackBtn history={props.history} />
+
                                 <div className={s.top}>
                                     <h2 className={s.title}>Создание пользователя музея</h2>
                                 </div>

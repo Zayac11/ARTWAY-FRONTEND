@@ -2,9 +2,9 @@ import React from 'react';
 import s from './PrintList.module.css'
 import TopContainer from "../../../Common/Top/TopContainer";
 import BlueButton from "../../../Common/BlueButton/BlueButton";
-import prev from "../../../assets/images/left-chevron.svg";
 import RedTransparentBtn from "../../../Common/RedTransparentBtn/RedTransparentBtn";
 import PrintItem from "./PrintItem/PrintItem";
+import BackBtn from "../../../Common/BackBtn/BackBtn";
 
 const PrintList = (props) => {
     return (
@@ -17,9 +17,8 @@ const PrintList = (props) => {
                         <h2 className={'itemsTitle'}>
                             Экспонаты для печати
                         </h2>
-                        <button onClick={() => props.history.goBack()} className={'backBtn'}>
-                            <img src={prev} alt="back"/>
-                        </button>
+                        <BackBtn history={props.history} />
+
                     </div>
 
                     {

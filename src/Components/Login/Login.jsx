@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {NavLink, Redirect} from "react-router-dom";
 import s from "./Login.module.css";
 import {login} from "../../redux/authentication";
-import artSquare from './../../assets/images/artsquare.svg'
 import AuthInput from "../../Common/AuthInput/AuthInput";
 import email from './../../assets/images/email-2.svg'
 import padlock from './../../assets/images/padlock-2.svg'

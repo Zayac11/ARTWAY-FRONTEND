@@ -1,11 +1,9 @@
 import React from 'react';
 import {connect} from "react-redux";
 import QrReader from 'react-qr-reader'
-import {NavLink, Route, withRouter} from "react-router-dom";
+import {Route} from "react-router-dom";
 import s from './Scanner.module.css'
 import refresh from './../../../../assets/images/refresh-256x256.png'
-import artSquare from "../../../../assets/images/artsquare.svg";
-import information from "../../../../assets/images/information-2-copy.svg";
 import BackBtn from "../../../../Common/BackBtn/BackBtn";
 
 class ScannerContainer extends React.Component {

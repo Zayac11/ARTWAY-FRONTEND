@@ -1,12 +1,10 @@
 import {museumApi} from "../api/api";
 import {setHallData} from "./hall-reducer";
-import {setHalls} from "./location-reducer";
 
 const SET_ARTIFACT_DATA = 'SET_ARTIFACT_DATA'
 
 let initialState = {
     artifactData: {}, //Информация по артифакту
-    artifactQr: "",
 }
 
 const artifactReducer = (state = initialState, action) => {
@@ -23,7 +21,7 @@ const artifactReducer = (state = initialState, action) => {
 
 export const setArtifactData = (artifactData) => ({type: SET_ARTIFACT_DATA, artifactData})
 
-//Артефакт
+//Экспонат
 export const getArtifactData = (location_id, hall_id, artifact_id) => { //Получение информации об артефакте по id локации, зала и артефакта
     return (dispatch) => {
         museumApi.getArtifactData(location_id, hall_id, artifact_id)

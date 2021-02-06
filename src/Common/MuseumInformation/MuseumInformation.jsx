@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './MuseumInformation.module.css'
-import lefArrow from './../../assets/images/leftarrow_121320.svg'
 import edit from './../../assets/images/edit.svg'
+import BackBtn from "../BackBtn/BackBtn";
 
 const MuseumInformation = (props) => {
     return (
@@ -18,7 +18,7 @@ const MuseumInformation = (props) => {
                 :
                     <div className={s.userTop}>
                         <h2 className={s.name}>{props.name}</h2>
-                        <button onClick={() => props.history.goBack()}><img src={lefArrow} alt="lefArrow"/></button>
+                        <BackBtn history={props.history} />
                     </div>
             }
 
