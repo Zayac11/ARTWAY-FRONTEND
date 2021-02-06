@@ -34,12 +34,6 @@ const PrintList = (props) => {
 
                     }
 
-                    {
-                        // props.pdf !== '' &&
-                        //     <div>
-                        //         <a target={'_blank'} rel={'noreferrer noopener'} href={props.pdf}>Открыть pdf файл с qr-кодами артефактов</a>
-                        //     </div>
-                    }
                     <div className={s.itemsContainer}>
                         {
                             props.print &&
@@ -51,13 +45,19 @@ const PrintList = (props) => {
                                 })
                                 :
                                 <div className={'emptyLocations'}>
-                                    Добавьте экспонаты для печати
+                                    Список экспонатов для печати пуст
                                 </div>
                         }
                     </div>
 
                     <div className={s.buttonsContainer}>
-                        <BlueButton type={'btn'} handleSubmit={props.printArtifacts} text={'Распечатать экспонаты'} />
+                        {
+                            props.print &&
+                            (props.print.length > 0)
+                            ? <BlueButton type={'btn'} handleSubmit={props.printArtifacts} text={'Распечатать экспонаты'} />
+                            : <BlueButton type={'btn'} handleSubmit={() => {}} text={'Распечатать экспонаты'} />
+                        }
+
                         <RedTransparentBtn type={'btn'} handleSubmit={props.removeArtifactsToPrint} text={'Удалить всё'} />
                     </div>
                 </div>

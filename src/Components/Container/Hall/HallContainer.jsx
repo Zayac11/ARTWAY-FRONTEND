@@ -12,6 +12,7 @@ import {
     swapArtifacts,
     updateHallData
 } from "../../../redux/hall-reducer";
+import Preloader from "../../../Common/Preloader/Preloader";
 
 class HallContainer extends React.Component {
 
@@ -72,6 +73,9 @@ class HallContainer extends React.Component {
         if((this.props.match.url.includes('/m-admin')) && (!this.props.isUserMuseumAdmin)) {
             return <Redirect to={'/'} />
         }
+        if(this.props.isFetch) {
+            return <Preloader />
+        }
 
         return (
             <Hall {...this.props}
@@ -91,6 +95,7 @@ let mapStateToProps = (state) => {
         hallData: state.hall.hallData,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
         hallName: state.hall.hallName,
+        isFetch: state.auth.isFetch,
     }
 }
 

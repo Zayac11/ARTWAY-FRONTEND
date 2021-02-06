@@ -167,13 +167,12 @@ export const login = (username, password) => { //Логин
                         dispatch(getStatus())
                         dispatch(setAuth(true))
                         dispatch(setLoginWrong(false)) //Если до этого вводили неправильные данные
-                        dispatch(toggleIsFetching(false))
                     }
                     else if(result.detail === "No active account found with the given credentials") {
                         dispatch(setLoginWrong(true)) //Если ввели неправильные данные
                         dispatch(setIsPasswordRight(false))
-                        dispatch(toggleIsFetching(false))
                     }
+                        dispatch(toggleIsFetching(false))
                 }))
     }
 }
@@ -193,6 +192,7 @@ export const logout = () => { //Выход
 
 export const setPassword = (current_password, new_password, re_new_password) => { //Смена пароля
     return (dispatch) => {
+
         authAPI.setPassword(current_password, new_password, re_new_password)
             .then(response => response.text()
                 .then(result => {
@@ -217,26 +217,18 @@ export const setPassword = (current_password, new_password, re_new_password) => 
 
 export const resetPassword = (email) => { //Ввод почты для смены пароля и отправка письма
     return (dispatch) => {
-        // authAPI.accountRecovery(email) //Проверка почты
-        //     .then(response => response.json()
-        //         .then(result => {
-        //             console.log('email_recovery')
-        //             if(result) {
-        //                 dispatch(setIsEmailExists(true))
-        //                 authAPI.resetPassword(email) //Отправка письма на почту
-        //                     .then(response => response.text()
-        //                         .then(result => {
-        //                             console.log('reset_password', result)
-        //                         }))
-        //             }
-        //             else {
-        //                 dispatch(setIsEmailExists(false))
-        //             }
-        //         }))
+        dispatch(toggleIsFetching(true))
         authAPI.resetPassword(email) //Отправка письма на почту
             .then(response => response.text()
                 .then(result => {
                     console.log('reset_password', result)
+                    if(result === '{"email":["Введите правильный адрес электронной почты."]}') {
+                        dispatch(setIsEmailExists(false))
+                    }
+                    else {
+                        dispatch(setIsEmailExists(true))
+                    }
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }

@@ -3,7 +3,7 @@
 }
 
 .create {
-    padding: 0 8px;
+    padding: 0 8px 10px;
 }
 
 .title {
@@ -22,6 +22,12 @@
 .InputContainer input{
     margin-right: 10px;
 }
+
+.roleContainer {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
 .role {
     margin: 20px auto 10px;
     font-size: 14px;

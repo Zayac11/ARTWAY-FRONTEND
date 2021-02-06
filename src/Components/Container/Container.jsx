@@ -48,7 +48,7 @@ class Container extends React.Component {
         }
         //Если у пользователя нет токена и он не залогинен
         let localToken = localStorage.getItem('token')
-        if(localToken === null && !this.props.isLogin) {
+        if((localToken === null && !this.props.isLogin) || this.props.isTokenDeleted) {
             return <Redirect to={'/canceled'} />
         }
         return (
@@ -100,6 +100,7 @@ let mapStateToProps = (state) => {
         isUserMuseumSuperAdmin: state.auth.isUserMuseumSuperAdmin,
         isLogin: state.auth.isLogin,
         isTokenSet: state.user.isTokenSet,
+        isTokenDeleted: state.user.isTokenDeleted,
     }
 }
 export default compose(

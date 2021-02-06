@@ -8,6 +8,7 @@ import {compose} from "redux";
 import {getMuseumData, getUsersLocationsList, swapLocations, updateMuseumData} from "../../../redux/museum-reducer";
 import {createLocation} from "../../../redux/location-reducer";
 import MuseumAdminContainer from "./MuseumAdmin/MuseumAdminContainer";
+import Preloader from "../../../Common/Preloader/Preloader";
 
 class MuseumContainer extends React.Component {
 
@@ -67,6 +68,11 @@ class MuseumContainer extends React.Component {
             )
         }
 
+        if(this.props.isFetch) {
+            return <Preloader />
+        }
+
+
         return (
             <Museum {...this.props}
                     swapLocations={this.swapLocations}
@@ -83,6 +89,7 @@ let mapStateToProps = (state) => {
         isUserServiceAdmin: state.auth.isUserServiceAdmin,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
         isUserMuseumSuperAdmin: state.auth.isUserMuseumSuperAdmin,
+        isFetch: state.auth.isFetch,
     }
 }
 

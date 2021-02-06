@@ -11,7 +11,7 @@ const DeleteModal = (props) => {
             {
                 <>
                     <div className={'titleModal'}>
-                        Подтвердить удаление
+                        Подтвердите удаление
                     </div>
                     <button onClick={() => props.deleteMuseum()} className={'submitModal'}>
                         Подтвердить

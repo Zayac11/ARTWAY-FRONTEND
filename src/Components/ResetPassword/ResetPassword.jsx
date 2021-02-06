@@ -10,6 +10,7 @@ import send from '../../assets/images/send.svg'
 import resetPic from "../../assets/images/resetPic.svg";
 import BlueButton from "../../Common/BlueButton/BlueButton";
 import TopContainer from "../../Common/Top/TopContainer";
+import Preloader from "../../Common/Preloader/Preloader";
 
 
 class ResetPassword extends React.Component {
@@ -37,6 +38,7 @@ class ResetPassword extends React.Component {
     }
 
     handleSubmit() {
+
         if (this.state.email === '') {
             this.setState({
                 isEmptyInputs: true
@@ -61,6 +63,7 @@ class ResetPassword extends React.Component {
                 isEmailExists: this.props.isEmailExists,
             })
         }
+
     }
 
     componentDidMount() {
@@ -68,6 +71,11 @@ class ResetPassword extends React.Component {
     }
 
     render() {
+
+        if(this.props.isFetch) {
+            return <Preloader />
+        }
+
         return (
             <div className={'outer'}>
                 <div className={'container'}>
@@ -113,9 +121,8 @@ class ResetPassword extends React.Component {
                                                     Пользователь с таким адресом не существует
                                                 </div>
                                             }
-                                            <div className={s.buttonContainer}>
+
                                                 <BlueButton type={'btn'} text={'Восстановить'} handleSubmit={this.handleSubmit} />
-                                            </div>
                                         </>
                                 }
                                 </div>
@@ -130,6 +137,7 @@ class ResetPassword extends React.Component {
 let mapStateToProps = (state) => {
     return {
         isLogin: state.auth.isLogin,
+        isFetch: state.auth.isFetch,
         isEmailExists: state.auth.isEmailExists,
     }
 }

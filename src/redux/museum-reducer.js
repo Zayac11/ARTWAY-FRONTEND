@@ -1,4 +1,6 @@
 import {museumApi} from "../api/api";
+import {deleteToken} from "./user-reducer";
+import {toggleIsFetching} from "./authentication";
 
 const SET_MUSEUM_DATA = 'SET_MUSEUM_DATA'
 const ADD_ARTIFACT_TO_PRINT = 'ADD_ARTIFACT_TO_PRINT'
@@ -124,12 +126,18 @@ export const printArtifacts = (artifacts, size) => { //Отправить арт
 
 export const getUsersLocationsList = (token) => { //Получения списка локаций музея по токену пользователя
     return (dispatch) => {
-
+        dispatch(toggleIsFetching(true))
         museumApi.getUserLocationsList(token)
             .then(response => response.json()
                 .then(result => {
                     console.log('getUserLocationsList', result)
-                    dispatch(setMuseumData(result.museum, result.locations, false))
+                    if(result.status === 403) {
+                        dispatch(deleteToken())
+                    }
+                    else {
+                        dispatch(setMuseumData(result.museum, result.locations, false))
+                    }
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }

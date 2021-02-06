@@ -108,6 +108,10 @@ class ArtifactContainer extends React.Component {
             return <Redirect to={'/'} />
         }
 
+        if(this.props.isFetch) {
+            return <Preloader />
+        }
+
         return (
             <Artifact {...this.props}
                       deleteArtifact={this.deleteArtifact}
@@ -127,12 +131,15 @@ let mapStateToProps = (state) => {
         artifactData: state.artifact.artifactData,
         isArtifactError: state.user.isArtifactError,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
+        isFetch: state.auth.isFetch,
         print: state.museum.print,
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {getArtifactData, updateArtifactData, addArtifactToPrint, deleteOneArtifact, deleteArtifact, getUserArtifactData}),
+    connect(mapStateToProps,
+        {getArtifactData, updateArtifactData, addArtifactToPrint,
+            deleteOneArtifact, deleteArtifact, getUserArtifactData}),
     withRouter,
     CommonMuseumLogic,
     CommonUpdateLogic,

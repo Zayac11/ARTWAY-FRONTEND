@@ -1,5 +1,7 @@
 import {museumApi} from "../api/api";
 import {setLocationData} from "./location-reducer";
+import {deleteToken} from "./user-reducer";
+import {toggleIsFetching} from "./authentication";
 
 const SET_HALL_DATA = 'SET_HALL_DATA'
 const SET_ARTIFACTS = 'SET_ARTIFACTS'
@@ -90,11 +92,18 @@ export const swapArtifacts = (swap_type, id) => { //Изменение пози�
 
 export const getUserArtifactsList = (token, hall_id) => {
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         museumApi.getUserArtifactsList(token, hall_id)
             .then(response => response.json()
                 .then(result => {
                     console.log('getUserArtifactsList', result)
-                    dispatch(setArtifacts(result.artifacts, result.hall))
+                    if(result.status === 403) {
+                        dispatch(deleteToken())
+                    }
+                    else {
+                        dispatch(setArtifacts(result.artifacts, result.hall))
+                    }
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }

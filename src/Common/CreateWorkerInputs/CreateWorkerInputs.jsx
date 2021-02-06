@@ -18,15 +18,17 @@ const CreateWorkerInputs = (props) => {
                             ?
                             <>
                                 <TopContainer isUserMuseumAdmin={true} />
-                                <BackBtn history={props.history} />
+
 
                                 <div className={s.top}>
                                     <h2 className={s.title}>Создание пользователя музея</h2>
+                                    <BackBtn history={props.history} />
                                 </div>
                             </>
                             :
                             <>
                                 <div className={s.top}>
+                                    <BackBtn history={props.history} />
                                     <h2 className={s.title}>Создание главного администратора</h2>
                                 </div>
                             </>
@@ -45,12 +47,18 @@ const CreateWorkerInputs = (props) => {
 
                     {
                         !props.isUserServiceAdmin &&
-                        <div>
+                        <div className={s.roleContainer}>
                             <div className={s.role}>
                                 Роль
                             </div>
-                            <div className={s.InputContainer}><input name={'role'} type="radio" checked={props.role === 'museum_admins'} value='museum_admins' onChange={props.handleChangeRadio}/>Администратор музея</div>
-                            <div className={s.InputContainer}><input name={'role'} type="radio" checked={props.role === 'museum_cashiers'} value='museum_cashiers' onChange={props.handleChangeRadio}/>Кассир</div>
+                            <div className={s.InputContainer}>
+                                <input id={'museum_admins'} name={'role'} type="radio" checked={props.role === 'museum_admins'} value='museum_admins' onChange={props.handleChangeRadio}/>
+                                <label htmlFor="museum_admins">Администратор музея</label>
+                            </div>
+                            <div className={s.InputContainer}>
+                                <input id={'museum_cashiers'} name={'role'} type="radio" checked={props.role === 'museum_cashiers'} value='museum_cashiers' onChange={props.handleChangeRadio}/>
+                                <label htmlFor="museum_cashiers">Кассир</label>
+                            </div>
                         </div>
                     }
 

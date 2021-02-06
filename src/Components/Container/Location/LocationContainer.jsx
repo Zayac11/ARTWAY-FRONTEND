@@ -13,6 +13,7 @@ import {
     updateLocationData
 } from "../../../redux/location-reducer";
 import {createHall} from "../../../redux/hall-reducer";
+import Preloader from "../../../Common/Preloader/Preloader";
 
 class LocationContainer extends React.Component {
 
@@ -76,7 +77,9 @@ class LocationContainer extends React.Component {
         if((this.props.match.url.includes('/m-admin')) && (!this.props.isUserMuseumAdmin)) {
             return <Redirect to={'/'} />
         }
-
+        if(this.props.isFetch) {
+            return <Preloader />
+        }
         return (
             <Location {...this.props}
                       deleteLocation={this.deleteLocation}
@@ -95,6 +98,7 @@ let mapStateToProps = (state) => {
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
         halls: state.location.halls,
         locationName: state.location.locationName,
+        isFetch: state.auth.isFetch,
     }
 }
 

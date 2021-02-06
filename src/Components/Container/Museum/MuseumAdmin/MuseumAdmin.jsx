@@ -27,7 +27,7 @@ const MuseumAdmin = ({museumAdminData, ...props}) => {
                     />
                     :
                     <div className={'emptyLocations'}>
-                        Гланый администратор не найден
+                        Гланый администратор отсутствует
                     </div>)
 
                 }

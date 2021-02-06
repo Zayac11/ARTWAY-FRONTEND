@@ -20,7 +20,8 @@
 .fileInputContainer {
     display: flex;
     align-items: center;
-    margin-top: 15px;
+    max-width: 320px;
+    margin: 15px auto 0;
 }
 
 .fileInput {
