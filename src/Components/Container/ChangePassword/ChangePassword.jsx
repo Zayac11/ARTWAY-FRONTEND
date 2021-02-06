@@ -6,7 +6,6 @@ import {WithSuperAdminRedirect} from "../../../hoc/Redirect/WithSuperAdminRedire
 import {setIsPasswordRight, setPassword, setPasswordConditions} from "../../../redux/authentication";
 import s from './ChangePassword.module.css'
 import TopContainer from "../../../Common/Top/TopContainer";
-import prev from './../../../assets/images/left-chevron.svg'
 import Input from "../../../Common/Input/Input";
 import BlueButton from "../../../Common/BlueButton/BlueButton";
 import BackBtn from "../../../Common/BackBtn/BackBtn";

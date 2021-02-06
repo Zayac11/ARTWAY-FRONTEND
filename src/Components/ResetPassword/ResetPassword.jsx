@@ -73,14 +73,16 @@ class ResetPassword extends React.Component {
                 <div className={'container'}>
                     <div className={s.resetContainer}>
 
-                        <TopContainer />
+                        <TopContainer isTicketCanceled={true} />
+
                         <div className={s.picture}>
                             <img src={resetPic} alt="reset password"/>
                         </div>
+
                         {
                             this.props.isLogin ? <Redirect to="/"/>
                                 :
-                                <div className={s.reset}>{
+                                <div className={s.reset}> {
                                     this.state.isConfirm && this.state.isEmailExists
                                         ?
                                         <div className={s.confirm}>
@@ -112,8 +114,7 @@ class ResetPassword extends React.Component {
                                                 </div>
                                             }
                                             <div className={s.buttonContainer}>
-                                                <BlueButton type={'btn'} text={'Войти'}
-                                                            handleSubmit={this.handleSubmit}>Войти</BlueButton>
+                                                <BlueButton type={'btn'} text={'Восстановить'} handleSubmit={this.handleSubmit} />
                                             </div>
                                         </>
                                 }

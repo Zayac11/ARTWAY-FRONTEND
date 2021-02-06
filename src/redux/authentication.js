@@ -13,6 +13,7 @@ const SET_IS_PASSWORD_SIMPLE = 'SET_IS_PASSWORD_SIMPLE';
 const SET_IS_EMAIL_EXISTS = 'SET_IS_EMAIL_EXISTS';
 const SET_IS_EMAIL_TAKEN = 'SET_IS_EMAIL_TAKEN';
 const SET_USER_STATUS = 'SET_USER_STATUS';
+const SET_FETCH = 'SET_FETCH';
 
 
 let initialState = {
@@ -24,7 +25,7 @@ let initialState = {
     isUserMuseumSuperAdmin: false, //Является ли пользователь главным админом музея
     isUserMuseumAdmin: false, //Является ли пользователь админом музея
     isUserCashier: false, //Является ли пользователь кассиром
-
+    isFetch: false, //Загрузка страницы
     isInitialized: false, //Инициализация приложения
     isLoginWrong: false, //Если ошибка при логине
     isSetPasswordRight: false, //Если успешно сменил пароль
@@ -111,6 +112,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 isCurrentPasswordWrong: false,
             }
+        case SET_FETCH: //Обнуление условий смены пароля при закрытии страницы изменения пароля
+            return {
+                ...state,
+                isFetch: action.isFetch,
+            }
         default:
             return state;
     }
@@ -120,6 +126,7 @@ export const setAuth = (isLogin) => ({type: SET_AUTH, isLogin}) //Авториз
 export const setLoginWrong = (isLoginWrong) => ({type: SET_LOGIN_WRONG, isLoginWrong}) //Ошибка при логине
 export const setInitialized = () => ({type: SET_INITIALIZED})
 export const setUserStatus = (result) => ({type: SET_USER_STATUS, result}) //статусы пользователя
+export const toggleIsFetching = (isFetch) => ({type: SET_FETCH, isFetch}) //загрузка
 export const setIsPasswordSimple = (isPasswordSimple) => ({type: SET_IS_PASSWORD_SIMPLE, isPasswordSimple})
 export const setPasswordConditions = () => ({type: SET_PASSWORD_CONDITIONS}) //Обнуление условий смены пароля при закрытии страницы изменения пароля
 export const setIsCurrentPasswordWrong = () => ({type: SET_IS_CURRENT_PASSWORD_WRONG}) //Текущий пароль неправильный
@@ -148,6 +155,7 @@ export const getStatus = () => { //Проверка пользователя
 
 export const login = (username, password) => { //Логин
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         authAPI.login(username, password)
             .then(response => response.json()
                 .then(result => {
@@ -157,11 +165,14 @@ export const login = (username, password) => { //Логин
                         localStorage.setItem('accessToken', result.access)
                         dispatch(setIsPasswordRight(false))
                         dispatch(getStatus())
+                        dispatch(setAuth(true))
                         dispatch(setLoginWrong(false)) //Если до этого вводили неправильные данные
+                        dispatch(toggleIsFetching(false))
                     }
                     else if(result.detail === "No active account found with the given credentials") {
                         dispatch(setLoginWrong(true)) //Если ввели неправильные данные
                         dispatch(setIsPasswordRight(false))
+                        dispatch(toggleIsFetching(false))
                     }
                 }))
     }

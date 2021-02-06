@@ -19,7 +19,7 @@ const Top = (props) => {
                 <div className={s.admin}>
                     <NavLink to={'/m-admin/print'}><img className={s.print} src={print} alt="print"/></NavLink>
 
-                    <button className={s.logoutBtn} onClick={props.logout}>Выйти</button>
+                    <NavLink to={'/login'} className={s.logoutBtn}>Выйти</NavLink>
                 </div>
             }
 

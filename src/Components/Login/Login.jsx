@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import {NavLink, Redirect} from "react-router-dom";
 import s from "./Login.module.css";
-import {login} from "../../redux/authentication";
+import {login, logout} from "../../redux/authentication";
 import AuthInput from "../../Common/AuthInput/AuthInput";
 import email from './../../assets/images/email-2.svg'
 import padlock from './../../assets/images/padlock-2.svg'
@@ -18,6 +18,7 @@ class Login extends React.Component {
             password: "",
             isEmptyInputs: false, //Все ли поля пустые
             isLoginWrong: false, //Если ошибка при логине
+            isLogin: false, //Если успешно залогинен
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -40,7 +41,12 @@ class Login extends React.Component {
                 isEmptyInputs: true //Поля пустые
             })
         }
-        else this.props.login(this.state.email, this.state.password)
+        else {
+            this.props.login(this.state.email, this.state.password)
+            this.setState({
+                isLogin: true,
+            })
+        }
     }
 
     handleFindKey(e) {
@@ -57,6 +63,7 @@ class Login extends React.Component {
 
     componentDidMount() {
 
+        this.props.logout()
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -68,13 +75,14 @@ class Login extends React.Component {
     }
 
     render() {
+
         return (
             <div className={'outer'}>
                 <div className={'container'}>
                     <div className={s.loginContainer}>
-                        <TopContainer />
+                        <TopContainer isTicketCanceled={true} />
                         {
-                            this.props.isLogin ? <Redirect to="/" />
+                            this.state.isLogin ? <Redirect to="/" />
                                 :
                                 <div className={s.login}>
 
@@ -128,4 +136,4 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{login})(Login);
+export default connect(mapStateToProps,{login, logout})(Login);

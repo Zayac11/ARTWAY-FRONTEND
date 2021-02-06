@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import {compose} from "redux";
 import {Redirect, withRouter} from "react-router-dom";
 import TicketCanceled from "./TicketCanceled";
+import Preloader from "../../Common/Preloader/Preloader";
 
 class TicketCanceledContainer extends React.Component {
 
@@ -11,6 +12,9 @@ class TicketCanceledContainer extends React.Component {
     }
 
     render() {
+        if(this.props.isFetch) {
+            return <Preloader />
+        }
 
         if(this.props.isUserCashier) {
             return <Redirect to={'/cashier'} />
@@ -34,6 +38,7 @@ let mapStateToProps = (state) => {
         isUserServiceAdmin: state.auth.isUserServiceAdmin,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
         isUserCashier: state.auth.isUserCashier,
+        isFetch: state.auth.isFetch,
     }
 }
 
