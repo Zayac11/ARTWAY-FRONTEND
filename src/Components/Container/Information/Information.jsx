@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './Information.module.css'
-import TopContainer from "../../../Common/Top/TopContainer";
 import BackBtn from "../../../Common/BackBtn/BackBtn";
 import artSquare from "../../../assets/images/artsquare.svg";
 import Step from "../Main/Step/Step";

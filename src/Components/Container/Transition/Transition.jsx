@@ -6,6 +6,7 @@ import Enter from "./Enter/Enter";
 import s from './Transition.module.css'
 import artSquare from "../../../assets/images/artsquare.svg";
 import information from "../../../assets/images/information-2-copy.svg";
+import TopContainer from "../../../Common/Top/TopContainer";
 
 class Transition extends React.Component {
 
@@ -47,14 +48,7 @@ class Transition extends React.Component {
         <div className={'outer'}>
             <div className={'container'}>
                 <div className={'artContainer'}>
-                    <div className={'artSquare'}>
-                        <img className={'artImg'} src={artSquare} alt="artSquare"/>
-                        <span>art</span>
-                        <span className={'way'}>way</span>
-                    </div>
-                    <NavLink to={'/'} className={'information'}>
-                        <img src={information} alt="information"/>
-                    </NavLink>
+                    <TopContainer />
                 </div>
                 <Route exact path='/scan' render={ () => <ScannerContainer handleScan={this.handleScan}
                                                                            handleError={this.handleError}

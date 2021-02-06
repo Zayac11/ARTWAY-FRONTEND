@@ -20,6 +20,7 @@ import Preloader from "../../Common/Preloader/Preloader";
 import PrintListContainer from "./PrintList/PrintListContainer";
 import ChangePassword from "./ChangePassword/ChangePassword";
 import InformationContainer from "./Information/InformationContainer";
+import TicketCanceledContainer from "./TicketCanceled/TicketCanceledContainer";
 
 class Container extends React.Component {
 
@@ -52,6 +53,7 @@ class Container extends React.Component {
                 <Switch>
                     {/*Покупатель*/}
                     <Route exact path='/' render={ () => <MainContainer />} /> {/*Главная стр пользователя*/}
+                    <Route exact path='/canceled' render={ () => <TicketCanceledContainer />} /> {/*Билет истек*/}
                     <Route exact path='/information' render={ () => <InformationContainer />} /> {/*Информация по использованию*/}
                     <Route exact path='/enter' render={ () => <Transition />} /> {/*Ввод руками id*/}
                     <Route exact path='/scan' render={ () => <Transition />} /> {/*Скан qr кода*/}

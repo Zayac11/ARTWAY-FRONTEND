@@ -32,6 +32,7 @@ const Top = (props) => {
             }
 
             {
+                !props.isTicketCanceled &&
                 (!props.isUserMuseumAdmin && !props.isUserCashier && !props.isUserServiceAdmin) &&
                     <NavLink to={'/information'} className={'information'}>
                         <img src={information} alt="information"/>
