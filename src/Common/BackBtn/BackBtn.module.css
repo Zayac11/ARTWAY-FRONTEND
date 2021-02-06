@@ -1,7 +1,8 @@
 .backBtn {
     position: absolute;
-    top: 30px;
-    left: 20px;
+    top: 0;
+    width: 20px;
+    left: 0;
     cursor: pointer;
     border: none;
     outline: none;

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './BackBtn.module.css'
-import prev from "../../assets/images/next.svg";
+import prev from "../../assets/images/left-chevron.svg";
 
 const BackBtn = (props) => {
     return (

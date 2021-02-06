@@ -33,7 +33,7 @@ const Top = (props) => {
 
             {
                 (!props.isUserMuseumAdmin && !props.isUserCashier && !props.isUserServiceAdmin) &&
-                    <NavLink to={'/'} className={'information'}>
+                    <NavLink to={'/information'} className={'information'}>
                         <img src={information} alt="information"/>
                     </NavLink>
             }

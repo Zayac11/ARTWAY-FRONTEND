@@ -5,6 +5,7 @@
 .stepText {
     padding-left: 10px;
     margin-left: 15px;
+    font-size: 12px;
     line-height: 1.5;
 }
 .pointOuter {
@@ -14,7 +15,7 @@
     width: 25px;
     height: 25px;
     padding: 7px;
-    background-color: rgba(247, 120, 56, 0.3);
+    background-color: #B2DAFE;
     border-radius: 25px;
     margin: 26px 0;
 }
@@ -43,16 +44,4 @@
 }
 .phoneIcon img{
     display: block;
-}
-
-@media (max-width: 380px) {
-    .stepText {
-        font-size: 14px;
-    }
-}
-@media (max-width: 302px) {
-
-    .stepText {
-        font-size: 12px;
-    }
 }

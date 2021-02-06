@@ -1,0 +1,79 @@
+.info {
+    min-height: 100vh;
+    padding: 10px 8px;
+}
+
+.top {
+    margin: 20px 0 30px;
+    text-align: center;
+    position: relative;
+}
+
+
+.artSquare {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto 7px;
+    width: max-content;
+}
+
+.way {
+    color: #0e4dae;
+}
+
+.artImg {
+    margin: 0 8px 0 0;
+}
+
+.name {
+    font-size: 14px;
+
+    text-align: center;
+}
+
+.principe {
+    margin: 20px 0;
+}
+.art {
+    font-weight: bold;
+}
+.step {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 100px;
+}
+.stepText {
+    font-size: 12px;
+    padding-left: 10px;
+    margin-left: 15px;
+    line-height: 1.5;
+    padding-bottom: 2px;
+}
+.pointOuter {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 25px;
+    height: 25px;
+    padding: 7px;
+    background-color: #B2DAFE;
+    border-radius: 25px;
+    margin: 26px 0 0;
+}
+.pointInner {
+    width: 11px;
+    height: 11px;
+    background-color: #000000;
+    border-radius: 11px;
+}
+.pointOuter:before {
+    content: '';
+    border-left: 1px solid black;
+    height: 23px;
+    position: absolute;
+    left: 12px;
+}
+.pointOuter:before {
+    top: -23px;
+}

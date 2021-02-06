@@ -18,9 +18,8 @@ import {initializingToken, setToken} from "../../redux/user-reducer";
 import {compose} from "redux";
 import Preloader from "../../Common/Preloader/Preloader";
 import PrintListContainer from "./PrintList/PrintListContainer";
-import RelocateContainer from "./Relocate/RelocateContainer";
-import TopContainer from "../../Common/Top/TopContainer";
 import ChangePassword from "./ChangePassword/ChangePassword";
+import InformationContainer from "./Information/InformationContainer";
 
 class Container extends React.Component {
 
@@ -51,10 +50,9 @@ class Container extends React.Component {
             <>
                 <PreloaderLogo />
                 <Switch>
-
                     {/*Покупатель*/}
                     <Route exact path='/' render={ () => <MainContainer />} /> {/*Главная стр пользователя*/}
-                    <Route exact path='/information' render={ () => <MainContainer />} /> {/*Информация по использованию*/}
+                    <Route exact path='/information' render={ () => <InformationContainer />} /> {/*Информация по использованию*/}
                     <Route exact path='/enter' render={ () => <Transition />} /> {/*Ввод руками id*/}
                     <Route exact path='/scan' render={ () => <Transition />} /> {/*Скан qr кода*/}
                     <Route exact path='/locations/' render={ () => <MuseumContainer />} /> {/*Список локация музея*/}
