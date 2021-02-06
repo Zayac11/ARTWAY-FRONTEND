@@ -7,6 +7,7 @@ const SET_ARTIFACTS = 'SET_ARTIFACTS'
 let initialState = {
     hallData: {}, //Информация по залу
     artifacts: [], //Лист артефактов залов
+    hallName: '', //Название зала
 }
 
 const hallReducer = (state = initialState, action) => {
@@ -20,7 +21,8 @@ const hallReducer = (state = initialState, action) => {
         case SET_ARTIFACTS:
             return {
                 ...state,
-                artifacts: action.artifacts.artifacts,
+                artifacts: action.artifacts,
+                hallName: action.hallName,
             }
         default:
             return state;
@@ -28,7 +30,7 @@ const hallReducer = (state = initialState, action) => {
 }
 
 export const setHallData = (hall, artifacts) => ({type: SET_HALL_DATA, hall, artifacts})
-export const setArtifacts = (artifacts) => ({type: SET_ARTIFACTS, artifacts})
+export const setArtifacts = (artifacts, hallName) => ({type: SET_ARTIFACTS, artifacts, hallName})
 
 //Зал
 export const getHallData = (location_id, hall_id) => { //Получение информации о зале по id локации и зала
@@ -92,7 +94,7 @@ export const getUserArtifactsList = (token, hall_id) => {
             .then(response => response.json()
                 .then(result => {
                     console.log('getUserArtifactsList', result)
-                    dispatch(setArtifacts(result))
+                    dispatch(setArtifacts(result.artifacts, result.hall))
                 }))
     }
 }

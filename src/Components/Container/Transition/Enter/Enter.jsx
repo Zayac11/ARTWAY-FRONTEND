@@ -1,11 +1,15 @@
 import React from 'react';
 import s from './Enter.module.css'
 import BlueButton from "../../../../Common/BlueButton/BlueButton";
+import BackBtn from "../../../../Common/BackBtn/BackBtn";
 
 const Enter = (props) => {
     return (
         <>
             <div className={s.enter}>
+                <div className={s.top}>
+                    <BackBtn history={props.history} />
+                </div>
                 <div className={s.title}>
                     Введите номер экспоната
                 </div>

@@ -29,6 +29,7 @@ const Museum = (props) => {
                             <>
                                 {/*Пользователь должен видеть информацию о музее*/}
                                 <MuseumInformation toggleIsChanging={props.toggleIsChanging}
+                                                   history={props.history}
                                                    name={props.name} isUserMuseumAdmin={props.isUserMuseumAdmin}
                                                    description={props.description} main_img={props.main_img}
 

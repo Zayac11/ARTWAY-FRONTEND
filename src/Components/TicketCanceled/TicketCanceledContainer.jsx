@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {compose} from "redux";
-import {withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import TicketCanceled from "./TicketCanceled";
 
 class TicketCanceledContainer extends React.Component {
@@ -12,15 +12,15 @@ class TicketCanceledContainer extends React.Component {
 
     render() {
 
-        // if(this.props.isUserCashier) {
-        //     return <Redirect to={'/cashier'} />
-        // }
-        // if(this.props.isUserMuseumAdmin) {
-        //     return <Redirect to={'/m-admin'} />
-        // }
-        // if(this.props.isUserServiceAdmin) {
-        //     return <Redirect to={'/s-admin'} />
-        // }
+        if(this.props.isUserCashier) {
+            return <Redirect to={'/cashier'} />
+        }
+        if(this.props.isUserMuseumAdmin) {
+            return <Redirect to={'/m-admin'} />
+        }
+        if(this.props.isUserServiceAdmin) {
+            return <Redirect to={'/s-admin'} />
+        }
 
         return (
             <TicketCanceled {...this.props} />

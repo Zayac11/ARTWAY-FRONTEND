@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Route, Switch, withRouter} from "react-router-dom";
+import {Redirect, Route, Switch, withRouter} from "react-router-dom";
 import MainContainer from "./Main/MainContainer";
 import Transition from "./Transition/Transition";
 import ArtifactContainer from "./Artifact/ArtifactContainer";
@@ -20,7 +20,7 @@ import Preloader from "../../Common/Preloader/Preloader";
 import PrintListContainer from "./PrintList/PrintListContainer";
 import ChangePassword from "./ChangePassword/ChangePassword";
 import InformationContainer from "./Information/InformationContainer";
-import TicketCanceledContainer from "./TicketCanceled/TicketCanceledContainer";
+import TicketCanceledContainer from "../TicketCanceled/TicketCanceledContainer";
 
 class Container extends React.Component {
 
@@ -42,9 +42,14 @@ class Container extends React.Component {
     }
 
     render() {
-
+        //Пока не определится наличие токена, то редирект не произойдет
         if(!this.props.isTokenSet) {
             return <Preloader />
+        }
+
+        let localToken = localStorage.getItem('token')
+        if(localToken === null) { //Если у пользователя есть сохраненный токен
+            return <Redirect to={'/canceled'} />
         }
 
         return (
@@ -53,7 +58,6 @@ class Container extends React.Component {
                 <Switch>
                     {/*Покупатель*/}
                     <Route exact path='/' render={ () => <MainContainer />} /> {/*Главная стр пользователя*/}
-                    <Route exact path='/canceled' render={ () => <TicketCanceledContainer />} /> {/*Билет истек*/}
                     <Route exact path='/information' render={ () => <InformationContainer />} /> {/*Информация по использованию*/}
                     <Route exact path='/enter' render={ () => <Transition />} /> {/*Ввод руками id*/}
                     <Route exact path='/scan' render={ () => <Transition />} /> {/*Скан qr кода*/}

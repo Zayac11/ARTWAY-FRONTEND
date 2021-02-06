@@ -8,6 +8,7 @@ import {CommonUpdateLogic} from "../../../hoc/CommonUpdateLogic";
 import {deleteArtifact, getArtifactData, updateArtifactData} from "../../../redux/artifact-reducer";
 import {getUserArtifactData} from "../../../redux/user-reducer";
 import {addArtifactToPrint, deleteOneArtifact} from "../../../redux/museum-reducer";
+import Preloader from "../../../Common/Preloader/Preloader";
 
 class ArtifactContainer extends React.Component {
 
@@ -88,6 +89,10 @@ class ArtifactContainer extends React.Component {
     }
 
     render() {
+
+        if(!this.props.artifactData.hall) {
+            return  <Preloader />
+        }
 
         if(this.state.isDeleted) {
             return <Redirect to={`/m-admin/${this.props.match.params.location_id}/${this.props.match.params.hall_id}`} />

@@ -47,18 +47,19 @@ class Transition extends React.Component {
 
         <div className={'outer'}>
             <div className={'container'}>
-                <div className={'artContainer'}>
+                <div className={s.transition}>
                     <TopContainer />
-                </div>
-                <Route exact path='/scan' render={ () => <ScannerContainer handleScan={this.handleScan}
-                                                                           handleError={this.handleError}
-                                                                           delay={this.state.delay}
-                                                                           history={this.props.history}
-                                                                           result={this.state.result} />} />
 
-                <Route exact path='/enter' render={ () => <Enter handleChange={this.handleChange}
-                                                         history={this.props.history}
-                                                         artifactId={this.state.artifactId} />} />
+                    <Route exact path='/scan' render={ () => <ScannerContainer handleScan={this.handleScan}
+                                                                               handleError={this.handleError}
+                                                                               delay={this.state.delay}
+                                                                               history={this.props.history}
+                                                                               result={this.state.result} />} />
+
+                    <Route exact path='/enter' render={ () => <Enter handleChange={this.handleChange}
+                                                                     history={this.props.history}
+                                                                     artifactId={this.state.artifactId} />} />
+                </div>
             </div>
         </div>
         );

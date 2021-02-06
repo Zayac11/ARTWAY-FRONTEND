@@ -8,6 +8,7 @@ import Login from "./Components/Login/Login";
 import Preloader from "./Common/Preloader/Preloader";
 import {getStatus} from "./redux/authentication";
 import ResetPassword from "./Components/ResetPassword/ResetPassword";
+import TicketCanceledContainer from "./Components/TicketCanceled/TicketCanceledContainer";
 
 class App extends React.Component {
 
@@ -23,9 +24,9 @@ class App extends React.Component {
         }
         return (
             <Switch>
-                {/*Route Login or Initializing*/}
                 <Route exact path='/login' render={ () => <Login />} />
                 <Route exact path='/reset_password' render={ () => <ResetPassword />} />
+                <Route exact path='/canceled' render={ () => <TicketCanceledContainer />} /> {/*Билет истек*/}
                 <Container />
             </Switch>
         );

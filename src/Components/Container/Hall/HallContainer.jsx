@@ -90,6 +90,7 @@ let mapStateToProps = (state) => {
         artifacts: state.hall.artifacts,
         hallData: state.hall.hallData,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
+        hallName: state.hall.hallName,
     }
 }
 

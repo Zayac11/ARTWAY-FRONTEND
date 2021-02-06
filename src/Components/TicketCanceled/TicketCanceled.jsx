@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './TicketCanceled.module.css'
-import TopContainer from "../../../Common/Top/TopContainer";
-import cancel from '../../../assets/images/ticket_canceled.svg'
+import TopContainer from "../../Common/Top/TopContainer";
+import cancel from '../../assets/images/ticket_canceled.svg'
 
 const TicketCanceled = (props) => {
     return (

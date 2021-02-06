@@ -26,15 +26,15 @@ class MainContainer extends React.Component {
 
     render() {
 
-        // if(this.props.isUserCashier) {
-        //     return <Redirect to={'/cashier'} />
-        // }
-        // if(this.props.isUserMuseumAdmin) {
-        //     return <Redirect to={'/m-admin'} />
-        // }
-        // if(this.props.isUserServiceAdmin) {
-        //     return <Redirect to={'/s-admin'} />
-        // }
+        if(this.props.isUserCashier) {
+            return <Redirect to={'/cashier'} />
+        }
+        if(this.props.isUserMuseumAdmin) {
+            return <Redirect to={'/m-admin'} />
+        }
+        if(this.props.isUserServiceAdmin) {
+            return <Redirect to={'/s-admin'} />
+        }
 
         return (
             <Main isUserServiceAdmin={this.props.isUserServiceAdmin} isUserMuseumSuperAdmin={this.props.isUserMuseumSuperAdmin}

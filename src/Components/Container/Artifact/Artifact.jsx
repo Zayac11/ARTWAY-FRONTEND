@@ -13,7 +13,6 @@ import RelocateContainer from "../Relocate/RelocateContainer";
 import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
 
 const Artifact = (props) => {
-
     return (
         <div className={'outer'}>
             <div className={'container'}>
@@ -30,7 +29,6 @@ const Artifact = (props) => {
                                         <>
                                             <ChangeForm isChangingArtifact={true} {...props} text={'Изменение экспоната'} isItemArtifact={true} //Является ли создаваемы объект артефактом
                                             />
-
                                         </>
                                         :
                                         <>
@@ -42,11 +40,12 @@ const Artifact = (props) => {
                                                     {props.name}
                                                 </h2>
                                                 {
-                                                    !props.isChanging
-                                                    &&
+                                                    props.isUserMuseumAdmin
+                                                    ?
                                                     <div onClick={() => props.toggleIsChanging(!props.isChanging)} >
                                                         <img src={edit} alt="edit"/>
                                                     </div>
+                                                    :<div className={s.empty}></div>
                                                 }
                                             </div>
 
@@ -95,7 +94,7 @@ const Artifact = (props) => {
                                                                 <TransparentButton text={'Переместить экспонат'} type={'btn'} handleSubmit={props.toggleRelocate}  />
                                                             </>
                                                             :
-                                                            <BlueButton text={'Перейти в карту зала'} type={'link'} to={`/halls/${props.artifactData.hall.id}/artifacts`} />
+                                                            <BlueButton text={'Перейти в карту зала'} type={'link'} link={`/halls/${props.artifactData.hall.id}/artifacts`} />
                                                     }
 
                                                 </div>
