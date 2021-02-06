@@ -2,7 +2,7 @@
 .step {
     display: flex;
     align-items: flex-end;
-    margin-bottom: 242px;
+    margin-bottom: 100px;
 }
 .stepText {
     padding-left: 10px;
@@ -40,12 +40,9 @@
 
 /*Основная часть*/
 .main {
-    width: 100%;
-    padding: 20px 10px;
+    padding: 0 8px;
     position: relative;
     min-height: 100vh;
-    max-width: 650px;
-    margin: 0 auto;
 }
 
 .logoContainer {
@@ -107,4 +104,85 @@
     .stepText {
         font-size: 12px;
     }
+}
+
+.imageContainer {
+    width: 100%;
+    padding: 0 35px;
+    margin: 20px auto 0;
+}
+
+.imageContainer img{
+    width: 100%;
+    display: block;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.title {
+    margin: 40px 0 15px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+.title span {
+   color: #196bb1;
+}
+
+.subtitle {
+    font-size: 12px;
+    line-height: 1.67;
+    font-weight: 400;
+    text-align: center;
+}
+
+.linksContainer {
+    position: absolute;
+    background-color: white;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-top-right-radius: 35px;
+    border-top-left-radius: 35px;
+}
+
+.links {
+    padding: 40px 40px 20px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+
+}
+
+.buttonContainer {
+
+}
+
+.buttonContainer a{
+    display: block;
+    text-align: center;
+}
+
+.text {
+    font-size: 12px;
+}
+
+.scanButton {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    background-color: #196bb1;
+    display: block;
+    width: max-content;
+    padding: 15px;
+    box-shadow: 0 4px 16px 0 rgba(229, 229, 229, 0.5);
+    border-radius: 35px;
+}
+.scanButton img{
+   display: block;
 }

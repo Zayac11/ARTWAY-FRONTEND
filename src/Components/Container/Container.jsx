@@ -54,6 +54,7 @@ class Container extends React.Component {
 
                     {/*Покупатель*/}
                     <Route exact path='/' render={ () => <MainContainer />} /> {/*Главная стр пользователя*/}
+                    <Route exact path='/information' render={ () => <MainContainer />} /> {/*Информация по использованию*/}
                     <Route exact path='/enter' render={ () => <Transition />} /> {/*Ввод руками id*/}
                     <Route exact path='/scan' render={ () => <Transition />} /> {/*Скан qr кода*/}
                     <Route exact path='/locations/' render={ () => <MuseumContainer />} /> {/*Список локация музея*/}
