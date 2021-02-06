@@ -20,6 +20,7 @@ import PrintListContainer from "./PrintList/PrintListContainer";
 import ChangePassword from "./ChangePassword/ChangePassword";
 import InformationContainer from "./Information/InformationContainer";
 import Preloader from "../../Common/Preloader/Preloader";
+import Error404 from "./404/Error404";
 
 class Container extends React.Component {
 
@@ -83,7 +84,7 @@ class Container extends React.Component {
                     {/*Кассир*/}
                     <Route exact path='/cashier' render={ () => <TicketsListContainer />} /> {/*Лист билетов*/}
 
-                    {/*<Route exact path='/test' render={ () => <TestContainer />} />*/}
+                    <Route exact path='*' render={ () => <Error404 />} />
                 </Switch>
             </>
         );

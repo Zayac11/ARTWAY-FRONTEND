@@ -62,7 +62,7 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-
+        //При попадании в логин происходит logout и стирается access токен
         this.props.logout()
     }
 
