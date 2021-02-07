@@ -8,11 +8,16 @@ import print from "../../assets/images/printing.svg";
 const Top = (props) => {
     return (
         <div className={s.artContainer}>
+            <NavLink to={'/m-admin/print'} className={s.printDesktop}>
+                Печать
+            </NavLink>
+
             <div className={s.artSquare}>
                 <img className={s.artImg} src={artSquare} alt="artSquare"/>
                 <span>art</span>
                 <span className={s.way}>way</span>
             </div>
+
             {
                 props.isUserMuseumAdmin
                 &&
@@ -38,8 +43,6 @@ const Top = (props) => {
                         <img src={information} alt="information"/>
                     </NavLink>
             }
-
-
         </div>
     );
 }

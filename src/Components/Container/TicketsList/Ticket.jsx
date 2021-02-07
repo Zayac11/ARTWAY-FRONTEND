@@ -6,7 +6,7 @@ const Ticket = (props) => {
     return (
         <a href={props.pdf} target={'_blank'} rel="noreferrer noopener" className={s.ticketItem}>
             <div className={s.id}>
-                Билет №: {props.id}
+                Билет № {props.id}
             </div>
             <div className={s.time}>
                 Дата создания:

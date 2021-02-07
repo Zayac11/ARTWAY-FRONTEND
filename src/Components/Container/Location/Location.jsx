@@ -18,6 +18,7 @@ const Location = (props) => {
                     <ItemInformation isUserMuseumAdmin={props.isUserMuseumAdmin}
                                      isChanging={props.isChanging}
                                      name={props.name}
+                                     link={'/m-admin'}
                                      locationName={props.locationName}
                                      isCardsChanging={props.isCardsChanging}
                                      toggleIsCardsChanging={props.toggleIsCardsChanging}
@@ -48,7 +49,7 @@ const Location = (props) => {
                                         {
                                             props.isRelocate &&
                                             <div>
-                                                <button className={s.relocateBtn} onClick={() => props.selectHall(l.id)}>Выбрать зал для перемещения артефакта</button>
+                                                <button className={'relocateBtn'} onClick={() => props.selectHall(l.id)}>Выбрать зал для перемещения артефакта</button>
                                             </div>
                                         }
                                     </div>

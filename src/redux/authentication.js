@@ -159,9 +159,8 @@ export const login = (username, password) => { //Логин
         authAPI.login(username, password)
             .then(response => response.json()
                 .then(result => {
-
+                    console.log('login', result)
                     if(result.detail !== "No active account found with the given credentials") {
-                        console.log('login', result)
                         localStorage.setItem('accessToken', result.access)
                         dispatch(setIsPasswordRight(false))
                         dispatch(getStatus())
@@ -172,7 +171,7 @@ export const login = (username, password) => { //Логин
                         dispatch(setLoginWrong(true)) //Если ввели неправильные данные
                         dispatch(setIsPasswordRight(false))
                     }
-                        dispatch(toggleIsFetching(false))
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }

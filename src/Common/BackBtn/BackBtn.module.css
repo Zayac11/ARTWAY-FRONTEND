@@ -12,6 +12,22 @@
     display: block;
 }
 .backBtn img {
-    display: block;
     cursor: pointer;
+}
+
+.prev {
+    display: block;
+}
+
+.arrow {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .prev {
+       display: none;
+    }
+    .arrow {
+       display: block;
+    }
 }

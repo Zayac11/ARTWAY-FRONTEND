@@ -1,70 +1,19 @@
-.change {
-    outline: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px 30px;
-    border-radius: 5px;
-    background-color: #868686;
-    color: white;
-    transition: all 0.4s ease;
-    font-size: 18px;
-}
-.change:hover {
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+.createButton {
+
 }
 
-.createContainer {
-    display: flex;
-    align-items: center;
+.buttons {
+    display: none;
 }
-
-.createContainer a:first-child{
-    margin-right: 10px;
+.buttons .button {
+    width: 49%;
 }
-
-.createContainer a{
-    transition: all 0.4s ease;
-}
-
-.createContainer a:hover{
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-.goInside {
-    display: block;
-    margin-top: 10px;
-    color: black;
-    font-size: 18px;
-    text-decoration: underline;
-}
-
-.relocateBtn {
-    outline: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-    background-color: #aaa;
-    margin-top: 10px;
-    padding: 10px 30px;
-    transition: all 0.4s ease;
-    border-radius: 5px;
-}
-.relocateBtn:hover {
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-.links {
-    display: flex;
-    padding: 10px;
-    background-color: blue;
-}
-
-.link {
-    width: 200px;
-    color: white;
-}
-
-.active {
-    background-color: white;
-    color: black;
+@media (min-width: 768px) {
+    .createButton {
+        display: none;
+    }
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+    }
 }

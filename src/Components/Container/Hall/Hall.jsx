@@ -19,6 +19,7 @@ const Hall = (props) => {
                     <ItemInformation isUserMuseumAdmin={props.isUserMuseumAdmin}
                                      isChanging={props.isChanging}
                                      name={props.name}
+                                     link={`/m-admin/${props.location_id}`}
                                      isCardsChanging={props.isCardsChanging}
                                      toggleIsCardsChanging={props.toggleIsCardsChanging}
                                      toggleIsChanging={props.toggleIsChanging}

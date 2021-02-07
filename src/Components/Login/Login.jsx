@@ -82,7 +82,7 @@ class Login extends React.Component {
                     <div className={s.loginContainer}>
                         <TopContainer isTicketCanceled={true} />
                         {
-                            this.state.isLogin ? <Redirect to="/" />
+                            (this.state.isLogin && this.props.isLogin) ? <Redirect to="/" />
                                 :
                                 <div className={s.login}>
 

@@ -15,9 +15,6 @@
     align-items: center;
     padding: 20px 0 0;
 }
-.artContainer a img{
-   display: block;
-}
 
 .artImg {
     margin: 0 8px 0 0;
@@ -26,6 +23,16 @@
 .artSquare {
     display: flex;
     align-items: center;
+
+}
+
+.printDesktop {
+    display: none;
+    color: white;
+    padding: 7px 18px;
+    font-size: 14px;
+    background-color: #196bb1;
+    border-radius: 8px;
 }
 
 .way {
@@ -40,4 +47,23 @@
 .print {
     display: block;
     margin-right: 30px;
+}
+
+@media (min-width: 768px) {
+    .print {
+        display: none;
+    }
+    .admin {
+        order: 3;
+    }
+    .artSquare {
+        order: 2;
+    }
+    .printDesktop {
+        order: 1;
+        display: block;
+    }
+    .logoutBtn {
+        font-size: 14px;
+    }
 }

@@ -43,3 +43,10 @@
 .down:hover {
     top: 5px;
 }
+
+@media (min-width: 768px) {
+    .name {
+        font-size: 16px;
+    }
+}
+

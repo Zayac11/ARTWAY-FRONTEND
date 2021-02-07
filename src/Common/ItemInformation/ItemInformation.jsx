@@ -4,6 +4,7 @@ import prev from "../../assets/images/left-chevron.svg";
 import checked from "../../assets/images/checked.svg";
 import edit from "../../assets/images/edit.svg";
 import BackBtn from "../BackBtn/BackBtn";
+import {NavLink} from "react-router-dom";
 
 const ItemInformation = (props) => {
     return (
@@ -14,9 +15,9 @@ const ItemInformation = (props) => {
                    <>
 
                        <div className={s.topContainer}>
-                           <button onClick={() => props.history.goBack()} className={'adminBackBtn'}>
+                           <NavLink to={props.link} className={'adminBackBtn'}>
                                <img src={prev} alt="back"/>
-                           </button>
+                           </NavLink>
                            {
                                props.isChanging
                                    ?

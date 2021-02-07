@@ -6,6 +6,7 @@ import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
 import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
 import TopContainer from "../../../Common/Top/TopContainer";
 import SuperAdminSlick from "../../../Common/SuperAdminSlick/SuperAdminSlick";
+import BlueButton from "../../../Common/BlueButton/BlueButton";
 
 const Museum = (props) => {
     let locations = props.locations
@@ -17,8 +18,7 @@ const Museum = (props) => {
                     <TopContainer isUserMuseumAdmin={props.isUserMuseumAdmin} />
 
                     {
-                        props.isUserMuseumSuperAdmin &&
-                            <SuperAdminSlick />
+                        props.isUserMuseumSuperAdmin && <SuperAdminSlick />
                     }
 
                     {
@@ -34,9 +34,10 @@ const Museum = (props) => {
                                                    description={props.description} main_img={props.main_img}
 
                                 />
-                                {
-                                    props.isUserMuseumAdmin && <TransparentButton type={'btn'} handleSubmit={props.createLocation} text={'Создать новую локацию'} />
-                                }
+
+                                <div className={s.createButton}>
+                                    {props.isUserMuseumAdmin && <TransparentButton type={'btn'} handleSubmit={props.createLocation} text={'Создать новую локацию'} />}
+                                </div>
 
                                 <div className={'titleContainer'}>
                                     <h2 className={'itemsTitle'}>
@@ -73,34 +74,19 @@ const Museum = (props) => {
                                                 {
                                                     props.isRelocate &&
                                                     <div>
-                                                        <button className={s.relocateBtn} onClick={() => props.selectLocation(l.id)}>Выбрать локацию для перемещения</button>
+                                                        <button className={'relocateBtn'} onClick={() => props.selectLocation(l.id)}>Выбрать локацию для перемещения</button>
                                                     </div>
                                                 }
                                             </div>
                                         )
                                     })
                                 }
+                                <div className={s.buttons}>
+                                    <BlueButton type={'withProps'} data={true} handleSubmit={props.toggleIsChanging} text={'Редактировать'} />
+                                    <TransparentButton type={'btn'} handleSubmit={props.createLocation} text={'Создать новую локацию'} />
+                                </div>
                             </>
                     }
-
-
-
-
-                    {/*<div className={s.createContainer}>*/}
-                    {/*    {*/}
-                    {/*        props.isUserMuseumAdmin &&*/}
-                    {/*        <NavLink className={'create'} to={'/m-admin/create_location'}>*/}
-                    {/*            Создать локацию*/}
-                    {/*        </NavLink>*/}
-                    {/*    }*/}
-                    {/*    {*/}
-                    {/*        props.isUserMuseumSuperAdmin &&*/}
-                    {/*        <NavLink className={'create'} to={'/m-admin/hr-management'}>*/}
-                    {/*            Персонал*/}
-                    {/*        </NavLink>*/}
-                    {/*    }*/}
-                    {/*</div>*/}
-
                 </div>
             </div>
         </div>
