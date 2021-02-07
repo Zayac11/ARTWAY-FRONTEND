@@ -224,11 +224,15 @@ export const resetPassword = (email) => { //Ввод почты для смен�
                     if(result === '{"email":["Введите правильный адрес электронной почты."]}') {
                         dispatch(setIsEmailExists(false))
                     }
+                    else if(result === '["Пользователь с данным адресом электронной почты не существует."]') {
+                        dispatch(setIsEmailExists(false))
+                    }
                     else {
                         dispatch(setIsEmailExists(true))
                     }
                     dispatch(toggleIsFetching(false))
                 }))
+
     }
 }
 
