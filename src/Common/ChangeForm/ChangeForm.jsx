@@ -22,19 +22,20 @@ const ChangeForm = (props) => {
             <Textarea required={true} text={'Описание'} value={props.description} name={'description'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
 
             {
+                !props.isItemArtifact &&
                 (!props.isChangingArtifact && props.isUserMuseumAdmin) &&
                 <Input required={true} text={'Время жизни билета (ч.)'} handleFindKey={props.handleFindKey} value={props.ticket_lifetime} type={'number'} name={'ticket_lifetime'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
             }
 
+
+            {
+                props.isItemArtifact && <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.video} name={'video'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+            }
             {
                 props.isEmptyInputs &&
                 <div className='form__wrong'>
                     Пожалуйста, заполните важные поля
                 </div>
-            }
-
-            {
-                props.isItemArtifact && <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.video} name={'video'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
             }
             {
                 props.isVideoUrlWrong &&

@@ -7,12 +7,10 @@ import TopContainer from "../../../Common/Top/TopContainer";
 import edit from "../../../assets/images/edit.svg";
 import prev from "../../../assets/images/left-chevron.svg";
 import BlueButton from "../../../Common/BlueButton/BlueButton";
-import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
 import RedTransparentBtn from "../../../Common/RedTransparentBtn/RedTransparentBtn";
 import RelocateContainer from "../Relocate/RelocateContainer";
 import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
 import desktop_arrow from "../../../assets/images/arrow_back_blue.svg";
-import {NavLink} from "react-router-dom";
 
 const Artifact = (props) => {
     return (
@@ -116,7 +114,6 @@ const Artifact = (props) => {
                                                                 <BlueButton text={'Перейти к карте зала'} type={'link'} link={`/halls/${props.artifactData.hall.id}/artifacts`} />
                                                             </>
                                                     }
-
                                                 </div>
                                             </div>
                                         </>

@@ -73,6 +73,7 @@ class HallContainer extends React.Component {
         if((this.props.match.url.includes('/m-admin')) && (!this.props.isUserMuseumAdmin)) {
             return <Redirect to={'/'} />
         }
+
         if(this.props.isFetch) {
             return <Preloader />
         }

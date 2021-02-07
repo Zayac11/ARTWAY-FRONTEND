@@ -115,7 +115,7 @@ class ArtifactContainer extends React.Component {
             return <Redirect to={'/'} />
         }
 
-        if(this.props.isFetch) {
+        if(this.props.isFetch && !this.state.isRelocate) {
             return <Preloader />
         }
 

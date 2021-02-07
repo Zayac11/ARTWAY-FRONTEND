@@ -55,6 +55,7 @@ class RelocateContainer extends React.Component {
     }
 
     render() {
+
         return (
             <>
                 <div className={s.relocateContainer}>
