@@ -25,6 +25,9 @@ export const CommonCreateLogic = (Component) => {
             if(this.props.description === '' || this.props.name === '') {
                 this.props.setValidation('isEmptyInputs', true) //Ошибка в пустых полях
             }
+            else if(this.props.description.length > 72 || this.props.name.length > 72) {
+                this.props.setValidation('isInputSizeRight', false)
+            }
             else if(/image/.test(this.props.img.type)) { //Если нет ошибки в формате файла
                 this.changeCreate(true)
             }

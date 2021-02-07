@@ -8,6 +8,7 @@ import BackBtn from "../BackBtn/BackBtn";
 
 const ChangeForm = (props) => {
     return (
+        <>
         <div className={s.form}>
             <div className={s.titleContainer}>
                 <h1 className={s.title}>{props.text}</h1>
@@ -37,6 +38,12 @@ const ChangeForm = (props) => {
                     Пожалуйста, заполните важные поля
                 </div>
             }
+            {/*{*/}
+            {/*    !props.isInputSizeRight &&*/}
+            {/*    <div className='form__wrong'>*/}
+            {/*        Пожалуйста, заполните важные поля*/}
+            {/*    </div>*/}
+            {/*}*/}
             {
                 props.isVideoUrlWrong &&
                 <div className='form__wrong'>
@@ -95,6 +102,7 @@ const ChangeForm = (props) => {
             }
 
         </div>
+        </>
     );
 }
 
