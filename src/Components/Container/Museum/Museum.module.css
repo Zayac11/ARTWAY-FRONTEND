@@ -2,18 +2,13 @@
 
 }
 
-.buttons {
-    display: none;
-}
-.buttons .button {
-    width: 49%;
-}
 @media (min-width: 768px) {
     .createButton {
         display: none;
     }
     .buttons {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 40px;
     }
 }

@@ -9,10 +9,11 @@
 .titleContainer {
     position: relative;
     text-align: center;
+    max-width: 650px;
+    margin: 0 auto 20px;
 }
 
 .title {
-    margin-bottom: 20px;
     font-size: 16px;
     font-weight: 500;
 }
@@ -53,4 +54,10 @@
 
 .saveContainer {
     margin: 15px 0 20px;
+}
+
+@media (min-width: 768px) {
+    .fileInputContainer {
+        margin-bottom: 30px;
+    }
 }

@@ -1,0 +1,25 @@
+.createButton {
+
+}
+
+.createButtonTransparent {
+    display: none;
+}
+
+.buttons {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .createButton {
+        display: none;
+    }
+    .buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 40px;
+    }
+    .createButtonTransparent {
+        display: block;
+    }
+}

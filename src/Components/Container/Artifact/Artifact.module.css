@@ -73,9 +73,9 @@
     font-weight: 500;
     border-radius: 4px;
     font-size: 14px;
-    padding: 15px 0;
+    padding: 10px 0;
     outline: none;
-    max-width: 300px;
+    max-width: 320px;
     margin: 0 auto;
 }
 
@@ -100,4 +100,27 @@
 
 .empty {
     width: 20px;
+}
+
+.desktopEdit {
+    display: none;
+}
+
+.empty {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .desktopEdit {
+        display: block;
+    }
+
+    .empty {
+        display: block;
+        width: 20px;
+    }
+
+    .edit {
+        display: none;
+    }
 }

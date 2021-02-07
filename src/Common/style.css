@@ -35,14 +35,10 @@
 
 .adminBackBtn {
     width: 20px;
-    height: 20px;
     cursor: pointer;
     border: none;
     outline: none;
     background-color: transparent;
-    display: block;
-}
-.adminBackBtn img{
     display: block;
 }
 
@@ -54,7 +50,7 @@
     margin: 0 40px !important;
     width: auto;
     height: 100%;
-    padding: 18px;
+    padding: 30px;
     border-radius: 5px;
 }
 
@@ -136,6 +132,7 @@
     left: 0;
     right: 0;
     margin: 0 8px;
+    max-width: 650px;
 }
 
 .emptyLocations {
@@ -165,9 +162,25 @@
 .relocateBtn:hover {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+.prev {
+    display: block;
+}
+
+.arrow {
+    display: none;
+}
 
 @media (min-width: 768px) {
     .itemsTitle, .cards_changing_button {
         font-size: 16px;
+    }
+    .buttonContainer {
+        margin: 0 auto;
+    }
+    .prev {
+        display: none;
+    }
+    .arrow {
+        display: block;
     }
 }

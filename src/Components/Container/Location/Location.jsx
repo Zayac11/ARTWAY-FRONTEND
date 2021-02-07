@@ -6,6 +6,7 @@ import BlueButton from "../../../Common/BlueButton/BlueButton";
 import RedTransparentBtn from "../../../Common/RedTransparentBtn/RedTransparentBtn";
 import ItemInformation from "../../../Common/ItemInformation/ItemInformation";
 import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
+import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
 
 const Location = (props) => {
     let halls = props.halls
@@ -66,7 +67,19 @@ const Location = (props) => {
                         {
                             props.isUserMuseumAdmin &&
                             <div className={'buttonContainer'}>
-                                <BlueButton type={'btn'} handleSubmit={props.createLocation} text={'Создать новый зал'} />
+                                <div className={s.createButton}>
+                                    <BlueButton type={'btn'} handleSubmit={props.createLocation} text={'Создать новый зал'} />
+                                </div>
+                                <div className={s.buttons}>
+                                    {
+                                        props.isChanging
+                                            ? <BlueButton type={'btn'} handleSubmit={props.handleSubmit} text={'Сохранить'} />
+                                            : <BlueButton type={'withProps'} data={true} handleSubmit={props.toggleIsChanging} text={'Редактировать'} />
+                                    }
+                                    <div className={s.createButtonTransparent}>
+                                        <TransparentButton type={'btn'} handleSubmit={props.createLocation} text={'Создать новый зал'} />
+                                    </div>
+                                </div>
                                 {
                                     props.isChanging && <RedTransparentBtn type={'withProps'} data={true} handleSubmit={props.toggleOpenModal} text={'Удалить локацию'} />
                                 }
@@ -78,6 +91,8 @@ const Location = (props) => {
                         &&
                         <div className={'itemsBottom'}></div>
                     }
+
+
 
                     <DeleteModal isModalOpen={props.isModalOpen} toggleOpenModal={props.toggleOpenModal} deleteMuseum={props.deleteLocation} />
 

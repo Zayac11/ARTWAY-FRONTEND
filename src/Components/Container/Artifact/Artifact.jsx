@@ -11,6 +11,8 @@ import TransparentButton from "../../../Common/TransparentButton/TransparentButt
 import RedTransparentBtn from "../../../Common/RedTransparentBtn/RedTransparentBtn";
 import RelocateContainer from "../Relocate/RelocateContainer";
 import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
+import desktop_arrow from "../../../assets/images/arrow_back_blue.svg";
+import {NavLink} from "react-router-dom";
 
 const Artifact = (props) => {
     return (
@@ -35,7 +37,8 @@ const Artifact = (props) => {
                                         <>
                                             <div className={s.topContainer}>
                                                 <button onClick={() => props.history.goBack()} className={'adminBackBtn'}>
-                                                    <img src={prev} alt="back"/>
+                                                    <img className={'prev'} src={prev} alt="back"/>
+                                                    <img className={'arrow'} src={desktop_arrow} alt="back"/>
                                                 </button>
                                                 <h2 className={s.name}>
                                                     {props.name}
@@ -43,11 +46,14 @@ const Artifact = (props) => {
                                                 {
                                                     props.isUserMuseumAdmin
                                                     ?
-                                                    <div onClick={() => props.toggleIsChanging(!props.isChanging)} >
+                                                    <div className={s.edit} onClick={() => props.toggleIsChanging(!props.isChanging)} >
                                                         <img src={edit} alt="edit"/>
                                                     </div>
                                                     :<div className={s.empty}></div>
                                                 }
+                                                <div className={s.empty}>
+
+                                                </div>
                                             </div>
 
 
@@ -100,10 +106,15 @@ const Artifact = (props) => {
                                                                         :
                                                                         <BlueButton text={'Добавить к печати'} type={'withProps'} handleSubmit={props.addArtifactToPrint} data={props.artifactData} />
                                                                 }
-                                                                <TransparentButton text={'Переместить экспонат'} type={'btn'} handleSubmit={props.toggleRelocate}  />
+                                                                <BlueButton text={'Переместить экспонат'} type={'btn'} handleSubmit={props.toggleRelocate}  />
+                                                                <div className={s.desktopEdit}>
+                                                                    <BlueButton text={'Редактировать'} type={'withProps'} data={!props.isChanging} handleSubmmit={props.toggleIsChanging} />
+                                                                </div>
                                                             </>
                                                             :
-                                                            <BlueButton text={'Перейти к карте зала'} type={'link'} link={`/halls/${props.artifactData.hall.id}/artifacts`} />
+                                                            <>
+                                                                <BlueButton text={'Перейти к карте зала'} type={'link'} link={`/halls/${props.artifactData.hall.id}/artifacts`} />
+                                                            </>
                                                     }
 
                                                 </div>

@@ -86,7 +86,7 @@ class ResetPassword extends React.Component {
                         <TopContainer isTicketCanceled={true} />
 
                         <div className={s.top}>
-                            <BackBtn histoty={this.props.history} />
+                            <BackBtn history={this.props.history} />
                         </div>
 
                         <div className={s.picture}>

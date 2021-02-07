@@ -7,6 +7,8 @@ import BlueButton from "../../../Common/BlueButton/BlueButton";
 import RedTransparentBtn from "../../../Common/RedTransparentBtn/RedTransparentBtn";
 import ItemInformation from "../../../Common/ItemInformation/ItemInformation";
 import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
+import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
+import s from './Hall.module.css'
 
 const Hall = (props) => {
     let artifacts = props.artifacts
@@ -64,7 +66,19 @@ const Hall = (props) => {
                     {
                         props.isUserMuseumAdmin &&
                         <div className={'buttonContainer'}>
-                            <BlueButton text={'Создать экспонат'} type={'link'} link={`/m-admin/${props.location_id}/${props.hall_id}/create_artifacts`} />
+                            <div className={s.createButton}>
+                                <BlueButton text={'Создать экспонат'} type={'link'} link={`/m-admin/${props.location_id}/${props.hall_id}/create_artifacts`} />
+                            </div>
+                            <div className={s.buttons}>
+                                {
+                                    props.isChanging
+                                        ? <BlueButton type={'btn'} handleSubmit={props.handleSubmit} text={'Сохранить'} />
+                                        : <BlueButton type={'withProps'} data={true} handleSubmit={props.toggleIsChanging} text={'Редактировать'} />
+                                }
+                                <div className={s.createButtonTransparent}>
+                                    <TransparentButton text={'Создать экспонат'} type={'link'} link={`/m-admin/${props.location_id}/${props.hall_id}/create_artifacts`} />
+                                </div>
+                            </div>
                             {
                                 props.isChanging && <RedTransparentBtn type={'withProps'} data={true} handleSubmit={props.toggleOpenModal} text={'Удалить зал'} />
                             }

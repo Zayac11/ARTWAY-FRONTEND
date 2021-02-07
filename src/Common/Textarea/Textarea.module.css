@@ -37,17 +37,13 @@
     background-color: white;
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
-
-}
-@media (min-width: 768px) and (max-width: 991px) {
-
-}
-@media (min-width: 650px) and (max-width: 767px) {
-
-}
-@media (min-width: 480px) and (max-width: 649px) {
-
+@media (min-width: 768px) {
+    .container {
+        margin-bottom: 50px;
+    }
+    .text {
+        font-size: 16px;
+    }
 }
 @media (max-width: 479px) {
     .input {

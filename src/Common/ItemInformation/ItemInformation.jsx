@@ -5,6 +5,7 @@ import checked from "../../assets/images/checked.svg";
 import edit from "../../assets/images/edit.svg";
 import BackBtn from "../BackBtn/BackBtn";
 import {NavLink} from "react-router-dom";
+import desktop_arrow from "../../assets/images/arrow_back_blue.svg";
 
 const ItemInformation = (props) => {
     return (
@@ -13,10 +14,10 @@ const ItemInformation = (props) => {
                props.isUserMuseumAdmin
                    ?
                    <>
-
                        <div className={s.topContainer}>
                            <NavLink to={props.link} className={'adminBackBtn'}>
-                               <img src={prev} alt="back"/>
+                               <img className={'prev'} src={prev} alt="back"/>
+                               <img className={'arrow'} src={desktop_arrow} alt="back"/>
                            </NavLink>
                            {
                                props.isChanging
@@ -38,14 +39,17 @@ const ItemInformation = (props) => {
                            {
                                props.isChanging
                                    ?
-                                   <div onClick={() => props.handleSubmit()}>
+                                   <div className={s.edit} onClick={() => props.handleSubmit()}>
                                        <img width={20} height={20} src={checked} alt="edit"/>
                                    </div>
                                    :
-                                   <div onClick={() => props.toggleIsChanging(!props.isChanging)} >
+                                   <div className={s.edit} onClick={() => props.toggleIsChanging(!props.isChanging)} >
                                        <img src={edit} alt="edit"/>
                                    </div>
                            }
+                           <div className={s.empty}>
+
+                           </div>
                        </div>
 
                        <div className={'titleContainer'}>
