@@ -19,6 +19,13 @@ const ChangeWorkerProfile = (props) => {
                 </div>
             }
 
+            {
+                !props.isInputSizeRight &&
+                <div className='form__wrong'>
+                    Превышена допустимая длина полей
+                </div>
+            }
+
             <TransparentButton type={'btn'} handleSubmit={props.updateWorker} text={'Сохранить'} />
 
             {

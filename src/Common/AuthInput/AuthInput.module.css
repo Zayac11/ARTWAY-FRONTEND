@@ -16,27 +16,19 @@
     border: none;
     margin-left: 20px;
     padding: 10px 0;
+    width: 100%;
 }
 .input::placeholder {
     font-size: 12px;
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
-
-}
-@media (min-width: 768px) and (max-width: 991px) {
-
-}
-@media (min-width: 650px) and (max-width: 767px) {
-
-}
-@media (min-width: 480px) and (max-width: 649px) {
-
-}
-@media (max-width: 650px) {
-    .input {
-        width: 100%;
+@media (min-width: 768px) {
+    .container {
+        padding: 0 ;
     }
+}
+
+@media (max-width: 650px) {
     .container {
         padding: 0 30px;
     }

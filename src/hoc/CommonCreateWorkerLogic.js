@@ -28,6 +28,7 @@ export const CommonCreateWorkerLogic = (Component) => {
                 isPasswordMatch: true, //Если пароли совпадают
                 isCreate: false, //Если успешно создано
                 isRight: false, //Если все поля успешно заполнены
+                isInputSizeRight: true, //Если все поля нормальной длины
             }
 
             this.handleFindKey = this.handleFindKey.bind(this)
@@ -73,6 +74,10 @@ export const CommonCreateWorkerLogic = (Component) => {
                 this.setState({
                     isPasswordMatch: false,
                 })
+            } else if (this.state.last_name.length > 72 || this.state.first_name.length > 72 || this.state.middle_name.length > 72 || this.state.email.length > 72) {
+                this.setState({
+                    isInputSizeRight: false,
+                })
             } else if (!mail.test(this.state.email)) {
                 this.setState({
                     isEmailWrong: true,
@@ -87,6 +92,7 @@ export const CommonCreateWorkerLogic = (Component) => {
                 isEmptyInputs: false,
                 isEmailWrong: false,
                 isPasswordMatch: true,
+                isInputSizeRight: true,
             })
         }
 
@@ -113,18 +119,7 @@ export const CommonCreateWorkerLogic = (Component) => {
 
             return (
                 <Component {...this.props}
-                           isCreate={this.state.isCreate}
-                           isRight={this.state.isRight}
-                           isEmptyInputs={this.state.isEmptyInputs}
-                           isEmailWrong={this.state.isEmailWrong}
-                           isPasswordMatch={this.state.isPasswordMatch}
-                           last_name={this.state.last_name}
-                           middle_name={this.state.middle_name}
-                           first_name={this.state.first_name}
-                           email={this.state.email}
-                           password={this.state.password}
-                           confirm_password={this.state.confirm_password}
-                           role={this.state.role}
+                           {...this.state}
                            handleSubmit={this.handleSubmit}
                            handleChange={this.handleChange}
                            deleteInputs={this.deleteInputs}
@@ -139,6 +134,5 @@ export const CommonCreateWorkerLogic = (Component) => {
     }
 
     let ConnectedCommonCreateWorkerComponent = connect(mapStateToPropsForRedirect)(CommonCreateWorkerLogic);
-
     return ConnectedCommonCreateWorkerComponent;
 }

@@ -108,7 +108,7 @@ const Artifact = (props) => {
                                                                 }
                                                                 <BlueButton text={'Переместить экспонат'} type={'btn'} handleSubmit={props.toggleRelocate}  />
                                                                 <div className={s.desktopEdit}>
-                                                                    <BlueButton text={'Редактировать'} type={'withProps'} data={!props.isChanging} handleSubmmit={props.toggleIsChanging} />
+                                                                    <BlueButton text={'Редактировать'} type={'withProps'} data={!props.isChanging} handleSubmit={props.toggleIsChanging} />
                                                                 </div>
                                                             </>
                                                             :

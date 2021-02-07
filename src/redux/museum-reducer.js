@@ -74,7 +74,6 @@ export const addArtifactToPrint = (artifact) => ({type: ADD_ARTIFACT_TO_PRINT, a
 export const removeArtifactsToPrint = () => ({type: REMOVE_ALL_ARTIFACTS}) //Удалить все артефакты из принта
 export const deleteOneArtifact = (id) => ({type: DELETE_ARTIFACT, id}) //Удалить только один артефакт
 export const setPdfToPrint = (pdf) => ({type: SET_PDF_TO_PRINT, pdf}) //Установить ссылку на пдф для печати qr-кодов артефактов
-export const setLocations = (locations) => ({type: SET_LOCATIONS_LIST, locations}) //Установить список локаций
 export const clearPdf = () => ({type: CLEAR_PDF}) //Очистить файл pdf
 
 //Музей
@@ -88,9 +87,9 @@ export const getMuseumData = () => { //Получение информации �
             }))
     }
 }
-export const updateMuseumData = (id, name, img, description) => { //Обновлении информации о музее по пользователю
+export const updateMuseumData = (id, name, img, description, ticket_lifetime) => { //Обновлении информации о музее по пользователю
     return (dispatch) => {
-        museumApi.updateMuseumData(id, name, img, description)
+        museumApi.updateMuseumData(id, name, img, description, ticket_lifetime)
             .then(response => response.json()
                 .then(result => {
                     console.log('updatedMuseumData', result)

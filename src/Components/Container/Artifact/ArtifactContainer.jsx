@@ -89,7 +89,7 @@ class ArtifactContainer extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
 
         if(prevProps.artifactData !== this.props.artifactData) {
-            this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, this.props.artifactData.img, this.props.artifactData.audio, this.props.artifactData.video)
+            this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, this.props.artifactData.img, this.props.artifactData.audio, this.props.artifactData.video, 0)
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.checkAudio()

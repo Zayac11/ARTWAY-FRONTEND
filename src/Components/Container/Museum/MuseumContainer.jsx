@@ -23,7 +23,7 @@ class MuseumContainer extends React.Component {
         this.props.createLocation('Новая локация')
     }
     updateMuseum() {
-        this.props.updateMuseumData(this.props.id, this.props.name, this.props.img, this.props.description)
+        this.props.updateMuseumData(this.props.id, this.props.name, this.props.img, this.props.description, this.props.ticket_lifetime)
         this.props.setImage('')
         this.props.changeCreate(false) //Больше не изменяем
     }
@@ -34,7 +34,7 @@ class MuseumContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.museumData !== this.props.museumData) {
-            this.props.updateState(this.props.museumData.id, this.props.museumData.name, this.props.museumData.description, this.props.museumData.img, '', '')
+            this.props.updateState(this.props.museumData.id, this.props.museumData.name, this.props.museumData.description, this.props.museumData.img, '', '', this.props.museumData.ticket_lifetime)
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.updateMuseum()

@@ -32,10 +32,6 @@ const CreateWorkerInputs = (props) => {
                             </>
                     }
 
-                    {/*<div className={s.top}>*/}
-
-                    {/*</div>*/}
-
                     <Input required={true} text={'Фамилия'} type={'text'} name={'last_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.last_name} />
                     <Input required={true} text={'Имя'} type={'text'} name={'first_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.first_name} />
                     <Input text={'Отчество'} type={'text'} name={'middle_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.middle_name} />
@@ -82,6 +78,13 @@ const CreateWorkerInputs = (props) => {
                         props.isEmailTaken &&
                         <div className={'form__wrong'}>
                             Данный email адрес уже занят
+                        </div>
+                    }
+
+                    {
+                        !props.isInputSizeRight &&
+                        <div className='form__wrong'>
+                            Превышена допустимая длина полей
                         </div>
                     }
 

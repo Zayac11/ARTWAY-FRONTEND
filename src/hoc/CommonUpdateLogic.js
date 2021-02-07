@@ -22,8 +22,11 @@ export const CommonUpdateLogic = (Component) => {
         }
 
         handleSubmit() {
-            if(this.props.description === '' || this.props.name === '') { //Ошибка в пустых полях
+            if(this.props.description === '' || this.props.name === ''|| this.props.ticket_lifetime === '') { //Ошибка в пустых полях
                 this.props.setValidation('isEmptyInputs', true)
+            }
+            if(this.props.name.length > 72 || this.props.ticket_lifetime.length > 72) {
+                this.props.setValidation('isInputSizeRight', false)
             }
             else if(this.props.img === '') { //Если пользователь не хочет обновлять фотографию, то просто берется ссылка на старую
                 this.props.setImage(this.props.main_img) //Обновление фотографии в state

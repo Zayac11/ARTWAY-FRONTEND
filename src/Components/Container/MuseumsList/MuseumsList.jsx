@@ -25,7 +25,7 @@ const MuseumsList = (props) => {
 
                                 props.museums.map(m => {
                                     return(
-                                        <div className={s.item}>
+                                        <div key={m.id} className={s.item}>
                                             <MuseumCard link={`/s-admin/${m.id}`} key={m.id} name={m.name} />
                                         </div>
 

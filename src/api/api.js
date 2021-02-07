@@ -1,6 +1,6 @@
 import * as axios from "axios";
 
-const debug = true
+const debug = false
 //backend
 //true for localhost
 //false for prod.
@@ -72,8 +72,8 @@ export const museumApi = {
         return fetch(baseUrl + `api/m-admin`, requestOptions)
     },
 
-    updateMuseumData(museum_id, name, img, description) { //Изменение информации о музее
-        let options = getOptions([{name: 'museum_id', value: museum_id}, {name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'PUT')
+    updateMuseumData(museum_id, name, img, description, ticket_lifetime) { //Изменение информации о музее
+        let options = getOptions([{name: 'museum_id', value: museum_id}, {name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}, {name: 'ticket_lifetime', value: ticket_lifetime}], true,  'PUT')
         return fetch(baseUrl + `api/m-admin`, options)
     },
 

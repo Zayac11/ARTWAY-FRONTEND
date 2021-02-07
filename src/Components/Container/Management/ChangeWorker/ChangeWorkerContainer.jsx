@@ -15,6 +15,7 @@ class ChangeWorkerContainer extends React.Component {
             isEmptyInputs: false, //Все ли поля пустые
             isChanging: false, //Идет ли изменение профиля
             isModalOpen: false, //Открыто ли модальное окно
+            isInputSizeRight: true, //Если все поля нормальной длины
         }
         this.handleFindKey = this.handleFindKey.bind(this)
         this.handleChangeInputs = this.handleChangeInputs.bind(this)
@@ -56,6 +57,11 @@ class ChangeWorkerContainer extends React.Component {
                 isEmptyInputs: true //Поля пустые
             })
         }
+        else if (this.state.last_name.length > 72 || this.state.first_name.length > 72 || this.state.middle_name.length > 72) {
+            this.setState({
+                isInputSizeRight: false,
+            })
+        }
         else {
             this.props.updateWorkerData(this.state.last_name, this.state.first_name, this.state.middle_name, this.props.username, this.props.id)
             this.toggleIsChanging()
@@ -71,6 +77,7 @@ class ChangeWorkerContainer extends React.Component {
     handleChangeInputs() {
         this.setState({
             isEmptyInputs: false,
+            isInputSizeRight: true,
         })
     }
 
@@ -105,7 +112,7 @@ class ChangeWorkerContainer extends React.Component {
             <>
                 {
                     this.state.isChanging
-                        ? <ChangeWorkerProfile last_name={this.state.last_name} first_name={this.state.first_name} isEmptyInputs={this.state.isEmptyInputs}
+                        ? <ChangeWorkerProfile last_name={this.state.last_name} isInputSizeRight={this.state.isInputSizeRight} first_name={this.state.first_name} isEmptyInputs={this.state.isEmptyInputs}
                                                middle_name={this.state.middle_name} isModalOpen={this.state.isModalOpen} toggleOpenModal={this.toggleOpenModal}
                                                handleChange={this.handleChange} updateWorker={this.updateWorker} museumAdminId={this.props.museumAdminId}
                                                handleFindKey={this.handleFindKey} handleChangeInputs={this.handleChangeInputs} id={this.props.id}

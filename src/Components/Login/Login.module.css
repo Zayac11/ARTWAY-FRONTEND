@@ -48,3 +48,28 @@
     right: 0;
     margin: 0 auto;
 }
+
+@media (min-width: 768px) {
+    .login {
+        position: static;
+        max-width: 320px;
+        border-radius: 5px;
+        box-shadow: 0 0 15px 0 #ebebeb;
+        background-color: #ffffff;
+        margin-top: 10vh;
+        min-height: 100%;
+        padding: 30px;
+    }
+    .top {
+        height: 24px;
+        margin: 20px 0;
+    }
+
+    .buttonContainer {
+        position: static;
+    }
+    .title, .subtitle {
+        padding: 0;
+    }
+}
+

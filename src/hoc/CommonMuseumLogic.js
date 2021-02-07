@@ -20,6 +20,7 @@ export const CommonMuseumLogic = (Component) => {
                 img: "",
                 audio: "",
                 video: "",
+                ticket_lifetime: 0,
                 main_audio: null,
                 main_img: null,
                 isChanging: false, //Меняется ли информация
@@ -29,7 +30,7 @@ export const CommonMuseumLogic = (Component) => {
                 isPhotoTypeWrong: false, //Если файл не является картинкой
                 isAudioTypeWrong: false, //Если файл не является аудио
                 isVideoUrlWrong: false, //Если видео не является ссылкой
-
+                isInputSizeRight: true, //Если все поля нормальной длины
             }
 
             this.handleChange = this.handleChange.bind(this)
@@ -73,6 +74,7 @@ export const CommonMuseumLogic = (Component) => {
                 isPhotoTypeWrong: false,
                 isAudioTypeWrong: false,
                 isVideoUrlWrong: false,
+                isInputSizeRight: true,
             })
         }
         toggleIsCardsChanging(isCardsChanging) {
@@ -109,10 +111,11 @@ export const CommonMuseumLogic = (Component) => {
             this.setState({
                 isEmptyInputs: false,
                 isVideoUrlWrong: false,
+                isInputSizeRight: true,
             })
         }
 
-        updateState(id, name, description, main_img, audio, video) {
+        updateState(id, name, description, main_img, audio, video, ticket_lifetime) {
             this.setState({
                 name:name,
                 description: description,
@@ -120,6 +123,7 @@ export const CommonMuseumLogic = (Component) => {
                 main_img: main_img,
                 main_audio: audio,
                 video: video,
+                ticket_lifetime: ticket_lifetime,
             })
         }
 
