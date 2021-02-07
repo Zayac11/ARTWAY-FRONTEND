@@ -19,7 +19,7 @@ const TicketsList = (props) => {
                     <div className={s.ticketsContainer}>
                         {
                             props.tickets.map(t => {
-                                return <Ticket key={t.id} id={t.id} pdf={t.pdf} created_at={t.created_at}  />
+                                return <Ticket key={t.id} {...t} />
                             })
                         }
                     </div>

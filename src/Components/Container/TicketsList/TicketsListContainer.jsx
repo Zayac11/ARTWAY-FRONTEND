@@ -5,6 +5,7 @@ import {createTicket, getTickets} from "../../../redux/cashier-reducer";
 import {compose} from "redux";
 import {WithCashierRedirect} from "../../../hoc/Redirect/WithCashierRedirect";
 import {withRouter} from "react-router-dom";
+import Preloader from "../../../Common/Preloader/Preloader";
 
 class TicketsListContainer extends React.Component {
 
@@ -13,6 +14,10 @@ class TicketsListContainer extends React.Component {
     }
 
     render() {
+
+        if(this.props.isFetch) {
+            return <Preloader />
+        }
 
         return (
             <TicketsList history={this.props.history} tickets={this.props.tickets} createTicket={this.props.createTicket} />
@@ -23,6 +28,7 @@ class TicketsListContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
+        isFetch: state.auth.isFetch,
         tickets: state.cashier.tickets,
     }
 }

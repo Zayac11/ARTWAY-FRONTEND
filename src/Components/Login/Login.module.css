@@ -12,6 +12,7 @@
 }
 
 .login {
+    max-width: 650px;
     margin: 0 auto;
     min-height: 75vh;
     position: absolute;

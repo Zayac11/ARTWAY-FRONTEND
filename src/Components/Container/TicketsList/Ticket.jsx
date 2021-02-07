@@ -9,7 +9,14 @@ const Ticket = (props) => {
                 Билет №: {props.id}
             </div>
             <div className={s.time}>
-                Дата создания: {props.created_at}
+                Дата создания:
+                <span> {getDay(props.date_day)}.</span>
+                <span>{getDay(props.date_month)}.</span>
+                <span>{getDay(props.date_year)}</span>
+                <span> {getDay(props.date_hour)}:</span>
+                <span>{getDay(props.date_minute)}:</span>
+                <span>{getDay(props.date_second)}</span>
+
             </div>
             <img src={next} alt="go inside" className={s.btn}/>
         </a>
@@ -17,3 +24,13 @@ const Ticket = (props) => {
 }
 
 export default Ticket;
+
+export const getDay = (props) => {
+
+    if(props / 10 < 1) {
+        return '0' + props
+    }
+    else {
+        return props
+    }
+}
