@@ -38,12 +38,7 @@ const ChangeForm = (props) => {
                     Пожалуйста, заполните важные поля
                 </div>
             }
-            {/*{*/}
-            {/*    !props.isInputSizeRight &&*/}
-            {/*    <div className='form__wrong'>*/}
-            {/*        Пожалуйста, заполните важные поля*/}
-            {/*    </div>*/}
-            {/*}*/}
+
             {
                 props.isVideoUrlWrong &&
                 <div className='form__wrong'>
