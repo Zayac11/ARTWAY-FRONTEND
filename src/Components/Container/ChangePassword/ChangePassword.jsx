@@ -148,7 +148,7 @@ class ChangePassword extends React.Component {
                             </div>
                         }
 
-                        <div className={s.buttonContainer}>
+                        <div className={'buttonContainer'}>
                             <BlueButton type={'btn'} text={'Сохранить изменения'} handleSubmit={this.handleSubmit} />
                         </div>
 

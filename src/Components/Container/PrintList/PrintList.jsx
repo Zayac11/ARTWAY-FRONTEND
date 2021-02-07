@@ -50,7 +50,7 @@ const PrintList = (props) => {
                         }
                     </div>
 
-                    <div className={s.buttonsContainer}>
+                    <div className={'buttonContainer'}>
                         {
                             props.print &&
                             (props.print.length > 0)

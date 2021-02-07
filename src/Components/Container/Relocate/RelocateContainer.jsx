@@ -8,8 +8,8 @@ import {relocateArtifact} from "../../../redux/artifact-reducer";
 import {getLocationData} from "../../../redux/location-reducer";
 import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
 import s from './Relocate.module.css'
-import prev from "../../../assets/images/left-chevron.svg";
 import BackBtn from "../../../Common/BackBtn/BackBtn";
+import TopContainer from "../../../Common/Top/TopContainer";
 
 class RelocateContainer extends React.Component {
 
@@ -17,10 +17,7 @@ class RelocateContainer extends React.Component {
         super(props);
 
         this.state = {
-
             artifact_id: '',
-            isRelocated: false,
-
             isLocationSelected: false, //Если выбор локации произошел
             isHallSelected: false, //Если выбор зала произошел
         }
@@ -36,13 +33,13 @@ class RelocateContainer extends React.Component {
         })
     }
 
-    selectHall (hall_id) {
+    selectHall(hall_id) {
         this.props.relocateArtifact(hall_id, this.state.artifact_id)
         this.setState({
             isHallSelected: true,
-            isRelocated: true,
         })
         this.props.toggleRelocate()
+        this.props.setIsRelocated(true)
 
     }
 
@@ -58,16 +55,14 @@ class RelocateContainer extends React.Component {
     }
 
     render() {
-        // if(this.state.isRelocated) {
-        //     return <Redirect to={`/m-admin/${this.props.match.params.location_id}/${this.props.match.params.hall_id}`} />
-        // }
         return (
             <>
                 <div className={s.relocateContainer}>
+                    <TopContainer isUserMuseumAdmin={true} />
                     <div className={s.top}>
                         <BackBtn history={this.props.history} />
 
-                        <h2 className={s.title}>
+                        <h2 className={'pageTitle'}>
                             Перемещение экспоната
                         </h2>
                     </div>

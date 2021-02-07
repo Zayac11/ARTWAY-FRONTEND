@@ -29,6 +29,7 @@ const Hall = (props) => {
                                      handleSubmit={props.handleSubmit}
                                      isEmptyInputs={props.isEmptyInputs}
                                      locationName={props.hallName}
+                                     text={'Список экспонатов'}
                     />
 
                     {

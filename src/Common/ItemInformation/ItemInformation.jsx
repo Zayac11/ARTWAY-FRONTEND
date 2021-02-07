@@ -49,7 +49,7 @@ const ItemInformation = (props) => {
 
                        <div className={'titleContainer'}>
                            <h2 className={'itemsTitle'}>
-                               Список залов
+                               {props.text}
                            </h2>
                            {
                                props.isUserMuseumAdmin &&(
@@ -68,7 +68,7 @@ const ItemInformation = (props) => {
                    :
                    <>
                        <div className={'userTitleContainer'}>
-                           <h2 className={'itemsTitle'}>
+                           <h2 className={'pageTitle'}>
                                {props.locationName}
                            </h2>
                            <BackBtn history={props.history} />

@@ -37,11 +37,13 @@ export const setHalls = (halls, locationName) => ({type: SET_HALLS, halls, locat
 //Локация
 export const getLocationData = (location_id) => { //Получение информации о локации
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         museumApi.getLocationData(location_id)
             .then(response => response.json()
                 .then(result => {
                     console.log('locationData', result)
                     dispatch(setLocationData(result.location, result.halls))
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }
@@ -58,22 +60,26 @@ export const updateLocationData = (id, name) => { //Обновлении инф�
 
 export const createLocation = (name) => { //Добавление локации в музей по пользователю
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         museumApi.createLocation(name)
             .then(response => response.json()
                 .then(result => {
                     console.log('createLocation', result)
                     dispatch(setMuseumData(result.museum, result.locations, result.is_museum_super_admin))
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }
 
 export const deleteLocation = (id) => { //Удаление локации по id
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         museumApi.deleteLocation(id)
             .then(response => response.json()
                 .then(result => {
                     console.log('deleteLocation', result)
                     dispatch(setMuseumData(result.museum, result.locations, result.is_museum_super_admin))
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }

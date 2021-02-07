@@ -12,7 +12,7 @@ const Information = (props) => {
             <div className={'container'}>
                 <div className={s.info}>
                     <div className={s.top}>
-                        <h2 className={'itemsTitle'}>
+                        <h2 className={'pageTitle'}>
                             Информация
                         </h2>
                         <BackBtn history={props.history} />

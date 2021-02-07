@@ -14,6 +14,7 @@
 
 .change {
     cursor: pointer;
+    margin-left: 10px;
 }
 
 .userTop {
@@ -21,6 +22,7 @@
     height: 20px;
     position: relative;
     margin: 20px 0 15px;
+    padding: 0 20px;
 }
 
 .userTop button {
@@ -38,7 +40,6 @@
     text-align: center;
     font-size: 16px;
     font-weight: 500;
-
 }
 
 .img {

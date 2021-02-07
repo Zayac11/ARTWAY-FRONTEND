@@ -17,12 +17,14 @@ class ArtifactContainer extends React.Component {
         this.state = {
             isDeleted: false, //Удалился ли экспонат
             isRelocate: false, //Происходит ли перемещение экспоната
+            isRelocated: false, //Перемещен ли экспонат
         }
         this.updateArtifact = this.updateArtifact.bind(this)
         this.deleteArtifact = this.deleteArtifact.bind(this)
         this.swapArtifacts = this.swapArtifacts.bind(this)
         this.checkAudio = this.checkAudio.bind(this)
         this.toggleRelocate = this.toggleRelocate.bind(this)
+        this.setIsRelocated = this.setIsRelocated.bind(this)
     }
 
     deleteArtifact() {
@@ -34,6 +36,11 @@ class ArtifactContainer extends React.Component {
     toggleRelocate() {
         this.setState({
             isRelocate: !this.state.isRelocate,
+        })
+    }
+    setIsRelocated(isRelocated) {
+        this.setState({
+            isRelocated: isRelocated,
         })
     }
 
@@ -117,7 +124,9 @@ class ArtifactContainer extends React.Component {
                       deleteArtifact={this.deleteArtifact}
                       swapArtifacts={this.swapArtifacts}
                       toggleRelocate={this.toggleRelocate}
+                      setIsRelocated={this.setIsRelocated}
                       isRelocate={this.state.isRelocate}
+                      isRelocated={this.state.isRelocated}
                       location_id={this.props.match.params.location_id}
                       hall_id={this.props.match.params.hall_id}
             />

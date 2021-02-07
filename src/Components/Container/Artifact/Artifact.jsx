@@ -19,7 +19,8 @@ const Artifact = (props) => {
                 <div className={s.artifactContainer}>
                     {
                         props.isRelocate
-                        ? <RelocateContainer isRelocate={props.isRelocate} toggleRelocate={props.toggleRelocate} />
+                        ? <RelocateContainer isRelocate={props.isRelocate} toggleRelocate={props.toggleRelocate}
+                                             setIsRelocated={props.setIsRelocated} />
                         :
                             <>
                                 <TopContainer isUserMuseumAdmin={props.isUserMuseumAdmin} />
@@ -80,6 +81,14 @@ const Artifact = (props) => {
                                                             </a>
                                                         </div>
                                                     }
+
+                                                    {
+                                                        props.isRelocated &&
+                                                            <div className={'form__right'}>
+                                                                Экспонат успешно перемещен
+                                                            </div>
+                                                    }
+
                                                     {
                                                         props.isUserMuseumAdmin
                                                             ?
@@ -94,7 +103,7 @@ const Artifact = (props) => {
                                                                 <TransparentButton text={'Переместить экспонат'} type={'btn'} handleSubmit={props.toggleRelocate}  />
                                                             </>
                                                             :
-                                                            <BlueButton text={'Перейти в карту зала'} type={'link'} link={`/halls/${props.artifactData.hall.id}/artifacts`} />
+                                                            <BlueButton text={'Перейти к карте зала'} type={'link'} link={`/halls/${props.artifactData.hall.id}/artifacts`} />
                                                     }
 
                                                 </div>
@@ -112,26 +121,3 @@ const Artifact = (props) => {
 }
 
 export default Artifact;
-
-// { //Находится ли данный товар в корзине
-//     props.isUserMuseumAdmin && (
-//
-// }
-//
-// {
-//     props.isUserMuseumAdmin &&
-//     <NavLink className={s.goInside} to={`/m-admin/relocate/${props.location_id}/${props.hall_id}/${l.id}`}>Переместить экспонат</NavLink>
-// }
-
-//Находится ли данный товар в корзине
-// props.isUserMuseumAdmin && (
-//     props.print.some(item => item.id === l.id) ?
-//         <button className={s.inCart} onClick={() => props.deleteOneArtifact(l.id)}>
-//             Удалить из печати
-//         </button>
-//
-//         :   <button className={s.inCart} onClick={() => props.addArtifactToPrint(l)}
-//         >
-//             Добавить к печати
-//         </button>)
-// }

@@ -20,21 +20,6 @@ const MuseumItemsList = (props) => {
                 </div>
             </div>
 
-            {/*<div className={s.buttons}>*/}
-            {/*    {*/}
-            {/*        (props.prev !== null && props.isUserMuseumAdmin) &&*/}
-            {/*        <button className={`${s.moveBtn} ${s.up}`} onClick={() => props.swapLocations('up', props.id)}>*/}
-            {/*            <img src={up} alt="up"/>*/}
-            {/*        </button>*/}
-            {/*    }*/}
-            {/*    {*/}
-            {/*        (props.id !== props.last && props.isUserMuseumAdmin) &&*/}
-            {/*        <button className={`${s.moveBtn} ${s.down}`} onClick={() => props.swapLocations('down', props.id)}>*/}
-            {/*            <img src={down} alt="down"/>*/}
-            {/*        </button>*/}
-            {/*    }*/}
-            {/*</div>*/}
-
         </div>
 
     );

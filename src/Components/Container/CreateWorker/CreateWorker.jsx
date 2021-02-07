@@ -6,11 +6,12 @@ import {compose} from "redux";
 import {CommonCreateWorkerLogic} from "../../../hoc/CommonCreateWorkerLogic";
 import CreateWorkerInputs from "../../../Common/CreateWorkerInputs/CreateWorkerInputs";
 import {WithSuperAdminRedirect} from "../../../hoc/Redirect/WithSuperAdminRedirect";
+import Preloader from "../../../Common/Preloader/Preloader";
 
 class CreateWorker extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.isRight !== this.props.isRight) {
+        if(prevProps.isRight !== this.props.isRight && this.props.isRight) {
             this.props.createWorker(
                 this.props.last_name,
                 this.props.first_name,
@@ -26,6 +27,9 @@ class CreateWorker extends React.Component {
         if(!this.props.isUserMuseumSuperAdmin) {
             return <Redirect to={'/'} />
         }
+        if(this.props.isFetch) {
+            return <Preloader />
+        }
         if(this.props.isCreate) {
             return <Redirect to={'/m-admin/hr-management'} />
         }
@@ -38,6 +42,8 @@ class CreateWorker extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
+        isEmailTaken: state.auth.isEmailTaken,
+        isFetch: state.auth.isFetch,
         isUserMuseumSuperAdmin: state.auth.isUserMuseumSuperAdmin
     }
 }

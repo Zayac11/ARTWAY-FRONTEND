@@ -28,6 +28,7 @@ const Location = (props) => {
                                      handleChange={props.handleChange}
                                      handleSubmit={props.handleSubmit}
                                      isEmptyInputs={props.isEmptyInputs}
+                                     text={'Список залов'}
                     />
 
                         {

@@ -37,11 +37,13 @@ export const setArtifacts = (artifacts, hallName) => ({type: SET_ARTIFACTS, arti
 //Зал
 export const getHallData = (location_id, hall_id) => { //Получение информации о зале по id локации и зала
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         museumApi.getHallData(location_id, hall_id)
             .then(response => response.json()
                 .then(result => {
                     console.log('getHallData', result)
                     dispatch(setHallData(result.hall, result.artifacts))
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }
@@ -59,22 +61,26 @@ export const updateHallData = (location_id, hall_id, name) => { //Обновле
 
 export const createHall = (id, name) => { //Добавление зала в локацию по id локации
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         museumApi.createHall(id, name)
             .then(response => response.json()
                 .then(result => {
                     console.log('createHall', result)
                     dispatch(setLocationData(result.location, result.halls))
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }
 
 export const deleteHall = (location_id, hall_id) => { //Удаление зала по id локации и зала
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         museumApi.deleteHall(location_id, hall_id)
             .then(response => response.json()
                 .then(result => {
                     console.log('deleteHall', result)
                     dispatch(setLocationData(result.location, result.halls))
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }

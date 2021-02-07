@@ -27,7 +27,7 @@ const Enter = (props) => {
                 }
 
             </div>
-            <div className={s.buttonContainer}>
+            <div className={'buttonContainer'}>
                 {
                     !props.isArtifactDigit
                     ?
