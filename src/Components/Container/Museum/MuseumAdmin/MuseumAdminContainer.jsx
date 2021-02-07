@@ -14,6 +14,7 @@ import MuseumInformation from "../../../../Common/MuseumInformation/MuseumInform
 import TopContainer from "../../../../Common/Top/TopContainer";
 import RedTransparentBtn from "../../../../Common/RedTransparentBtn/RedTransparentBtn";
 import DeleteModal from "../../../../Common/DeleteModal/DeleteModal";
+import Preloader from "../../../../Common/Preloader/Preloader";
 
 class MuseumAdminContainer extends React.Component {
 
@@ -66,7 +67,7 @@ class MuseumAdminContainer extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.isRight !== this.props.isRight) {
+        if(prevProps.isRight !== this.props.isRight && this.props.isRight) {
             this.props.createMuseumSuperAdmin(
                 this.props.last_name,
                 this.props.first_name,
@@ -75,6 +76,11 @@ class MuseumAdminContainer extends React.Component {
                 this.props.password,
                 this.props.museum_id,
             )
+            this.toggleIsChanging()
+            this.props.handleChangeCreateStatus(false)
+        }
+
+        if(prevProps.isEmailTaken !== this.props.isEmailTaken && this.props.isEmailTaken) {
             this.toggleIsChanging()
         }
     }
@@ -88,9 +94,9 @@ class MuseumAdminContainer extends React.Component {
         if(this.state.isDeleted) {
             return <Redirect to={'/s-admin'} />
         }
-        if(this.props.isCreate) {
-            window.location.reload()
-            // return <Redirect to={`/s-admin/${this.props.museum_id}`} />
+
+        if(this.props.isFetch) {
+            return <Preloader />
         }
 
         return (
@@ -143,6 +149,8 @@ let mapStateToProps = (state) => {
     return {
         museumAdminData: state.service.museumAdminData,
         currentMuseumData: state.service.currentMuseumData,
+        isEmailTaken: state.auth.isEmailTaken,
+        isFetch: state.auth.isFetch,
         status: state.service.status,
     }
 }

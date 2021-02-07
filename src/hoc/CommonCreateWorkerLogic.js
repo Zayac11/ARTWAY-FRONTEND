@@ -35,6 +35,8 @@ export const CommonCreateWorkerLogic = (Component) => {
             this.handleChangeInputs = this.handleChangeInputs.bind(this)
             this.handleChange = this.handleChange.bind(this)
             this.handleChangeRadio = this.handleChangeRadio.bind(this)
+            this.handleChangeCreateStatus = this.handleChangeCreateStatus.bind(this)
+            this.deleteInputs = this.deleteInputs.bind(this)
         }
 
         handleChange(e) {
@@ -76,10 +78,7 @@ export const CommonCreateWorkerLogic = (Component) => {
                     isEmailWrong: true,
                 })
             } else {
-                this.setState({
-                    isCreate: true,
-                    isRight: true,
-                })
+                this.handleChangeCreateStatus(true)
             }
         }
 
@@ -88,6 +87,25 @@ export const CommonCreateWorkerLogic = (Component) => {
                 isEmptyInputs: false,
                 isEmailWrong: false,
                 isPasswordMatch: true,
+            })
+        }
+
+        handleChangeCreateStatus(status) {
+            this.setState({
+                isCreate: status,
+                isRight: status,
+            })
+        }
+
+        deleteInputs() {
+            this.setState({
+                last_name: "",
+                first_name: "",
+                middle_name: "",
+                email: "",
+                password: "",
+                confirm_password: "",
+                role: "museum_admins",
             })
         }
 
@@ -109,7 +127,9 @@ export const CommonCreateWorkerLogic = (Component) => {
                            role={this.state.role}
                            handleSubmit={this.handleSubmit}
                            handleChange={this.handleChange}
+                           deleteInputs={this.deleteInputs}
                            handleChangeInputs={this.handleChangeInputs}
+                           handleChangeCreateStatus={this.handleChangeCreateStatus}
                            handleFindKey={this.handleFindKey}
                            handleChangeRadio={this.handleChangeRadio}
                 />

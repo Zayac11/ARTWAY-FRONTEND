@@ -304,6 +304,10 @@ export const adminApi = {
     deleteWorkerProfile(worker_id) {
         let options = getOptions([], true,  'DELETE')
         return fetch(baseUrl + `api/m-admin/hr-management/${worker_id}`, options)
+    },
+    checkIsUserExists(email) {
+        let options = getOptions([{name: 'email', value: email}], true,  'POST')
+        return fetch(baseUrl + `api/is_user_exists`, options)
     }
 }
 

@@ -28,7 +28,18 @@ const Enter = (props) => {
 
             </div>
             <div className={s.buttonContainer}>
-                <BlueButton type={'link'} link={`/artifacts/${props.artifactId}`} text='Перейти к экспонату' />
+                {
+                    !props.isArtifactDigit
+                    ?
+                        <div className={'form__wrong'}>
+                            Пожалуйста, введите корректный номер
+                        </div>
+                    :
+                         props.artifactId !== ''
+                             ? <BlueButton type={'link'} link={`/artifacts/${props.artifactId}`} text='Перейти к экспонату' />
+                             : <BlueButton type={'btn'} handleSubmit={() => {}} text='Перейти к экспонату' />
+                }
+
             </div>
         </>
     );

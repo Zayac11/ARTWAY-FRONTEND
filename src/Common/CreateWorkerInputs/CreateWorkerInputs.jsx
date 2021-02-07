@@ -7,7 +7,6 @@ import TransparentButton from "../TransparentButton/TransparentButton";
 import BackBtn from "../BackBtn/BackBtn";
 
 const CreateWorkerInputs = (props) => {
-
     return (
         <div className={'outer'}>
             <div className={'container'}>
@@ -33,9 +32,9 @@ const CreateWorkerInputs = (props) => {
                             </>
                     }
 
-                    <div className={s.top}>
+                    {/*<div className={s.top}>*/}
 
-                    </div>
+                    {/*</div>*/}
 
                     <Input required={true} text={'Фамилия'} type={'text'} name={'last_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.last_name} />
                     <Input required={true} text={'Имя'} type={'text'} name={'first_name'} handleFocus={props.handleChangeInputs} handleFindKey={props.handleFindKey} handleChange={props.handleChange} value={props.first_name} />
@@ -77,6 +76,12 @@ const CreateWorkerInputs = (props) => {
                         props.isEmailWrong &&
                         <div className={'form__wrong'}>
                             Пожалуйста, введите корректный email
+                        </div>
+                    }
+                    {
+                        props.isEmailTaken &&
+                        <div className={'form__wrong'}>
+                            Данный email адрес уже занят
                         </div>
                     }
 

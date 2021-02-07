@@ -27,7 +27,7 @@ const Top = (props) => {
                 (props.isUserCashier || props.isUserServiceAdmin)
                 &&
                 <div className={s.admin}>
-                    <button className={s.logoutBtn} onClick={props.logout}>Выйти</button>
+                    <NavLink to={'/login'} className={s.logoutBtn}>Выйти</NavLink>
                 </div>
             }
 

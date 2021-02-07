@@ -15,6 +15,8 @@ class Transition extends React.Component {
             delay: 100,
             result: null,
             artifactId: '',
+
+            isArtifactDigit: true, //Если введенный id является числом
         }
         this.handleScan = this.handleScan.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -38,8 +40,20 @@ class Transition extends React.Component {
         this.setState({
             [name]: value,
         })
+        let digits = /^\d+$/
 
+        if(value === '' || digits.test(value)) {
+            this.setState({
+                isArtifactDigit: true
+            })
+        }
+        else if (!digits.test(value)) {
+            this.setState({
+                isArtifactDigit: false
+            })
+        }
     }
+
     handleError(err){
         console.error(err)
     }
@@ -66,6 +80,7 @@ class Transition extends React.Component {
                                                                      history={this.props.history}
                                                                      handleFocus={this.handleFocus}
                                                                      isArtifactError={this.props.isArtifactError}
+                                                                     isArtifactDigit={this.state.isArtifactDigit}
                                                                      artifactId={this.state.artifactId} />} />
                 </div>
             </div>

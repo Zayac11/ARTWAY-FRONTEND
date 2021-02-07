@@ -1,10 +1,10 @@
 import React from 'react';
 import s from './MuseumAdmin.module.css'
-import ChangeWorkerContainer from "../../Management/ChangeWorker/ChangeWorkerContainer";
 import RedTransparentBtn from "../../../../Common/RedTransparentBtn/RedTransparentBtn";
 import BlueButton from "../../../../Common/BlueButton/BlueButton";
 import DeleteModal from "../../../../Common/DeleteModal/DeleteModal";
 import WorkerProfile from "../../Management/WorkerProfile/WorkerProfile";
+import CreateWorkerInputs from "../../../../Common/CreateWorkerInputs/CreateWorkerInputs";
 
 const MuseumAdmin = ({museumAdminData, ...props}) => {
     return (
@@ -35,7 +35,11 @@ const MuseumAdmin = ({museumAdminData, ...props}) => {
 
                 }
             </div>
-
+            {
+                (!props.status && props.isChanging)
+                &&
+                <CreateWorkerInputs {...props} isUserServiceAdmin={true} />
+            }
             <div className={'buttonContainer'}>
                 { props.status &&
                     <RedTransparentBtn type={'withProps'} handleSubmit={props.toggleOpenModal} data={true} text={'Удалить администратора'} />

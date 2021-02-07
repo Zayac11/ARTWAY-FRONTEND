@@ -60,6 +60,9 @@ class ScannerContainer extends React.Component {
                         <button className={s.refresh} onClick={this.changeCamera}><img src={refresh} alt="refresh button"/></button>
                     </div>
 
+                    <div className={'emptyLocations'}>
+                        Если камера не работает, попробуйте обновить страницу
+                    </div>
 
                 </div>
             </>

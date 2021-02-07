@@ -1,4 +1,5 @@
-import {serviceAdminApi} from "../api/api";
+import {adminApi, serviceAdminApi} from "../api/api";
+import {setIsEmailTaken, toggleIsFetching} from "./authentication";
 
 const SET_MUSEUMS = 'SET_MUSEUMS'
 const SET_MUSEUM_ADMIN_DATA = 'SET_MUSEUM_ADMIN_DATA'
@@ -89,11 +90,24 @@ export const deleteMuseumSuperAdmin = (museum_id) => { //Удаление суп
 
 export const createMuseumSuperAdmin = (last_name, first_name, middle_name, email, password, museum_id) => { //Создание супер-админа музея по id музея
     return (dispatch) => {
-        serviceAdminApi.createMuseumSuperAdmin(last_name, first_name, middle_name, email, password, museum_id)
+        dispatch(toggleIsFetching(true))
+        adminApi.checkIsUserExists(email)
             .then(response => response.json()
                 .then(result => {
-                    console.log('createMuseumSuperAdmin', result)
-                    dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
+                    console.log('checkIsUserExists', result)
+                    if(result.status === 404) {
+                        serviceAdminApi.createMuseumSuperAdmin(last_name, first_name, middle_name, email, password, museum_id)
+                            .then(response => response.json()
+                                .then(result => {
+                                    dispatch(setIsEmailTaken(false))
+                                    console.log('createMuseumSuperAdmin', result)
+                                    dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
+                                }))
+                    }
+                    else {
+                        dispatch(setIsEmailTaken(true))
+                    }
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }
