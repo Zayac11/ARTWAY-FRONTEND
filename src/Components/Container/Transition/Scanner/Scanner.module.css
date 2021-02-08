@@ -4,6 +4,11 @@
     margin: 0 auto;
 }
 
+.top {
+    margin: 20px 0;
+    position: relative;
+}
+
 .scanner {
     margin: 0 25px;
     border-radius: 20px;
@@ -33,4 +38,8 @@
 }
 .refresh img {
     width: inherit;
+}
+
+.bottom {
+    padding-bottom: 20px;
 }

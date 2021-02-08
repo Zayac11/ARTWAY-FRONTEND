@@ -81,10 +81,13 @@ const Museum = (props) => {
                                         )
                                     })
                                 }
-                                <div className={s.buttons}>
-                                    <BlueButton type={'withProps'} data={true} handleSubmit={props.toggleIsChanging} text={'Редактировать'} />
-                                    <TransparentButton type={'btn'} handleSubmit={props.createLocation} text={'Создать новую локацию'} />
-                                </div>
+                                {
+                                    props.isUserMuseumAdmin &&
+                                    <div className={s.buttons}>
+                                        <BlueButton type={'withProps'} data={true} handleSubmit={props.toggleIsChanging} text={'Редактировать'} />
+                                        <TransparentButton type={'btn'} handleSubmit={props.createLocation} text={'Создать новую локацию'} />
+                                    </div>
+                                }
                             </>
                     }
                 </div>

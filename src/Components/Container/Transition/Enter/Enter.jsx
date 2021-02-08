@@ -1,21 +1,26 @@
 import React from 'react';
 import s from './Enter.module.css'
 import BlueButton from "../../../../Common/BlueButton/BlueButton";
-import BackBtn from "../../../../Common/BackBtn/BackBtn";
+import {NavLink} from "react-router-dom";
+import prev from "../../../../assets/images/left-chevron.svg";
+import desktop_arrow from "../../../../assets/images/arrow_back_blue.svg";
 
 const Enter = (props) => {
     return (
         <>
             <div className={s.enter}>
                 <div className={s.top}>
-                    <BackBtn history={props.history} />
-                </div>
-                <div className={s.title}>
-                    Введите номер экспоната
+                    <NavLink to={'/'} className={'backBtn'}>
+                        <img className={'prev'} src={prev} alt="back"/>
+                        <img className={'arrow'} height={20} src={desktop_arrow} alt="back"/>
+                    </NavLink>
+                    <div className={s.title}>
+                        Введите номер экспоната
+                    </div>
                 </div>
                 <div className={s.inputContainer}>
                     <div className={s.input}>
-                        <input onChange={props.handleChange} onFocus={props.handleFocus} type="text" placeholder={'1'} value={props.artifactId} name={'artifactId'}/>
+                        <input onChange={props.handleChange} onFocus={props.handleFocus} type="number" placeholder={'1'} value={props.artifactId} name={'artifactId'}/>
                     </div>
                 </div>
 

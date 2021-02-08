@@ -53,7 +53,7 @@
     .print {
         display: none;
     }
-    .admin {
+    .admin, .information {
         order: 3;
     }
     .artSquare {

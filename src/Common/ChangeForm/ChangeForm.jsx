@@ -17,8 +17,11 @@ const ChangeForm = (props) => {
                         <BackBtn history={props.history} />
                 }
             </div>
-
-            <Input required={true} text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+            {
+                props.isChangingArtifact
+                ? <Input required={true} text={'Название'} handleFindKey={props.handleFindKey} value={props.sectionName} type={'text'} name={'sectionName'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                : <Input required={true} text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+            }
 
             <Textarea required={true} text={'Описание'} value={props.description} name={'description'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
 

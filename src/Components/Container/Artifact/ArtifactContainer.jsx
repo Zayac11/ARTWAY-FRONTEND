@@ -66,7 +66,7 @@ class ArtifactContainer extends React.Component {
     }
 
     updateArtifact() {
-        this.props.updateArtifactData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id,this.props.name, this.props.img, this.props.description, this.props.audio, this.props.video)
+        this.props.updateArtifactData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id,this.props.sectionName, this.props.img, this.props.description, this.props.audio, this.props.video)
         this.props.setImage('') //Зануляем картинку
         this.props.setAudio('') //Зануляем аудиофайл
         this.props.changeCreate(false) //Больше не изменяем

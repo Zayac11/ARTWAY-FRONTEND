@@ -39,7 +39,7 @@ const Artifact = (props) => {
                                                     <img className={'arrow'} src={desktop_arrow} alt="back"/>
                                                 </button>
                                                 <h2 className={s.name}>
-                                                    {props.name}
+                                                    {props.sectionName}
                                                 </h2>
                                                 {
                                                     props.isUserMuseumAdmin
@@ -47,7 +47,7 @@ const Artifact = (props) => {
                                                     <div className={s.edit} onClick={() => props.toggleIsChanging(!props.isChanging)} >
                                                         <img src={edit} alt="edit"/>
                                                     </div>
-                                                    :<div className={s.empty}></div>
+                                                    :<div className={s.userEmpty}></div>
                                                 }
                                                 <div className={s.empty}>
 
