@@ -88,14 +88,12 @@ class ArtifactContainer extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-
         if(prevProps.artifactData !== this.props.artifactData) {
             this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, this.props.artifactData.img, this.props.artifactData.audio, this.props.artifactData.video, 1, '')
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.checkAudio()
         }
-
     }
 
     render() {
@@ -106,7 +104,6 @@ class ArtifactContainer extends React.Component {
         if(!this.props.artifactData.hall) {
             return  <Preloader />
         }
-
 
         if(this.state.isDeleted) {
             return <Redirect to={`/m-admin/${this.props.match.params.location_id}/${this.props.match.params.hall_id}`} />

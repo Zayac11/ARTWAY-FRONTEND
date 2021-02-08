@@ -1,5 +1,3 @@
-import * as axios from "axios";
-
 const debug = false
 //backend
 //true for localhost
@@ -43,15 +41,8 @@ const getHeaders = () => {
     return myHeaders
 }
 
-export const artifactApi = {
-    getArtifactData(id) { //Получение информации об экспонате по id
-        return axios.get(baseUrl + `api/artifacts/${id}`)
-            .then(response => response)
-    },
-}
-
 export const museumApi = {
-    //Музей
+//Музей
     getMuseumData() { //Получение информации об музее по пользователю
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
         let myHeaders = new Headers();
@@ -74,7 +65,7 @@ export const museumApi = {
         return fetch(baseUrl + `api/locations_map`, options)
     },
 
-    //Локации
+//Локации
     getLocationData(location_id) { //Получение информации о локации по id
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
         let myHeaders = new Headers();
@@ -111,7 +102,7 @@ export const museumApi = {
         return fetch(baseUrl + `api/halls_map`, options)
     },
 
-    //Залы
+//Залы
     getHallData(location_id, hall_id) { //Получение информации о зале по id зала и его локации
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
         let myHeaders = new Headers();
@@ -148,7 +139,7 @@ export const museumApi = {
         return fetch(baseUrl + `api/artifacts_map`, options)
     },
 
-    //Артефакты
+//Экспонаты
     getArtifactData(location_id, hall_id, artifact_id) { //Получение информации об артефакте по id локации, зала и артефакта
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
         let myHeaders = new Headers();
@@ -205,7 +196,6 @@ export const museumApi = {
 }
 
 export const authApi = {
-
     getStatus() {//Проверка пользователя
         let localToken = localStorage.getItem('accessToken')
         let accessToken = ''
@@ -313,7 +303,6 @@ export const serviceAdminApi = {
 }
 
 //Кассир
-
 export const cashierApi = {
     getTickets() { //Получение всех активных билетов
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')

@@ -29,11 +29,10 @@ export const CommonUpdateLogic = (Component) => {
         }
 
         handleSubmit() {
-
             if(this.props.description === '' || (this.props.name === '' && this.props.sectionName === '') || this.props.ticket_lifetime === '') { //Ошибка в пустых полях
                 this.props.setValidation('isEmptyInputs', true)
             }
-            else if(this.props.name.length > 28 || this.props.ticket_lifetime.length > 5 || this.props.sectionName.length > 100) {
+            else if(this.props.name.length > 35 || this.props.ticket_lifetime.length > 5 || this.props.sectionName.length > 100) {
                 this.props.setValidation('isInputSizeRight', false)
             }
             else if(this.props.ticket_lifetime < 1) {

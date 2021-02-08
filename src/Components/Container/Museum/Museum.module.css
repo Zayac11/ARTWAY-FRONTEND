@@ -2,6 +2,10 @@
 
 }
 
+.buttons {
+    display: none;
+}
+
 @media (min-width: 768px) {
     .createButton {
         display: none;
