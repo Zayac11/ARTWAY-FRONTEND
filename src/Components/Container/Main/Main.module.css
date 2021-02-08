@@ -84,9 +84,6 @@
     text-align: center;
     background-color: #196bb1;
     display: block;
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
     padding: 15px;
     box-shadow: 0 4px 16px 0 rgba(229, 229, 229, 0.5);
     border-radius: 35px;

@@ -38,7 +38,9 @@ const Main = (props) => {
                                 <div className={s.text}>Карта музея</div>
                             </div>
                             <div className={s.scanButton}>
-                                <NavLink to={'/scan'}><img src={scan} alt="scan qr"/></NavLink>
+                                <NavLink to={'/scan'}>
+                                    <img src={scan} alt="scan qr"/>
+                                </NavLink>
                             </div>
                         </div>
                     </div>

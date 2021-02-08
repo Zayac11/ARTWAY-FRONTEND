@@ -11,15 +11,6 @@ const MuseumItemsList = (props) => {
             <div className={s.imgContainer}>
                 <img className={s.img} src={props.img} alt="location"/>
             </div>
-            <div className={s.descriptionContainer}>
-                <h4 className={s.descriptionTitle}>
-                    Описание
-                </h4>
-                <div className={s.description}>
-                    {props.description}
-                </div>
-            </div>
-
         </div>
 
     );

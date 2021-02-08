@@ -24,6 +24,7 @@ import Error404 from "./404/Error404";
 class Container extends React.Component {
 
     componentDidMount() {
+        debugger
         const url = new URLSearchParams(this.props.location.search)
         let localToken = localStorage.getItem('token')
         let token = url.get('token');
@@ -35,7 +36,6 @@ class Container extends React.Component {
             else if(localToken !== null) {
                 this.props.setToken(localToken)
             }
-
         }
         this.props.initializingToken() //Отрисовка приложения после установки/неустановки токена из билета
     }
@@ -46,6 +46,7 @@ class Container extends React.Component {
             return <Preloader />
         }
         //Если у пользователя нет токена и он не залогинен
+        debugger
         let localToken = localStorage.getItem('token')
         if((localToken === null && !this.props.isLogin) || this.props.isTokenDeleted) {
             return <Redirect to={'/canceled'} />
