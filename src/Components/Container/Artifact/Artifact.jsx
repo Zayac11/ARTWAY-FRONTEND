@@ -44,14 +44,19 @@ const Artifact = (props) => {
                                                 {
                                                     props.isUserMuseumAdmin
                                                     ?
-                                                    <div className={s.edit} onClick={() => props.toggleIsChanging(!props.isChanging)} >
-                                                        <img src={edit} alt="edit"/>
-                                                    </div>
-                                                    :<div className={s.userEmpty}></div>
-                                                }
-                                                <div className={s.empty}>
+                                                        <>
+                                                            <div className={s.edit} onClick={() => props.toggleIsChanging(!props.isChanging)} >
+                                                                <img src={edit} alt="edit"/>
+                                                            </div>
+                                                            <div className={s.empty}>
 
-                                                </div>
+                                                            </div>
+                                                        </>
+
+                                                    :
+                                                        <div className={s.userEmpty}></div>
+                                                }
+
                                             </div>
 
 

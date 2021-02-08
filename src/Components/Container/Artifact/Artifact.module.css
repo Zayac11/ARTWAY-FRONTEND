@@ -99,12 +99,13 @@
     margin-left: 10px;
 }
 
-.userEmpty {
-    width: 20px;
-}
 
 .desktopEdit {
     display: none;
+}
+
+.userEmpty {
+    width: 20px;
 }
 
 .empty {

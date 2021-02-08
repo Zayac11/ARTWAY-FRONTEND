@@ -78,6 +78,7 @@
     width: 100%;
     padding: 0 8px 30px;
     position: relative;
+    min-height: 100vh;
 }
 
 .locationContainer {
