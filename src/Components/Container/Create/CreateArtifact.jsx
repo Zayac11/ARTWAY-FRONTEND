@@ -65,7 +65,7 @@ class CreateArtifact extends React.Component {
         }
 
         return (
-            <ChangeForm text={'Создание артефакта'} {...this.props}
+            <ChangeForm text={'Создание экспоната'} {...this.props}
                         isItemArtifact={true} //Является ли создаваемы объект артефактом
             />
 

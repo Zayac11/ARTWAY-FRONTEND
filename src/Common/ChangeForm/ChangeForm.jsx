@@ -17,11 +17,8 @@ const ChangeForm = (props) => {
                         <BackBtn history={props.history} />
                 }
             </div>
-            {
-                props.isChangingArtifact
-                ? <Input required={true} text={'Название'} handleFindKey={props.handleFindKey} value={props.sectionName} type={'text'} name={'sectionName'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
-                : <Input required={true} text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
-            }
+
+            <Input required={true} text={'Название'} handleFindKey={props.handleFindKey} value={props.name} type={'text'} name={'name'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
 
             <Textarea required={true} text={'Описание'} value={props.description} name={'description'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
 
@@ -67,7 +64,7 @@ const ChangeForm = (props) => {
                                 <span>Загрузить аудио</span>
                             </label>
                             {
-                                props.img !== '' &&
+                                props.audio !== '' &&
                                 <span className={s.fileName}>{props.audio.name}</span>
                             }
                         </div>

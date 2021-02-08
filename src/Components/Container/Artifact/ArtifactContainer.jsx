@@ -66,10 +66,11 @@ class ArtifactContainer extends React.Component {
     }
 
     updateArtifact() {
-        this.props.updateArtifactData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id,this.props.sectionName, this.props.img, this.props.description, this.props.audio, this.props.video)
+        this.props.updateArtifactData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id,this.props.name, this.props.img, this.props.description, this.props.audio, this.props.video)
         this.props.setImage('') //Зануляем картинку
         this.props.setAudio('') //Зануляем аудиофайл
         this.props.changeCreate(false) //Больше не изменяем
+        this.props.deleteOneArtifact(this.props.match.params.artifact_id)
     }
 
     swapArtifacts(swap_type, location_id) {
@@ -89,7 +90,7 @@ class ArtifactContainer extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
 
         if(prevProps.artifactData !== this.props.artifactData) {
-            this.props.updateState(this.props.match.params.location_id, '', this.props.artifactData.description, this.props.artifactData.img, this.props.artifactData.audio, this.props.artifactData.video, 1, this.props.artifactData.name)
+            this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, this.props.artifactData.img, this.props.artifactData.audio, this.props.artifactData.video, 1, '')
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.checkAudio()

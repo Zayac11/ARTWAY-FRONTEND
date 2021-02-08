@@ -15,7 +15,6 @@ const SET_IS_EMAIL_TAKEN = 'SET_IS_EMAIL_TAKEN';
 const SET_USER_STATUS = 'SET_USER_STATUS';
 const SET_FETCH = 'SET_FETCH';
 
-
 let initialState = {
     userData: {}, //Данные пользователя
 
@@ -124,12 +123,11 @@ const authReducer = (state = initialState, action) => {
 
 export const setAuth = (isLogin) => ({type: SET_AUTH, isLogin}) //Авторизован ли пользователь
 export const setLoginWrong = (isLoginWrong) => ({type: SET_LOGIN_WRONG, isLoginWrong}) //Ошибка при логине
-export const setInitialized = () => ({type: SET_INITIALIZED})
+export const setInitialized = () => ({type: SET_INITIALIZED}) //инициализация приложения
 export const setUserStatus = (result) => ({type: SET_USER_STATUS, result}) //статусы пользователя
 export const toggleIsFetching = (isFetch) => ({type: SET_FETCH, isFetch}) //загрузка
 export const setIsPasswordSimple = (isPasswordSimple) => ({type: SET_IS_PASSWORD_SIMPLE, isPasswordSimple})
 export const setPasswordConditions = () => ({type: SET_PASSWORD_CONDITIONS}) //Обнуление условий смены пароля при закрытии страницы изменения пароля
-export const setIsCurrentPasswordWrong = () => ({type: SET_IS_CURRENT_PASSWORD_WRONG}) //Текущий пароль неправильный
 export const setIsPasswordRight = (isPasswordRight) => ({type: SET_IS_PASSWORD_RIGHT, isPasswordRight}) //Пароль сменен успешно
 export const setIsEmailExists = (isEmailExists) => ({type: SET_IS_EMAIL_EXISTS, isEmailExists}) //Email существует или нет
 export const setIsEmailTaken = (isEmailTaken) => ({type: SET_IS_EMAIL_TAKEN, isEmailTaken}) //Email занят или нет
@@ -185,7 +183,6 @@ export const logout = () => { //Выход
             isUserMuseumAdmin: false,
             isUserCashier: false,
         }))
-        // dispatch(deleteUserData()) //Удаление данных пользователя при выходе
     }
 }
 

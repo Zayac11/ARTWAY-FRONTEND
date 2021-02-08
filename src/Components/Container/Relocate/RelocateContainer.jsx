@@ -10,6 +10,8 @@ import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
 import s from './Relocate.module.css'
 import BackBtn from "../../../Common/BackBtn/BackBtn";
 import TopContainer from "../../../Common/Top/TopContainer";
+import prev from "../../../assets/images/left-chevron.svg";
+import desktop_arrow from "../../../assets/images/arrow_back_blue.svg";
 
 class RelocateContainer extends React.Component {
 
@@ -25,7 +27,6 @@ class RelocateContainer extends React.Component {
         this.selectLocation = this.selectLocation.bind(this)
     }
 
-
     selectLocation(location_id) {
         this.props.getLocationData(location_id)
         this.setState({
@@ -40,7 +41,6 @@ class RelocateContainer extends React.Component {
         })
         this.props.toggleRelocate()
         this.props.setIsRelocated(true)
-
     }
 
     componentDidMount() {
@@ -55,13 +55,16 @@ class RelocateContainer extends React.Component {
     }
 
     render() {
-
         return (
             <>
                 <div className={s.relocateContainer}>
                     <TopContainer isUserMuseumAdmin={true} />
                     <div className={s.top}>
-                        <BackBtn history={this.props.history} />
+
+                        <button onClick={() => this.props.toggleRelocate(false)} className={'backBtn'}>
+                            <img className={'prev'} src={prev} alt="back"/>
+                            <img className={'arrow'} height={20} src={desktop_arrow} alt="back"/>
+                        </button>
 
                         <h2 className={'pageTitle'}>
                             Перемещение экспоната

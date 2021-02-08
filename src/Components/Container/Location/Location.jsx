@@ -26,7 +26,7 @@ const Location = (props) => {
                                      toggleIsCardsChanging={props.toggleIsCardsChanging}
                                      toggleIsChanging={props.toggleIsChanging}
                                      history={props.history}
-                                     handleFindKey={props.handleSubmit}
+                                     handleFindKey={props.handleFindKey}
                                      handleFocus={props.handleChangeInputs}
                                      handleChange={props.handleChange}
                                      handleSubmit={props.handleSubmit}

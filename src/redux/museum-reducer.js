@@ -55,12 +55,11 @@ const museumReducer = (state = initialState, action) => {
                 locations: action.locations.locations
             }
         case DELETE_ARTIFACT:
-
             return {
                 ...state,
                 print: state.print.filter(
                     (p) => {
-                        return p.id !== action.id
+                        return p.id !== Math.floor(action.id)
                     }
                 )
             }

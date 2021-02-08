@@ -30,8 +30,8 @@ const Enter = (props) => {
                             Экспонат не найден
                         </div>
                 }
-
             </div>
+
             <div className={'buttonContainer'}>
                 {
                     !props.isArtifactDigit

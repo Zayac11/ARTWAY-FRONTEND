@@ -67,7 +67,6 @@ class LocationContainer extends React.Component {
             let token = localStorage.getItem('token') //Если у пользователя билет с токеном
             this.props.getUserHallsList(token, this.props.match.params.location_id)
         }
-
     }
 
     render() {

@@ -110,6 +110,8 @@ export const CommonMuseumLogic = (Component) => {
             })
         }
 
+
+
         handleChangeInputs() {
             this.setState({
                 isEmptyInputs: false,
@@ -140,6 +142,7 @@ export const CommonMuseumLogic = (Component) => {
                            toggleIsChanging={this.toggleIsChanging}
                            toggleIsCardsChanging={this.toggleIsCardsChanging}
                            setValidation={this.setValidation}
+
                            setImage={this.setImage}
                            setAudio={this.setAudio}
                            handleChange={this.handleChange}

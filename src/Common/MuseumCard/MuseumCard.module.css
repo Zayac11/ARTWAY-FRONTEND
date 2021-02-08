@@ -15,6 +15,7 @@
 .name {
     color: black;
     font-size: 14px;
+    word-break: break-all;
 }
 
 .moveBtn {

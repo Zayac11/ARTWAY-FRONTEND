@@ -39,7 +39,7 @@ const Artifact = (props) => {
                                                     <img className={'arrow'} src={desktop_arrow} alt="back"/>
                                                 </button>
                                                 <h2 className={s.name}>
-                                                    {props.sectionName}
+                                                    {props.name}
                                                 </h2>
                                                 {
                                                     props.isUserMuseumAdmin
