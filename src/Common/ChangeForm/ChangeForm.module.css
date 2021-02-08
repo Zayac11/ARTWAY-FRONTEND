@@ -33,6 +33,7 @@
     position: absolute;
     z-index: -1;
 }
+
 .fileInput + label {
     color: #196bb1;
     border: 1px solid #196bb1;
