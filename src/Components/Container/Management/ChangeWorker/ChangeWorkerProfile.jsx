@@ -29,10 +29,6 @@ const ChangeWorkerProfile = (props) => {
             <TransparentButton type={'btn'} handleSubmit={props.updateWorker} text={'Сохранить'} />
 
             {
-                props.museumAdminId === props.id &&
-                <RedTransparentBtn type={'link'} link={'/m-admin/change_password'} text={'Изменить пароль'} />
-            }
-            {
                 (props.museumAdminId !== props.id && !props.isUserServiceAdmin) &&
                 <RedTransparentBtn type={'withProps'} data={true} handleSubmit={props.toggleOpenModal} text={'Удалить'} />
             }

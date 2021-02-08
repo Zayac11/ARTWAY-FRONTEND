@@ -1,6 +1,6 @@
 import * as axios from "axios";
 
-const debug = false
+const debug = true
 //backend
 //true for localhost
 //false for prod.
@@ -225,10 +225,6 @@ export const authApi = {
     login(username, password) {//Логин
         let options = getOptions([{name: 'username', value: username}, {name: 'password', value: password}], false,  'POST')
         return fetch(baseUrl + `auth/jwt/create/`, options)
-    },
-    setPassword(current_password, new_password, re_new_password) { //Смена пароля
-        let options = getOptions([{name: 'new_password', value: new_password}, {name: 're_new_password', value: re_new_password}, {name: 'current_password', value: current_password}], true,  'POST')
-        return fetch(baseUrl + `auth/users/set_password/`, options)
     },
     resetPassword(email) { //Смена пароля
         let options = getOptions([{name: 'email', value: email}], false,  'POST')

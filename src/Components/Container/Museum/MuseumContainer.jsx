@@ -34,7 +34,7 @@ class MuseumContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.museumData !== this.props.museumData) {
-            this.props.updateState(this.props.museumData.id, this.props.museumData.name, this.props.museumData.description, this.props.museumData.img, '', '', this.props.museumData.ticket_lifetime)
+            this.props.updateState(this.props.museumData.id, this.props.museumData.name, this.props.museumData.description, this.props.museumData.img, '', '', this.props.museumData.ticket_lifetime, '')
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.updateMuseum()

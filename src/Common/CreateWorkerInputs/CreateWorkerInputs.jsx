@@ -75,7 +75,7 @@ const CreateWorkerInputs = (props) => {
                         </div>
                     }
                     {
-                        props.isEmailTaken &&
+                        props.isEmailAlreadyTaken &&
                         <div className={'form__wrong'}>
                             Данный email адрес уже занят
                         </div>

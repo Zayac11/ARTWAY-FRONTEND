@@ -88,6 +88,12 @@ const ChangeForm = (props) => {
                     Превышена допустимая длина полей
                 </div>
             }
+            {
+                props.isTicketLifeTimeWrong &&
+                <div className='form__wrong'>
+                    Пожалуйста, введите корректное время жизни билета
+                </div>
+            }
             <div className={s.saveContainer}>
                 <BlueButton type={'btn'} handleSubmit={props.handleSubmit} text={'Сохранить и выйти'} />
             </div>

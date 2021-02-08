@@ -15,12 +15,13 @@ export const CommonMuseumLogic = (Component) => {
             super(props);
             this.state = {
                 name: "",
+                sectionName: "",
                 id: 0,
                 description: "",
                 img: "",
                 audio: "",
                 video: "",
-                ticket_lifetime: 0,
+                ticket_lifetime: 1,
                 main_audio: null,
                 main_img: null,
                 isChanging: false, //Меняется ли информация
@@ -31,6 +32,7 @@ export const CommonMuseumLogic = (Component) => {
                 isAudioTypeWrong: false, //Если файл не является аудио
                 isVideoUrlWrong: false, //Если видео не является ссылкой
                 isInputSizeRight: true, //Если все поля нормальной длины
+                isTicketLifeTimeWrong: false, //Если время жизни билета отрицательное
             }
 
             this.handleChange = this.handleChange.bind(this)
@@ -75,6 +77,7 @@ export const CommonMuseumLogic = (Component) => {
                 isAudioTypeWrong: false,
                 isVideoUrlWrong: false,
                 isInputSizeRight: true,
+                isTicketLifeTimeWrong: false,
             })
         }
         toggleIsCardsChanging(isCardsChanging) {
@@ -111,11 +114,12 @@ export const CommonMuseumLogic = (Component) => {
             this.setState({
                 isEmptyInputs: false,
                 isVideoUrlWrong: false,
+                isTicketLifeTimeWrong: false,
                 isInputSizeRight: true,
             })
         }
 
-        updateState(id, name, description, main_img, audio, video, ticket_lifetime) {
+        updateState(id, name, description, main_img, audio, video, ticket_lifetime, sectionName) {
             this.setState({
                 name:name,
                 description: description,
@@ -124,6 +128,7 @@ export const CommonMuseumLogic = (Component) => {
                 main_audio: audio,
                 video: video,
                 ticket_lifetime: ticket_lifetime,
+                sectionName: sectionName,
             })
         }
 

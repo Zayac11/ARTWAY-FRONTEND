@@ -9,6 +9,7 @@ import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
 import TransparentButton from "../../../Common/TransparentButton/TransparentButton";
 
 const Location = (props) => {
+
     let halls = props.halls
     return (
         <div className={'outer'}>
@@ -18,18 +19,19 @@ const Location = (props) => {
 
                     <ItemInformation isUserMuseumAdmin={props.isUserMuseumAdmin}
                                      isChanging={props.isChanging}
-                                     name={props.name}
+                                     name={props.sectionName}
                                      link={'/m-admin'}
                                      locationName={props.locationName}
                                      isCardsChanging={props.isCardsChanging}
                                      toggleIsCardsChanging={props.toggleIsCardsChanging}
                                      toggleIsChanging={props.toggleIsChanging}
                                      history={props.history}
-                                     handleFindKey={props.handleFindKey}
+                                     handleFindKey={props.handleSubmit}
                                      handleFocus={props.handleChangeInputs}
                                      handleChange={props.handleChange}
                                      handleSubmit={props.handleSubmit}
                                      isEmptyInputs={props.isEmptyInputs}
+                                     isInputSizeRight={props.isInputSizeRight}
                                      text={'Список залов'}
                     />
 

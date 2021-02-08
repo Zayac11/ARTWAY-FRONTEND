@@ -40,7 +40,7 @@ class LocationContainer extends React.Component {
     }
 
     updateLocation() {
-        this.props.updateLocationData(this.props.match.params.location_id, this.props.name)
+        this.props.updateLocationData(this.props.match.params.location_id, this.props.sectionName)
         this.props.setImage('')
         this.props.changeCreate(false)
     }
@@ -51,7 +51,7 @@ class LocationContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.locationData !== this.props.locationData) {
-            this.props.updateState(this.props.match.params.location_id, this.props.locationData.name, 'Описание', 'Картинка', '', '', 0)
+            this.props.updateState(this.props.match.params.location_id, '', 'Описание', 'Картинка', '', '', 1, this.props.locationData.name)
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight){
             this.updateLocation()

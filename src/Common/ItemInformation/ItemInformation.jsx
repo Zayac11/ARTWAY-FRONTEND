@@ -23,13 +23,21 @@ const ItemInformation = (props) => {
                                props.isChanging
                                    ?
                                    <div>
-                                       <input type="text" autoFocus={true} className={s.nameInput} value={props.name} onKeyUp={props.handleFindKey} name={'name'} onFocus={props.handleFocus} onChange={props.handleChange}/>
-                                       {
-                                           props.isEmptyInputs &&
-                                           <div className={s.error}>
-                                                Название не может быть пустым
-                                           </div>
-                                       }
+                                       <input type="text" autoFocus={true} className={s.nameInput} value={props.name} onKeyUp={props.handleFindKey} name={'sectionName'} onFocus={props.handleFocus} onChange={props.handleChange}/>
+                                       <div className={s.errors}>
+                                           {
+                                               props.isEmptyInputs &&
+                                               <div className={s.error}>
+                                                   Название не может быть пустым
+                                               </div>
+                                           }
+                                           {
+                                               !props.isInputSizeRight &&
+                                               <div className='form__wrong'>
+                                                   Превышена допустимая длина полей
+                                               </div>
+                                           }
+                                       </div>
                                    </div>
                                    :
                                    <div className={s.name}>

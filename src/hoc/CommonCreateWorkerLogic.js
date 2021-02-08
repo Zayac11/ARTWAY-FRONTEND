@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 let mapStateToPropsForRedirect = (state) => {
     return {
         isUserServiceAdmin: state.service.isUserServiceAdmin,
+        isEmailTaken: state.auth.isEmailTaken,
     };
 }
 
@@ -25,6 +26,7 @@ export const CommonCreateWorkerLogic = (Component) => {
 
                 isEmptyInputs: false, //Все ли поля пустые
                 isEmailWrong: false, //Если почтовый адрес направильный
+                isEmailAlreadyTaken: false, //Если почтовый адрес занят
                 isPasswordMatch: true, //Если пароли совпадают
                 isCreate: false, //Если успешно создано
                 isRight: false, //Если все поля успешно заполнены
@@ -88,11 +90,19 @@ export const CommonCreateWorkerLogic = (Component) => {
         }
 
         handleChangeInputs() {
+
             this.setState({
                 isEmptyInputs: false,
                 isEmailWrong: false,
                 isPasswordMatch: true,
                 isInputSizeRight: true,
+                isEmailAlreadyTaken: false,
+            })
+        }
+
+        componentDidMount() {
+            this.setState({
+                isEmailAlreadyTaken: this.props.isEmailTaken
             })
         }
 
@@ -118,6 +128,7 @@ export const CommonCreateWorkerLogic = (Component) => {
         render() {
 
             return (
+
                 <Component {...this.props}
                            {...this.state}
                            handleSubmit={this.handleSubmit}

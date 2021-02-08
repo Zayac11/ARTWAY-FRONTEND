@@ -17,7 +17,6 @@ import MuseumsListContainer from "./MuseumsList/MuseumsListContainer";
 import CreateMuseum from "./Create/CreateMuseum";
 import TicketsListContainer from "./TicketsList/TicketsListContainer";
 import PrintListContainer from "./PrintList/PrintListContainer";
-import ChangePassword from "./ChangePassword/ChangePassword";
 import InformationContainer from "./Information/InformationContainer";
 import Preloader from "../../Common/Preloader/Preloader";
 import Error404 from "./404/Error404";
@@ -67,7 +66,6 @@ class Container extends React.Component {
 
                     {/*Музей*/}
                     <Route exact path='/m-admin' render={ () => <MuseumContainer />} /> {/*Музей*/}
-                    <Route exact path='/m-admin/change_password' render={ () => <ChangePassword />} /> {/*Смена пароля главного админа*/}
                     <Route exact path='/m-admin/print' render={ () => <PrintListContainer />} /> {/*Экспонаты для печати*/}
                     <Route exact path='/m-admin/hr-management' render={ () => <ManagementContainer />} /> {/*Персонал музея*/}
                     <Route exact path='/m-admin/hr-management/create_worker' render={ () => <CreateWorker />} /> {/*Создание работника*/}

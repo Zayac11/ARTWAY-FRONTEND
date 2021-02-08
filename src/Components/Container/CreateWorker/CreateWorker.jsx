@@ -7,6 +7,7 @@ import {CommonCreateWorkerLogic} from "../../../hoc/CommonCreateWorkerLogic";
 import CreateWorkerInputs from "../../../Common/CreateWorkerInputs/CreateWorkerInputs";
 import {WithSuperAdminRedirect} from "../../../hoc/Redirect/WithSuperAdminRedirect";
 import Preloader from "../../../Common/Preloader/Preloader";
+import {setIsEmailTaken} from "../../../redux/authentication";
 
 class CreateWorker extends React.Component {
 
@@ -20,6 +21,10 @@ class CreateWorker extends React.Component {
                 this.props.password,
                 this.props.role)
         }
+    }
+
+    componentWillUnmount() {
+        this.props.setIsEmailTaken(false)
     }
 
     render() {
@@ -42,14 +47,14 @@ class CreateWorker extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        isEmailTaken: state.auth.isEmailTaken,
+
         isFetch: state.auth.isFetch,
         isUserMuseumSuperAdmin: state.auth.isUserMuseumSuperAdmin
     }
 }
 
 export default compose(
-    connect(mapStateToProps, {createWorker}),
+    connect(mapStateToProps, {createWorker, setIsEmailTaken}),
     withRouter,
     CommonCreateWorkerLogic,
     WithSuperAdminRedirect,

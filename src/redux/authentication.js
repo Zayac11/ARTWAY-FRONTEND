@@ -189,31 +189,6 @@ export const logout = () => { //Выход
     }
 }
 
-export const setPassword = (current_password, new_password, re_new_password) => { //Смена пароля
-    return (dispatch) => {
-
-        authAPI.setPassword(current_password, new_password, re_new_password)
-            .then(response => response.text()
-                .then(result => {
-
-                    console.log('set_password', result)
-                    if(result === '{"new_password":["Введённый пароль слишком широко распространён."]}') {
-                        dispatch(setIsPasswordSimple(true))
-                    }
-                    else if(result === '{"current_password":["Неправильный пароль."]}') { //Пароль неверный
-                        dispatch(setIsCurrentPasswordWrong())
-                        dispatch(setIsPasswordSimple(false))
-                    }
-                    else if (result === ''){
-                        dispatch(setIsPasswordRight(true))
-                        dispatch(setIsPasswordSimple(false))
-                        dispatch(logout())
-                    }
-                }))
-
-    }
-}
-
 export const resetPassword = (email) => { //Ввод почты для смены пароля и отправка письма
     return (dispatch) => {
         dispatch(toggleIsFetching(true))

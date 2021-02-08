@@ -62,6 +62,7 @@ export const deleteWorker = (worker_id) => { //Удаление сотрудни
 export const createWorker = (last_name, first_name, middle_name, email, password, role) => { //Добавление сотрудника
     return (dispatch) => {
         dispatch(toggleIsFetching(true))
+        dispatch(setIsEmailTaken(false))
         adminApi.checkIsUserExists(email)
             .then(response => response.json()
                 .then(result => {

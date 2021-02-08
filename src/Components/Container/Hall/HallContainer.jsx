@@ -36,7 +36,7 @@ class HallContainer extends React.Component {
     }
 
     updateHall() {
-        this.props.updateHallData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.name)
+        this.props.updateHallData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.sectionName)
         this.props.setImage('')
         this.props.changeCreate(false) //Больше не изменяем
     }
@@ -47,7 +47,7 @@ class HallContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.hallData !== this.props.hallData) {
-            this.props.updateState(this.props.match.params.location_id, this.props.hallData.name, 'Описание', 'Картинка', '', '', 0)
+            this.props.updateState(this.props.match.params.location_id, '', 'Описание', 'Картинка', '', '', 1, this.props.hallData.name)
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.updateHall()

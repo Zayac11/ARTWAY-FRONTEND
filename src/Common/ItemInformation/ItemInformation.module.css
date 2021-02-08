@@ -32,7 +32,16 @@
 .name {
     font-size: 14px;
     font-weight: 500;
-    margin: 0 10px;
+    margin: 0 30px;
+    text-align: center;
+}
+
+.errors {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25px;
+    margin: auto;
 }
 
 .edit {

@@ -20,18 +20,19 @@ const Hall = (props) => {
 
                     <ItemInformation isUserMuseumAdmin={props.isUserMuseumAdmin}
                                      isChanging={props.isChanging}
-                                     name={props.name}
+                                     name={props.sectionName}
                                      link={`/m-admin/${props.location_id}`}
                                      isCardsChanging={props.isCardsChanging}
                                      toggleIsCardsChanging={props.toggleIsCardsChanging}
                                      toggleIsChanging={props.toggleIsChanging}
                                      history={props.history}
-                                     handleFindKey={props.handleFindKey}
+                                     handleFindKey={props.handleSubmit}
                                      handleFocus={props.handleChangeInputs}
                                      handleChange={props.handleChange}
                                      handleSubmit={props.handleSubmit}
                                      isEmptyInputs={props.isEmptyInputs}
                                      locationName={props.hallName}
+                                     isInputSizeRight={props.isInputSizeRight}
                                      text={'Список экспонатов'}
                     />
 
