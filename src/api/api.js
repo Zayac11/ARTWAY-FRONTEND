@@ -12,8 +12,6 @@ else {
     baseUrl = process.env.REACT_APP_PRODUCTION_URL
 }
 
-debugger
-
 const getOptions = (mass, auth, method) => { //Если нужен Bearer token, то auth = true
     let formdata = new FormData();
 
