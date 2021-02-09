@@ -72,7 +72,6 @@ class MuseumContainer extends React.Component {
             return <Preloader />
         }
 
-
         return (
             <Museum {...this.props}
                     swapLocations={this.swapLocations}

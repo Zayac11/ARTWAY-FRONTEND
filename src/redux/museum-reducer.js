@@ -78,11 +78,13 @@ export const clearPdf = () => ({type: CLEAR_PDF}) //Очистить файл pd
 //Музей
 export const getMuseumData = () => { //Получение информации о музее по пользователю
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         museumApi.getMuseumData()
             .then(response => response.json()
                 .then(result => {
                     console.log('museumData', result)
                     dispatch(setMuseumData(result.museum, result.locations, result.is_museum_super_admin))
+                    dispatch(toggleIsFetching(false))
             }))
     }
 }

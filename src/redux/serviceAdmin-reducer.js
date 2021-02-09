@@ -68,11 +68,13 @@ export const deleteMuseum = (museum_id) => { //Удаление музея
 
 export const getMuseumSuperAdmin = (museum_id) => { //Получение супер-админа музея и информацию о музее по id музея
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         serviceAdminApi.getMuseumAdminData(museum_id)
             .then(response => response.json()
                 .then(result => {
                     console.log('getMuseumAdminData', result)
                     dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
+                    dispatch(toggleIsFetching(false))
                 }))
     }
 }
