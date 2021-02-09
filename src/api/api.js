@@ -52,12 +52,12 @@ export const museumApi = {
             headers: myHeaders,
             redirect: 'follow',
         }
-        return fetch(baseUrl + `api/m-admin`, requestOptions)
+        return fetch(baseUrl + `api/m_admin`, requestOptions)
     },
 
     updateMuseumData(museum_id, name, img, description, ticket_lifetime) { //Изменение информации о музее
         let options = getOptions([{name: 'museum_id', value: museum_id}, {name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}, {name: 'ticket_lifetime', value: ticket_lifetime}], true,  'PUT')
-        return fetch(baseUrl + `api/m-admin`, options)
+        return fetch(baseUrl + `api/m_admin`, options)
     },
 
     getUserLocationsList(token) { //Получения списка локаций музея по токену пользователя
@@ -75,22 +75,22 @@ export const museumApi = {
             headers: myHeaders,
             redirect: 'follow',
         }
-        return fetch(baseUrl + `api/m-admin/${location_id}`, requestOptions)
+        return fetch(baseUrl + `api/m_admin/${location_id}`, requestOptions)
     },
 
     updateLocationData(location_id, name) { //Изменение информации о локации по id
         let options = getOptions([{name: 'name', value: name}], true,  'PUT')
-        return fetch(baseUrl + `api/m-admin/${location_id}`, options)
+        return fetch(baseUrl + `api/m_admin/${location_id}`, options)
     },
 
     createLocation(name) { //Создание локации по музею пользователя
         let options = getOptions([{name: 'name', value: name}], true,  'POST')
-        return fetch(baseUrl + `api/m-admin`, options)
+        return fetch(baseUrl + `api/m_admin`, options)
     },
 
     deleteLocation(location_id) { //Удаление локации по id
         let options = getOptions([], true,  'DELETE')
-        return fetch(baseUrl + `api/m-admin/${location_id}`, options)
+        return fetch(baseUrl + `api/m_admin/${location_id}`, options)
 
     },
     swapLocations(swap_type, obj_id) { //Изменение позиций локации
@@ -112,22 +112,22 @@ export const museumApi = {
             headers: myHeaders,
             redirect: 'follow',
         }
-        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}`, requestOptions)
+        return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}`, requestOptions)
     },
 
     updateHallData(location_id, hall_id, name) { //Изменение информации о зале по id его локации и зала
         let options = getOptions([{name: 'name', value: name}], true,  'PUT')
-        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}`, options)
+        return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}`, options)
     },
 
     createHall(location_id, name) { //Создание зала по id локации
         let options = getOptions([{name: 'name', value: name}], true,  'POST')
-        return fetch(baseUrl + `api/m-admin/${location_id}`, options)
+        return fetch(baseUrl + `api/m_admin/${location_id}`, options)
     },
 
     deleteHall(location_id, hall_id) { //Удаление зала по id его локации и id зала
         let options = getOptions([], true,  'DELETE')
-        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}`, options)
+        return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}`, options)
 
     },
     swapHalls(swap_type, obj_id) { //Изменение позиций залов в локации
@@ -149,22 +149,22 @@ export const museumApi = {
             headers: myHeaders,
             redirect: 'follow',
         }
-        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}/${artifact_id}`, requestOptions)
+        return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}/${artifact_id}`, requestOptions)
     },
 
     updateArtifactData(location_id, hall_id, artifact_id, name, img, description, audio, video) { //Изменение информации об артефакте по id локации, зала и артефакта
         let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}, {name: 'audio', value: audio}, {name: 'video', value: video}], true,  'PUT')
-        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}/${artifact_id}`, options)
+        return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}/${artifact_id}`, options)
     },
 
     createArtifact(location_id, hall_id, name, img, description, audio, video) { //Создание артефакта по id локации и зала
         let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}, {name: 'audio', value: audio}, {name: 'video', value: video}], true,  'POST')
-        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}`, options)
+        return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}`, options)
     },
 
     deleteArtifact(location_id, hall_id, artifact_id) { //Удаление артефакта по id локации, зала и артефакта
         let options = getOptions([], true,  'DELETE')
-        return fetch(baseUrl + `api/m-admin/${location_id}/${hall_id}/${artifact_id}`, options)
+        return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}/${artifact_id}`, options)
 
     },
 
@@ -186,7 +186,7 @@ export const museumApi = {
             body: raw,
             redirect: 'follow',
         }
-        return fetch(baseUrl + `api/m-admin/print`, requestOptions)
+        return fetch(baseUrl + `api/m_admin/print`, requestOptions)
     },
     relocateArtifact(hall_id, artifact_id) {
         let options = getOptions([{name: 'artifact_pk', value: artifact_id},{name: 'hall_pk', value: hall_id}], true,  'POST')
@@ -237,21 +237,21 @@ export const adminApi = {
             headers: myHeaders,
             redirect: 'follow',
         }
-        return fetch(baseUrl + `api/m-admin/hr-management`, requestOptions)
+        return fetch(baseUrl + `api/m_admin/hr_management`, requestOptions)
     },
     updateWorkerProfile(last_name, first_name, middle_name, email, worker_id) {
         let options = getOptions([{name: 'last_name', value: last_name},{name: 'first_name', value: first_name}, {name: 'middle_name', value: middle_name},
             {name: 'email', value: email}, {name: 'username', value: email}], true,  'PUT')
-        return fetch(baseUrl + `api/m-admin/hr-management/${worker_id}`, options)
+        return fetch(baseUrl + `api/m_admin/hr_management/${worker_id}`, options)
     },
     createWorker(last_name, first_name, middle_name, email, password, role) {
         let options = getOptions([{name: 'last_name', value: last_name},{name: 'first_name', value: first_name}, {name: 'middle_name', value: middle_name},
             {name: 'email', value: email}, {name: 'username', value: email}, {name: 'password', value: password}, {name: 'role', value: role}], true,  'POST')
-        return fetch(baseUrl + `api/m-admin/hr-management`, options)
+        return fetch(baseUrl + `api/m_admin/hr_management`, options)
     },
     deleteWorkerProfile(worker_id) {
         let options = getOptions([], true,  'DELETE')
-        return fetch(baseUrl + `api/m-admin/hr-management/${worker_id}`, options)
+        return fetch(baseUrl + `api/m_admin/hr_management/${worker_id}`, options)
     },
     checkIsUserExists(email) {
         let options = getOptions([{name: 'email', value: email}], true,  'POST')
@@ -270,7 +270,7 @@ export const serviceAdminApi = {
             headers: myHeaders,
             redirect: 'follow',
         }
-        return fetch(baseUrl + `api/s-admin`, requestOptions)
+        return fetch(baseUrl + `api/s_admin`, requestOptions)
     },
     getMuseumAdminData(museum_id) { //Получение информации об админе конкретного музея
         const accessToken = 'Bearer  ' + localStorage.getItem('accessToken')
@@ -281,24 +281,24 @@ export const serviceAdminApi = {
             headers: myHeaders,
             redirect: 'follow',
         }
-        return fetch(baseUrl + `api/s-admin/${museum_id}`, requestOptions)
+        return fetch(baseUrl + `api/s_admin/${museum_id}`, requestOptions)
     },
     createMuseum(name, img, description) { //Создание музея по супер-пользователю
         let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}], true,  'POST')
-        return fetch(baseUrl + `api/s-admin`, options)
+        return fetch(baseUrl + `api/s_admin`, options)
     },
     deleteMuseumSuperAdmin(museum_id) { //Удаление админа музея
         let options = getOptions([], true,  'DELETE')
-        return fetch(baseUrl + `api/s-admin/${museum_id}`, options)
+        return fetch(baseUrl + `api/s_admin/${museum_id}`, options)
     },
     deleteMuseum(museum_id) { //Удаление админа музея
         let options = getOptions([{name: 'museum_pk', value: museum_id}], true,  'DELETE')
-        return fetch(baseUrl + `api/s-admin`, options)
+        return fetch(baseUrl + `api/s_admin`, options)
     },
     createMuseumSuperAdmin(last_name, first_name, middle_name, email, password, museum_id) {
         let options = getOptions([{name: 'last_name', value: last_name},{name: 'first_name', value: first_name}, {name: 'middle_name', value: middle_name},
             {name: 'email', value: email}, {name: 'username', value: email}, {name: 'password', value: password}], true,  'POST')
-        return fetch(baseUrl + `api/s-admin/${museum_id}`, options)
+        return fetch(baseUrl + `api/s_admin/${museum_id}`, options)
     },
 }
 
