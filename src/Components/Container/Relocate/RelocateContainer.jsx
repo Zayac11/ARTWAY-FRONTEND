@@ -8,7 +8,6 @@ import {relocateArtifact} from "../../../redux/artifact-reducer";
 import {getLocationData} from "../../../redux/location-reducer";
 import MuseumCard from "../../../Common/MuseumCard/MuseumCard";
 import s from './Relocate.module.css'
-import BackBtn from "../../../Common/BackBtn/BackBtn";
 import TopContainer from "../../../Common/Top/TopContainer";
 import prev from "../../../assets/images/left-chevron.svg";
 import desktop_arrow from "../../../assets/images/arrow_back_blue.svg";

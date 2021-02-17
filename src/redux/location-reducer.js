@@ -41,7 +41,7 @@ export const getLocationData = (location_id) => { //Получение инфо�
         museumApi.getLocationData(location_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('locationData', result)
+                    // console.log('locationData', result)
                     dispatch(setLocationData(result.location, result.halls))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -52,7 +52,7 @@ export const updateLocationData = (id, name) => { //Обновлении инф�
         museumApi.updateLocationData(id, name)
             .then(response => response.json()
                 .then(result => {
-                    console.log('updatedLocationData', result)
+                    // console.log('updatedLocationData', result)
                     dispatch(setLocationData(result.location, result.halls))
                 }))
     }
@@ -64,7 +64,7 @@ export const createLocation = (name) => { //Добавление локации 
         museumApi.createLocation(name)
             .then(response => response.json()
                 .then(result => {
-                    console.log('createLocation', result)
+                    // console.log('createLocation', result)
                     dispatch(setMuseumData(result.museum, result.locations, result.is_museum_super_admin))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -77,7 +77,7 @@ export const deleteLocation = (id) => { //Удаление локации по i
         museumApi.deleteLocation(id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('deleteLocation', result)
+                    // console.log('deleteLocation', result)
                     dispatch(setMuseumData(result.museum, result.locations, result.is_museum_super_admin))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -89,7 +89,7 @@ export const swapHalls = (swap_type, id) => { //Изменение позици�
         museumApi.swapHalls(swap_type, id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('swapHalls', result)
+                    // console.log('swapHalls', result)
                     dispatch(setLocationData(result.location, result.halls))
                 }))
     }
@@ -101,7 +101,7 @@ export const getUserHallsList = (token, location_id) => {
         museumApi.getUserHallsList(token, location_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('getUserHallsList', result)
+                    // console.log('getUserHallsList', result)
                     if(result.status === 403) {
                         dispatch(deleteToken())
                     } else {

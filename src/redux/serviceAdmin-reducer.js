@@ -38,7 +38,7 @@ export const getMuseums = () => { //Получение списка музеев
         serviceAdminApi.getMuseums()
             .then(response => response.json()
                 .then(result => {
-                    console.log('getServiceAdminData', result)
+                    // console.log('getServiceAdminData', result)
                     dispatch(setMuseums(result))
                 }))
     }
@@ -49,7 +49,7 @@ export const createMuseum = (name, img, description) => { //Создание м�
         serviceAdminApi.createMuseum(name, img, description)
             .then(response => response.json()
                 .then(result => {
-                    console.log('createMuseum', result)
+                    // console.log('createMuseum', result)
                     dispatch(setMuseums(result))
                 }))
     }
@@ -60,7 +60,7 @@ export const deleteMuseum = (museum_id) => { //Удаление музея
         serviceAdminApi.deleteMuseum(museum_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('deleteMuseum', result)
+                    // console.log('deleteMuseum', result)
                     dispatch(setMuseums(result))
                 }))
     }
@@ -72,7 +72,7 @@ export const getMuseumSuperAdmin = (museum_id) => { //Получение суп�
         serviceAdminApi.getMuseumAdminData(museum_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('getMuseumAdminData', result)
+                    // console.log('getMuseumAdminData', result)
                     dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -84,7 +84,7 @@ export const deleteMuseumSuperAdmin = (museum_id) => { //Удаление суп
         serviceAdminApi.deleteMuseumSuperAdmin(museum_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('deleteMuseumSuperAdmin', result)
+                    // console.log('deleteMuseumSuperAdmin', result)
                     dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
                 }))
     }
@@ -96,13 +96,13 @@ export const createMuseumSuperAdmin = (last_name, first_name, middle_name, email
         adminApi.checkIsUserExists(email)
             .then(response => response.json()
                 .then(result => {
-                    console.log('checkIsUserExists', result)
+                    // console.log('checkIsUserExists', result)
                     if(result.status === 404) {
                         serviceAdminApi.createMuseumSuperAdmin(last_name, first_name, middle_name, email, password, museum_id)
                             .then(response => response.json()
                                 .then(result => {
                                     dispatch(setIsEmailTaken(false))
-                                    console.log('createMuseumSuperAdmin', result)
+                                    // console.log('createMuseumSuperAdmin', result)
                                     dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
                                 }))
                     }

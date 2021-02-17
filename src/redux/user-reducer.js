@@ -55,7 +55,7 @@ export const getUserArtifactData = (artifact_id) => { //Получение ин�
         userApi.getUserArtifactData(token, artifact_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('getUserArtifactData', result)
+                    // console.log('getUserArtifactData', result)
                     if (result.status === 200) {
                         dispatch(setArtifactError(false)) //Зануляем ошибку, если пришла норм дата
                         dispatch(setArtifactData(result.data))

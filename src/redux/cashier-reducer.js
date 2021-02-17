@@ -27,7 +27,7 @@ export const getTickets = () => { //Получение списка активн
         cashierApi.getTickets()
             .then(response => response.json()
                 .then(result => {
-                    console.log('getTickets', result)
+                    // console.log('getTickets', result)
                     dispatch(setTickets(result))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -40,7 +40,7 @@ export const createTicket = () => { //Создание билета
         cashierApi.createTicket()
             .then(response => response.json()
                 .then(result => {
-                    console.log('createTicket', result)
+                    // console.log('createTicket', result)
                     dispatch(setTickets(result))
                     dispatch(toggleIsFetching(false))
                 }))

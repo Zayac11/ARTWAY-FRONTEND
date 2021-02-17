@@ -41,7 +41,7 @@ export const getHallData = (location_id, hall_id) => { //Получение ин
         museumApi.getHallData(location_id, hall_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('getHallData', result)
+                    // console.log('getHallData', result)
                     dispatch(setHallData(result.hall, result.artifacts))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -53,7 +53,7 @@ export const updateHallData = (location_id, hall_id, name) => { //Обновле
         museumApi.updateHallData(location_id, hall_id, name)
             .then(response => response.json()
                 .then(result => {
-                    console.log('updateHallData', result)
+                    // console.log('updateHallData', result)
                     dispatch(setHallData(result.hall, result.artifacts))
                 }))
     }
@@ -65,7 +65,7 @@ export const createHall = (id, name) => { //Добавление зала в л�
         museumApi.createHall(id, name)
             .then(response => response.json()
                 .then(result => {
-                    console.log('createHall', result)
+                    // console.log('createHall', result)
                     dispatch(setLocationData(result.location, result.halls))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -78,7 +78,7 @@ export const deleteHall = (location_id, hall_id) => { //Удаление зал�
         museumApi.deleteHall(location_id, hall_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('deleteHall', result)
+                    // console.log('deleteHall', result)
                     dispatch(setLocationData(result.location, result.halls))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -90,7 +90,7 @@ export const swapArtifacts = (swap_type, id) => { //Изменение пози�
         museumApi.swapArtifacts(swap_type, id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('swapArtifacts', result)
+                    // console.log('swapArtifacts', result)
                     dispatch(setHallData(result.hall, result.artifacts))
                 }))
     }
@@ -102,7 +102,7 @@ export const getUserArtifactsList = (token, hall_id) => {
         museumApi.getUserArtifactsList(token, hall_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('getUserArtifactsList', result)
+                    // console.log('getUserArtifactsList', result)
                     if(result.status === 403) {
                         dispatch(deleteToken())
                     }

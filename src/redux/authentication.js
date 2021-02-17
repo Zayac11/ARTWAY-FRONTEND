@@ -138,7 +138,7 @@ export const getStatus = () => { //Проверка пользователя
         authAPI.getStatus()
             .then(response => response.json()
                 .then(result => {
-                    console.log('getStatus', result)
+                    // console.log('getStatus', result)
                     dispatch(setUserStatus(result))
                     if(result.is_service_super_admin || result.is_museum_super_admin || result.is_museum_admin || result.is_museum_cashier) {
                         dispatch(setAuth(true))
@@ -157,7 +157,7 @@ export const login = (username, password) => { //Логин
         authAPI.login(username, password)
             .then(response => response.json()
                 .then(result => {
-                    console.log('login', result)
+                    // console.log('login', result)
                     if(result.detail !== "No active account found with the given credentials") {
                         localStorage.setItem('accessToken', result.access)
                         dispatch(setIsPasswordRight(false))
@@ -192,7 +192,7 @@ export const resetPassword = (email) => { //Ввод почты для смен�
         authAPI.resetPassword(email) //Отправка письма на почту
             .then(response => response.text()
                 .then(result => {
-                    console.log('reset_password', result)
+                    // console.log('reset_password', result)
                     if(result === '{"email":["Введите правильный адрес электронной почты."]}') {
                         dispatch(setIsEmailExists(false))
                     }
@@ -213,7 +213,7 @@ export const resetPasswordConfirm = (uid, token, new_password, re_new_password) 
         authAPI.resetPasswordConfirm(uid, token, new_password, re_new_password)
             .then(response => response.text()
                 .then(result => {
-                    console.log('reset_password_confirm', result)
+                    // console.log('reset_password_confirm', result)
                     if(result === '{"new_password":["Введённый пароль слишком широко распространён."]}') {
                         dispatch(setIsPasswordSimple(true))
                     }

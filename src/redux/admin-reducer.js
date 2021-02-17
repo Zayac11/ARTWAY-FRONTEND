@@ -31,7 +31,7 @@ export const getAdminData = () => { //Получение информации о
         adminApi.getAdminData()
             .then(response => response.json()
                 .then(result => {
-                    console.log('getAdminData', result)
+                    // console.log('getAdminData', result)
                     dispatch(setAdminData(result.museum_super_admin, result.museum_admins, result.museum_cashiers))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -42,7 +42,7 @@ export const updateWorkerData = (last_name, first_name, middle_name, username, w
         adminApi.updateWorkerProfile(last_name, first_name, middle_name, username, worker_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('updateWorkerProfile', result)
+                    // console.log('updateWorkerProfile', result)
                     dispatch(setAdminData(result.museum_super_admin, result.museum_admins, result.museum_cashiers))
                 }))
     }
@@ -53,7 +53,7 @@ export const deleteWorker = (worker_id) => { //Удаление сотрудни
         adminApi.deleteWorkerProfile(worker_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('deleteWorkerProfile', result)
+                    // console.log('deleteWorkerProfile', result)
                     dispatch(setAdminData(result.museum_super_admin, result.museum_admins, result.museum_cashiers))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -66,12 +66,12 @@ export const createWorker = (last_name, first_name, middle_name, email, password
         adminApi.checkIsUserExists(email)
             .then(response => response.json()
                 .then(result => {
-                    console.log('checkIsUserExists', result)
+                    // console.log('checkIsUserExists', result)
                     if(result.status === 404) {
                         adminApi.createWorker(last_name, first_name, middle_name, email, password, role)
                             .then(response => response.json()
                                 .then(result => {
-                                    console.log('createWorker', result)
+                                    // console.log('createWorker', result)
                                     dispatch(setIsEmailTaken(false))
                                     dispatch(setAdminData(result.museum_super_admin, result.museum_admins, result.museum_cashiers))
                                 }))

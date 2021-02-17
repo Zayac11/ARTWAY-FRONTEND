@@ -82,7 +82,7 @@ export const getMuseumData = () => { //Получение информации �
         museumApi.getMuseumData()
             .then(response => response.json()
                 .then(result => {
-                    console.log('museumData', result)
+                    // console.log('museumData', result)
                     dispatch(setMuseumData(result.museum, result.locations, result.is_museum_super_admin))
                     dispatch(toggleIsFetching(false))
             }))
@@ -93,7 +93,7 @@ export const updateMuseumData = (id, name, img, description, ticket_lifetime) =>
         museumApi.updateMuseumData(id, name, img, description, ticket_lifetime)
             .then(response => response.json()
                 .then(result => {
-                    console.log('updatedMuseumData', result)
+                    // console.log('updatedMuseumData', result)
                     dispatch(setMuseumData(result.museum, result.locations, result.is_museum_super_admin))
             }))
     }
@@ -104,7 +104,7 @@ export const swapLocations = (swap_type, id) => { //Изменение пози�
         museumApi.swapLocations(swap_type, id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('swapLocations', result)
+                    // console.log('swapLocations', result)
                     dispatch(setMuseumData(result.museum, result.locations, result.is_museum_super_admin))
                 }))
     }
@@ -118,7 +118,7 @@ export const printArtifacts = (artifacts, size) => { //Отправить арт
         museumApi.printArtifactsCards(artifacts_ids, size)
             .then(response => response.json()
                 .then(result => {
-                    console.log('printArtifactsCards', result)
+                    // console.log('printArtifactsCards', result)
                     dispatch(setPdfToPrint(result))
                 }))
     }
@@ -130,7 +130,7 @@ export const getUsersLocationsList = (token) => { //Получения спис�
         museumApi.getUserLocationsList(token)
             .then(response => response.json()
                 .then(result => {
-                    console.log('getUserLocationsList', result)
+                    // console.log('getUserLocationsList', result)
                     if(result.status === 403) {
                         dispatch(deleteToken())
                     }
