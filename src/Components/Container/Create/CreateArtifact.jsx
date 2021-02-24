@@ -56,7 +56,7 @@ class CreateArtifact extends React.Component {
         }
     }
     createArtifact() {
-        this.props.createArtifact(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.name, this.props.img, this.props.description, this.props.audio, this.props.video)
+        this.props.createArtifact(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.name, this.props.img_1, this.props.img_2, this.props.img_3, this.props.img_4, this.props.img_5, this.props.description, this.props.audio, this.props.video)
     }
 
     render() {

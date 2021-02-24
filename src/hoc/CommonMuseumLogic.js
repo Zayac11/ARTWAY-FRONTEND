@@ -18,12 +18,22 @@ export const CommonMuseumLogic = (Component) => {
                 sectionName: "",
                 id: 0,
                 description: "",
-                img: "",
+                img: "", //переменная в которую записывается новая картинка (картинка музея)
+
+                img_1 : null, //Максимальное количество картинок в экспонате
+                img_2 : null, //В будущем переделать в массив...
+                img_3 : null,
+                img_4 : null,
+                img_5 : null,
+
                 audio: "",
                 video: "",
                 ticket_lifetime: 1,
+                images: null,
                 main_audio: null,
-                main_img: null,
+                main_img: null, //картинка, которая показывается на экране (картинка музея)
+
+
                 isChanging: false, //Меняется ли информация
                 isCardsChanging: false, //Меняются ли местами карточки локаций/залов/артефактов
                 isEmptyInputs: false, //Если ли пустые поля
@@ -45,6 +55,7 @@ export const CommonMuseumLogic = (Component) => {
             this.setImage = this.setImage.bind(this)
             this.setAudio = this.setAudio.bind(this)
             this.toggleOpenModal = this.toggleOpenModal.bind(this)
+            this.setArtifactImages = this.setArtifactImages.bind(this)
         }
 
         setImage(img) { //Обновление фотографии в state
@@ -55,6 +66,16 @@ export const CommonMuseumLogic = (Component) => {
         setAudio(audio) { //Обновление аудио в state
             this.setState({
                 audioToUpdate: audio,
+            })
+        }
+
+        setArtifactImages(img_1, img_2, img_3, img_4, img_5) { //добавление картинок экспоната
+            this.setState({
+                img_1 : img_1,
+                img_2 : img_2,
+                img_3 : img_3,
+                img_4 : img_4,
+                img_5 : img_5,
             })
         }
 
@@ -121,7 +142,7 @@ export const CommonMuseumLogic = (Component) => {
             })
         }
 
-        updateState(id, name, description, main_img, audio, video, ticket_lifetime, sectionName) {
+        updateState(id, name, description, main_img, audio, video, ticket_lifetime, sectionName, images) {
             this.setState({
                 name:name,
                 description: description,
@@ -131,6 +152,7 @@ export const CommonMuseumLogic = (Component) => {
                 video: video,
                 ticket_lifetime: ticket_lifetime,
                 sectionName: sectionName,
+                images: images,
             })
         }
 
@@ -142,6 +164,7 @@ export const CommonMuseumLogic = (Component) => {
                            toggleIsChanging={this.toggleIsChanging}
                            toggleIsCardsChanging={this.toggleIsCardsChanging}
                            setValidation={this.setValidation}
+                           setArtifactImages={this.setArtifactImages}
 
                            setImage={this.setImage}
                            setAudio={this.setAudio}

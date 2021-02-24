@@ -1,4 +1,4 @@
-const debug = false
+const debug = true
 //backend
 //true for localhost
 //false for prod.
@@ -157,8 +157,8 @@ export const museumApi = {
         return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}/${artifact_id}`, options)
     },
 
-    createArtifact(location_id, hall_id, name, img, description, audio, video) { //Создание артефакта по id локации и зала
-        let options = getOptions([{name: 'name', value: name},{name: 'img', value: img}, {name: 'description', value: description}, {name: 'audio', value: audio}, {name: 'video', value: video}], true,  'POST')
+    createArtifact(location_id, hall_id, name, img_1, img_2, img_3, img_4, img_5, description, audio, video) { //Создание артефакта по id локации и зала
+        let options = getOptions([{name: 'name', value: name},{name: 'img_1', value: img_1},{name: 'img_2', value: img_2},{name: 'img_3', value: img_3},{name: 'img_4', value: img_4},{name: 'img_5', value: img_5}, {name: 'description', value: description}, {name: 'audio', value: audio}, {name: 'video', value: video}], true,  'POST')
         return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}`, options)
     },
 

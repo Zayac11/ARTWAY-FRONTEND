@@ -2,12 +2,24 @@ import React from 'react';
 import s from './InputFile.module.css'
 
 const InputFile = (props) => {
+
     return (
-        <div className={s.container}>
-            <div className={s.text}>
-                {props.text}
-            </div>
-            <input className={s.input} onKeyUp={props.handleFindKey} value={props.value} type={props.type} name={props.name} onFocus={props.handleFocus} onChange={props.handleChange}/>
+        <div className={s.file}>
+            <input type="file" name={props.name} id={props.id} onChange={props.handleChangeFile} onFocus={props.handleFocus} className={s.fileInput}/>
+            <label htmlFor={props.id}>
+                {
+                    props.file !== null &&
+                    <span>{props.text2}</span>
+                }
+                {
+                    props.file === null &&
+                        <span>{props.text1}</span>
+                }
+            </label>
+            {
+                props.file !== null && props.file.name &&
+                <span className={s.fileName}>{props.file.name}</span>
+            }
         </div>
     );
 }

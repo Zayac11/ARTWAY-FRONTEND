@@ -10,6 +10,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-h5-audio-player": "^3.6.0",
+    "react-image-gallery": "^1.0.9",
     "react-png-modal": "^2.1.6",
     "react-qr-reader": "^2.2.1",
     "react-redux": "^7.2.2",

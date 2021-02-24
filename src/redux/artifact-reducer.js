@@ -6,6 +6,7 @@ const SET_ARTIFACT_DATA = 'SET_ARTIFACT_DATA'
 
 let initialState = {
     artifactData: {}, //Информация по артифакту
+    images: []
 }
 
 const artifactReducer = (state = initialState, action) => {
@@ -14,6 +15,7 @@ const artifactReducer = (state = initialState, action) => {
             return {
                 ...state,
                 artifactData: action.artifactData,
+                images: [action.artifactData.img_1, action.artifactData.img_2, action.artifactData.img_3, action.artifactData.img_4, action.artifactData.img_5]
             }
         default:
             return state;
@@ -29,7 +31,7 @@ export const getArtifactData = (location_id, hall_id, artifact_id) => { //Пол
         museumApi.getArtifactData(location_id, hall_id, artifact_id)
             .then(response => response.json()
                 .then(result => {
-                    // console.log('getArtifactData', result)
+                    console.log('getArtifactData', result)
                     dispatch(setArtifactData(result))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -41,19 +43,19 @@ export const updateArtifactData = (location_id, hall_id, artifact_id,name, img, 
         museumApi.updateArtifactData(location_id, hall_id, artifact_id,name, img, description, audio, video)
             .then(response => response.json()
                 .then(result => {
-                    // console.log('updateArtifactData', result)
+                    console.log('updateArtifactData', result)
                     dispatch(setArtifactData(result))
                 }))
     }
 }
 
-export const createArtifact = (location_id, hall_id, name, img, description, audio, video) => { //Добавление артефакта в зал по id локации и зала
+export const createArtifact = (location_id, hall_id, name, img_1,img_2,img_3,img_4,img_5, description, audio, video) => { //Добавление артефакта в зал по id локации и зала
     return (dispatch) => {
         dispatch(toggleIsFetching(true))
-        museumApi.createArtifact(location_id, hall_id, name, img, description, audio, video)
+        museumApi.createArtifact(location_id, hall_id, name, img_1,img_2,img_3,img_4,img_5, description, audio, video)
             .then(response => response.json()
                 .then(result => {
-                    // console.log('createArtifact', result)
+                    console.log('createArtifact', result)
                     dispatch(setHallData(result.hall, result.artifacts))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -66,7 +68,7 @@ export const deleteArtifact = (location_id, hall_id, artifact_id) => { //Уда�
         museumApi.deleteArtifact(location_id, hall_id, artifact_id)
             .then(response => response.json()
                 .then(result => {
-                    // console.log('deleteArtifact', result)
+                    console.log('deleteArtifact', result)
                     dispatch(setHallData(result.hall, result.artifacts))
                     dispatch(toggleIsFetching(false))
                 }))

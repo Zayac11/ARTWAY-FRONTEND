@@ -1,46 +1,32 @@
-.container {
-    width: max-content;
-    margin: 0 auto 20px;
+.fileName {
+    margin-left: 10px;
+    font-size: 10px;
+    max-width: 160px;
 }
 
-.text {
-    font-size: 14px;
-    margin-bottom: 10px;
+.fileInput {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
 
-.input {
-    height: 40px;
-    width: 320px;
-    font-size: 14px;
-    padding: 10px 15px;
-    outline: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: transparent;
-}
-
-.input:focus {
+.fileInput + label {
+    color: #196bb1;
     border: 1px solid #196bb1;
-    background-color: white;
+    background-color: transparent;
+    font-size: 12px;
+    cursor: pointer;
+    display: block;
+    overflow: hidden;
+    padding: 13px 0;
+    border-radius: 8px;
+    text-align: center;
+    width: 150px;
 }
 
-@media (min-width: 992px) and (max-width: 1200px) {
-
-}
-@media (min-width: 768px) and (max-width: 991px) {
-
-}
-@media (min-width: 650px) and (max-width: 767px) {
-
-}
-@media (min-width: 480px) and (max-width: 649px) {
-
-}
-@media (max-width: 479px) {
-    .input {
-        width: 100%;
-    }
-    .container {
-        width: 100%;
-    }
+.file {
+    margin-bottom: 10px;
 }

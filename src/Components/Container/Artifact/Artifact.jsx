@@ -11,6 +11,7 @@ import RedTransparentBtn from "../../../Common/RedTransparentBtn/RedTransparentB
 import RelocateContainer from "../Relocate/RelocateContainer";
 import DeleteModal from "../../../Common/DeleteModal/DeleteModal";
 import desktop_arrow from "../../../assets/images/arrow_back_blue.svg";
+import Image from "../../../Common/Image/Image";
 
 const Artifact = (props) => {
     return (
@@ -62,7 +63,11 @@ const Artifact = (props) => {
 
                                             <div className={s.artifact}>
                                                 <div className={s.imgContainer}>
-                                                    <img src={props.main_img} alt="artifact"/>
+                                                    {/*<img src={props.main_img} alt="artifact"/>*/}
+                                                    {
+                                                        props.images !== null &&
+                                                        <Image images={props.images} />
+                                                    }
                                                 </div>
 
                                                 <div className={s.info}>

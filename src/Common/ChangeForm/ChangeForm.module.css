@@ -25,6 +25,11 @@
     margin: 15px auto 0;
 }
 
+.artifactFileInputContainer {
+    max-width: 320px;
+    margin: 15px auto 0;
+}
+
 .fileInput {
     width: 0;
     height: 0;

@@ -5,8 +5,10 @@ import Textarea from "../Textarea/Textarea";
 import BlueButton from "../BlueButton/BlueButton";
 import RedTransparentBtn from "../RedTransparentBtn/RedTransparentBtn";
 import BackBtn from "../BackBtn/BackBtn";
+import InputFile from "../InputFile/InputFile";
 
 const ChangeForm = (props) => {
+
     return (
         <>
         <div className={s.form}>
@@ -45,16 +47,45 @@ const ChangeForm = (props) => {
                     Пожалуйста, добавьте корректную ссылку на видео
                 </div>
             }
-            <div className={s.fileInputContainer}>
-                <input type="file" name={'img'} id={'fileImg'} onChange={props.handleChangeFile} onFocus={props.handleFocus} className={s.fileInput}/>
-                <label htmlFor="fileImg">
-                    <span>Загрузить фото</span>
-                </label>
-                {
-                    props.img !== '' &&
-                    <span className={s.fileName}>{props.img.name}</span>
-                }
-            </div>
+            {
+                !props.isItemArtifact &&
+                <div className={s.fileInputContainer}>
+                    <input type="file" name={'img'} id={'fileImg'} onChange={props.handleChangeFile} onFocus={props.handleFocus} className={s.fileInput}/>
+                    <label htmlFor="fileImg">
+                        <span>Загрузить фото</span>
+                    </label>
+                    {
+                        props.img !== '' &&
+                        <span className={s.fileName}>{props.img.name}</span>
+                    }
+                </div>
+            }
+
+            {
+                props.isItemArtifact &&
+                <div className={s.artifactFileInputContainer}>
+
+                    <InputFile text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_1} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg1'} name={'img_1'} />
+                    {
+                        props.img_1 !== null &&
+                        <InputFile text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_2} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg2'} name={'img_2'} />
+                    }
+                    {
+                        props.img_2 !== null &&
+                        <InputFile text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_3} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg3'} name={'img_3'} />
+                    }
+                    {
+                        props.img_3 !== null &&
+                        <InputFile text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_4} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg4'} name={'img_4'} />
+                    }
+                    {
+                        props.img_4 !== null &&
+                        <InputFile text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_5} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg5'} name={'img_5'} />
+                    }
+
+                </div>
+            }
+
             {
                 props.isItemArtifact &&
                     <>

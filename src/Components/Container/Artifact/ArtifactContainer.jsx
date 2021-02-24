@@ -89,14 +89,22 @@ class ArtifactContainer extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.artifactData !== this.props.artifactData) {
-            this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, this.props.artifactData.img, this.props.artifactData.audio, this.props.artifactData.video, 1, '')
+            this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, '', this.props.artifactData.audio, this.props.artifactData.video, 1, '', this.props.images_massive)
+            this.props.setArtifactImages(this.props.artifactData.img_1, this.props.artifactData.img_2, this.props.artifactData.img_3, this.props.artifactData.img_4, this.props.artifactData.img_5)
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.checkAudio()
         }
+
     }
 
+    // componentWillUnmount() {
+    //     this.props.updateState('', '', '' , '', '', '', 1, '', '')
+    //     this.props.setArtifactImages('','','','','')
+    // }
+
     render() {
+
         if(this.props.isArtifactError) {
             return <Redirect to={'/enter'} />
         }
@@ -136,6 +144,7 @@ class ArtifactContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         artifactData: state.artifact.artifactData,
+        images_massive: state.artifact.images,
         isArtifactError: state.user.isArtifactError,
         isUserMuseumAdmin: state.auth.isUserMuseumAdmin,
         isFetch: state.auth.isFetch,

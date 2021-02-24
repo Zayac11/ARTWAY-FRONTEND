@@ -22,11 +22,18 @@ export const CommonCreateLogic = (Component) => {
         }
 
         handleSubmit() {
+            debugger
             if(this.props.description === '' || this.props.name === '') {
                 this.props.setValidation('isEmptyInputs', true) //Ошибка в пустых полях
             }
             else if(this.props.name.length > 35) {
                 this.props.setValidation('isInputSizeRight', false)
+            }
+            //Если нет ошибки в формате файла
+            else if((/image/.test(this.props.img_1.type) && /image/.test(this.props.img_2.type) && /image/.test(this.props.img_3.type) && /image/.test(this.props.img_4.type) && /image/.test(this.props.img_5.type))
+            || (this.props.img_1 === null && this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null)
+            ){
+                this.changeCreate(true)
             }
             else if(/image/.test(this.props.img.type)) { //Если нет ошибки в формате файла
                 this.changeCreate(true)
@@ -35,10 +42,12 @@ export const CommonCreateLogic = (Component) => {
                 this.props.setValidation('isPhotoTypeWrong', true) //Ошибка в формате файла картинки
                 this.changeCreate(false)
             }
+
             else {
                 this.props.setValidation('isPhotoTypeWrong', true)
                 this.changeCreate(false)
             }
+        //    mass.filter(img => img.img === "222").length < 3 сравниваем длину и понимаем, что если кто-то отсеялся, то нужно загружать заново
         }
 
         changeCreate(isCreate) {
