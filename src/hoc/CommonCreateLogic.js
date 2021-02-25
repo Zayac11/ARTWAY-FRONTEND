@@ -22,13 +22,18 @@ export const CommonCreateLogic = (Component) => {
         }
 
         handleSubmit() {
+            debugger
             if(this.props.description === '' || this.props.name === '') {
                 this.props.setValidation('isEmptyInputs', true) //Ошибка в пустых полях
             }
             else if(this.props.name.length > 35) {
                 this.props.setValidation('isInputSizeRight', false)
             }
-            //Если картинка пустая
+            //добавляем возможность создания экспоната без картинки
+            else if(this.props.img_1 === null && this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null && this.props.main_img === 'img') {
+                this.changeCreate(true)
+            }
+            //Если картинка музея окажется пустой пустая
             else if(this.props.img_1 === null && this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null && this.props.img === '') {
                 this.props.setValidation('isPhotoTypeWrong', true) //Ошибка в формате файла картинки
                 this.changeCreate(false)
@@ -79,16 +84,13 @@ export const CommonCreateLogic = (Component) => {
                     this.changeCreate(true)
                 }
             }
+            //Файл - картинка
             else if(/image/.test(this.props.img.type)) { //валидация картинки музея
                 this.changeCreate(true)
             }
 
-            // else if(this.props.img === '') {
-            //     this.props.setValidation('isPhotoTypeWrong', true) //Ошибка в формате файла картинки
-            //     this.changeCreate(false)
-            // }
-
-            else if (!/image/.test(this.props.img.type) && this.props.img !== '' ){
+            //Файл есть, но не является картинкой
+            else if (!/image/.test(this.props.img.type) && this.props.img !== ''){
                 this.props.setValidation('isPhotoTypeWrong', true)
                 this.changeCreate(false)
             }

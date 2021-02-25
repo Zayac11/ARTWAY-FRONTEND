@@ -129,7 +129,6 @@ export const CommonMuseumLogic = (Component) => {
         }
 
         setValidation(name, bool) {
-            debugger
             this.setState({
                 [name]: bool,
             })

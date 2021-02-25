@@ -101,15 +101,20 @@ class ArtifactContainer extends React.Component {
             }
         }
 
+        if(this.props.link_name_1 === '' && this.props.link_name_2 === '' && this.props.link_name_3 === '' && this.props.link_name_4 === '' && this.props.link_name_5 === '')
+        {
+            this.checkAudio()
+        }
+
     }
 
     checkAudio() {
 
         //Если аудио нет вообще пустая
         if(this.props.audio_1 === null && this.props.audio_2 === null && this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
-            this.props.setValidation('isAudioTypeWrong', true)
-            this.props.toggleIsChanging(true)
             this.props.changeCreate(false)
+            this.props.toggleIsChanging(true)
+            this.props.setValidation('isAudioTypeWrong', true)
         }
         //Если картинка заполнена и она не является изображением
         else if(this.props.audio_1 !== null) {
@@ -120,6 +125,7 @@ class ArtifactContainer extends React.Component {
             }
             else if (this.props.audio_2 === null && this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
                 this.updateArtifact()
+                this.props.toggleIsChanging(false)
             }
         }
         if(this.props.audio_2 !== null) {
@@ -130,6 +136,7 @@ class ArtifactContainer extends React.Component {
             }
             else if (this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
                 this.updateArtifact()
+                this.props.toggleIsChanging(false)
             }
         }
         if(this.props.audio_3 !== null) {
@@ -140,6 +147,7 @@ class ArtifactContainer extends React.Component {
             }
             else if (this.props.audio_4 === null && this.props.audio_5 === null) {
                 this.updateArtifact()
+                this.props.toggleIsChanging(false)
             }
         }
         if(this.props.audio_4 !== null) {
@@ -150,6 +158,7 @@ class ArtifactContainer extends React.Component {
             }
             else if (this.props.audio_5 === null) {
                 this.updateArtifact()
+                this.props.toggleIsChanging(false)
             }
         }
 
@@ -161,6 +170,7 @@ class ArtifactContainer extends React.Component {
             }
             else {
                 this.updateArtifact()
+                this.props.toggleIsChanging(false)
             }
         }
     }

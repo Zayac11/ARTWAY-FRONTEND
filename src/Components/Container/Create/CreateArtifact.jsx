@@ -23,7 +23,7 @@ class CreateArtifact extends React.Component {
     }
 
     componentDidMount() {
-
+        this.props.updateState(0, '', '', 'img','' ,'', 1, '', '', '')
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -33,6 +33,7 @@ class CreateArtifact extends React.Component {
     }
 
     checkVideo() {
+
         let vid = /((ftp|http|https):\/\/)?(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
 
         if(this.props.link_name_1 !== '' || this.props.link_value_1 !== '') {
@@ -88,10 +89,15 @@ class CreateArtifact extends React.Component {
             }
         }
 
+        if(this.props.link_name_1 === '' && this.props.link_name_2 === '' && this.props.link_name_3 === '' && this.props.link_name_4 === '' && this.props.link_name_5 === '')
+        {
+            this.checkAudio()
+        }
+
     }
 
     checkAudio() {
-
+        debugger
         //Если аудио нет вообще
         if(this.props.audio_1 === null && this.props.audio_2 === null && this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
             this.props.setValidation('isAudioTypeWrong', true)

@@ -121,10 +121,7 @@ const Artifact = (props) => {
                                                     {
                                                     (props.link_value_1 !== '' || props.link_value_2 !== '' || props.link_value_3 !== '' || props.link_value_4 !== '' || props.link_value_5 !== '')
                                                     &&
-                                                    <div className={s.descriptionContainer}>
-                                                            <h3 className={s.title}>
-                                                                Видеофрагменты
-                                                            </h3>
+                                                    <>
                                                         {
                                                             (props.link_value_1 !== '' && props.link_name_1 !== '') &&
                                                             <div>
@@ -180,7 +177,7 @@ const Artifact = (props) => {
                                                                 </a>
                                                             </div>
                                                         }
-                                                    </div>
+                                                    </>
                                                     }
                                                     {
                                                         props.isRelocated &&

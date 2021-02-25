@@ -50,8 +50,8 @@ export const CommonUpdateLogic = (Component) => {
                     this.changeCreate(false)
                 }
                 else if (this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
+                    // this.props.toggleIsChanging(false)
                     this.changeCreate(true)
-                    this.props.toggleIsChanging(false)
                 }
             }
             if(this.props.img_2 !== null) {
@@ -60,7 +60,7 @@ export const CommonUpdateLogic = (Component) => {
                     this.changeCreate(false)
                 }
                 else if (this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
-                    this.props.toggleIsChanging(false)
+                    // this.props.toggleIsChanging(false)
                     this.changeCreate(true)
                 }
             }
@@ -70,7 +70,7 @@ export const CommonUpdateLogic = (Component) => {
                     this.changeCreate(false)
                 }
                 else if (this.props.img_4 === null && this.props.img_5 === null) {
-                    this.props.toggleIsChanging(false)
+                    // this.props.toggleIsChanging(false)
                     this.changeCreate(true)
                 }
             }
@@ -80,7 +80,7 @@ export const CommonUpdateLogic = (Component) => {
                     this.changeCreate(false)
                 }
                 else if (this.props.img_5 === null) {
-                    this.props.toggleIsChanging(false)
+                    // this.props.toggleIsChanging(false)
                     this.changeCreate(true)
                 }
             }
@@ -90,7 +90,7 @@ export const CommonUpdateLogic = (Component) => {
                     this.changeCreate(false)
                 }
                 else {
-                    this.props.toggleIsChanging(false)
+                    // this.props.toggleIsChanging(false)
                     this.changeCreate(true)
                 }
             }
