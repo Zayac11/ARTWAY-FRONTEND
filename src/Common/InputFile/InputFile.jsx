@@ -2,7 +2,6 @@ import React from 'react';
 import s from './InputFile.module.css'
 
 const InputFile = (props) => {
-
     return (
         <div className={s.file}>
             <input type="file" name={props.name} id={props.id} onChange={props.handleChangeFile} onFocus={props.handleFocus} className={s.fileInput}/>

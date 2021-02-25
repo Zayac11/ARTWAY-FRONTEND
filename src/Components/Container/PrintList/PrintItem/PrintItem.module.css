@@ -28,6 +28,15 @@
     border-radius: 8px;
 }
 
+.noImg {
+    width: 100%;
+    display: block;
+    object-fit: contain;
+    border-radius: 8px;
+    background-color: #ccc;
+    height: 70px;
+}
+
 .id {
     font-size: 10px;
     margin-bottom: 15px;

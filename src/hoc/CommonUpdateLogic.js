@@ -29,6 +29,7 @@ export const CommonUpdateLogic = (Component) => {
         }
 
         handleSubmit() {
+            debugger
             if(this.props.description === '' || (this.props.name === '' && this.props.sectionName === '') || this.props.ticket_lifetime === '') { //Ошибка в пустых полях
                 this.props.setValidation('isEmptyInputs', true)
             }
@@ -38,69 +39,72 @@ export const CommonUpdateLogic = (Component) => {
             else if(this.props.ticket_lifetime < 1) {
                 this.props.setValidation('isTicketLifeTimeWrong', true)
             }
-            else if(this.props.img_1 === null && this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null && this.props.img === '') { //Если пользователь не хочет обновлять фотографию, то просто берется ссылка на старую
-                this.props.setImage(this.props.main_img) //Обновление фотографии в state
-                this.props.toggleIsChanging(false)
-                this.changeCreate(true)
-            }
-            //Если картинка заполнена и она не является изображением
-            else if(this.props.img_1 !== null) {
-                if(!/image/.test(this.props.img_1.type) && !this.props.img_1.length) {
+            else {
+                if(this.props.img_1 === null && this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null && this.props.img === '') { //Если пользователь не хочет обновлять фотографию, то просто берется ссылка на старую
+                    this.props.setImage(this.props.main_img) //Обновление фотографии в state
+                    this.props.toggleIsChanging(false)
+                    this.changeCreate(true)
+                }
+
+                //Если картинка заполнена и она не является изображением
+                else if(this.props.img_1 !== null) {
+                    if(!/image/.test(this.props.img_1.type) && !this.props.img_1.length) {
+                        this.props.setValidation('isPhotoTypeWrong', true)
+                        this.changeCreate(false)
+                    }
+                    else if (this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
+                        // this.props.toggleIsChanging(false)
+                        this.changeCreate(true)
+                    }
+                }
+                if(this.props.img_2 !== null) {
+                    if(!/image/.test(this.props.img_2.type) && !this.props.img_2.length) {
+                        this.props.setValidation('isPhotoTypeWrong', true)
+                        this.changeCreate(false)
+                    }
+                    else if (this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
+                        // this.props.toggleIsChanging(false)
+                        this.changeCreate(true)
+                    }
+                }
+                if(this.props.img_3 !== null) {
+                    if(!/image/.test(this.props.img_3.type) && !this.props.img_3.length) {
+                        this.props.setValidation('isPhotoTypeWrong', true)
+                        this.changeCreate(false)
+                    }
+                    else if (this.props.img_4 === null && this.props.img_5 === null) {
+                        // this.props.toggleIsChanging(false)
+                        this.changeCreate(true)
+                    }
+                }
+                if(this.props.img_4 !== null) {
+                    if(!/image/.test(this.props.img_4.type) && !this.props.img_4.length) {
+                        this.props.setValidation('isPhotoTypeWrong', true)
+                        this.changeCreate(false)
+                    }
+                    else if (this.props.img_5 === null) {
+                        // this.props.toggleIsChanging(false)
+                        this.changeCreate(true)
+                    }
+                }
+                if(this.props.img_5 !== null) {
+                    if(!/image/.test(this.props.img_5.type) && !this.props.img_5.length) {
+                        this.props.setValidation('isPhotoTypeWrong', true)
+                        this.changeCreate(false)
+                    }
+                    else {
+                        // this.props.toggleIsChanging(false)
+                        this.changeCreate(true)
+                    }
+                }
+                else if(/image/.test(this.props.img.type)) {
+                    this.props.toggleIsChanging(false)
+                    this.changeCreate(true)
+                }
+                else if (!/image/.test(this.props.img.type) && this.props.img !== '' ) {
                     this.props.setValidation('isPhotoTypeWrong', true)
                     this.changeCreate(false)
                 }
-                else if (this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
-                    // this.props.toggleIsChanging(false)
-                    this.changeCreate(true)
-                }
-            }
-            if(this.props.img_2 !== null) {
-                if(!/image/.test(this.props.img_2.type) && !this.props.img_2.length) {
-                    this.props.setValidation('isPhotoTypeWrong', true)
-                    this.changeCreate(false)
-                }
-                else if (this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
-                    // this.props.toggleIsChanging(false)
-                    this.changeCreate(true)
-                }
-            }
-            if(this.props.img_3 !== null) {
-                if(!/image/.test(this.props.img_3.type) && !this.props.img_3.length) {
-                    this.props.setValidation('isPhotoTypeWrong', true)
-                    this.changeCreate(false)
-                }
-                else if (this.props.img_4 === null && this.props.img_5 === null) {
-                    // this.props.toggleIsChanging(false)
-                    this.changeCreate(true)
-                }
-            }
-            if(this.props.img_4 !== null) {
-                if(!/image/.test(this.props.img_4.type) && !this.props.img_4.length) {
-                    this.props.setValidation('isPhotoTypeWrong', true)
-                    this.changeCreate(false)
-                }
-                else if (this.props.img_5 === null) {
-                    // this.props.toggleIsChanging(false)
-                    this.changeCreate(true)
-                }
-            }
-            if(this.props.img_5 !== null) {
-                if(!/image/.test(this.props.img_5.type) && !this.props.img_5.length) {
-                    this.props.setValidation('isPhotoTypeWrong', true)
-                    this.changeCreate(false)
-                }
-                else {
-                    // this.props.toggleIsChanging(false)
-                    this.changeCreate(true)
-                }
-            }
-            else if(/image/.test(this.props.img.type)) {
-                this.props.toggleIsChanging(false)
-                this.changeCreate(true)
-            }
-            else if (!/image/.test(this.props.img.type) && this.props.img !== '' ) {
-                this.props.setValidation('isPhotoTypeWrong', true)
-                this.changeCreate(false)
             }
         }
 
