@@ -33,7 +33,7 @@ class CreateArtifact extends React.Component {
     }
 
     checkVideo() {
-        let vid = /^(ftp|http|https):\/\/[^ "]+$/
+        let vid = /((ftp|http|https):\/\/)?(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
 
         if(this.props.link_name_1 !== '' || this.props.link_value_1 !== '') {
             if(!vid.test(this.props.link_value_1)) {
