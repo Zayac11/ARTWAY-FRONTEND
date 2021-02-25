@@ -22,28 +22,73 @@ export const CommonCreateLogic = (Component) => {
         }
 
         handleSubmit() {
-            debugger
             if(this.props.description === '' || this.props.name === '') {
                 this.props.setValidation('isEmptyInputs', true) //Ошибка в пустых полях
             }
             else if(this.props.name.length > 35) {
                 this.props.setValidation('isInputSizeRight', false)
             }
-            //Если нет ошибки в формате файла
-            else if((/image/.test(this.props.img_1.type) && /image/.test(this.props.img_2.type) && /image/.test(this.props.img_3.type) && /image/.test(this.props.img_4.type) && /image/.test(this.props.img_5.type))
-            || (this.props.img_1 === null && this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null)
-            ){
-                this.changeCreate(true)
-            }
-            else if(/image/.test(this.props.img.type)) { //Если нет ошибки в формате файла
-                this.changeCreate(true)
-            }
-            else if(this.props.img === '') {
+            //Если картинка пустая
+            else if(this.props.img_1 === null && this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null && this.props.img === '') {
                 this.props.setValidation('isPhotoTypeWrong', true) //Ошибка в формате файла картинки
                 this.changeCreate(false)
             }
+            //Если картинка заполнена и она не является изображением
+            else if(this.props.img_1 !== null) {
+                if(!/image/.test(this.props.img_1.type)) {
+                    this.props.setValidation('isPhotoTypeWrong', true)
+                    this.changeCreate(false)
+                }
+                else if (this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
+                    this.changeCreate(true)
+                }
+            }
+            if(this.props.img_2 !== null) {
+                if(!/image/.test(this.props.img_2.type)) {
+                    this.props.setValidation('isPhotoTypeWrong', true)
+                    this.changeCreate(false)
+                }
+                else if (this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
+                    this.changeCreate(true)
+                }
+            }
+            if(this.props.img_3 !== null) {
+                if(!/image/.test(this.props.img_3.type)) {
+                    this.props.setValidation('isPhotoTypeWrong', true)
+                    this.changeCreate(false)
+                }
+                else if (this.props.img_4 === null && this.props.img_5 === null) {
+                    this.changeCreate(true)
+                }
+            }
+            if(this.props.img_4 !== null) {
+                if(!/image/.test(this.props.img_4.type)) {
+                    this.props.setValidation('isPhotoTypeWrong', true)
+                    this.changeCreate(false)
+                }
+                else if (this.props.img_5 === null) {
+                    this.changeCreate(true)
+                }
+            }
+            if(this.props.img_5 !== null) {
+                if(!/image/.test(this.props.img_5.type)) {
+                    this.props.setValidation('isPhotoTypeWrong', true)
+                    this.changeCreate(false)
+                }
+                else {
+                    this.changeCreate(true)
+                }
+            }
+            else if(/image/.test(this.props.img.type)) { //валидация картинки музея
+                this.changeCreate(true)
+            }
 
-            else {
+            // else if(this.props.img === '') {
+            //     this.props.setValidation('isPhotoTypeWrong', true) //Ошибка в формате файла картинки
+            //     this.changeCreate(false)
+            // }
+
+            else if (!/image/.test(this.props.img.type) && this.props.img !== '' ){
                 this.props.setValidation('isPhotoTypeWrong', true)
                 this.changeCreate(false)
             }

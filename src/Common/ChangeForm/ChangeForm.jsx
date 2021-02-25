@@ -65,22 +65,22 @@ const ChangeForm = (props) => {
                 props.isItemArtifact &&
                 <div className={s.artifactFileInputContainer}>
 
-                    <InputFile text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_1} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg1'} name={'img_1'} />
+                    <InputFile handleDelete={props.deleteImageFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_1} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg1'} name={'img_1'} />
                     {
-                        props.img_1 !== null &&
-                        <InputFile text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_2} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg2'} name={'img_2'} />
+                        ((props.img_1 !== null) || (props.img_2 !== null)) &&
+                        <InputFile handleDelete={props.deleteImageFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_2} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg2'} name={'img_2'} />
                     }
                     {
-                        props.img_2 !== null &&
-                        <InputFile text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_3} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg3'} name={'img_3'} />
+                        (props.img_2 !== null || props.img_3 !== null) &&
+                        <InputFile handleDelete={props.deleteImageFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_3} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg3'} name={'img_3'} />
                     }
                     {
-                        props.img_3 !== null &&
-                        <InputFile text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_4} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg4'} name={'img_4'} />
+                        (props.img_3 !== null || props.img_4 !== null) &&
+                        <InputFile handleDelete={props.deleteImageFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_4} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg4'} name={'img_4'} />
                     }
                     {
-                        props.img_4 !== null &&
-                        <InputFile text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_5} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg5'} name={'img_5'} />
+                        (props.img_4 !== null || props.img_5 !== null) &&
+                        <InputFile handleDelete={props.deleteImageFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_5} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg5'} name={'img_5'} />
                     }
 
                 </div>

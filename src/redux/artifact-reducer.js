@@ -38,9 +38,10 @@ export const getArtifactData = (location_id, hall_id, artifact_id) => { //Пол
     }
 }
 
-export const updateArtifactData = (location_id, hall_id, artifact_id,name, img, description, audio, video) => { //Обновлении информации об артефакте по id локации, зала и артефакта
+export const updateArtifactData = (location_id, hall_id, artifact_id,name, img_1, img_2, img_3, img_4, img_5, description, audio, video) => { //Обновлении информации об артефакте по id локации, зала и артефакта
     return (dispatch) => {
-        museumApi.updateArtifactData(location_id, hall_id, artifact_id,name, img, description, audio, video)
+        debugger
+        museumApi.updateArtifactData(location_id, hall_id, artifact_id,name, img_1, img_2, img_3, img_4, img_5, description, audio, video)
             .then(response => response.json()
                 .then(result => {
                     console.log('updateArtifactData', result)

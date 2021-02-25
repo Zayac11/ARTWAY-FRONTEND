@@ -17,6 +17,10 @@ const InputFile = (props) => {
                 }
             </label>
             {
+                props.file !== null &&
+                <button onClick={() => props.handleDelete(props.name)}>Удалить</button>
+            }
+            {
                 props.file !== null && props.file.name &&
                 <span className={s.fileName}>{props.file.name}</span>
             }

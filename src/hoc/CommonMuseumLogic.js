@@ -56,6 +56,7 @@ export const CommonMuseumLogic = (Component) => {
             this.setAudio = this.setAudio.bind(this)
             this.toggleOpenModal = this.toggleOpenModal.bind(this)
             this.setArtifactImages = this.setArtifactImages.bind(this)
+            this.deleteImageFromForm = this.deleteImageFromForm.bind(this)
         }
 
         setImage(img) { //Обновление фотографии в state
@@ -76,6 +77,12 @@ export const CommonMuseumLogic = (Component) => {
                 img_3 : img_3,
                 img_4 : img_4,
                 img_5 : img_5,
+            })
+        }
+
+        deleteImageFromForm(name) {
+            this.setState({
+                [name]: null
             })
         }
 
@@ -165,6 +172,7 @@ export const CommonMuseumLogic = (Component) => {
                            toggleIsCardsChanging={this.toggleIsCardsChanging}
                            setValidation={this.setValidation}
                            setArtifactImages={this.setArtifactImages}
+                           deleteImageFromForm={this.deleteImageFromForm}
 
                            setImage={this.setImage}
                            setAudio={this.setAudio}
