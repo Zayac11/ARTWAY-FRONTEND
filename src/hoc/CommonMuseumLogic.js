@@ -26,13 +26,18 @@ export const CommonMuseumLogic = (Component) => {
                 img_4 : null,
                 img_5 : null,
 
+                audio_1 : null, //Максимальное количество аудио в экспонате
+                audio_2 : null, //В будущем переделать в массив...
+                audio_3 : null,
+                audio_4 : null,
+                audio_5 : null,
+
                 audio: "",
                 video: "",
                 ticket_lifetime: 1,
                 images: null,
                 main_audio: null,
                 main_img: null, //картинка, которая показывается на экране (картинка музея)
-
 
                 isChanging: false, //Меняется ли информация
                 isCardsChanging: false, //Меняются ли местами карточки локаций/залов/артефактов
@@ -56,7 +61,8 @@ export const CommonMuseumLogic = (Component) => {
             this.setAudio = this.setAudio.bind(this)
             this.toggleOpenModal = this.toggleOpenModal.bind(this)
             this.setArtifactImages = this.setArtifactImages.bind(this)
-            this.deleteImageFromForm = this.deleteImageFromForm.bind(this)
+            this.deleteFromForm = this.deleteFromForm.bind(this)
+            this.setArtifactAudios = this.setArtifactAudios.bind(this)
         }
 
         setImage(img) { //Обновление фотографии в state
@@ -79,14 +85,24 @@ export const CommonMuseumLogic = (Component) => {
                 img_5 : img_5,
             })
         }
+        setArtifactAudios(audio_1, audio_2, audio_3, audio_4, audio_5) { //добавление аудио экспоната
+            this.setState({
+                audio_1 : audio_1,
+                audio_2 : audio_2,
+                audio_3 : audio_3,
+                audio_4 : audio_4,
+                audio_5 : audio_5,
+            })
+        }
 
-        deleteImageFromForm(name) {
+        deleteFromForm(name) {
             this.setState({
                 [name]: null
             })
         }
 
         setValidation(name, bool) {
+            debugger
             this.setState({
                 [name]: bool,
             })
@@ -172,7 +188,8 @@ export const CommonMuseumLogic = (Component) => {
                            toggleIsCardsChanging={this.toggleIsCardsChanging}
                            setValidation={this.setValidation}
                            setArtifactImages={this.setArtifactImages}
-                           deleteImageFromForm={this.deleteImageFromForm}
+                           deleteFromForm={this.deleteFromForm}
+                           setArtifactAudios={this.setArtifactAudios}
 
                            setImage={this.setImage}
                            setAudio={this.setAudio}

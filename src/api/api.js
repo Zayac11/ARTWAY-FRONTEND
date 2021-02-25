@@ -1,4 +1,4 @@
-const debug = false
+const debug = true
 //backend
 //true for localhost
 //false for prod.
@@ -152,14 +152,21 @@ export const museumApi = {
         return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}/${artifact_id}`, requestOptions)
     },
 
-    updateArtifactData(location_id, hall_id, artifact_id, name, img_1, img_2, img_3, img_4, img_5, description, audio, video) { //Изменение информации об артефакте по id локации, зала и артефакта
-        debugger
-        let options = getOptions([{name: 'name', value: name},{name: 'img_1', value: img_1},{name: 'img_2', value: img_2},{name: 'img_3', value: img_3},{name: 'img_4', value: img_4},{name: 'img_5', value: img_5}, {name: 'description', value: description}, {name: 'audio', value: audio}, {name: 'video', value: video}], true,  'PUT')
+    updateArtifactData(location_id, hall_id, artifact_id, name, img_1, img_2, img_3, img_4, img_5, description, audio_1, audio_2, audio_3, audio_4, audio_5, video) { //Изменение информации об артефакте по id локации, зала и артефакта
+        let options = getOptions([{name: 'name', value: name},{name: 'img_1', value: img_1},{name: 'img_2', value: img_2},{name: 'img_3', value: img_3},{name: 'img_4', value: img_4},{name: 'img_5', value: img_5}, {name: 'description', value: description},
+            {name: 'audio_1', value: audio_1}, {name: 'audio_2', value: audio_2}, {name: 'audio_3', value: audio_3}, {name: 'audio_4', value: audio_4}, {name: 'audio_5', value: audio_5},
+            {name: 'video', value: video}
+            ], true,  'PUT')
         return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}/${artifact_id}`, options)
     },
 
-    createArtifact(location_id, hall_id, name, img_1, img_2, img_3, img_4, img_5, description, audio, video) { //Создание артефакта по id локации и зала
-        let options = getOptions([{name: 'name', value: name},{name: 'img_1', value: img_1},{name: 'img_2', value: img_2},{name: 'img_3', value: img_3},{name: 'img_4', value: img_4},{name: 'img_5', value: img_5}, {name: 'description', value: description}, {name: 'audio', value: audio}, {name: 'video', value: video}], true,  'POST')
+    createArtifact(location_id, hall_id, name, img_1, img_2, img_3, img_4, img_5, description,
+                   audio_1, audio_2, audio_3, audio_4, audio_5,
+                   video) { //Создание артефакта по id локации и зала
+        let options = getOptions([{name: 'name', value: name},{name: 'img_1', value: img_1},{name: 'img_2', value: img_2},{name: 'img_3', value: img_3},{name: 'img_4', value: img_4},{name: 'img_5', value: img_5}, {name: 'description', value: description},
+            {name: 'audio_1', value: audio_1}, {name: 'audio_2', value: audio_2}, {name: 'audio_3', value: audio_3}, {name: 'audio_4', value: audio_4}, {name: 'audio_5', value: audio_5},
+            {name: 'video', value: video}
+            ], true,  'POST')
         return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}`, options)
     },
 

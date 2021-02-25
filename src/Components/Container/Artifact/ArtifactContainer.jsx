@@ -46,29 +46,91 @@ class ArtifactContainer extends React.Component {
 
     checkAudio() {
         let vid = /^(ftp|http|https):\/\/[^ "]+$/
-        if(/audio/.test(this.props.audio.type) && (vid.test(this.props.video) || this.props.video === '')) { //Если нет ошибки в формате файла и видео - корректная ссылка или пустая строка
-            this.updateArtifact()
-        }
-        else if(this.props.audio === '') { //Если аудио не заполнено, то присваивается старая ссылка
-            this.props.setAudio(this.props.main_audio)
-            this.updateArtifact()
-        }
-        else if(!vid.test(this.props.video)) { //Если аудио не заполнено, то присваивается старая ссылка
-            this.props.changeCreate(false)
-            this.props.toggleIsChanging(true)
-            this.props.setValidation('isVideoUrlWrong', true)
-        }
-        else { //Если файл загружен, но он не аудио
-            this.props.changeCreate(false)
-            this.props.toggleIsChanging(true)
+        // if(/audio/.test(this.props.audio.type) && (vid.test(this.props.video) || this.props.video === '')) { //Если нет ошибки в формате файла и видео - корректная ссылка или пустая строка
+        //     this.updateArtifact()
+        // }
+
+        debugger
+        //Если аудио нет вообще пустая
+        if(this.props.audio_1 === null && this.props.audio_2 === null && this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
             this.props.setValidation('isAudioTypeWrong', true)
+            this.props.toggleIsChanging(true)
+            this.props.changeCreate(false)
         }
+        //Если картинка заполнена и она не является изображением
+        else if(this.props.audio_1 !== null) {
+            if(!/audio/.test(this.props.audio_1.type) && !this.props.audio_1.length) {
+                this.props.changeCreate(false)
+                this.props.toggleIsChanging(true)
+                this.props.setValidation('isAudioTypeWrong', true)
+            }
+            else if (this.props.audio_2 === null && this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
+                this.updateArtifact()
+            }
+        }
+        if(this.props.audio_2 !== null) {
+            if(!/audio/.test(this.props.audio_2.type) && !this.props.audio_2.length) {
+                this.props.changeCreate(false)
+                this.props.toggleIsChanging(true)
+                this.props.setValidation('isAudioTypeWrong', true)
+            }
+            else if (this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
+                this.updateArtifact()
+            }
+        }
+        if(this.props.audio_3 !== null) {
+            if(!/audio/.test(this.props.audio_3.type) && !this.props.audio_3.length) {
+                this.props.changeCreate(false)
+                this.props.toggleIsChanging(true)
+                this.props.setValidation('isAudioTypeWrong', true)
+            }
+            else if (this.props.audio_4 === null && this.props.audio_5 === null) {
+                this.updateArtifact()
+            }
+        }
+        if(this.props.audio_4 !== null) {
+            if(!/audio/.test(this.props.audio_4.type) && !this.props.audio_4.length) {
+                this.props.changeCreate(false)
+                this.props.toggleIsChanging(true)
+                this.props.setValidation('isAudioTypeWrong', true)
+            }
+            else if (this.props.audio_5 === null) {
+                this.updateArtifact()
+            }
+        }
+
+        if(this.props.audio_5 !== null) {
+            if(!/audio/.test(this.props.audio_5.type) && !this.props.audio_5.length) {
+                this.props.changeCreate(false)
+                this.props.toggleIsChanging(true)
+                this.props.setValidation('isAudioTypeWrong', true)
+            }
+            else {
+                this.updateArtifact()
+            }
+        }
+
+        // else if(!vid.test(this.props.video)) { //Если аудио не заполнено, то присваивается старая ссылка
+        //     this.props.changeCreate(false)
+        //     this.props.toggleIsChanging(true)
+        //     this.props.setValidation('isVideoUrlWrong', true)
+        // }
+
+        // else { //Если файл загружен, но он не аудио
+        //     this.props.changeCreate(false)
+        //     this.props.toggleIsChanging(true)
+        //     this.props.setValidation('isAudioTypeWrong', true)
+        // }
     }
 
     updateArtifact() {
-        this.props.updateArtifactData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id,this.props.name, this.props.img_1, this.props.img_2, this.props.img_3, this.props.img_4, this.props.img_5, this.props.description, this.props.audio, this.props.video)
-        this.props.setArtifactImages('','','','','') //Зануляем картинки
-        this.props.setAudio('') //Зануляем аудиофайл
+        debugger
+        this.props.updateArtifactData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id,this.props.name,
+            this.props.img_1, this.props.img_2, this.props.img_3, this.props.img_4, this.props.img_5, this.props.description,
+            this.props.audio_1, this.props.audio_2, this.props.audio_3, this.props.audio_4, this.props.audio_5,
+            this.props.video)
+        this.props.setArtifactImages(null,null,null,null,null) //Зануляем картинки
+        this.props.setArtifactAudios(null,null,null,null,null) //Зануляем аудио
         this.props.changeCreate(false) //Больше не изменяем
         this.props.deleteOneArtifact(this.props.match.params.artifact_id)
     }
@@ -91,17 +153,12 @@ class ArtifactContainer extends React.Component {
         if(prevProps.artifactData !== this.props.artifactData) {
             this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, '', this.props.artifactData.audio, this.props.artifactData.video, 1, '', this.props.images_massive)
             this.props.setArtifactImages(this.props.artifactData.img_1, this.props.artifactData.img_2, this.props.artifactData.img_3, this.props.artifactData.img_4, this.props.artifactData.img_5)
+            this.props.setArtifactAudios(this.props.artifactData.audio_1, this.props.artifactData.audio_2, this.props.artifactData.audio_3, this.props.artifactData.audio_4, this.props.artifactData.audio_5)
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
             this.checkAudio()
         }
-
     }
-
-    // componentWillUnmount() {
-    //     this.props.updateState('', '', '' , '', '', '', 1, '', '')
-    //     this.props.setArtifactImages('','','','','')
-    // }
 
     render() {
 

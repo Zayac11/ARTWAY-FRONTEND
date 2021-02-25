@@ -65,16 +65,50 @@ const Artifact = (props) => {
                                                 <div className={s.imgContainer}>
                                                     {/*<img src={props.main_img} alt="artifact"/>*/}
                                                     {
-                                                        props.images !== null &&
+                                                        (props.images !== null &&(
+                                                            props.img_1 !== null ||
+                                                            props.img_2 !== null ||
+                                                            props.img_3 !== null ||
+                                                            props.img_4 !== null ||
+                                                            props.img_5 !== null)) &&
                                                         <Image images={props.images} />
                                                     }
                                                 </div>
 
                                                 <div className={s.info}>
                                                     <h3 className={s.title}>
-                                                        Аудиогид
+                                                        Аудиогид(ы)
                                                     </h3>
-                                                    <Audio audio={props.main_audio}/>
+                                                    {
+                                                        props.audio_1 !== null &&
+                                                        <div className={s.audio}>
+                                                            <Audio audio={props.audio_1}/>
+                                                        </div>
+                                                    }
+                                                    {
+                                                        props.audio_2 !== null &&
+                                                        <div className={s.audio}>
+                                                            <Audio audio={props.audio_2}/>
+                                                        </div>
+                                                    }
+                                                    {
+                                                        props.audio_3 !== null &&
+                                                        <div className={s.audio}>
+                                                            <Audio audio={props.audio_3}/>
+                                                        </div>
+                                                    }
+                                                    {
+                                                        props.audio_4 !== null &&
+                                                        <div className={s.audio}>
+                                                            <Audio audio={props.audio_4}/>
+                                                        </div>
+                                                    }
+                                                    {
+                                                        props.audio_5 !== null &&
+                                                        <div className={s.audio}>
+                                                            <Audio audio={props.audio_5}/>
+                                                        </div>
+                                                    }
 
                                                     <div className={s.descriptionContainer}>
                                                         <h3 className={s.title}>
@@ -84,17 +118,22 @@ const Artifact = (props) => {
                                                             {props.description}
                                                         </div>
                                                     </div>
-                                                    {
-                                                        props.video !== '' &&
-                                                        <div>
-                                                            <a href={props.video} target={'_blank'} rel={"noreferrer noopener"} className={`${s.transparentButton} ${s.button}`}>
-                                                                <div>
-                                                                    Смотреть видео
-                                                                </div>
-                                                                <img src={foreign} alt="link"/>
-                                                            </a>
-                                                        </div>
-                                                    }
+                                                    <div className={s.descriptionContainer}>
+                                                        <h3 className={s.title}>
+                                                            Видеофрагменты
+                                                        </h3>
+                                                        {
+                                                            props.video !== '' &&
+                                                            <div>
+                                                                <a href={props.video} target={'_blank'} rel={"noreferrer noopener"} className={`${s.transparentButton} ${s.button}`}>
+                                                                    <div>
+                                                                        Смотреть видео
+                                                                    </div>
+                                                                    <img src={foreign} alt="link"/>
+                                                                </a>
+                                                            </div>
+                                                        }
+                                                    </div>
 
                                                     {
                                                         props.isRelocated &&

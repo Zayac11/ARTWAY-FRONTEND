@@ -38,10 +38,11 @@ export const getArtifactData = (location_id, hall_id, artifact_id) => { //Пол
     }
 }
 
-export const updateArtifactData = (location_id, hall_id, artifact_id,name, img_1, img_2, img_3, img_4, img_5, description, audio, video) => { //Обновлении информации об артефакте по id локации, зала и артефакта
+export const updateArtifactData = (location_id, hall_id, artifact_id,name, img_1, img_2, img_3, img_4, img_5, description,
+                                   audio_1, audio_2, audio_3, audio_4, audio_5, video) => { //Обновлении информации об артефакте по id локации, зала и артефакта
     return (dispatch) => {
-        debugger
-        museumApi.updateArtifactData(location_id, hall_id, artifact_id,name, img_1, img_2, img_3, img_4, img_5, description, audio, video)
+        museumApi.updateArtifactData(location_id, hall_id, artifact_id,name, img_1, img_2, img_3, img_4, img_5, description,
+            audio_1, audio_2, audio_3, audio_4, audio_5, video)
             .then(response => response.json()
                 .then(result => {
                     console.log('updateArtifactData', result)
@@ -50,10 +51,12 @@ export const updateArtifactData = (location_id, hall_id, artifact_id,name, img_1
     }
 }
 
-export const createArtifact = (location_id, hall_id, name, img_1,img_2,img_3,img_4,img_5, description, audio, video) => { //Добавление артефакта в зал по id локации и зала
+export const createArtifact = (location_id, hall_id, name, img_1,img_2,img_3,img_4,img_5, description,
+                               audio_1, audio_2, audio_3, audio_4, audio_5, video) => { //Добавление артефакта в зал по id локации и зала
     return (dispatch) => {
         dispatch(toggleIsFetching(true))
-        museumApi.createArtifact(location_id, hall_id, name, img_1,img_2,img_3,img_4,img_5, description, audio, video)
+        museumApi.createArtifact(location_id, hall_id, name, img_1,img_2,img_3,img_4,img_5, description,
+            audio_1, audio_2, audio_3, audio_4, audio_5, video)
             .then(response => response.json()
                 .then(result => {
                     console.log('createArtifact', result)

@@ -33,30 +33,94 @@ class CreateArtifact extends React.Component {
 
     checkAudio() {
         let vid = /^(ftp|http|https):\/\/[^ "]+$/
-
+        debugger
         //Если загруженный файл является аудио и видео - ссылка или не заполнено
-        if(/audio/.test(this.props.audio.type) && (vid.test(this.props.video) || this.props.video === '')) {
-            this.props.toggleIsChanging(false)
-            this.createArtifact()
-            this.setState({
-                isCreate: true
-            })
-        }
-        else if(this.props.audio === '') { //Если аудио не загрузили
+        // if(/audio/.test(this.props.audio.type) && (vid.test(this.props.video) || this.props.video === '')) {
+        //     this.props.toggleIsChanging(false)
+        //     this.createArtifact()
+        //     this.setState({
+        //         isCreate: true
+        //     })
+        // }
+        //Если аудио нет вообще
+        if(this.props.audio_1 === null && this.props.audio_2 === null && this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
             this.props.setValidation('isAudioTypeWrong', true)
             this.props.changeCreate(false)
+        }
+        //Если картинка заполнена и она не является изображением
+        else if(this.props.audio_1 !== null) {
+            if(!/audio/.test(this.props.audio_1.type)) {
+                this.props.setValidation('isAudioTypeWrong', true)
+                this.props.changeCreate(false)
+            }
+            else if (this.props.audio_2 === null && this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
+                this.createArtifact()
+                this.setState({
+                    isCreate: true
+                })
+            }
+        }
+        if(this.props.audio_2 !== null) {
+            if(!/audio/.test(this.props.audio_2.type)) {
+                this.props.setValidation('isAudioTypeWrong', true)
+                this.props.changeCreate(false)
+            }
+            else if (this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
+                this.createArtifact()
+                this.setState({
+                    isCreate: true
+                })
+            }
+        }
+        if(this.props.audio_3 !== null) {
+            if(!/audio/.test(this.props.audio_3.type)) {
+                this.props.setValidation('isAudioTypeWrong', true)
+                this.props.changeCreate(false)
+            }
+            else if (this.props.audio_4 === null && this.props.audio_5 === null) {
+                this.createArtifact()
+                this.setState({
+                    isCreate: true
+                })
+            }
+        }
+        if(this.props.audio_4 !== null) {
+            if(!/audio/.test(this.props.audio_4.type)) {
+                this.props.setValidation('isAudioTypeWrong', true)
+                this.props.changeCreate(false)
+            }
+            else if (this.props.audio_5 === null) {
+                this.createArtifact()
+                this.setState({
+                    isCreate: true
+                })
+            }
+        }
+        if(this.props.audio_5 !== null) {
+            if(!/audio/.test(this.props.audio_5.type)) {
+                this.props.setValidation('isAudioTypeWrong', true)
+                this.props.changeCreate(false)
+            }
+            else {
+                this.createArtifact()
+                this.setState({
+                    isCreate: true
+                })
+            }
         }
         else if(!vid.test(this.props.video)) { //Если видео не является ссылкой
             this.props.setValidation('isVideoUrlWrong', true)
             this.props.changeCreate(false)
         }
-        else { //Если файл загружен, но он не аудио
-            this.props.setValidation('isAudioTypeWrong', true)
-            this.props.changeCreate(false)
-        }
+        // else { //Если файл загружен, но он не аудио
+        //     this.props.setValidation('isAudioTypeWrong', true)
+        //     this.props.changeCreate(false)
+        // }
     }
     createArtifact() {
-        this.props.createArtifact(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.name, this.props.img_1, this.props.img_2, this.props.img_3, this.props.img_4, this.props.img_5, this.props.description, this.props.audio, this.props.video)
+        this.props.createArtifact(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.name, this.props.img_1, this.props.img_2, this.props.img_3, this.props.img_4, this.props.img_5, this.props.description,
+            this.props.audio_1, this.props.audio_2, this.props.audio_3, this.props.audio_4, this.props.audio_5,
+            this.props.video)
     }
 
     render() {
