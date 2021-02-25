@@ -23,6 +23,7 @@ class ArtifactContainer extends React.Component {
         this.deleteArtifact = this.deleteArtifact.bind(this)
         this.swapArtifacts = this.swapArtifacts.bind(this)
         this.checkAudio = this.checkAudio.bind(this)
+        this.checkVideo = this.checkVideo.bind(this)
         this.toggleRelocate = this.toggleRelocate.bind(this)
         this.setIsRelocated = this.setIsRelocated.bind(this)
     }
@@ -44,13 +45,66 @@ class ArtifactContainer extends React.Component {
         })
     }
 
-    checkAudio() {
+    checkVideo() {
         let vid = /^(ftp|http|https):\/\/[^ "]+$/
-        // if(/audio/.test(this.props.audio.type) && (vid.test(this.props.video) || this.props.video === '')) { //Если нет ошибки в формате файла и видео - корректная ссылка или пустая строка
-        //     this.updateArtifact()
-        // }
 
-        debugger
+        if(this.props.link_name_1 !== '' || this.props.link_value_1 !== '') {
+            if(!vid.test(this.props.link_value_1)) {
+                this.props.setValidation('isVideoUrlWrong', true)
+                this.props.changeCreate(false)
+            }
+            else if (this.props.link_name_2 === '' && this.props.link_name_3 === '' && this.props.link_name_4 === '' && this.props.link_name_5 === '' &&
+                this.props.link_value_2 === '' && this.props.link_value_3 === '' && this.props.link_value_4 === '' && this.props.link_value_5 === ''
+            ){
+                this.checkAudio()
+            }
+        }
+
+        if(this.props.link_name_2 !== '' || this.props.link_value_2 !== '') {
+            if(!vid.test(this.props.link_value_2)) {
+                this.props.setValidation('isVideoUrlWrong', true)
+                this.props.changeCreate(false)
+            }
+            else if (this.props.link_name_3 === '' && this.props.link_name_4 === '' && this.props.link_name_5 === '' &&
+                this.props.link_value_3 === '' && this.props.link_value_4 === '' && this.props.link_value_5 === '') {
+                this.checkAudio()
+            }
+        }
+
+        if(this.props.link_name_3 !== '' || this.props.link_value_3 !== '') {
+            if(!vid.test(this.props.link_value_3)) {
+                this.props.setValidation('isVideoUrlWrong', true)
+                this.props.changeCreate(false)
+            }
+            else if (this.props.link_name_4 === '' && this.props.link_name_5 === '' && this.props.link_value_4 === '' && this.props.link_value_5 === '') {
+                this.checkAudio()
+            }
+        }
+
+        if(this.props.link_name_4 !== '' || this.props.link_value_4 !== '') {
+            if(!vid.test(this.props.link_value_4)) {
+                this.props.setValidation('isVideoUrlWrong', true)
+                this.props.changeCreate(false)
+            }
+            else if (this.props.link_name_5 === '' && this.props.link_value_5 === '') {
+                this.checkAudio()
+            }
+        }
+
+        if(this.props.link_name_5 !== '' || this.props.link_value_5 !== '') {
+            if(!vid.test(this.props.link_value_5)) {
+                this.props.setValidation('isVideoUrlWrong', true)
+                this.props.changeCreate(false)
+            }
+            else {
+                this.checkAudio()
+            }
+        }
+
+    }
+
+    checkAudio() {
+
         //Если аудио нет вообще пустая
         if(this.props.audio_1 === null && this.props.audio_2 === null && this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
             this.props.setValidation('isAudioTypeWrong', true)
@@ -109,26 +163,15 @@ class ArtifactContainer extends React.Component {
                 this.updateArtifact()
             }
         }
-
-        // else if(!vid.test(this.props.video)) { //Если аудио не заполнено, то присваивается старая ссылка
-        //     this.props.changeCreate(false)
-        //     this.props.toggleIsChanging(true)
-        //     this.props.setValidation('isVideoUrlWrong', true)
-        // }
-
-        // else { //Если файл загружен, но он не аудио
-        //     this.props.changeCreate(false)
-        //     this.props.toggleIsChanging(true)
-        //     this.props.setValidation('isAudioTypeWrong', true)
-        // }
     }
 
     updateArtifact() {
-        debugger
         this.props.updateArtifactData(this.props.match.params.location_id, this.props.match.params.hall_id, this.props.match.params.artifact_id,this.props.name,
             this.props.img_1, this.props.img_2, this.props.img_3, this.props.img_4, this.props.img_5, this.props.description,
             this.props.audio_1, this.props.audio_2, this.props.audio_3, this.props.audio_4, this.props.audio_5,
-            this.props.video)
+            this.props.link_name_1, this.props.link_name_2, this.props.link_name_3, this.props.link_name_4, this.props.link_name_5,
+            this.props.link_value_1, this.props.link_value_2, this.props.link_value_3, this.props.link_value_4, this.props.link_value_5
+            )
         this.props.setArtifactImages(null,null,null,null,null) //Зануляем картинки
         this.props.setArtifactAudios(null,null,null,null,null) //Зануляем аудио
         this.props.changeCreate(false) //Больше не изменяем
@@ -154,9 +197,12 @@ class ArtifactContainer extends React.Component {
             this.props.updateState(this.props.match.params.location_id, this.props.artifactData.name, this.props.artifactData.description, '', this.props.artifactData.audio, this.props.artifactData.video, 1, '', this.props.images_massive)
             this.props.setArtifactImages(this.props.artifactData.img_1, this.props.artifactData.img_2, this.props.artifactData.img_3, this.props.artifactData.img_4, this.props.artifactData.img_5)
             this.props.setArtifactAudios(this.props.artifactData.audio_1, this.props.artifactData.audio_2, this.props.artifactData.audio_3, this.props.artifactData.audio_4, this.props.artifactData.audio_5)
+            this.props.setVideos(this.props.artifactData.link_value_1, this.props.artifactData.link_value_2, this.props.artifactData.link_value_3, this.props.artifactData.link_value_4, this.props.artifactData.link_value_5,
+            this.props.artifactData.link_name_1, this.props.artifactData.link_name_2, this.props.artifactData.link_name_3, this.props.artifactData.link_name_4, this.props.artifactData.link_name_5
+                )
         }
         if(prevProps.isRight !== this.props.isRight && !prevProps.isRight) {
-            this.checkAudio()
+            this.checkVideo()
         }
     }
 

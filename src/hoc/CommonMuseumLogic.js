@@ -32,6 +32,18 @@ export const CommonMuseumLogic = (Component) => {
                 audio_4 : null,
                 audio_5 : null,
 
+                link_value_1 : '',
+                link_value_2 : '',
+                link_value_3 : '',
+                link_value_4 : '',
+                link_value_5 : '',
+
+                link_name_1 : '',
+                link_name_2 : '',
+                link_name_3 : '',
+                link_name_4 : '',
+                link_name_5 : '',
+
                 audio: "",
                 video: "",
                 ticket_lifetime: 1,
@@ -63,6 +75,7 @@ export const CommonMuseumLogic = (Component) => {
             this.setArtifactImages = this.setArtifactImages.bind(this)
             this.deleteFromForm = this.deleteFromForm.bind(this)
             this.setArtifactAudios = this.setArtifactAudios.bind(this)
+            this.setVideos = this.setVideos.bind(this)
         }
 
         setImage(img) { //Обновление фотографии в state
@@ -92,6 +105,20 @@ export const CommonMuseumLogic = (Component) => {
                 audio_3 : audio_3,
                 audio_4 : audio_4,
                 audio_5 : audio_5,
+            })
+        }
+        setVideos(link_value_1, link_value_2, link_value_3, link_value_4, link_value_5, link_name_1, link_name_2, link_name_3, link_name_4, link_name_5) { //добавление аудио экспоната
+            this.setState({
+                link_value_1 : link_value_1,
+                link_value_2 : link_value_2,
+                link_value_3 : link_value_3,
+                link_value_4 : link_value_4,
+                link_value_5 : link_value_5,
+                link_name_1 : link_name_1,
+                link_name_2 : link_name_2,
+                link_name_3 : link_name_3,
+                link_name_4 : link_name_4,
+                link_name_5 : link_name_5,
             })
         }
 
@@ -190,6 +217,7 @@ export const CommonMuseumLogic = (Component) => {
                            setArtifactImages={this.setArtifactImages}
                            deleteFromForm={this.deleteFromForm}
                            setArtifactAudios={this.setArtifactAudios}
+                           setVideos={this.setVideos}
 
                            setImage={this.setImage}
                            setAudio={this.setAudio}

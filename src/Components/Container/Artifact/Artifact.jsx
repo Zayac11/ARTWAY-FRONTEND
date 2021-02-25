@@ -63,7 +63,6 @@ const Artifact = (props) => {
 
                                             <div className={s.artifact}>
                                                 <div className={s.imgContainer}>
-                                                    {/*<img src={props.main_img} alt="artifact"/>*/}
                                                     {
                                                         (props.images !== null &&(
                                                             props.img_1 !== null ||
@@ -118,23 +117,71 @@ const Artifact = (props) => {
                                                             {props.description}
                                                         </div>
                                                     </div>
+
+                                                    {
+                                                    (props.link_value_1 !== '' || props.link_value_2 !== '' || props.link_value_3 !== '' || props.link_value_4 !== '' || props.link_value_5 !== '')
+                                                    &&
                                                     <div className={s.descriptionContainer}>
-                                                        <h3 className={s.title}>
-                                                            Видеофрагменты
-                                                        </h3>
+                                                            <h3 className={s.title}>
+                                                                Видеофрагменты
+                                                            </h3>
                                                         {
-                                                            props.video !== '' &&
+                                                            (props.link_value_1 !== '' && props.link_name_1 !== '') &&
                                                             <div>
-                                                                <a href={props.video} target={'_blank'} rel={"noreferrer noopener"} className={`${s.transparentButton} ${s.button}`}>
+                                                                <a href={props.link_value_1} target={'_blank'} rel={"noreferrer noopener"} className={`${s.transparentButton} ${s.button}`}>
                                                                     <div>
-                                                                        Смотреть видео
+                                                                        {props.link_name_1}
+                                                                    </div>
+                                                                    <img src={foreign} alt="link"/>
+                                                                </a>
+                                                            </div>
+                                                        }
+                                                        {
+                                                            (props.link_value_2 !== '' && props.link_name_2 !== '') &&
+                                                            <div>
+                                                                <a href={props.link_value_2} target={'_blank'} rel={"noreferrer noopener"} className={`${s.transparentButton} ${s.button}`}>
+                                                                    <div>
+                                                                        {props.link_name_2}
+                                                                    </div>
+                                                                    <img src={foreign} alt="link"/>
+                                                                </a>
+                                                            </div>
+                                                        }
+                                                        {
+                                                            (props.link_value_3 !== '' && props.link_name_3 !== '') &&
+                                                            <div>
+                                                                <a href={props.link_value_3} target={'_blank'} rel={"noreferrer noopener"} className={`${s.transparentButton} ${s.button}`}>
+                                                                    <div>
+                                                                        {props.link_name_3}
+                                                                    </div>
+                                                                    <img src={foreign} alt="link"/>
+                                                                </a>
+                                                            </div>
+                                                        }
+                                                        {
+                                                            (props.link_value_4 !== '' && props.link_name_4 !== '') &&
+                                                            <div>
+                                                                <a href={props.link_value_4} target={'_blank'} rel={"noreferrer noopener"} className={`${s.transparentButton} ${s.button}`}>
+                                                                    <div>
+                                                                        {props.link_name_4}
+                                                                    </div>
+                                                                    <img src={foreign} alt="link"/>
+                                                                </a>
+                                                            </div>
+                                                        }
+                                                        {
+                                                            (props.link_value_5 !== '' && props.link_name_5) &&
+                                                            <div>
+                                                                <a href={props.link_value_5} target={'_blank'} rel={"noreferrer noopener"} className={`${s.transparentButton} ${s.button}`}>
+                                                                    <div>
+                                                                        {props.link_name_5}
                                                                     </div>
                                                                     <img src={foreign} alt="link"/>
                                                                 </a>
                                                             </div>
                                                         }
                                                     </div>
-
+                                                    }
                                                     {
                                                         props.isRelocated &&
                                                             <div className={'form__right'}>

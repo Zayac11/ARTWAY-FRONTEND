@@ -16,6 +16,17 @@
 .title {
     font-size: 16px;
     font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.videos {
+    max-width: 320px;
+    margin: 15px auto 0;
+    align-items: center;
+}
+
+.videoItem {
+    margin-bottom: 25px;
 }
 
 .fileInputContainer {

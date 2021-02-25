@@ -39,10 +39,12 @@ export const getArtifactData = (location_id, hall_id, artifact_id) => { //Пол
 }
 
 export const updateArtifactData = (location_id, hall_id, artifact_id,name, img_1, img_2, img_3, img_4, img_5, description,
-                                   audio_1, audio_2, audio_3, audio_4, audio_5, video) => { //Обновлении информации об артефакте по id локации, зала и артефакта
+                                   audio_1, audio_2, audio_3, audio_4, audio_5, link_name_1, link_name_2, link_name_3, link_name_4, link_name_5,
+                                   link_value_1, link_value_2, link_value_3, link_value_4, link_value_5) => { //Обновлении информации об артефакте по id локации, зала и артефакта
     return (dispatch) => {
         museumApi.updateArtifactData(location_id, hall_id, artifact_id,name, img_1, img_2, img_3, img_4, img_5, description,
-            audio_1, audio_2, audio_3, audio_4, audio_5, video)
+            audio_1, audio_2, audio_3, audio_4, audio_5, link_name_1, link_name_2, link_name_3, link_name_4, link_name_5,
+            link_value_1, link_value_2, link_value_3, link_value_4, link_value_5)
             .then(response => response.json()
                 .then(result => {
                     console.log('updateArtifactData', result)
@@ -52,11 +54,13 @@ export const updateArtifactData = (location_id, hall_id, artifact_id,name, img_1
 }
 
 export const createArtifact = (location_id, hall_id, name, img_1,img_2,img_3,img_4,img_5, description,
-                               audio_1, audio_2, audio_3, audio_4, audio_5, video) => { //Добавление артефакта в зал по id локации и зала
+                               audio_1, audio_2, audio_3, audio_4, audio_5, link_name_1, link_name_2, link_name_3, link_name_4, link_name_5,
+                               link_value_1, link_value_2, link_value_3, link_value_4, link_value_5) => { //Добавление артефакта в зал по id локации и зала
     return (dispatch) => {
         dispatch(toggleIsFetching(true))
         museumApi.createArtifact(location_id, hall_id, name, img_1,img_2,img_3,img_4,img_5, description,
-            audio_1, audio_2, audio_3, audio_4, audio_5, video)
+            audio_1, audio_2, audio_3, audio_4, audio_5, link_name_1, link_name_2, link_name_3, link_name_4, link_name_5,
+            link_value_1, link_value_2, link_value_3, link_value_4, link_value_5)
             .then(response => response.json()
                 .then(result => {
                     console.log('createArtifact', result)

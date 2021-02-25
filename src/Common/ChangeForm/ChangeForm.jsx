@@ -29,9 +29,45 @@ const ChangeForm = (props) => {
                 <Input required={true} text={'Время жизни билета (ч.)'} handleFindKey={props.handleFindKey} value={props.ticket_lifetime} type={'number'} name={'ticket_lifetime'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
             }
 
-
             {
-                props.isItemArtifact && <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.video} name={'video'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                props.isItemArtifact &&
+                    <div className={s.videos}>
+                        <div className={s.title}>
+                            Видеофрагменты
+                        </div>
+                        <div className={s.videoItem}>
+                            <Input text={'Название'} handleFindKey={props.handleFindKey} type={'text'} value={props.link_name_1} name={'link_name_1'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                            <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.link_value_1} name={'link_value_1'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                        </div>
+                        {
+                            (((props.link_value_1 !== '') && (props.link_name_1 !== '')) || ((props.link_value_2 !== '') && (props.link_name_2 !== ''))) &&
+                            <div className={s.videoItem}>
+                                <Input text={'Название'} handleFindKey={props.handleFindKey} type={'text'} value={props.link_name_2} name={'link_name_2'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                                <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.link_value_2} name={'link_value_2'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                            </div>
+                        }
+                        {
+                            (((props.link_value_2 !== '') && (props.link_name_2 !== '')) || ((props.link_value_3 !== '') && (props.link_name_3 !== ''))) &&
+                            <div className={s.videoItem}>
+                                <Input text={'Название'} handleFindKey={props.handleFindKey} type={'text'} value={props.link_name_3} name={'link_name_3'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                                <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.link_value_3} name={'link_value_3'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                            </div>
+                        }
+                        {
+                            (((props.link_value_3 !== '') && (props.link_name_3 !== '')) || ((props.link_value_4 !== '') && (props.link_name_4 !== ''))) &&
+                            <div className={s.videoItem}>
+                                <Input text={'Название'} handleFindKey={props.handleFindKey} type={'text'} value={props.link_name_4} name={'link_name_4'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                                <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.link_value_4} name={'link_value_4'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                            </div>
+                        }
+                        {
+                            (((props.link_value_4 !== '') && (props.link_name_4 !== '')) || ((props.link_value_5 !== '') && (props.link_name_5 !== ''))) &&
+                            <div className={s.videoItem}>
+                                <Input text={'Название'} handleFindKey={props.handleFindKey} type={'text'} value={props.link_name_5} name={'link_name_5'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                                <Input text={'Ссылка на видео'} handleFindKey={props.handleFindKey} type={'text'} value={props.link_value_5} name={'link_value_5'} handleFocus={props.handleChangeInputs} handleChange={props.handleChange} />
+                            </div>
+                        }
+                    </div>
             }
             {
                 props.isEmptyInputs &&
@@ -59,11 +95,10 @@ const ChangeForm = (props) => {
                     }
                 </div>
             }
-
             {
                 props.isItemArtifact &&
                 <div className={s.artifactFileInputContainer}>
-                    <div>
+                    <div className={s.title}>
                         Картинки
                     </div>
                     <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_1} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileImg1'} name={'img_1'} />
@@ -90,8 +125,8 @@ const ChangeForm = (props) => {
             {
                 props.isItemArtifact &&
                 <div className={s.artifactFileInputContainer}>
-                    <div>
-                        Аудио
+                    <div className={s.title}>
+                        Аудиогиды
                     </div>
                     <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_1} handleChangeFile={props.handleChangeFile} handleFocus={props.handleFocus} id={'fileAudio1'} name={'audio_1'} />
                     {
