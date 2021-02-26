@@ -22,7 +22,6 @@ export const CommonCreateLogic = (Component) => {
         }
 
         handleSubmit() {
-
             if(this.props.description === '' || this.props.name === '') {
                 this.props.setValidation('isEmptyInputs', true) //Ошибка в пустых полях
             }
@@ -43,6 +42,7 @@ export const CommonCreateLogic = (Component) => {
                     if(!/image/.test(this.props.img_1.type)) {
                         this.props.setValidation('isPhotoTypeWrong', true)
                         this.changeCreate(false)
+                        return //Принудительный выход из метода
                     }
                     else if (this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
                         this.changeCreate(true)
@@ -52,6 +52,7 @@ export const CommonCreateLogic = (Component) => {
                     if(!/image/.test(this.props.img_2.type)) {
                         this.props.setValidation('isPhotoTypeWrong', true)
                         this.changeCreate(false)
+                        return
                     }
                     else if (this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
                         this.changeCreate(true)
@@ -61,6 +62,7 @@ export const CommonCreateLogic = (Component) => {
                     if(!/image/.test(this.props.img_3.type)) {
                         this.props.setValidation('isPhotoTypeWrong', true)
                         this.changeCreate(false)
+                        return
                     }
                     else if (this.props.img_4 === null && this.props.img_5 === null) {
                         this.changeCreate(true)
@@ -70,6 +72,7 @@ export const CommonCreateLogic = (Component) => {
                     if(!/image/.test(this.props.img_4.type)) {
                         this.props.setValidation('isPhotoTypeWrong', true)
                         this.changeCreate(false)
+                        return
                     }
                     else if (this.props.img_5 === null) {
                         this.changeCreate(true)
@@ -79,6 +82,7 @@ export const CommonCreateLogic = (Component) => {
                     if(!/image/.test(this.props.img_5.type)) {
                         this.props.setValidation('isPhotoTypeWrong', true)
                         this.changeCreate(false)
+                        return
                     }
                     else {
                         this.changeCreate(true)

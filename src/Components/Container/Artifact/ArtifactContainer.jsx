@@ -52,6 +52,7 @@ class ArtifactContainer extends React.Component {
             if(!vid.test(this.props.link_value_1)) {
                 this.props.setValidation('isVideoUrlWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.link_name_2 === '' && this.props.link_name_3 === '' && this.props.link_name_4 === '' && this.props.link_name_5 === '' &&
                 this.props.link_value_2 === '' && this.props.link_value_3 === '' && this.props.link_value_4 === '' && this.props.link_value_5 === ''
@@ -64,6 +65,7 @@ class ArtifactContainer extends React.Component {
             if(!vid.test(this.props.link_value_2)) {
                 this.props.setValidation('isVideoUrlWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.link_name_3 === '' && this.props.link_name_4 === '' && this.props.link_name_5 === '' &&
                 this.props.link_value_3 === '' && this.props.link_value_4 === '' && this.props.link_value_5 === '') {
@@ -75,6 +77,7 @@ class ArtifactContainer extends React.Component {
             if(!vid.test(this.props.link_value_3)) {
                 this.props.setValidation('isVideoUrlWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.link_name_4 === '' && this.props.link_name_5 === '' && this.props.link_value_4 === '' && this.props.link_value_5 === '') {
                 this.checkAudio()
@@ -85,6 +88,7 @@ class ArtifactContainer extends React.Component {
             if(!vid.test(this.props.link_value_4)) {
                 this.props.setValidation('isVideoUrlWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.link_name_5 === '' && this.props.link_value_5 === '') {
                 this.checkAudio()
@@ -95,6 +99,7 @@ class ArtifactContainer extends React.Component {
             if(!vid.test(this.props.link_value_5)) {
                 this.props.setValidation('isVideoUrlWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else {
                 this.checkAudio()
@@ -115,6 +120,7 @@ class ArtifactContainer extends React.Component {
             this.props.changeCreate(false)
             this.props.toggleIsChanging(true)
             this.props.setValidation('isAudioTypeWrong', true)
+            return
         }
         //Если картинка заполнена и она не является изображением
         else if(this.props.audio_1 !== null) {
@@ -122,6 +128,7 @@ class ArtifactContainer extends React.Component {
                 this.props.changeCreate(false)
                 this.props.toggleIsChanging(true)
                 this.props.setValidation('isAudioTypeWrong', true)
+                return
             }
             else if (this.props.audio_2 === null && this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
                 this.updateArtifact()
@@ -133,6 +140,7 @@ class ArtifactContainer extends React.Component {
                 this.props.changeCreate(false)
                 this.props.toggleIsChanging(true)
                 this.props.setValidation('isAudioTypeWrong', true)
+                return
             }
             else if (this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
                 this.updateArtifact()
@@ -144,6 +152,7 @@ class ArtifactContainer extends React.Component {
                 this.props.changeCreate(false)
                 this.props.toggleIsChanging(true)
                 this.props.setValidation('isAudioTypeWrong', true)
+                return
             }
             else if (this.props.audio_4 === null && this.props.audio_5 === null) {
                 this.updateArtifact()
@@ -155,6 +164,7 @@ class ArtifactContainer extends React.Component {
                 this.props.changeCreate(false)
                 this.props.toggleIsChanging(true)
                 this.props.setValidation('isAudioTypeWrong', true)
+                return
             }
             else if (this.props.audio_5 === null) {
                 this.updateArtifact()
@@ -167,6 +177,7 @@ class ArtifactContainer extends React.Component {
                 this.props.changeCreate(false)
                 this.props.toggleIsChanging(true)
                 this.props.setValidation('isAudioTypeWrong', true)
+                return
             }
             else {
                 this.updateArtifact()

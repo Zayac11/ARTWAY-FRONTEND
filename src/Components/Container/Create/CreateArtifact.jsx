@@ -40,6 +40,7 @@ class CreateArtifact extends React.Component {
             if(!vid.test(this.props.link_value_1)) {
                 this.props.setValidation('isVideoUrlWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.link_name_2 === '' && this.props.link_name_3 === '' && this.props.link_name_4 === '' && this.props.link_name_5 === '' &&
                 this.props.link_value_2 === '' && this.props.link_value_3 === '' && this.props.link_value_4 === '' && this.props.link_value_5 === ''
@@ -52,6 +53,7 @@ class CreateArtifact extends React.Component {
             if(!vid.test(this.props.link_value_2)) {
                 this.props.setValidation('isVideoUrlWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.link_name_3 === '' && this.props.link_name_4 === '' && this.props.link_name_5 === '' &&
                 this.props.link_value_3 === '' && this.props.link_value_4 === '' && this.props.link_value_5 === '') {
@@ -63,6 +65,7 @@ class CreateArtifact extends React.Component {
             if(!vid.test(this.props.link_value_3)) {
                 this.props.setValidation('isVideoUrlWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.link_name_4 === '' && this.props.link_name_5 === '' && this.props.link_value_4 === '' && this.props.link_value_5 === '') {
                 this.checkAudio()
@@ -73,6 +76,7 @@ class CreateArtifact extends React.Component {
             if(!vid.test(this.props.link_value_4)) {
                 this.props.setValidation('isVideoUrlWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.link_name_5 === '' && this.props.link_value_5 === '') {
                 this.checkAudio()
@@ -83,6 +87,7 @@ class CreateArtifact extends React.Component {
             if(!vid.test(this.props.link_value_5)) {
                 this.props.setValidation('isVideoUrlWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else {
                 this.checkAudio()
@@ -97,17 +102,19 @@ class CreateArtifact extends React.Component {
     }
 
     checkAudio() {
-        debugger
+
         //Если аудио нет вообще
         if(this.props.audio_1 === null && this.props.audio_2 === null && this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
             this.props.setValidation('isAudioTypeWrong', true)
             this.props.changeCreate(false)
+            return
         }
         //Если картинка заполнена и она не является изображением
         else if(this.props.audio_1 !== null) {
             if(!/audio/.test(this.props.audio_1.type)) {
                 this.props.setValidation('isAudioTypeWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.audio_2 === null && this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
                 this.createArtifact()
@@ -120,6 +127,7 @@ class CreateArtifact extends React.Component {
             if(!/audio/.test(this.props.audio_2.type)) {
                 this.props.setValidation('isAudioTypeWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.audio_3 === null && this.props.audio_4 === null && this.props.audio_5 === null) {
                 this.createArtifact()
@@ -132,6 +140,7 @@ class CreateArtifact extends React.Component {
             if(!/audio/.test(this.props.audio_3.type)) {
                 this.props.setValidation('isAudioTypeWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.audio_4 === null && this.props.audio_5 === null) {
                 this.createArtifact()
@@ -144,6 +153,7 @@ class CreateArtifact extends React.Component {
             if(!/audio/.test(this.props.audio_4.type)) {
                 this.props.setValidation('isAudioTypeWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else if (this.props.audio_5 === null) {
                 this.createArtifact()
@@ -156,6 +166,7 @@ class CreateArtifact extends React.Component {
             if(!/audio/.test(this.props.audio_5.type)) {
                 this.props.setValidation('isAudioTypeWrong', true)
                 this.props.changeCreate(false)
+                return
             }
             else {
                 this.createArtifact()

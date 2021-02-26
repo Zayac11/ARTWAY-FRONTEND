@@ -93,10 +93,12 @@ export const museumApi = {
         return fetch(baseUrl + `api/m_admin/${location_id}`, options)
 
     },
+
     swapLocations(swap_type, obj_id) { //Изменение позиций локации
         let options = getOptions([{name: 'swap_type', value: swap_type},{name: 'obj_id', value: obj_id}], true,  'POST')
         return fetch(baseUrl + `api/swap_locations`, options)
     },
+
     getUserHallsList(token, location_id) { //Получения списка залов музея по токену пользователя и id локации
         let options = getOptions([{name: 'token', value: token}, {name: 'location_pk', value: location_id}], false,  'POST')
         return fetch(baseUrl + `api/halls_map`, options)
@@ -130,10 +132,12 @@ export const museumApi = {
         return fetch(baseUrl + `api/m_admin/${location_id}/${hall_id}`, options)
 
     },
+
     swapHalls(swap_type, obj_id) { //Изменение позиций залов в локации
         let options = getOptions([{name: 'swap_type', value: swap_type},{name: 'obj_id', value: obj_id}], true,  'POST')
         return fetch(baseUrl + `api/swap_halls`, options)
     },
+
     getUserArtifactsList(token, hall_id) { //Получения списка артефактов музея по токену пользователя и id зала
         let options = getOptions([{name: 'token', value: token}, {name: 'hall_pk', value: hall_id}], false,  'POST')
         return fetch(baseUrl + `api/artifacts_map`, options)

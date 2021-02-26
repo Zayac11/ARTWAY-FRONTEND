@@ -82,24 +82,23 @@ const ChangeForm = (props) => {
                     <div className={s.title}>
                         Аудиогиды
                     </div>
-                    <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио1'} text2={'Обновить аудио'} file={props.audio_1} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio1'} name={'audio_1'} />
+                    <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_1} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio1'} name={'audio_1'} />
                     {
                         ((props.audio_1 !== null) || (props.audio_2 !== null)) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио2'} text2={'Обновить аудио'} file={props.audio_2} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio2'} name={'audio_2'} />
+                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_2} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio2'} name={'audio_2'} />
                     }
                     {
                         (props.audio_2 !== null || props.audio_3 !== null) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио3'} text2={'Обновить аудио'} file={props.audio_3} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio3'} name={'audio_3'} />
+                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_3} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio3'} name={'audio_3'} />
                     }
                     {
                         (props.audio_3 !== null || props.audio_4 !== null) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио4'} text2={'Обновить аудио'} file={props.audio_4} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio4'} name={'audio_4'} />
+                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_4} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio4'} name={'audio_4'} />
                     }
                     {
                         (props.audio_4 !== null || props.audio_5 !== null) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио5'} text2={'Обновить аудио'} file={props.audio_5} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio5'} name={'audio_5'} />
+                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_5} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio5'} name={'audio_5'} />
                     }
-
                 </div>
             }
             {

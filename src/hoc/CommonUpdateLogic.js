@@ -51,6 +51,7 @@ export const CommonUpdateLogic = (Component) => {
                     if(!/image/.test(this.props.img_1.type) && !this.props.img_1.length) {
                         this.props.setValidation('isPhotoTypeWrong', true)
                         this.changeCreate(false)
+                        return
                     }
                     else if (this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
                         // this.props.toggleIsChanging(false)
@@ -61,6 +62,7 @@ export const CommonUpdateLogic = (Component) => {
                     if(!/image/.test(this.props.img_2.type) && !this.props.img_2.length) {
                         this.props.setValidation('isPhotoTypeWrong', true)
                         this.changeCreate(false)
+                        return
                     }
                     else if (this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null) {
                         // this.props.toggleIsChanging(false)
@@ -71,6 +73,7 @@ export const CommonUpdateLogic = (Component) => {
                     if(!/image/.test(this.props.img_3.type) && !this.props.img_3.length) {
                         this.props.setValidation('isPhotoTypeWrong', true)
                         this.changeCreate(false)
+                        return
                     }
                     else if (this.props.img_4 === null && this.props.img_5 === null) {
                         // this.props.toggleIsChanging(false)
@@ -81,6 +84,7 @@ export const CommonUpdateLogic = (Component) => {
                     if(!/image/.test(this.props.img_4.type) && !this.props.img_4.length) {
                         this.props.setValidation('isPhotoTypeWrong', true)
                         this.changeCreate(false)
+                        return
                     }
                     else if (this.props.img_5 === null) {
                         // this.props.toggleIsChanging(false)
@@ -91,6 +95,7 @@ export const CommonUpdateLogic = (Component) => {
                     if(!/image/.test(this.props.img_5.type) && !this.props.img_5.length) {
                         this.props.setValidation('isPhotoTypeWrong', true)
                         this.changeCreate(false)
+                        return
                     }
                     else {
                         // this.props.toggleIsChanging(false)
@@ -104,6 +109,7 @@ export const CommonUpdateLogic = (Component) => {
                 else if (!/image/.test(this.props.img.type) && this.props.img !== '' ) {
                     this.props.setValidation('isPhotoTypeWrong', true)
                     this.changeCreate(false)
+                    return
                 }
             }
         }
