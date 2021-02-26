@@ -22,7 +22,7 @@ export const CommonCreateLogic = (Component) => {
         }
 
         handleSubmit() {
-            debugger
+
             if(this.props.description === '' || this.props.name === '') {
                 this.props.setValidation('isEmptyInputs', true) //Ошибка в пустых полях
             }

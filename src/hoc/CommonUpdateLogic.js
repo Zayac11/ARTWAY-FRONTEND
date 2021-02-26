@@ -29,7 +29,7 @@ export const CommonUpdateLogic = (Component) => {
         }
 
         handleSubmit() {
-            debugger
+
             if(this.props.description === '' || (this.props.name === '' && this.props.sectionName === '') || this.props.ticket_lifetime === '') { //Ошибка в пустых полях
                 this.props.setValidation('isEmptyInputs', true)
             }
