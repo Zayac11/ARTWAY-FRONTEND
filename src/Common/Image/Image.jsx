@@ -2,6 +2,7 @@ import React from "react";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import s from './Image.module.css'
+import './Image.css'
 
 const Image = (props) => {
 
@@ -20,6 +21,8 @@ const Image = (props) => {
                     showThumbnails={false}
                     showPlayButton={false}
                     autoPlay={false}
+                    originalClass={s.original}
+                    thumbnailClass ={s.original}
                 />
             </div>
         </div>

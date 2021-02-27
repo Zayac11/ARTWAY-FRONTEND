@@ -1,0 +1,31 @@
+.image-gallery-image {
+    height: 300px !important;
+}
+
+.image-gallery {
+    display: flex;
+    align-items: center;
+}
+
+.image-gallery-swipe {
+    padding: 0 80px !important;
+}
+
+@media (max-width: 480px) {
+    .image-gallery-left-nav, .image-gallery-right-nav {
+        padding: 50px 0 !important;
+    }
+    .image-gallery-fullscreen-button {
+        padding: 10px 5px 10px 0 !important;
+    }
+    .image-gallery-swipe {
+        padding: 0 24px !important;
+    }
+}
+
+.fullscreen {
+    width: 100% !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    margin: auto !important;
+}
