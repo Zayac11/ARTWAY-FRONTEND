@@ -11,9 +11,14 @@ const Top = (props) => {
             {
                 props.isUserMuseumAdmin
                 &&
-                <NavLink to={'/m-admin/print'} className={s.printDesktop}>
-                    Печать
-                </NavLink>
+                    props.match.url === "/m-admin/print" ?
+                    <div className={s.printDesktop}>
+                        Печать
+                    </div>
+                    :
+                    <NavLink to={'/m-admin/print'} className={s.printDesktop}>
+                        Печать
+                    </NavLink>
             }
 
 

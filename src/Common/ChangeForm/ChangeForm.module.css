@@ -41,35 +41,6 @@
     margin: 15px auto 0;
 }
 
-.fileInput {
-    width: 0;
-    height: 0;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-}
-
-.fileInput + label {
-    color: #196bb1;
-    border: 1px solid #196bb1;
-    background-color: transparent;
-    font-size: 12px;
-    cursor: pointer;
-    display: block;
-    overflow: hidden;
-    padding: 13px 0;
-    border-radius: 8px;
-    text-align: center;
-    width: 150px;
-}
-
-.fileName {
-    margin-left: 10px;
-    font-size: 10px;
-    max-width: 160px;
-}
-
 .saveContainer {
     margin: 15px 0 20px;
 }

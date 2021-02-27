@@ -34,7 +34,7 @@ class CreateArtifact extends React.Component {
 
     checkVideo() {
 
-        let vid = /^(http\:\/\/|https\:\/\/)?([a-z0-9][a-z0-9\-]*\.)+[a-z0-9][a-z0-9\-]*$/
+        let vid = /^(http:\/\/|https:\/\/|ftp:\/\/)?([a-z0-9][a-z0-9-]*\.)+[a-z0-9][a-z0-9-]*/
 
         if(this.props.link_name_1 !== '' || this.props.link_value_1 !== '') {
             if(!vid.test(this.props.link_value_1)) {
@@ -166,7 +166,6 @@ class CreateArtifact extends React.Component {
             if(!/audio/.test(this.props.audio_5.type)) {
                 this.props.setValidation('isAudioTypeWrong', true)
                 this.props.changeCreate(false)
-                return
             }
             else {
                 this.createArtifact()

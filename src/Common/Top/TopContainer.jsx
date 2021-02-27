@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Top from "./Top";
+import {withRouter} from "react-router-dom";
+import {compose} from "redux";
 
 class TestContainer extends React.Component {
 
@@ -22,4 +24,8 @@ let mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,{})(TestContainer);
+export default compose(
+    connect(mapStateToProps,{}),
+    withRouter
+)
+(TestContainer)

@@ -4,6 +4,11 @@
     max-width: 160px;
 }
 
+.fileContainer {
+    display: flex;
+    align-items: center;
+}
+
 .fileInput {
     width: 0;
     height: 0;
@@ -25,8 +30,27 @@
     border-radius: 8px;
     text-align: center;
     width: 150px;
+    margin-bottom: 5px;
 }
 
 .file {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.deleteBtn {
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #196bb1;
+    color: #196bb1;
+    background-color: transparent;
+    padding: 2px 5px;
+    font-size: 10px;
+    border-radius: 8px;
+}
+
+.openLink {
+    margin-left: 20px;
+    color: #196bb1;
+    text-decoration: underline;
+    font-size: 14px;
 }

@@ -27,6 +27,7 @@
 }
 
 .printDesktop {
+    cursor: pointer;
     display: none;
     color: white;
     padding: 7px 18px;

@@ -38,16 +38,7 @@ const ChangeForm = (props) => {
 
             {
                 !props.isItemArtifact &&
-                <div className={s.fileInputContainer}>
-                    <input type="file" name={'img'} id={'fileImg'} onChange={props.handleChangeFile} onFocus={props.handleFocus} className={s.fileInput}/>
-                    <label htmlFor="fileImg">
-                        <span>Загрузить фото</span>
-                    </label>
-                    {
-                        props.img !== '' &&
-                        <span className={s.fileName}>{props.img.name}</span>
-                    }
-                </div>
+                <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg'} name={'img'} />
             }
             {
                 props.isItemArtifact &&
@@ -176,6 +167,10 @@ const ChangeForm = (props) => {
             <div className={s.saveContainer}>
                 <BlueButton type={'btn'} handleSubmit={props.handleSubmit} text={'Сохранить и выйти'} />
             </div>
+            {
+                props.isChangingArtifact &&
+                <BlueButton type={'withProps'} data={!props.isChanging} handleSubmit={props.toggleIsChanging} text={'Выйти без сохранения'} />
+            }
             {
                 (props.isUserMuseumAdmin && props.isChangingArtifact) &&
                 <RedTransparentBtn type={'withProps'} data={true} text={'Удалить экспонат'} handleSubmit={props.toggleOpenModal} />
