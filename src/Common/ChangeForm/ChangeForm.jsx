@@ -38,7 +38,7 @@ const ChangeForm = (props) => {
 
             {
                 !props.isItemArtifact &&
-                <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg'} name={'img'} />
+                <InputFile isItemArtifact={props.isItemArtifact} handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} main_img={props.main_img} file={props.img} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg'} name={'img'} />
             }
             {
                 props.isItemArtifact &&
@@ -46,22 +46,22 @@ const ChangeForm = (props) => {
                     <div className={s.title}>
                         Картинки
                     </div>
-                    <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_1} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg1'} name={'img_1'} />
+                    <InputFile isItemArtifact={props.isItemArtifact} handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_1} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg1'} name={'img_1'} />
                     {
                         ((props.img_1 !== null) || (props.img_2 !== null)) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_2} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg2'} name={'img_2'} />
+                        <InputFile isItemArtifact={props.isItemArtifact} handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_2} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg2'} name={'img_2'} />
                     }
                     {
                         (props.img_2 !== null || props.img_3 !== null) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_3} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg3'} name={'img_3'} />
+                        <InputFile isItemArtifact={props.isItemArtifact} handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_3} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg3'} name={'img_3'} />
                     }
                     {
                         (props.img_3 !== null || props.img_4 !== null) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_4} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg4'} name={'img_4'} />
+                        <InputFile isItemArtifact={props.isItemArtifact} handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_4} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg4'} name={'img_4'} />
                     }
                     {
                         (props.img_4 !== null || props.img_5 !== null) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_5} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg5'} name={'img_5'} />
+                        <InputFile isItemArtifact={props.isItemArtifact} handleDelete={props.deleteFromForm} text1={'Загрузить фото'} text2={'Обновить фото'} file={props.img_5} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileImg5'} name={'img_5'} />
                     }
 
                 </div>
@@ -73,22 +73,22 @@ const ChangeForm = (props) => {
                     <div className={s.title}>
                         Аудиогиды
                     </div>
-                    <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_1} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio1'} name={'audio_1'} />
+                    <InputFile isItemArtifact={props.isItemArtifact} handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_1} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio1'} name={'audio_1'} />
                     {
                         ((props.audio_1 !== null) || (props.audio_2 !== null)) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_2} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio2'} name={'audio_2'} />
+                        <InputFile isItemArtifact={props.isItemArtifact} handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_2} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio2'} name={'audio_2'} />
                     }
                     {
                         (props.audio_2 !== null || props.audio_3 !== null) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_3} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio3'} name={'audio_3'} />
+                        <InputFile isItemArtifact={props.isItemArtifact} handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_3} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio3'} name={'audio_3'} />
                     }
                     {
                         (props.audio_3 !== null || props.audio_4 !== null) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_4} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio4'} name={'audio_4'} />
+                        <InputFile isItemArtifact={props.isItemArtifact} handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_4} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio4'} name={'audio_4'} />
                     }
                     {
                         (props.audio_4 !== null || props.audio_5 !== null) &&
-                        <InputFile handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_5} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio5'} name={'audio_5'} />
+                        <InputFile isItemArtifact={props.isItemArtifact} handleDelete={props.deleteFromForm} text1={'Загрузить аудио'} text2={'Обновить аудио'} file={props.audio_5} handleChangeFile={props.handleChangeFile} handleFocus={props.handleChangeInputs} id={'fileAudio5'} name={'audio_5'} />
                     }
                 </div>
             }

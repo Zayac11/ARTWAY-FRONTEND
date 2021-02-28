@@ -8,11 +8,11 @@ const InputFile = (props) => {
                 <input type="file" name={props.name} id={props.id} onChange={props.handleChangeFile} onFocus={props.handleFocus} className={s.fileInput}/>
                 <label htmlFor={props.id}>
                     {
-                        props.file !== null &&
-                        <span>{props.text2}</span>
+                        ((props.file !== null && props.file !== '' )|| props.main_img) &&
+                            <span>{props.text2}</span>
                     }
                     {
-                        props.file === null &&
+                        ((props.file === null || props.file === '') && !props.main_img) &&
                             <span>{props.text1}</span>
                     }
                 </label>
@@ -23,7 +23,8 @@ const InputFile = (props) => {
                 }
             </div>
             {
-                props.file !== null &&
+                props.isItemArtifact &&
+                (props.file !== null && props.file !== '') &&
                 <button className={s.deleteBtn} onClick={() => props.handleDelete(props.name)}>Удалить</button>
             }
             {
