@@ -82,7 +82,7 @@ export const getMuseumData = () => { //Получение информации �
         museumApi.getMuseumData()
             .then(response => response.json()
                 .then(result => {
-                    console.log('museumData', result)
+                    // console.log('museumData', result)
                     dispatch(setMuseumData(result.museum, result.locations, result.is_museum_super_admin))
                     dispatch(toggleIsFetching(false))
             }))

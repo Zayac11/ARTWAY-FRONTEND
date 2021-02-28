@@ -34,7 +34,8 @@
 }
 
 .file {
-    margin-bottom: 15px;
+    width: 320px;
+    margin: 0 auto 15px;
 }
 
 .deleteBtn {

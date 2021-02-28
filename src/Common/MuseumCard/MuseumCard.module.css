@@ -16,6 +16,7 @@
     color: black;
     font-size: 14px;
     word-break: break-all;
+    margin-right: 10px;
 }
 
 .moveBtn {

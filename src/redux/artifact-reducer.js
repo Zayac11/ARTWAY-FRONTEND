@@ -31,7 +31,7 @@ export const getArtifactData = (location_id, hall_id, artifact_id) => { //Пол
         museumApi.getArtifactData(location_id, hall_id, artifact_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('getArtifactData', result)
+                    // console.log('getArtifactData', result)
                     dispatch(setArtifactData(result))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -47,7 +47,7 @@ export const updateArtifactData = (location_id, hall_id, artifact_id,name, img_1
             link_value_1, link_value_2, link_value_3, link_value_4, link_value_5)
             .then(response => response.json()
                 .then(result => {
-                    console.log('updateArtifactData', result)
+                    // console.log('updateArtifactData', result)
                     dispatch(setArtifactData(result))
                 }))
     }
@@ -63,7 +63,7 @@ export const createArtifact = (location_id, hall_id, name, img_1,img_2,img_3,img
             link_value_1, link_value_2, link_value_3, link_value_4, link_value_5)
             .then(response => response.json()
                 .then(result => {
-                    console.log('createArtifact', result)
+                    // console.log('createArtifact', result)
                     dispatch(setHallData(result.hall, result.artifacts))
                     dispatch(toggleIsFetching(false))
                 }))
@@ -76,7 +76,7 @@ export const deleteArtifact = (location_id, hall_id, artifact_id) => { //Уда�
         museumApi.deleteArtifact(location_id, hall_id, artifact_id)
             .then(response => response.json()
                 .then(result => {
-                    console.log('deleteArtifact', result)
+                    // console.log('deleteArtifact', result)
                     dispatch(setHallData(result.hall, result.artifacts))
                     dispatch(toggleIsFetching(false))
                 }))

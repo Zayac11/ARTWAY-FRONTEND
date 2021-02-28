@@ -46,7 +46,7 @@ const Hall = (props) => {
                                         !props.isUserMuseumAdmin
                                             ?
                                             <NavLink to={`/artifacts/${l.id}`}>
-                                                <MuseumItemsList prev={l.prev} id={l.id} last={last} img={l.img} name={l.name} description={l.description} locations={props.halls} swapLocations={props.swapArtifacts} />
+                                                <MuseumItemsList prev={l.prev} id={l.id} last={last} img_1={l.img_1} img_2={l.img_2} img_3={l.img_3} img_4={l.img_4} img_5={l.img_5} name={l.name} description={l.description} locations={props.halls} swapLocations={props.swapArtifacts} />
                                             </NavLink>
                                             :
                                             <MuseumCard isCardsChanging={props.isCardsChanging} link={`/m-admin/${props.location_id}/${props.hall_id}/${l.id}`} isUserMuseumAdmin={props.isUserMuseumAdmin} prev={l.prev} id={l.id} last={last} name={l.name} swapLocations={props.swapArtifacts} />

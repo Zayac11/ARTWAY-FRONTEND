@@ -32,12 +32,15 @@ export const CommonUpdateLogic = (Component) => {
 
             if(this.props.description === '' || (this.props.name === '' && this.props.sectionName === '') || this.props.ticket_lifetime === '') { //Ошибка в пустых полях
                 this.props.setValidation('isEmptyInputs', true)
+                return
             }
             else if(this.props.name.length > 35 || this.props.ticket_lifetime.length > 5 || this.props.sectionName.length > 100) {
                 this.props.setValidation('isInputSizeRight', false)
+                return
             }
             else if(this.props.ticket_lifetime < 1) {
                 this.props.setValidation('isTicketLifeTimeWrong', true)
+                return
             }
             else {
                 if(this.props.img_1 === null && this.props.img_2 === null && this.props.img_3 === null && this.props.img_4 === null && this.props.img_5 === null && this.props.img === '') { //Если пользователь не хочет обновлять фотографию, то просто берется ссылка на старую

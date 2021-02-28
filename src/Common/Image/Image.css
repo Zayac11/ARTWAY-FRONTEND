@@ -24,8 +24,7 @@
 }
 
 .fullscreen {
-    width: 100% !important;
-    top: 0 !important;
-    bottom: 0 !important;
-    margin: auto !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
 }
