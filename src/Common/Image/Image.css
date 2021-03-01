@@ -5,10 +5,15 @@
 .image-gallery {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .image-gallery-swipe {
     padding: 0 80px !important;
+}
+
+.image-gallery-slide-wrapper {
+    width: 100%;
 }
 
 @media (max-width: 480px) {
@@ -24,6 +29,7 @@
 }
 
 .fullscreen {
+    width: 100%;
     height: 100% !important;
     display: flex !important;
     align-items: center !important;

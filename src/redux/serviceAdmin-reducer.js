@@ -92,11 +92,11 @@ export const deleteMuseumSuperAdmin = (museum_id) => { //Удаление суп
 
 export const createMuseumSuperAdmin = (last_name, first_name, middle_name, email, password, museum_id) => { //Создание супер-админа музея по id музея
     return (dispatch) => {
-        dispatch(toggleIsFetching(true))
         adminApi.checkIsUserExists(email)
             .then(response => response.json()
                 .then(result => {
                     // console.log('checkIsUserExists', result)
+                    dispatch(toggleIsFetching(true))
                     if(result.status === 404) {
                         serviceAdminApi.createMuseumSuperAdmin(last_name, first_name, middle_name, email, password, museum_id)
                             .then(response => response.json()

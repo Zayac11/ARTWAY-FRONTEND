@@ -1,6 +1,5 @@
 .button {
     display: block;
-    padding: 10px 0;
     width: 100%;
     font-size: 14px;
     border: 1px solid #196bb1;
@@ -9,6 +8,7 @@
     cursor: pointer;
     color: #196bb1;
     max-width: 320px;
+    padding: 10px;
     margin: 15px auto 10px;
     outline: none;
     background-color: transparent;

@@ -9,8 +9,7 @@ const Top = (props) => {
     return (
         <div className={s.artContainer}>
             {
-                props.isUserMuseumAdmin
-                &&
+                props.isUserMuseumAdmin && (
                     props.match.url === "/m-admin/print" ?
                     <div className={s.printDesktop}>
                         Печать
@@ -18,7 +17,7 @@ const Top = (props) => {
                     :
                     <NavLink to={'/m-admin/print'} className={s.printDesktop}>
                         Печать
-                    </NavLink>
+                    </NavLink>)
             }
 
 

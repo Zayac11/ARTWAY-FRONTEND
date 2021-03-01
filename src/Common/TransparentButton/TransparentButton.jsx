@@ -5,7 +5,6 @@ import {NavLink} from "react-router-dom";
 const TransparentButton = (props) => {
     return (
         <>
-
             {
                 props.type === 'link' &&
                 <NavLink to={props.link} className={s.button}>
@@ -24,7 +23,6 @@ const TransparentButton = (props) => {
                     {props.text}
                 </button>
             }
-
         </>
 
     );
