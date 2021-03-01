@@ -104,7 +104,7 @@ export const createMuseumSuperAdmin = (last_name, first_name, middle_name, email
         adminApi.checkIsUserExists(email)
             .then(response => response.json()
                 .then(result => {
-                    console.log('checkIsUserExists', result)
+                    // console.log('checkIsUserExists', result)
                     if(result.status === 404) {
                         dispatch(toggleIsFetching(true))
                         serviceAdminApi.createMuseumSuperAdmin(last_name, first_name, middle_name, email, password, museum_id)
@@ -112,7 +112,7 @@ export const createMuseumSuperAdmin = (last_name, first_name, middle_name, email
                                 .then(result => {
                                     dispatch(setIsEmailTaken(false))
                                     dispatch(setIsAdminCreate(true))
-                                    console.log('createMuseumSuperAdmin', result)
+                                    // console.log('createMuseumSuperAdmin', result)
                                     dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
                                 }))
                     }

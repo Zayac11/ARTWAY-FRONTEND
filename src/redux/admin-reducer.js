@@ -74,7 +74,7 @@ export const createWorker = (last_name, first_name, middle_name, email, password
         adminApi.checkIsUserExists(email)
             .then(response => response.json()
                 .then(result => {
-                    console.log('checkIsUserExists', result)
+                    // console.log('checkIsUserExists', result)
                     if(result.status === 404) {
                         dispatch(toggleIsFetching(true))
                         adminApi.createWorker(last_name, first_name, middle_name, email, password, role)
