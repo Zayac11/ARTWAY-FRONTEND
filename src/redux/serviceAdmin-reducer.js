@@ -3,12 +3,14 @@ import {setIsEmailTaken, toggleIsFetching} from "./authentication";
 
 const SET_MUSEUMS = 'SET_MUSEUMS'
 const SET_MUSEUM_ADMIN_DATA = 'SET_MUSEUM_ADMIN_DATA'
+const SET_IS_ADMIN_CREATE = 'SET_IS_ADMIN_CREATE'
 
 let initialState = {
     museums: [], //Все музеи
     museumAdminData: {}, //Информация об супер-администраторе музея
     currentMuseumData: {}, //Информация об конкретном музее
     status: {}, //Есть ли админ у музея
+    isAdminCreate: false,
 }
 
 const serviceAdminReducer = (state = initialState, action) => {
@@ -17,6 +19,11 @@ const serviceAdminReducer = (state = initialState, action) => {
             return {
                 ...state,
                 museums: action.museums
+            }
+        case SET_IS_ADMIN_CREATE:
+            return {
+                ...state,
+                isAdminCreate: action.isAdminCreate
             }
         case SET_MUSEUM_ADMIN_DATA:
             return {
@@ -32,6 +39,7 @@ const serviceAdminReducer = (state = initialState, action) => {
 
 export const setMuseums = (museums) => ({type: SET_MUSEUMS, museums})
 export const setMuseumAdminData = (museumAdminData, currentMuseumData, status) => ({type: SET_MUSEUM_ADMIN_DATA, museumAdminData, currentMuseumData,status})
+export const setIsAdminCreate = (isAdminCreate) => ({type: SET_IS_ADMIN_CREATE, isAdminCreate})
 
 export const getMuseums = () => { //Получение списка музеев
     return (dispatch) => {
@@ -86,6 +94,7 @@ export const deleteMuseumSuperAdmin = (museum_id) => { //Удаление суп
                 .then(result => {
                     // console.log('deleteMuseumSuperAdmin', result)
                     dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
+                    dispatch(setIsAdminCreate(false))
                 }))
     }
 }
@@ -95,14 +104,15 @@ export const createMuseumSuperAdmin = (last_name, first_name, middle_name, email
         adminApi.checkIsUserExists(email)
             .then(response => response.json()
                 .then(result => {
-                    // console.log('checkIsUserExists', result)
-                    dispatch(toggleIsFetching(true))
+                    console.log('checkIsUserExists', result)
                     if(result.status === 404) {
+                        dispatch(toggleIsFetching(true))
                         serviceAdminApi.createMuseumSuperAdmin(last_name, first_name, middle_name, email, password, museum_id)
                             .then(response => response.json()
                                 .then(result => {
                                     dispatch(setIsEmailTaken(false))
-                                    // console.log('createMuseumSuperAdmin', result)
+                                    dispatch(setIsAdminCreate(true))
+                                    console.log('createMuseumSuperAdmin', result)
                                     dispatch(setMuseumAdminData(result.museum_super_admin, result.museum, result.status))
                                 }))
                     }

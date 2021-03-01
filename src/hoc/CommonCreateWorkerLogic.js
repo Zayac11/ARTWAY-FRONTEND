@@ -66,7 +66,6 @@ export const CommonCreateWorkerLogic = (Component) => {
         }
 
         handleSubmit() {
-
             let mail = /^[\w.\d*]+@[\w\d]+(\.\w{2,4})$/
             if (this.state.first_name === '' || this.state.last_name === '' || this.state.email === '' || this.state.password === '') {
                 this.setState({
@@ -100,10 +99,14 @@ export const CommonCreateWorkerLogic = (Component) => {
             })
         }
 
-        componentDidMount() {
-            this.setState({
-                isEmailAlreadyTaken: this.props.isEmailTaken
-            })
+        componentDidUpdate(prevProps, prevState, snapshot) {
+            if(prevProps.isEmailTaken !== this.props.isEmailTaken) {
+                this.setState({
+                    isEmailAlreadyTaken: this.props.isEmailTaken
+                })}
+            if(this.props.isEmailTaken && this.state.isCreate) {
+                this.handleChangeCreateStatus(false)
+            }
         }
 
         handleChangeCreateStatus(status) {

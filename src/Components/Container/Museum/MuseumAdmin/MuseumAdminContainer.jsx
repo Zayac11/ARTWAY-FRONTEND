@@ -25,6 +25,7 @@ class MuseumAdminContainer extends React.Component {
             isChanging: false, //Идет ли изменение
             isDeleted: false, //Удален ли музей
             isModalOpen: false, //Модальное окно для подтверждения удаления
+            isCreate: false,
             name: 'Main', //Название текущего раздела
         }
         this.deleteMuseum = this.deleteMuseum.bind(this)
@@ -76,11 +77,11 @@ class MuseumAdminContainer extends React.Component {
                 this.props.password,
                 this.props.museum_id,
             )
-            this.toggleIsChanging()
+            // this.toggleIsChanging()
             this.props.handleChangeCreateStatus(false)
         }
 
-        if(prevProps.isEmailTaken !== this.props.isEmailTaken && this.props.isEmailTaken) {
+        if(prevProps.isAdminCreate !== this.props.isAdminCreate && this.props.isAdminCreate) {
             this.toggleIsChanging()
         }
     }
@@ -148,6 +149,7 @@ class MuseumAdminContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         museumAdminData: state.service.museumAdminData,
+        isAdminCreate: state.service.isAdminCreate,
         currentMuseumData: state.service.currentMuseumData,
         isEmailTaken: state.auth.isEmailTaken,
         isFetch: state.auth.isFetch,

@@ -90,11 +90,13 @@ export const getMuseumData = () => { //Получение информации �
 }
 export const updateMuseumData = (id, name, img, description, ticket_lifetime) => { //Обновлении информации о музее по пользователю
     return (dispatch) => {
+        dispatch(toggleIsFetching(true))
         museumApi.updateMuseumData(id, name, img, description, ticket_lifetime)
             .then(response => response.json()
                 .then(result => {
                     // console.log('updatedMuseumData', result)
                     dispatch(setMuseumData(result.museum, result.locations, result.is_museum_super_admin))
+                    dispatch(toggleIsFetching(false))
             }))
     }
 }

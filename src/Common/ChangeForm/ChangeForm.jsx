@@ -160,7 +160,7 @@ const ChangeForm = (props) => {
             {
                 props.isVideoUrlWrong &&
                 <div className='form__wrong'>
-                    Пожалуйста, добавьте корректную ссылку на видео
+                    Пожалуйста, добавьте корректную ссылку
                 </div>
             }
 

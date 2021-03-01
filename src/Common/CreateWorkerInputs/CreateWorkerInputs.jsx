@@ -7,6 +7,7 @@ import TransparentButton from "../TransparentButton/TransparentButton";
 import BackBtn from "../BackBtn/BackBtn";
 
 const CreateWorkerInputs = (props) => {
+
     return (
         <div className={'outer'}>
             <div className={'container'}>

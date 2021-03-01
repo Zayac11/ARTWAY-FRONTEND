@@ -2,11 +2,13 @@ import {adminApi} from "../api/api";
 import {setIsEmailTaken, toggleIsFetching} from "./authentication";
 
 const SET_ADMIN_DATA = 'SET_ADMIN_DATA'
+const SET_IS_WORKER_CREATE = 'SET_IS_WORKER_CREATE'
 
 let initialState = {
     museum_super_admin: {}, //Профиль главного администратора
     museum_admins: [], //Лист админов музея
     museum_cashiers: [], //Лист кассиров музея
+    isWorkerCreate: false,
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -18,12 +20,18 @@ const adminReducer = (state = initialState, action) => {
                 museum_admins: action.museum_admins,
                 museum_cashiers: action.museum_cashiers,
             }
+        case SET_IS_WORKER_CREATE:
+            return {
+                ...state,
+                isWorkerCreate: action.isWorkerCreate,
+            }
         default:
             return state;
     }
 }
 
 export const setAdminData = (museum_super_admin, museum_admins, museum_cashiers) => ({type: SET_ADMIN_DATA, museum_super_admin, museum_admins, museum_cashiers})
+export const setIsWorkerCreate = (isWorkerCreate) => ({type: SET_IS_WORKER_CREATE,isWorkerCreate})
 
 export const getAdminData = () => { //Получение информации о главном администраторе и его подчиненных
     return (dispatch) => {
@@ -56,6 +64,7 @@ export const deleteWorker = (worker_id) => { //Удаление сотрудни
                     // console.log('deleteWorkerProfile', result)
                     dispatch(setAdminData(result.museum_super_admin, result.museum_admins, result.museum_cashiers))
                     dispatch(toggleIsFetching(false))
+                    dispatch(setIsWorkerCreate(false))
                 }))
     }
 }
@@ -65,15 +74,16 @@ export const createWorker = (last_name, first_name, middle_name, email, password
         adminApi.checkIsUserExists(email)
             .then(response => response.json()
                 .then(result => {
-                    // console.log('checkIsUserExists', result)
-                    dispatch(toggleIsFetching(true))
+                    console.log('checkIsUserExists', result)
                     if(result.status === 404) {
+                        dispatch(toggleIsFetching(true))
                         adminApi.createWorker(last_name, first_name, middle_name, email, password, role)
                             .then(response => response.json()
                                 .then(result => {
                                     // console.log('createWorker', result)
                                     dispatch(setIsEmailTaken(false))
                                     dispatch(setAdminData(result.museum_super_admin, result.museum_admins, result.museum_cashiers))
+                                    dispatch(setIsWorkerCreate(true))
                                 }))
                     }
                     else {
