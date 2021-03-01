@@ -61,12 +61,12 @@ export const deleteWorker = (worker_id) => { //Удаление сотрудни
 }
 export const createWorker = (last_name, first_name, middle_name, email, password, role) => { //Добавление сотрудника
     return (dispatch) => {
-        dispatch(toggleIsFetching(true))
         dispatch(setIsEmailTaken(false))
         adminApi.checkIsUserExists(email)
             .then(response => response.json()
                 .then(result => {
                     // console.log('checkIsUserExists', result)
+                    dispatch(toggleIsFetching(true))
                     if(result.status === 404) {
                         adminApi.createWorker(last_name, first_name, middle_name, email, password, role)
                             .then(response => response.json()
