@@ -13,7 +13,7 @@ Update npm
 
 clone this repository
 
-### `git clone https://github.com/Zayac11/RTU_HACK <Folder_name>`
+### `git clone https://github.com/Zayac11/ARTWAY-FRONTEND <Folder_name>`
 
 Open a console in a folder and go to the cloned repository
 
